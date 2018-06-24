@@ -3,31 +3,6 @@
   
     
     <entry>
-      <title>博客建设历程</title>
-      <link href="/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/"/>
-      <url>/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<p>2016.9.3   购入阿里云云主机，与此同时购入域名【ceohd.com】。blog系统从wp到typecho再到wp</p><p>2017.7.20   网站备案，域名【ceohd.com】【pyboy.me】</p><p>2017.7.31   网站备案管局通过，并开通网站，主域名为【ceohd.com】</p><p>2018.4.27   购入新域名【markhoo.com】（百度云），准备更换域名</p><p>2018.5.1   域名【ceohd.com】售出，暂时启用【pyboy.me】作为主域名</p><p>2018.5.2   将域名【ceohd.com】【pyboy.me】注销备案信息</p><p>2018.5.4   提交域名【markhoo.com】以及相关材料备案</p><p>2018.5.15   域名因为设置信息保护，导致备案审核未通过。取消域名信息保护后再次提交</p><p>2018.5.25   再次提交审核通过，备案完成。网站再次开启，正式启用【markhoo.com】，同时将【youmei.io】（Namecheap）重定向<br>2018.5.26 考虑良久，以及做了对比，决定从wp转到typecho</p>]]></content>
-      
-      <categories>
-          
-          <category> Python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> markhoo </tag>
-            
-            <tag> 建站 </tag>
-            
-            <tag> blog </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>关于Python的面试题</title>
       <link href="/2018/06/24/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
       <url>/2018/06/24/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
@@ -47,6 +22,31 @@
             <tag> 面试题 </tag>
             
             <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>博客建设历程</title>
+      <link href="/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/"/>
+      <url>/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<p>2016.9.3   购入阿里云云主机，与此同时购入域名【ceohd.com】。blog系统从wp到typecho再到wp</p><p>2017.7.20   网站备案，域名【ceohd.com】【pyboy.me】</p><p>2017.7.31   网站备案管局通过，并开通网站，主域名为【ceohd.com】</p><p>2018.4.27   购入新域名【markhoo.com】（百度云），准备更换域名</p><p>2018.5.1   域名【ceohd.com】售出，暂时启用【pyboy.me】作为主域名</p><p>2018.5.2   将域名【ceohd.com】【pyboy.me】注销备案信息</p><p>2018.5.4   提交域名【markhoo.com】以及相关材料备案</p><p>2018.5.15   域名因为设置信息保护，导致备案审核未通过。取消域名信息保护后再次提交</p><p>2018.5.25   再次提交审核通过，备案完成。网站再次开启，正式启用【markhoo.com】，同时将【youmei.io】（Namecheap）重定向<br>2018.5.26 考虑良久，以及做了对比，决定从wp转到typecho</p>]]></content>
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markhoo </tag>
+            
+            <tag> 建站 </tag>
+            
+            <tag> blog </tag>
             
         </tags>
       
