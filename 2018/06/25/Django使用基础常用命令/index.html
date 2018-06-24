@@ -3,7 +3,7 @@
         <meta charset="utf-8">
             
             <title>
-                nginx django 的配置步骤 | 沉默是金
+                Django使用基础常用命令 | 沉默是金
             </title>
             <meta content="width=device-width, initial-scale=1" name="viewport">
             <meta name="theme-color" content="#4184f3">
@@ -118,10 +118,10 @@ var _hmt = _hmt || [];
           <header class="post-header">
           
           </header>
-          <h1 class="post-title">nginx django 的配置步骤</h1>
+          <h1 class="post-title">Django使用基础常用命令</h1>
 
           <section class="post-info">
-            <span class="post-date">2018/06/24</span>
+            <span class="post-date">2018/06/25</span>
             
             <span class="post-category">
                 <a class="article-category-link" href="/categories/Django/">Django</a>
@@ -135,19 +135,8 @@ var _hmt = _hmt || [];
           </section>
 
           <section class="post-content">
-            <p>升级并安装 pip<br>sudo apt-get update<br>sudo apt-get install python-pip<br>安装虚拟环境<br>sudo pip install virtualenv virtualenvwrapper<br>加入到环境变量中<br>当前用户目录下的 Env为虚拟环境存放的目录</p>
-<p>echo “export WORKON_HOME=~/Env” &gt;&gt; ~/.bashrc<br>echo “source /usr/local/bin/virtualenvwrapper.sh” &gt;&gt; ~/.bashrc<br>激活配置<br>source ~/.bashrc<br>创建虚拟环境<br>环境名为:firstsite</p>
-<p>在用户当前目录下创建 Django工程<br>cd ~<br>django-admin.py startproject firstsite<br>django 的初始化<br>cd ~/firstsite<br>./manage.py migrate<br>./manage.py createsuperuser<br>Django静态文件配置<br>nano firstsite/settings.py<br>STATIC_ROOT = os.path.join(BASE_DIR, “static/“)<br>./manage.py collectstatic<br>安装 uWSGI<br>sudo apt-get install python-dev<br>sudo pip install uwsgi<br>测试是否能够正常访问 django 项目</p>
-<p>http 指定进程端口8080<br>home指定虚拟环境目录<br>chdir指定 项目工程所在目录<br>uwsgi –http :8080 –home /home/pi/Env/firstsite –chdir /home/pi/firstsite -w firstsite.wsgi<br>创建 uwsgi 的配置文件<br>sudo mkdir -p /etc/uwsgi/sites<br>cd /etc/uwsgi/sites<br>uwsgi 的配置相关内容(重点)<br>[uwsgi]<br>project = firstsite<br>base = /home/pi</p>
-<p>chdir = %(base)/%(project)<br>home = %(base)/Env/%(project)<br>module = %(project).wsgi:application</p>
-<p>master = true<br>processes = 5</p>
-<p>socket = %(base)/%(project)/%(project).sock<br>chmod-socket = 666<br>vacuum = true<br>启动守护进程<br>vim /etc/systemd/system/uwsgi.service</p>
-<p>[Unit]<br>Description=uWSGI Emperor service<br>After=syslog.target</p>
-<p>[Service]<br>ExecStart=/usr/local/bin/uwsgi –emperor /etc/uwsgi/sites<br>Restart=always<br>KillSignal=SIGQUIT<br>Type=notify<br>StandardError=syslog<br>NotifyAccess=all</p>
-<p>[Install]<br>WantedBy=multi-user.target<br>重载守护进程的配置信息<br>sudo systemctl daemon-reload<br>保证系统重启后uwsgi守护进程自动重启<br>sudo systemctl enable uwsgi<br>启动uwsgi进程<br>sudo systemctl start uwsgi<br>nginx 的安装<br>sudo apt-get install nginx<br>nginx的配置<br>sudo nano /etc/nginx/sites-available/firstsite<br>server {<br>listen 80;<br>server_name firstsite.com <a href="http://www.firstsite.com" target="_blank" rel="noopener">www.firstsite.com</a>;</p>
-<p>location = /favicon.ico { access_log off; log_not_found off; }<br>location /static/ {<br>root /home/pi/firstsite;<br>}</p>
-<p>location / {<br>include uwsgi_params;<br>uwsgi_pass unix:/home/pi/firstsite/firstsite.sock;<br>}<br>}<br>nginx配置生效<br>sudo ln -s /etc/nginx/sites-available/firstsite /etc/nginx/sites-enabled<br>检查配置<br>sudo service nginx configtest<br>重启nginx<br>sudo service nginx restart<br>非 debug 模式<br>非 debug 模式需要重启uwsgi 服务</p>
-<p>sudo systemctl restart uwsgi</p>
+            <p>查看django命令：django-admin 即可显示django的可用命令<br>创建项目命令：django-admin startproject [项目名称] 若没有报错则创建项目成功<br>查看manage.py常用命令：python manage.py 即可显示manage中的可用命令<br>启动项目服务器命令：python manage.py runserver 启动服务器<br>启动项目服务器并修改端口：python manage.py runserver 9999 使用9999端口来启动服务器<br>创建django应用需要进入与manage.py的同级目录进行创建<br>创建命令为：python manage.py startapp [项目名称]<br>创建完成后将应用名称添加到settings.py中的INSTALLED_APPS中完成应用的创建<br>models模型创建完毕后使用manage.py来生成数据表，models模型创建需要在应用目录中的models.py中进行创建<br>创建数据迁移命令：python manage.py makemigrations [应用名称] 进行数据迁移的准备步骤，输入以下命令完成数据迁移操作<br>开始数据迁移命令：python manage.py migrate<br>注：如果不输入应用名称则默认对django中的所有应用进行数据迁移操作<br>数据迁移完成后使用以下命令进行SQL语句查询<br>命令为：python manage.py sqlmigrate [应用名称] [文件id]<br>给django创建一个超级用户<br>命令为：python manage.py createsuperuser<br>浏览器中访问：localhost:8000/admin 进行访问admin页面<br>在应用下admin.py中引入自身的models模块，使用<br>编辑admin.py添加代码：admin.site.register(models.Article)<br>将admin管理后台进行配置升级<br>创建admin配置类<br>    class ArticleAdmin(admin.ModelAdmin)</p>
+<p>注册：admin.site.register(Article,ArticleAdmin )</p>
 
           </section>
         </article>
@@ -156,15 +145,15 @@ var _hmt = _hmt || [];
        
         <div class="pager">
           
-            <a class="post-prev pager-item" href="/2018/06/24/CentOS7常用命令集合/" >
+            <a class="post-prev pager-item" href="/2018/06/25/安装Django时提示pip版本问题解决方法/" >
               <strong class="article-nav-caption">上一篇</strong>
-              <p class="post-nav-title">CentOS7 常用命令集合</p>
+              <p class="post-nav-title">安装Django时提示pip版本问题解决方法</p>
             </a>
           
           
-            <a class="post-next pager-item" href="/2018/06/24/Python学习资料/">
+            <a class="post-next pager-item" href="/2018/06/25/用Python3.6.2+Django1.11.13重新开发blog/">
               <strong class="article-nav-caption">下一篇</strong>
-              <p class="post-nav-title">Python学习资料</p>
+              <p class="post-nav-title">用 Python 3.6.2 + Django 1.11.13 重新开发 blog</p>
             </a>
           
         </div>
