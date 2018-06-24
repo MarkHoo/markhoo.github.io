@@ -5,12 +5,12 @@
   <subtitle>Silence is gold</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://boke.markhoo.com/"/>
+  <link href="https://blog.markhoo.com/"/>
   <updated>2018-06-22T11:28:10.127Z</updated>
-  <id>https://boke.markhoo.com/</id>
+  <id>https://blog.markhoo.com/</id>
   
   <author>
-    <name>沉默是金</name>
+    <name>Mark Hoo</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://boke.markhoo.com/2018/06/24/hello-world/"/>
-    <id>https://boke.markhoo.com/2018/06/24/hello-world/</id>
+    <link href="https://blog.markhoo.com/2018/06/24/hello-world/"/>
+    <id>https://blog.markhoo.com/2018/06/24/hello-world/</id>
     <published>2018-06-24T07:00:19.886Z</published>
     <updated>2018-06-22T11:28:10.127Z</updated>
     
