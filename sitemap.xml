@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.markhoo.com/categories/index.html</loc>
+    
+    <lastmod>2018-06-24T10:08:21.499Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/tags/index.html</loc>
+    
+    <lastmod>2018-06-24T10:07:38.525Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/about/index.html</loc>
+    
+    <lastmod>2018-06-24T10:06:30.645Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.markhoo.com/2018/06/24/hello-world/</loc>
     
     <lastmod>2018-06-22T11:28:10.127Z</lastmod>
