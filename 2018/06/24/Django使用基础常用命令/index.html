@@ -3,7 +3,7 @@
         <meta charset="utf-8">
             
             <title>
-                博客建设历程 | 沉默是金
+                Django使用基础常用命令 | 沉默是金
             </title>
             <meta content="width=device-width, initial-scale=1" name="viewport">
             <meta name="theme-color" content="#4184f3">
@@ -118,28 +118,25 @@ var _hmt = _hmt || [];
           <header class="post-header">
           
           </header>
-          <h1 class="post-title">博客建设历程</h1>
+          <h1 class="post-title">Django使用基础常用命令</h1>
 
           <section class="post-info">
             <span class="post-date">2018/06/24</span>
             
+            <span class="post-category">
+                <a class="article-category-link" href="/categories/Django/">Django</a>
+            </span>
+            
             
             <span class="post-tags">
-              <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/blog/">blog</a></li></ul>
+              <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Django/">Django</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Python/">Python</a></li></ul>
             </span>
             
           </section>
 
           <section class="post-content">
-            <p>2016.9.3   购入阿里云云主机，与此同时购入域名【ceohd.com】。blog系统从wp到typecho再到wp</p>
-<p>2017.7.20   网站备案，域名【ceohd.com】【pyboy.me】</p>
-<p>2017.7.31   网站备案管局通过，并开通网站，主域名为【ceohd.com】</p>
-<p>2018.4.27   购入新域名【markhoo.com】（百度云），准备更换域名</p>
-<p>2018.5.1   域名【ceohd.com】售出，暂时启用【pyboy.me】作为主域名</p>
-<p>2018.5.2   将域名【ceohd.com】【pyboy.me】注销备案信息</p>
-<p>2018.5.4   提交域名【markhoo.com】以及相关材料备案</p>
-<p>2018.5.15   域名因为设置信息保护，导致备案审核未通过。取消域名信息保护后再次提交</p>
-<p>2018.5.25   再次提交审核通过，备案完成。网站再次开启，正式启用【markhoo.com】，同时将【youmei.io】（Namecheap）重定向<br>2018.5.26 考虑良久，以及做了对比，决定从wp转到typecho</p>
+            <p>查看django命令：django-admin 即可显示django的可用命令<br>创建项目命令：django-admin startproject [项目名称] 若没有报错则创建项目成功<br>查看manage.py常用命令：python manage.py 即可显示manage中的可用命令<br>启动项目服务器命令：python manage.py runserver 启动服务器<br>启动项目服务器并修改端口：python manage.py runserver 9999 使用9999端口来启动服务器<br>创建django应用需要进入与manage.py的同级目录进行创建<br>创建命令为：python manage.py startapp [项目名称]<br>创建完成后将应用名称添加到settings.py中的INSTALLED_APPS中完成应用的创建<br>models模型创建完毕后使用manage.py来生成数据表，models模型创建需要在应用目录中的models.py中进行创建<br>创建数据迁移命令：python manage.py makemigrations [应用名称] 进行数据迁移的准备步骤，输入以下命令完成数据迁移操作<br>开始数据迁移命令：python manage.py migrate<br>注：如果不输入应用名称则默认对django中的所有应用进行数据迁移操作<br>数据迁移完成后使用以下命令进行SQL语句查询<br>命令为：python manage.py sqlmigrate [应用名称] [文件id]<br>给django创建一个超级用户<br>命令为：python manage.py createsuperuser<br>浏览器中访问：localhost:8000/admin 进行访问admin页面<br>在应用下admin.py中引入自身的models模块，使用<br>编辑admin.py添加代码：admin.site.register(models.Article)<br>将admin管理后台进行配置升级<br>创建admin配置类<br>    class ArticleAdmin(admin.ModelAdmin)</p>
+<p>注册：admin.site.register(Article,ArticleAdmin )</p>
 
           </section>
         </article>
@@ -148,15 +145,15 @@ var _hmt = _hmt || [];
        
         <div class="pager">
           
-            <a class="post-prev pager-item" href="/2018/06/24/nginxdjango的配置步骤/" >
+            <a class="post-prev pager-item" href="/2018/06/24/博客成长日记/" >
               <strong class="article-nav-caption">上一篇</strong>
-              <p class="post-nav-title">nginx django 的配置步骤</p>
+              <p class="post-nav-title">博客建设历程</p>
             </a>
           
           
-            <a class="post-next pager-item" href="/2018/06/24/Django使用基础常用命令/">
+            <a class="post-next pager-item" href="/2018/06/24/域名youmei.io的由来/">
               <strong class="article-nav-caption">下一篇</strong>
-              <p class="post-nav-title">Django使用基础常用命令</p>
+              <p class="post-nav-title">域名 youmei.io 的由来</p>
             </a>
           
         </div>

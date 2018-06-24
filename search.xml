@@ -3,10 +3,56 @@
   
     
     <entry>
-      <title>博客建设历程</title>
-      <link href="/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/"/>
-      <url>/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<p>2016.9.3   购入阿里云云主机，与此同时购入域名【ceohd.com】。blog系统从wp到typecho再到wp</p><p>2017.7.20   网站备案，域名【ceohd.com】【pyboy.me】</p><p>2017.7.31   网站备案管局通过，并开通网站，主域名为【ceohd.com】</p><p>2018.4.27   购入新域名【markhoo.com】（百度云），准备更换域名</p><p>2018.5.1   域名【ceohd.com】售出，暂时启用【pyboy.me】作为主域名</p><p>2018.5.2   将域名【ceohd.com】【pyboy.me】注销备案信息</p><p>2018.5.4   提交域名【markhoo.com】以及相关材料备案</p><p>2018.5.15   域名因为设置信息保护，导致备案审核未通过。取消域名信息保护后再次提交</p><p>2018.5.25   再次提交审核通过，备案完成。网站再次开启，正式启用【markhoo.com】，同时将【youmei.io】（Namecheap）重定向<br>2018.5.26 考虑良久，以及做了对比，决定从wp转到typecho</p>]]></content>
+      <title>安装Django时提示pip版本问题解决方法</title>
+      <link href="/2018/06/24/%E5%AE%89%E8%A3%85Django%E6%97%B6%E6%8F%90%E7%A4%BApip%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+      <url>/2018/06/24/%E5%AE%89%E8%A3%85Django%E6%97%B6%E6%8F%90%E7%A4%BApip%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>解决问题：<br>You are using pip version 9.0.1, however version 10.0.1 is available.<br>You should consider upgrading via the ‘pip install –upgrade pip’ command.</p><p>解决方法<br>直接运行命令：python -m pip install –upgrade pip 就可以了<br>如果你电脑上安装了两个版本的python，比如Mac上本来自带python2版本，但是你想安装在python3目录内，请把解决方法的运行命令的python改成python3</p>]]></content>
+      
+      <categories>
+          
+          <category> Django </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>CentOS7 常用命令集合</title>
+      <link href="/2018/06/24/CentOS7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/"/>
+      <url>/2018/06/24/CentOS7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</url>
+      <content type="html"><![CDATA[<p>常用命令</p><p>文件与目录操作</p><p>命令 解析<br>cd /home 进入 ‘/home’ 目录<br>cd .. 返回上一级目录<br>cd ../.. 返回上两级目录<br>cd - 返回上次所在目录<br>cp file1 file2 将file1复制为file2<br>cp -a dir1 dir2 复制一个目录<br>cp -a /tmp/dir1 . 复制一个目录到当前工作目录（.代表当前目录）<br>ls 查看目录中的文件<br>ls -a 显示隐藏文件<br>ls -l 显示详细信息<br>ls -lrt 按时间显示文件（l表示详细列表，r表示反向排序，t表示按时间排序）<br>pwd 显示工作路径<br>mkdir dir1 创建 ‘dir1’ 目录<br>mkdir dir1 dir2 同时创建两个目录<br>mkdir -p /tmp/dir1/dir2 创建一个目录树<br>mv dir1 dir2 移动/重命名一个目录<br>rm -f file1 删除 ‘file1’<br>rm -rf dir1 删除 ‘dir1’ 目录及其子目录内容<br>查看文件内容</p><p>命令 解析<br>cat file1 从第一个字节开始正向查看文件的内容<br>head -2 file1 查看一个文件的前两行<br>more file1 查看一个长文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>tail -3 file1 查看一个文件的最后三行<br>vi file 打开并浏览文件<br>文本内容处理</p><p>命令 解析<br>grep str /tmp/test 在文件 ‘/tmp/test’ 中查找 “str”<br>grep ^str /tmp/test 在文件 ‘/tmp/test’ 中查找以 “str” 开始的行<br>grep [0-9] /tmp/test 查找 ‘/tmp/test’ 文件中所有包含数字的行<br>grep str -r /tmp/* 在目录 ‘/tmp’ 及其子目录中查找 “str”<br>diff file1 file2 找出两个文件的不同处<br>sdiff file1 file2 以对比的方式显示两个文件的不同<br>vi file<br>操作 解析<br>i 进入编辑文本模式<br>Esc 退出编辑文本模式<br>:w 保存当前修改<br>:q 不保存退出vi<br>:wq 保存当前修改并退出vi<br>查询操作</p><p>命令 解析<br>find / -name file1 从 ‘/’ 开始进入根文件系统查找文件和目录<br>find / -user user1 查找属于用户 ‘user1’ 的文件和目录<br>find /home/user1 -name <em>.bin 在目录 ‘/ home/user1’ 中查找以 ‘.bin’ 结尾的文件<br>find /usr/bin -type f -atime +100 查找在过去100天内未被使用过的执行文件<br>find /usr/bin -type f -mtime -10 查找在10天内被创建或者修改过的文件<br>locate </em>.ps 寻找以 ‘.ps’ 结尾的文件，先运行 ‘updatedb’ 命令<br>find -name ‘*.[ch]’ | xargs grep -E ‘expr’ 在当前目录及其子目录所有.c和.h文件中查找 ‘expr’<br>find -type f -print0 | xargs -r0 grep -F ‘expr’ 在当前目录及其子目录的常规文件中查找 ‘expr’<br>find -maxdepth 1 -type f | xargs grep -F ‘expr’ 在当前目录中查找 ‘expr’<br>压缩、解压</p><p>命令 解析<br>bzip2 file1 压缩 file1<br>bunzip2 file1.bz2 解压 file1.bz2<br>gzip file1 压缩 file1<br>gzip -9 file1 最大程度压缩 file1<br>gunzip file1.gz 解压 file1.gz<br>tar -cvf archive.tar file1 把file1打包成 archive.tar（-c: 建立压缩档案；-v: 显示所有过程；-f: 使用档案名字，是必须的，是最后一个参数）<br>tar -cvf archive.tar file1 dir1 把 file1，dir1 打包成 archive.tar<br>tar -tf archive.tar 显示一个包中的内容<br>tar -xvf archive.tar 释放一个包<br>tar -xvf archive.tar -C /tmp 把压缩包释放到 /tmp目录下<br>zip file1.zip file1 创建一个zip格式的压缩包<br>zip -r file1.zip file1 dir1 把文件和目录压缩成一个zip格式的压缩包<br>unzip file1.zip 解压一个zip格式的压缩包到当前目录<br>unzip test.zip -d /tmp/ 解压一个zip格式的压缩包到 /tmp 目录<br>yum安装器</p><p>命令 解析<br>yum -y install [package] 下载并安装一个rpm包<br>yum localinstall [package.rpm] 安装一个rpm包，使用你自己的软件仓库解决所有依赖关系<br>yum -y update 更新当前系统中安装的所有rpm包<br>yum update [package] 更新一个rpm包<br>yum remove [package] 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search [package] 在rpm仓库中搜寻软件包<br>yum clean [package] 清除缓存目录（/var/cache/yum）下的软件包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件<br>网络相关</p><p>命令 解析<br>ifconfig eth0 显示一个以太网卡的配置<br>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 配置网卡的IP地址<br>ifdown eth0 禁用 ‘eth0’ 网络设备<br>ifup eth0 启用 ‘eth0’ 网络设备<br>iwconfig eth1 显示一个无线网卡的配置<br>iwlist scan 显示无线网络<br>ip addr show 显示网卡的IP地址<br>系统相关</p><p>命令 解析<br>su - 切换到root权限（与su有区别）<br>shutdown -h now 关机<br>shutdown -r now 重启<br>top 罗列使用CPU资源最多的linux任务 （输入q退出）<br>pstree 以树状图显示程序<br>man ping 查看参考手册（例如ping 命令）<br>passwd 修改密码<br>df -h 显示磁盘的使用情况<br>cal -3 显示前一个月，当前月以及下一个月的月历<br>cal 10 1988 显示指定月，年的月历<br>date –date ‘1970-01-01 UTC 1427888888 seconds’ 把一相对于1970-01-01 00:00的秒数转换成时间<br>XSheel 5相关操作</p><p>窗体快捷键</p><p>命令 解析<br>Ctrl + u 删除光标之前到行首的字符<br>Ctrl + k 删除光标之前到行尾的字符<br>Ctrl + c 取消当前行输入的命令，相当于Ctrl + Break<br>Ctrl + a 光标移动到行首（ahead of line），相当于通常的Home键<br>Ctrl + e 光标移动到行尾（end of line）<br>Ctrl + f 光标向前（forward）移动一个字符位置<br>Ctrl + b 光标往回（backward）移动一个字符位置<br>Ctrl + l 清屏，相当于执行clear命令<br>Ctrl + r 显示:号提示，根据用户输入查找相关历史命令（reverse-i-search）<br>Ctrl + w 删除从光标位置前到当前所处单词（word）的开头<br>Ctrl + t 交换光标位置前的两个字符<br>Ctrl + y 粘贴最后一次被删除的单词<br>Ctrl + Alt + d 显示桌面<br>Alt + b 光标往回（backward）移动到前一个单词<br>Alt + d 删除从光标位置到当前所处单词的末尾<br>Alt + F2 运行<br>Alt + F4 关闭当前窗口<br>Alt + F9 最小化当前窗口<br>Alt + F10 最大化当前窗口<br>Alt + Tab 切换窗口<br>Alt + 左键 移动窗口（或在最下面的任务栏滚动鼠标滑轮）<br>操作小技巧</p><p>鼠标中间键：粘贴突出显示的文本。(使用鼠标左键来选择文本。把光标指向想粘贴文本的地方。点击鼠标中间键来粘贴。)</p><p>Tab：命令行自动补全。使用 shell 提示时可使用这一方式。键入命令或文件名的前几个字符，然后按 [Tab] 键，它会自动补全命令或显示匹配键入字符的所有命令。</p><p>在滚动条的空白处点击鼠标中键：屏幕即滚动到那个地方。</p><p>在桌面或文件管理器中直接按 / 就可以输入位置，打开文件管理器。</p><p>在 vi 或 Firefox 中直接按 / 即可进入快速搜索状态。</p><p>网站链接和图片可直接拖放到桌面或者目录，可以马上下载。</p><p>直接将文件管理器中的文件拖到终端中就可以在终端中得到完整的路径名。</p><p>结束语</p><p>其实要学好Linux的操作并不是很困难的事情，在平常的使用过程中，碰到问题，学会去网上寻找答案不失为一个非常好的手段！谢谢大家！</p><p>转自：<a href="http://blog.csdn.net/o0darknessyy0o/article/details/52072054" target="_blank" rel="noopener">http://blog.csdn.net/o0darknessyy0o/article/details/52072054</a></p>]]></content>
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CentOS7 </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Python学习资料</title>
+      <link href="/2018/06/24/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+      <url>/2018/06/24/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</url>
+      <content type="html"><![CDATA[<p>电子书下载：</p><p>简明Python教程2.7<br>简明Python教程3.5<br>笨办法学 Python （第三版）<br>python标准库中文版PDF(带章节书签)<br>深入理解Python中文版高清PDF<br>【Python 2.7教程】廖雪峰<br>django_book中文版 简明Python教程<br>Python编程指南<br>以上电子书著作版权归原作者所有！链接后期有空会重新补充</p><p>编辑器下载：<br>Python官网下载<br><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">https://www.python.org/downloads/</a><br>sublimetext官网下载<br><a href="http://www.sublimetext.com/" target="_blank" rel="noopener">http://www.sublimetext.com/</a><br>Visual Studio Code官网下载 （中文官网）<br><a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">https://code.visualstudio.com/Download</a><br>Vim官网下载<br><a href="https://www.vim.org/download.php" target="_blank" rel="noopener">https://www.vim.org/download.php</a><br>Atom官网下载<br><a href="https://atom.io/" target="_blank" rel="noopener">https://atom.io/</a><br>PyCharm官网下载<br><a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/</a><br>Eclipse官网下载<br><a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/</a><br>Emacs官网下载<br><a href="http://www.gnu.org/software/emacs/" target="_blank" rel="noopener">http://www.gnu.org/software/emacs/</a></p><p>Linux下载：<br>Redhat官网下载<br><a href="https://access.redhat.com/downloads" target="_blank" rel="noopener">https://access.redhat.com/downloads</a><br>CentOS官网下载<br><a href="https://www.centos.org/download/" target="_blank" rel="noopener">https://www.centos.org/download/</a><br>Ubuntu官网下载<br><a href="https://cn.ubuntu.com/download/" target="_blank" rel="noopener">https://cn.ubuntu.com/download/</a><br>Mint官网下载<br><a href="https://www.linuxmint.com/download.php" target="_blank" rel="noopener">https://www.linuxmint.com/download.php</a><br>Debian官网下载<br><a href="https://www.debian.org/distrib/" target="_blank" rel="noopener">https://www.debian.org/distrib/</a><br>Arch官网下载<br><a href="https://www.archlinux.org/download/" target="_blank" rel="noopener">https://www.archlinux.org/download/</a><br>Fedora官网下载<br><a href="https://getfedora.org/zh_CN/" target="_blank" rel="noopener">https://getfedora.org/zh_CN/</a><br>deepin官网下载<br><a href="https://www.deepin.org/download/" target="_blank" rel="noopener">https://www.deepin.org/download/</a></p><p>数据库下载：<br>MYSQL官网下载<br><a href="https://www.mysql.com/downloads/" target="_blank" rel="noopener">https://www.mysql.com/downloads/</a><br>MongoDB官网下载<br><a href="https://www.mongodb.com/" target="_blank" rel="noopener">https://www.mongodb.com/</a><br>Redis官网下载<br><a href="https://redis.io/download" target="_blank" rel="noopener">https://redis.io/download</a></p><p>内容有错误的或者有需要补充的，请在评论区留言</p>]]></content>
       
       <categories>
           
@@ -17,11 +63,118 @@
       
         <tags>
             
-            <tag> markhoo </tag>
+            <tag> Linux </tag>
             
-            <tag> 建站 </tag>
+            <tag> Python </tag>
+            
+            <tag> IDE </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>两种网易云音乐播放器调用代码 网站可直接调用</title>
+      <link href="/2018/06/24/%E4%B8%A4%E7%A7%8D%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81%20%E7%BD%91%E7%AB%99%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8/"/>
+      <url>/2018/06/24/%E4%B8%A4%E7%A7%8D%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81%20%E7%BD%91%E7%AB%99%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8/</url>
+      <content type="html"><![CDATA[<p>第一种：<br>效果：代码：</p><iframe src="//music.163.com/outchain/player?type=2&amp;id=4341314&amp;auto=1&amp;height=66" width="100%" height="86" frameborder="no" marginwidth="0" marginheight="0">&lt;span data-mce-type=”bookmark” style=”display: inline-block; width: 0px; overflow: hidden; line-height: 0;” class=”mce_SELRES_start”&gt;&lt;/span&gt;</iframe><p>参数说明：</p><p>播放器可修改参数：</p><p>width=100% #自适应宽度<br>height=86 #根据自己喜好修改<br>id=4341314 #为歌曲的ID <a href="http://music.163.com/#/song?id=4341314" target="_blank" rel="noopener">http://music.163.com/#/song?id=4341314</a><br>auto=0 #0为不自动播放，1为自动播放</p><p>第二种：<br>效果：调用代码：</p><p>&lt;iframe src=”<a href="http://music.163.com/outchain/player?type=0&amp;id=967047669&amp;auto=0&amp;height=430&quot;" target="_blank" rel="noopener">http://music.163.com/outchain/player?type=0&amp;id=967047669&amp;auto=0&amp;height=430&quot;</a> </p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网易云音乐 </tag>
+            
+            <tag> 音乐播放器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>nginx django 的配置步骤</title>
+      <link href="/2018/06/24/nginxdjango%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/"/>
+      <url>/2018/06/24/nginxdjango%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/</url>
+      <content type="html"><![CDATA[<p>升级并安装 pip<br>sudo apt-get update<br>sudo apt-get install python-pip<br>安装虚拟环境<br>sudo pip install virtualenv virtualenvwrapper<br>加入到环境变量中<br>当前用户目录下的 Env为虚拟环境存放的目录</p><p>echo “export WORKON_HOME=~/Env” &gt;&gt; ~/.bashrc<br>echo “source /usr/local/bin/virtualenvwrapper.sh” &gt;&gt; ~/.bashrc<br>激活配置<br>source ~/.bashrc<br>创建虚拟环境<br>环境名为:firstsite</p><p>在用户当前目录下创建 Django工程<br>cd ~<br>django-admin.py startproject firstsite<br>django 的初始化<br>cd ~/firstsite<br>./manage.py migrate<br>./manage.py createsuperuser<br>Django静态文件配置<br>nano firstsite/settings.py<br>STATIC_ROOT = os.path.join(BASE_DIR, “static/“)<br>./manage.py collectstatic<br>安装 uWSGI<br>sudo apt-get install python-dev<br>sudo pip install uwsgi<br>测试是否能够正常访问 django 项目</p><p>http 指定进程端口8080<br>home指定虚拟环境目录<br>chdir指定 项目工程所在目录<br>uwsgi –http :8080 –home /home/pi/Env/firstsite –chdir /home/pi/firstsite -w firstsite.wsgi<br>创建 uwsgi 的配置文件<br>sudo mkdir -p /etc/uwsgi/sites<br>cd /etc/uwsgi/sites<br>uwsgi 的配置相关内容(重点)<br>[uwsgi]<br>project = firstsite<br>base = /home/pi</p><p>chdir = %(base)/%(project)<br>home = %(base)/Env/%(project)<br>module = %(project).wsgi:application</p><p>master = true<br>processes = 5</p><p>socket = %(base)/%(project)/%(project).sock<br>chmod-socket = 666<br>vacuum = true<br>启动守护进程<br>vim /etc/systemd/system/uwsgi.service</p><p>[Unit]<br>Description=uWSGI Emperor service<br>After=syslog.target</p><p>[Service]<br>ExecStart=/usr/local/bin/uwsgi –emperor /etc/uwsgi/sites<br>Restart=always<br>KillSignal=SIGQUIT<br>Type=notify<br>StandardError=syslog<br>NotifyAccess=all</p><p>[Install]<br>WantedBy=multi-user.target<br>重载守护进程的配置信息<br>sudo systemctl daemon-reload<br>保证系统重启后uwsgi守护进程自动重启<br>sudo systemctl enable uwsgi<br>启动uwsgi进程<br>sudo systemctl start uwsgi<br>nginx 的安装<br>sudo apt-get install nginx<br>nginx的配置<br>sudo nano /etc/nginx/sites-available/firstsite<br>server {<br>listen 80;<br>server_name firstsite.com <a href="http://www.firstsite.com" target="_blank" rel="noopener">www.firstsite.com</a>;</p><p>location = /favicon.ico { access_log off; log_not_found off; }<br>location /static/ {<br>root /home/pi/firstsite;<br>}</p><p>location / {<br>include uwsgi_params;<br>uwsgi_pass unix:/home/pi/firstsite/firstsite.sock;<br>}<br>}<br>nginx配置生效<br>sudo ln -s /etc/nginx/sites-available/firstsite /etc/nginx/sites-enabled<br>检查配置<br>sudo service nginx configtest<br>重启nginx<br>sudo service nginx restart<br>非 debug 模式<br>非 debug 模式需要重启uwsgi 服务</p><p>sudo systemctl restart uwsgi</p>]]></content>
+      
+      <categories>
+          
+          <category> Django </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>博客建设历程</title>
+      <link href="/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/"/>
+      <url>/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<p>2016.9.3   购入阿里云云主机，与此同时购入域名【ceohd.com】。blog系统从wp到typecho再到wp</p><p>2017.7.20   网站备案，域名【ceohd.com】【pyboy.me】</p><p>2017.7.31   网站备案管局通过，并开通网站，主域名为【ceohd.com】</p><p>2018.4.27   购入新域名【markhoo.com】（百度云），准备更换域名</p><p>2018.5.1   域名【ceohd.com】售出，暂时启用【pyboy.me】作为主域名</p><p>2018.5.2   将域名【ceohd.com】【pyboy.me】注销备案信息</p><p>2018.5.4   提交域名【markhoo.com】以及相关材料备案</p><p>2018.5.15   域名因为设置信息保护，导致备案审核未通过。取消域名信息保护后再次提交</p><p>2018.5.25   再次提交审核通过，备案完成。网站再次开启，正式启用【markhoo.com】，同时将【youmei.io】（Namecheap）重定向<br>2018.5.26 考虑良久，以及做了对比，决定从wp转到typecho</p>]]></content>
+      
+      
+        <tags>
             
             <tag> blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Django使用基础常用命令</title>
+      <link href="/2018/06/24/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>/2018/06/24/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>查看django命令：django-admin 即可显示django的可用命令<br>创建项目命令：django-admin startproject [项目名称] 若没有报错则创建项目成功<br>查看manage.py常用命令：python manage.py 即可显示manage中的可用命令<br>启动项目服务器命令：python manage.py runserver 启动服务器<br>启动项目服务器并修改端口：python manage.py runserver 9999 使用9999端口来启动服务器<br>创建django应用需要进入与manage.py的同级目录进行创建<br>创建命令为：python manage.py startapp [项目名称]<br>创建完成后将应用名称添加到settings.py中的INSTALLED_APPS中完成应用的创建<br>models模型创建完毕后使用manage.py来生成数据表，models模型创建需要在应用目录中的models.py中进行创建<br>创建数据迁移命令：python manage.py makemigrations [应用名称] 进行数据迁移的准备步骤，输入以下命令完成数据迁移操作<br>开始数据迁移命令：python manage.py migrate<br>注：如果不输入应用名称则默认对django中的所有应用进行数据迁移操作<br>数据迁移完成后使用以下命令进行SQL语句查询<br>命令为：python manage.py sqlmigrate [应用名称] [文件id]<br>给django创建一个超级用户<br>命令为：python manage.py createsuperuser<br>浏览器中访问：localhost:8000/admin 进行访问admin页面<br>在应用下admin.py中引入自身的models模块，使用<br>编辑admin.py添加代码：admin.site.register(models.Article)<br>将admin管理后台进行配置升级<br>创建admin配置类<br>    class ArticleAdmin(admin.ModelAdmin)</p><p>注册：admin.site.register(Article,ArticleAdmin )</p>]]></content>
+      
+      <categories>
+          
+          <category> Django </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>域名 youmei.io 的由来</title>
+      <link href="/2018/06/24/%E5%9F%9F%E5%90%8Dyoumei.io%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
+      <url>/2018/06/24/%E5%9F%9F%E5%90%8Dyoumei.io%E7%9A%84%E7%94%B1%E6%9D%A5/</url>
+      <content type="html"><![CDATA[<p>对于入手【youmei.io】域名的原因，我是根据以下规则来的，当然最初不是这么想的，只是想要的域名都已经被注册了。。。</p><p>30字口诀：<br>小宝淘乐趣，大多优美妙。一五点微友，好天通万家。金易贝米人，快闪超聚帮。<br>小（小红书、小站教育）<br>宝（余额宝、驾考宝典）<br>淘（淘世界、蜜淘、淘汽档口）<br>乐（分期乐、乐流、乐动力）<br>趣（趣分期、我趣旅行）<br>大（大姨吗、大众点评、大智慧）<br>多（房多多、多盟、多看阅读）<br>优（优信拍、优酷土豆）<br>美（美团、美拍、美丽说、美图秀秀）<br>妙（奇妙清单、妙计旅行）<br>一（一个、一刻、一条、一席）<br>五（58到家、51talk）<br>点（养车点点、点名时间）<br>微（微信、微博、微在、微会）<br>友（友盟、友秘）<br>好（平安好房、好屋中国、好奇心日报）<br>天（天猫、天天果园、天天用车）<br>通（百度股市通、人脉通）<br>万（WIFI万能钥匙、十万个冷笑话）<br>家（汽车之家、河狸家）<br>金（金斧子、金数据）<br>易（网易、易车）<br>贝（贝贝、贝米）<br>米（小米、米聊）<br>人（人人、人人车）<br>快（快手、快的）<br>闪（闪电购、闪银）<br>超（超级课程表、超好玩）<br>聚（聚划算、聚美）<br>帮（阿姨帮、作业帮）<br>取名字总结有：10大“门派”<br>植物学派：蘑菇街、荔枝FM、土豆、IT桔子<br>动物学派：猿题库、功夫熊、小猪短租、小马购车、土巴兔、考拉FM、蜻蜓FM、企鹅吃喝指南、搜狗、搜狐<br>数字学派：51信用卡、58同城，59store<br>叠字学派：陌陌、探探、抱抱、人人、脉脉<br>字母学派：YY，QQ，JJ棋牌、KK唱响<br>拟声学派：滴滴、么么搜、嘟嘟美甲<br>实物学派：豆瓣、穿衣助手、饭本、觅食、团车、爱屋吉屋、药给力<br>创意学派：拉勾网、3W咖啡、托福Easy姐、喜马拉雅、黄油相机、面包旅行、雪球、斗鱼<br>国学学派：凤凰网、知乎、金箍棒、榫卯<br>洋气学派：UCloud，OneAPM，Keep，Fork，MONO，EMIE、NICE、IN、Face++<br>其他：<br>衍生学派：找钢网、找塑料、找叉叉<br>同业学派：易果生鲜、一米鲜、每日优鲜、爱鲜蜂<br>游戏学派：三国叉叉、萌叉叉、全民叉叉<br>取名字的关键有：3点friendly需要注意：<br>1.大脑记忆friendly：简而言之，容易记住。<br>2.输入法friendly：按音一次就能打出来，不会有生僻字。<br>3.搜索引擎friendly：搜索结果不会和一些常用或者热门词汇竞争。<br>案例：今日头条、周末去哪儿、学霸君<br>很好奇其他国家的互联网公司起名有什么规律~</p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 域名 </tag>
             
         </tags>
       
@@ -42,7 +195,7 @@
       
         <tags>
             
-            <tag> python </tag>
+            <tag> Python </tag>
             
             <tag> 面试题 </tag>
             
@@ -53,11 +206,90 @@
     </entry>
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2018/06/24/hello-world/"/>
-      <url>/2018/06/24/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="/2018/06/24/hello-world/#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="/2018/06/24/hello-world/#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="/2018/06/24/hello-world/#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="/2018/06/24/hello-world/#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="/2018/06/24/hello-world/#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      <title>关于Python的面试题</title>
+      <link href="/2018/06/24/%E6%A8%A1%E6%9D%BF/"/>
+      <url>/2018/06/24/%E6%A8%A1%E6%9D%BF/</url>
+      <content type="html"><![CDATA[]]></content>
       
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试题 </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>闲置域名</title>
+      <link href="/2018/06/24/%E9%97%B2%E7%BD%AE%E5%9F%9F%E5%90%8D/"/>
+      <url>/2018/06/24/%E9%97%B2%E7%BD%AE%E5%9F%9F%E5%90%8D/</url>
+      <content type="html"><![CDATA[<p>为帮助更多的小伙伴成立自己的网站，节省域名成本，本站决定免费提供二级域名解析，例如：【xxx.youmei.io】。<br>网站内容要合法合规，主要面向技术型网站提供，有需要的同学可以在下面留言。</p><p>阿里云产品优惠券领取地址：<br><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=od77opdu&amp;utm_source=od77opdu" target="_blank" rel="noopener">https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=od77opdu&amp;utm_source=od77opdu</a></p><p>闲置域名出售，有要的小伙伴留言<br>geegle.cc<br>tianshimao.cc<br>facete.cn 【已售出】<br>ceohd.com 【已售出】<br>fox1024.com 【即将到期】<br>pyboy.me    【即将到期】</p><p>购买方式：阿里云搜索域名直接购买</p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 域名 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
+      <link href="/2018/06/24/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
+      <url>/2018/06/24/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/</url>
+      <content type="html"><![CDATA[<p>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。<br>先定个小目标，特此记录一下</p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>vim常用命令总结</title>
+      <link href="/2018/06/24/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
+      <url>/2018/06/24/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版。<br>vim 选择文本，删除，复制，粘贴<br>文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下：<br>v 从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。<br>V 从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。<br>Ctrl + v 从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。<br>ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾<br>选中后就可以用编辑命令对其进行编辑，如<br>d 删除<br>y 复制 （默认是复制到”寄存器）<br>p 粘贴 （默认从”寄存器取出内容粘贴）<br>“+y 复制到系统剪贴板(也就是vim的+寄存器）</p><h1 id="“-p-从系统剪贴板粘贴"><a href="/2018/06/24/vim常用命令总结/#“-p-从系统剪贴板粘贴" class="headerlink" title="“+p 从系统剪贴板粘贴"></a>“+p 从系统剪贴板粘贴</h1><p>vim命令总结<br>1.删除字符<br>要删除一个字符，只需要将光标移到该字符上按下”x”。<br>2.删除一行<br>删除一整行内容使用”dd”命令。删除后下面的行会移上来填补空缺。<br>3.删除换行符<br>在Vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了：命令是”J”。<br>4.撤销<br>如果你误删了过多的内容。显然你可以再输入一遍，但是命令”u” 更简便，它可以撤消上一次的操作。<br>5.重做<br>如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，”U”命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个”U”的操作。用”u”和CTRL-R你可以找回任何一个操作状态。<br>6.追加<br>“i”命令可以在当前光标之前插入文本。<br>“a”命令可以在当前光标之后插入文本。<br>“o”命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。<br>“O”命令(注意是大写的字母O)将在当前行的上面另起一行。<br>7.使用命令计数<br>假设你要向上移动9行。这可以用”kkkkkkkkk”或”9k”来完成。事实上，很多命令都可以接受一个数字作为重复执行同一命令的次数。比如刚才的例子，要在行尾追加三个感叹号，当时用的命令是”a!!!”。另一个办法是用”3a!”命令。3说明该命令将被重复执行3次。同样，删除3个字符可以用”3x”。指定的数字要紧挨在它所要修饰的命令前面。<br>8.退出<br>要退出Vim，用命令”ZZ”。该命令保存当前文件并退出Vim。<br>9.放弃编辑<br>丢弃所有的修改并退出，用命令”:q!”。用”:e!”命令放弃所有修改并重新载入该文件的原始内容。<br>10.以Word为单位的移动<br>使用”w”命令可以将光标向前移动一个word的首字符上；比如”3w”将光标向前移动3个words。”b”命令则将光标向后移动到前一个word的首字符上。<br>“e”命令会将光标移动到下一个word的最后一个字符。命令”ge”，它将光标移动到前一个word的最后一个字符上。、<br>11.移动到行首或行尾<br>“$”命令将光标移动到当前行行尾。如果你的键盘上有一个键，它的作用也一样。”^”命令将光标移动到当前行的第一个非空白字符上。”0”命令则总是把光标移动到当前行的第一个字符上。键也是如此。”$”命令还可接受一个计数，如”1$”会将光标移动到当前行行尾，”2$”则会移动到下一行的行尾，如此类推。”0”命令却不能接受类似这样的计数，命令”^”前加上一个计数也没有任何效果。<br>12.移动到指定字符上<br>命令”fx”在当前行上查找下一个字符x（向右方向），可以带一个命令计数”F”命令向左方向搜索。”tx”命令形同”fx”命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：”t”意为”To”。该命令的反方向版是”Tx”。这4个命令都可以用”;”来重复。以”,”也是重复同样的命令，但是方向与原命令的方向相反。<br>13.以匹配一个括号为目的移动<br>用命令”%”跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在”(“上，它就向前跳转到与它匹配的”)”上，如果当前在”)”上，它就向后自动跳转到匹配的”(“上去.<br>14.移动到指定行<br>用”G”命令指定一个命令计数，这个命令就会把光标定位到由命令计数指定的行上。比如”33G”就会把光标置于第33行上。没有指定命令计数作为参数的话, “G”会把光标定位到最后一行上。”gg”命令是跳转到第一行的快捷的方法。<br>另一个移动到某行的方法是在命令”%”之前指定一个命令计数比如”50%”将会把光标定位在文件的中间. “90%”跳到接近文件尾的地方。<br>命令”H”,”M”,”L”,分别将光标跳转到第一行，中间行，结尾行部分。<br>15.告诉你当前的位置<br>使用CTRL-G命令。”set number”在每行的前面显示一个行号。相反关闭行号用命令”:set nonumber”。”:set ruler”在Vim窗口的右下角显示当前光标位置。<br>16.滚屏<br>CTRL-U显示文本的窗口向上滚动了半屏。CTRL-D命令将窗口向下移动半屏。一次滚动一行可以使用CTRL-E(向上滚动)和CTRL-Y(向下滚动)。要向前滚动一整屏使用命令CTRL-F。另外CTRL-B是它的反向版。”zz”命令会把当前行置为屏幕正中央，”zt”命令会把当前行置于屏幕顶端，”zb”则把当前行置于屏幕底端.<br>17.简单搜索<br>“/string”命令可用于搜索一个字符串。要查找上次查找的字符串的下一个位置,使用”n”命令。如果你知道你要找的确切位置是目标字符串的第几次出现，还可以在”n”之前放置一个命令计数。”3n”会去查找目标字符串的第3次出现。<br>“?”命令与”/“的工作相同，只是搜索方向相反.”N”命令会重复前一次查找，但是与最初用”/“或”?”指定的搜索方向相反。<br>如果查找内容忽略大小写，则用命令”set ignorecase”, 返回精确匹配用命令”set noignorecase” 。<br>18.在文本中查找下一个word<br>把光标定位于这个word上然后按下””键。Vim将会取当前光标所在的word并将它作用目标字符串进行搜索。”#”命令是””的反向版。还可以在这两个命令前加一个命令计数:”3*”查找当前光标下的word的第三次出现。<br>19.查找整个word<br>如果你用”/the”来查找Vim也会匹配到”there”。要查找作为独立单词的”the”使用如下命令：”/the&gt;”。”&gt;”是一个特殊的记法，它只匹配一个word的结束处。近似地，”&lt;”匹配到一个word的开始处。这样查找作为一个word的”the”就可以用:”/“。<br>20.高亮显示搜索结果<br>开启这一功能用”:set hlsearch”，关闭这一功能：”:set nohlsearch”。如果只是想去掉当前的高亮显示，可以使用下面的命令：”:nohlsearch”(可以简写为noh)。<br>21.匹配一行的开头与结尾<br>^ 字符匹配一行的开头。$字符匹配一行的末尾。<br>所以”/was$”只匹配位于一行末尾的单词was，所以”/^was”只匹配位于一行开始的单词was。<br>22.匹配任何的单字符<br>.这个字符可以匹配到任何字符。比如”c.m”可以匹配任何前一个字符是c，后一个字符是m的情况，不管中间的字符是什么。<br>23.匹配特殊字符<br>放一个反斜杠在特殊字符前面。如果你查找”ter。”，用命令”/ter。”<br>24.使用标记<br>当你用”G”命令从一个地方跳转到另一个地方时，Vim会记得你起跳的位置。这个位置在Vim中是一个标记。使用命令” <code>&quot;可以使你跳回到刚才的出发点。</code>命令可以在两点之间来回跳转。CTRL-O命令是跳转到你更早些时间停置光标的位置(提示:O意为older). CTRL-I则是跳回到后来停置光标的更新的位置(提示：I在键盘上位于O前面)。<br>注:使用CTRL-I 与按下键一样。<br>25.具名标记<br>命令”ma”将当前光标下的位置名之为标记”a”。从a到z一共可以使用26个自定义的标记。要跳转到一个你定义过的标记，使用命令” marks “marks就是定义的标记的名字。命令” ‘a “使你跳转到a所在行的行首，” a “会精确定位a所在的位置。命令：”:marks”用来查看标记的列表。<br>命令delm！删除所有标记。<br>26.操作符命令和位移<br>“dw”命令可以删除一个word，”d4w”命令是删除4个word，依此类推。类似有”d2e”、”d$”。此类命令有一个固定的模式：操作符命令+位移命令。首先键入一个操作符命令。比如”d”是一个删除操作符。接下来是一个位移命。比如”w”。这样任何移动光标命令所及之处，都是命令的作用范围。<br>27.改变文本<br>操作符命令是”c”，改变命令。它的行为与”d”命令类似，不过在命令执行后会进入Insert模式。比如”cw”改变一个word。或者，更准确地说，它删除一个word并让你置身于Insert模式。<br>“cc”命令可以改变整行。不过仍保持原来的缩进。<br>“c$”改变当前光标到行尾的内容。<br>快捷命令：x 代表dl(删除当前光标下的字符)<br>X 代表dh(删除当前光标左边的字符)<br>D 代表d$(删除到行尾的内容)<br>C 代表c$(修改到行尾的内容)<br>s 代表cl(修改一个字符)<br>S 代表cc(修改一整行)<br>命令”3dw”和”d3w”都是删除3个word。第一个命令”3dw”可以看作是删除一个word的操作执行3次；第二个命令”d3w”是一次删除3个word。这是其中不明显的差异。事实上你可以在两处都放上命令记数，比如，”3d2w”是删除两个word，重复执行3次，总共是6个word。<br>28.替换单个字符<br>“r”命令不是一个操作符命令。它等待你键入下一个字符用以替换当前光标下的那个字符。”r”命令前辍以一个命令记数是将多个字符都替换为即将输入的那个字符。要把一个字符替换为一个换行符使用”r”。它会删除一个字符并插入一个换行符。在此处使用命令记数只会删除指定个数的字符：”4r”将把4个字符替换为一个换行符。<br>29.重复改动<br>“.”命令会重复上一次做出的改动。”.”命令会重复你做出的所有修改，除了”u”命令CTRL-R和以冒号开头的命令。”.”需要在Normal模式下执行，它重复的是命令，而不是被改动的内容，<br>30.Visual模式<br>按”v”可以进入Visual模式。移动光标以覆盖你想操纵的文本范围。同时被选中的文本会以高亮显示。最后键入操作符命令。<br>31.移动文本<br>以”d”或”x”这样的命令删除文本时，被删除的内容还是被保存了起来。你还可以用p命令把它取回来。”P”命令是把被去回的内容放在光标之前，”p”则是放在光标之后。对于以”dd”删除的整行内容，”P”会把它置于当前行的上一行。”p”则是至于当前行的后一行。也可以对命令”p”和”P”命令使用命令记数。它的效果是同样的内容被取回指定的次数。这样一来”dd”之后的”3p”就可以把被删除行的3 份副本放到当前位置。<br>命令”xp”将光标所在的字符与后一个字符交换。<br>32.复制文本（VIM编辑器内复制）<br>“y”操作符命令会把文本复制到一个寄存器3中。然后可以用”p”命令把它取回。因为”y”是一个操作符命令，所以你可以用”yw”来复制一个word. 同样可以使用命令记数。如下例中用”y2w”命令复制两个word，”yy”命令复制一整行，”Y”也是复制整行的内容，复制当前光标至行尾的命令是”y$”。<br>33.文本对象<br>“diw” 删除当前光标所在的word(不包括空白字符) “daw” 删除当前光标所在的word(包括空白字符)<br>34.快捷命令<br>x 删除当前光标下的字符(“dl”的快捷命令)<br>X 删除当前光标之前的字符(“dh”的快捷命令)<br>D 删除自当前光标至行尾的内容(“d$”的快捷命令)<br>dw 删除自当前光标至下一个word的开头<br>db 删除自当前光标至前一个word的开始<br>diw 删除当前光标所在的word(不包括空白字符)<br>daw 删除当前光标所在的word(包括空白字符)<br>dG 删除当前行至文件尾的内容<br>dgg 删除当前行至文件头的内容<br>如果你用”c”命令代替”d”这些命令就都变成更改命令。使用”y”就是yank命令，如此类推。<br>35.编辑另一个文件<br>用命令”:edit foo.txt”，也可简写为”:e foo.txt”。<br>36.文件列表<br>可以在启动Vim时就指定要编辑多个文件，用命令”vim one.c two.c three.c”。Vim将在启动后只显示第一个文件，完成该文件的编辑后，可以用令：”:next”或”:n”要保存工作成果并继续下一个文件的编辑，命令：”:wnext”或”:wn”可以合并这一过程。<br>37.显示当前正在编辑的文件<br>用命令”:args”。<br>38.移动到另一个文件<br>用命令”:previous” “:prev”回到上一个文件,合并保存步骤则是”:wprevious” “:wprev”。要移到最后一个文件”:last”,到第一个”:first”.不过没有”:wlast”或者”:wfirst”这样的命令。可以在”:next”和”:previous”命令前面使用一个命令计数。<br>39.编辑另一个文件列表<br>不用重新启动Vim，就可以重新定义一个文件列表。命令”:args five.c six.c seven.h”定义了要编辑的三个文件。<br>39.自动存盘<br>命令”:set autowrite”,”set aw”。自动把内容写回文件: 如果文件被修改过，在每个:next、:rewind、:last、:first、:previous、:stop、:suspend、:tag、:!、:make、CTRL-] 和 CTRL-^命令时进行。<br>命令”:set autowriteall”,”set awa”。和 ‘autowrite’ 类似，但也适用于”:edit”、”:enew”、”:quit”、”:qall”、”:exit”、”:xit”、”:recover” 和关闭 Vim 窗口。置位本选项也意味着 Vim 的行为就像打开 ‘autowrite’ 一样。<br>40.切换到另一文件<br>要在两个文件间快速切换，使用CTRL-^。<br>41.文件标记<br>以大写字母命名的标记。它们是全局标记，它们可以用在任何文件中。比如，正在编辑”fab1.Java”,用命令”50%mF”在文件的中间设置一个名为F的标记。然后在”fab2.java”文件中，用命令”GnB”在最后一行设置名为B的标记。在可以用”F”命令跳转到文件”fab1.java”的半中间。或者编辑另一个文件，”‘B”命令会再把你带回文件”fab2.java”的最后一行。<br>要知道某个标记所代表的位置是什么，可以将该标记的名字作为”marks”命令的参数”:marks M”或者连续跟上几个参数”:marks MJK”<br>可以用CTRL-O和CTRL-I可以跳转到较早的位置和靠后的某位置。<br>42.查看文件<br>仅是查看文件，不向文件写入内容，可以用只读形式编辑文件。用命令：<br>vim -R file。如果是想强制性地避免对文件进行修改，可以用命令：<br>vim -M file。<br>43.更改文件名<br>将现有文件存成新的文件，用命令”:sav(eas) move.c”。如果想改变当前正在编辑的文件名，但不想保存该文件，就可以用命令：”:f(ile) move.c”。<br>44.分割一个窗口<br>打开一个新窗口最简单的办法就是使用命令：”:split”。CTRL-W 命令可以切换当前活动窗口。<br>45.关闭窗口<br>用命令：”close”.可以关闭当前窗口。实际上,任何退出文件编辑的命令”:quit”和”ZZ”都会关闭窗口，但是用”:close”可以阻止你关闭最后一个Vim，以免以意外地整个关闭了Vim。<br>46.关闭除当前窗口外的所有其他窗口<br>用命令：”:only”,关闭除当前窗口外的所有其它窗口。如果这些窗口中有被修改过的，你会得到一个错误信息，同时那个窗口会被留下来。<br>47.为另一个文件分隔出一个窗口<br>命令”:split two.c”可以打开第二个窗口同时在新打开的窗口中开始编辑作为<br>参数的文件。如果要打开一个新窗口并开始编辑一个空的缓冲区，使用命令:”:new”。<br>48.垂直分割<br>用命令”:vsplit或：:vsplit two.c”。同样有一个对应的”:vnew”命令，用于垂直分隔窗口并在其中打开一个新的空缓冲区。<br>49.切换窗口<br>CTRL-W h 到左边的窗口<br>CTRL-W j 到下面的窗口<br>CTRL-W k 到上面的窗口<br>CTRL-W l 到右边的窗口<br>CTRL-W t 到顶部窗口<br>CTRL-W b 到底部窗口<br>50.针对所有窗口操作的命令<br>“:qall”放弃所有操作并退出，”:wall”保存所有，”:wqall”保存所有并退出。<br>51.为每一个文件打开一个窗口<br>使用”-o”选项可以让Vim为每一个文件打开一个窗口：<br>“vim -o one.txt two.txt three.txt”。<br>52.使用vimdiff查看不同<br>“vimdiff main.c~ main.c”,另一种进入diff模式的办法可以在Vim运行中操作。编辑文件”main.c”，然后打开另一个分隔窗口显示其不同:<br>“:edit main.c”<br>“:vertical diffpatch main.c.diff”。<br>53.页签<br>命令”:tabe(dit) thatfile”在一个窗口中打开”thatfile”，该窗口占据着整个的Vim显示区域。命令”:tab split/new”结果是新建了一个拥有一个窗口的页签。以用”gt”命令在不同的页签间切换。</p><p>这是我总结的一些基本用法,可能对初用者会有帮助,独乐乐不如众乐乐,是吧!<br>说明：以下黑色为vi和vim均有的一般功能，而红色为Vim（Vi Improved）所特有功能。Vim一般的Unix和Linux下均有安装。<br> 三种状态<br>Command： 任何输入都会作为编辑命令，而不会出现在屏幕上，任何输入都引起立即反映<br>Insert： 任何输入的数据都置于编辑寄存器，按ESC，可跳回command方式<br>Escape： 以“：”或者“/”为前导的指令，出现在屏幕的最下一行，任何输入都被当成特别指令。<br> 离开vi<br>:q! 离开vi，并放弃刚在缓冲区内编辑的内容。<br>:wq 将缓冲区内的资料写入磁盘中，并离开vi。</p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vim </tag>
+            
+        </tags>
       
     </entry>
     

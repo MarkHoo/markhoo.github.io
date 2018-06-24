@@ -3,7 +3,7 @@
         <meta charset="utf-8">
             
             <title>
-                博客建设历程 | 沉默是金
+                nginx django 的配置步骤 | 沉默是金
             </title>
             <meta content="width=device-width, initial-scale=1" name="viewport">
             <meta name="theme-color" content="#4184f3">
@@ -118,28 +118,36 @@ var _hmt = _hmt || [];
           <header class="post-header">
           
           </header>
-          <h1 class="post-title">博客建设历程</h1>
+          <h1 class="post-title">nginx django 的配置步骤</h1>
 
           <section class="post-info">
             <span class="post-date">2018/06/24</span>
             
+            <span class="post-category">
+                <a class="article-category-link" href="/categories/Django/">Django</a>
+            </span>
+            
             
             <span class="post-tags">
-              <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/blog/">blog</a></li></ul>
+              <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Django/">Django</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Python/">Python</a></li></ul>
             </span>
             
           </section>
 
           <section class="post-content">
-            <p>2016.9.3   购入阿里云云主机，与此同时购入域名【ceohd.com】。blog系统从wp到typecho再到wp</p>
-<p>2017.7.20   网站备案，域名【ceohd.com】【pyboy.me】</p>
-<p>2017.7.31   网站备案管局通过，并开通网站，主域名为【ceohd.com】</p>
-<p>2018.4.27   购入新域名【markhoo.com】（百度云），准备更换域名</p>
-<p>2018.5.1   域名【ceohd.com】售出，暂时启用【pyboy.me】作为主域名</p>
-<p>2018.5.2   将域名【ceohd.com】【pyboy.me】注销备案信息</p>
-<p>2018.5.4   提交域名【markhoo.com】以及相关材料备案</p>
-<p>2018.5.15   域名因为设置信息保护，导致备案审核未通过。取消域名信息保护后再次提交</p>
-<p>2018.5.25   再次提交审核通过，备案完成。网站再次开启，正式启用【markhoo.com】，同时将【youmei.io】（Namecheap）重定向<br>2018.5.26 考虑良久，以及做了对比，决定从wp转到typecho</p>
+            <p>升级并安装 pip<br>sudo apt-get update<br>sudo apt-get install python-pip<br>安装虚拟环境<br>sudo pip install virtualenv virtualenvwrapper<br>加入到环境变量中<br>当前用户目录下的 Env为虚拟环境存放的目录</p>
+<p>echo “export WORKON_HOME=~/Env” &gt;&gt; ~/.bashrc<br>echo “source /usr/local/bin/virtualenvwrapper.sh” &gt;&gt; ~/.bashrc<br>激活配置<br>source ~/.bashrc<br>创建虚拟环境<br>环境名为:firstsite</p>
+<p>在用户当前目录下创建 Django工程<br>cd ~<br>django-admin.py startproject firstsite<br>django 的初始化<br>cd ~/firstsite<br>./manage.py migrate<br>./manage.py createsuperuser<br>Django静态文件配置<br>nano firstsite/settings.py<br>STATIC_ROOT = os.path.join(BASE_DIR, “static/“)<br>./manage.py collectstatic<br>安装 uWSGI<br>sudo apt-get install python-dev<br>sudo pip install uwsgi<br>测试是否能够正常访问 django 项目</p>
+<p>http 指定进程端口8080<br>home指定虚拟环境目录<br>chdir指定 项目工程所在目录<br>uwsgi –http :8080 –home /home/pi/Env/firstsite –chdir /home/pi/firstsite -w firstsite.wsgi<br>创建 uwsgi 的配置文件<br>sudo mkdir -p /etc/uwsgi/sites<br>cd /etc/uwsgi/sites<br>uwsgi 的配置相关内容(重点)<br>[uwsgi]<br>project = firstsite<br>base = /home/pi</p>
+<p>chdir = %(base)/%(project)<br>home = %(base)/Env/%(project)<br>module = %(project).wsgi:application</p>
+<p>master = true<br>processes = 5</p>
+<p>socket = %(base)/%(project)/%(project).sock<br>chmod-socket = 666<br>vacuum = true<br>启动守护进程<br>vim /etc/systemd/system/uwsgi.service</p>
+<p>[Unit]<br>Description=uWSGI Emperor service<br>After=syslog.target</p>
+<p>[Service]<br>ExecStart=/usr/local/bin/uwsgi –emperor /etc/uwsgi/sites<br>Restart=always<br>KillSignal=SIGQUIT<br>Type=notify<br>StandardError=syslog<br>NotifyAccess=all</p>
+<p>[Install]<br>WantedBy=multi-user.target<br>重载守护进程的配置信息<br>sudo systemctl daemon-reload<br>保证系统重启后uwsgi守护进程自动重启<br>sudo systemctl enable uwsgi<br>启动uwsgi进程<br>sudo systemctl start uwsgi<br>nginx 的安装<br>sudo apt-get install nginx<br>nginx的配置<br>sudo nano /etc/nginx/sites-available/firstsite<br>server {<br>listen 80;<br>server_name firstsite.com <a href="http://www.firstsite.com" target="_blank" rel="noopener">www.firstsite.com</a>;</p>
+<p>location = /favicon.ico { access_log off; log_not_found off; }<br>location /static/ {<br>root /home/pi/firstsite;<br>}</p>
+<p>location / {<br>include uwsgi_params;<br>uwsgi_pass unix:/home/pi/firstsite/firstsite.sock;<br>}<br>}<br>nginx配置生效<br>sudo ln -s /etc/nginx/sites-available/firstsite /etc/nginx/sites-enabled<br>检查配置<br>sudo service nginx configtest<br>重启nginx<br>sudo service nginx restart<br>非 debug 模式<br>非 debug 模式需要重启uwsgi 服务</p>
+<p>sudo systemctl restart uwsgi</p>
 
           </section>
         </article>
@@ -148,15 +156,15 @@ var _hmt = _hmt || [];
        
         <div class="pager">
           
-            <a class="post-prev pager-item" href="/2018/06/24/nginxdjango的配置步骤/" >
+            <a class="post-prev pager-item" href="/2018/06/24/两种网易云音乐播放器调用代码 网站可直接调用/" >
               <strong class="article-nav-caption">上一篇</strong>
-              <p class="post-nav-title">nginx django 的配置步骤</p>
+              <p class="post-nav-title">两种网易云音乐播放器调用代码 网站可直接调用</p>
             </a>
           
           
-            <a class="post-next pager-item" href="/2018/06/24/Django使用基础常用命令/">
+            <a class="post-next pager-item" href="/2018/06/24/博客成长日记/">
               <strong class="article-nav-caption">下一篇</strong>
-              <p class="post-nav-title">Django使用基础常用命令</p>
+              <p class="post-nav-title">博客建设历程</p>
             </a>
           
         </div>
