@@ -82,9 +82,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> CentOS7 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -126,9 +126,9 @@
       
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Python </tag>
             
             <tag> IDE </tag>
             
@@ -162,27 +162,6 @@
     </entry>
     
     <entry>
-      <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
-      <link href="/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
-      <url>/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/</url>
-      <content type="html"><![CDATA[<p>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。<br>先定个小目标，特此记录一下</p>]]></content>
-      
-      <categories>
-          
-          <category> 默认分类 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Django </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Django使用基础常用命令</title>
       <link href="/2018/06/25/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2018/06/25/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
@@ -198,6 +177,27 @@
         <tags>
             
             <tag> Python </tag>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
+      <link href="/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
+      <url>/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/</url>
+      <content type="html"><![CDATA[<p>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。<br>先定个小目标，特此记录一下</p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
             
             <tag> Django </tag>
             
