@@ -5,9 +5,9 @@
   <subtitle>Silence is gold</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://blog.markhoo.com/"/>
+  <link href="https://boke.markhoo.com/"/>
   <updated>2018-06-24T17:31:02.802Z</updated>
-  <id>https://blog.markhoo.com/</id>
+  <id>https://boke.markhoo.com/</id>
   
   <author>
     <name>Mark Hoo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>域名 youmei.io 的由来</title>
-    <link href="https://blog.markhoo.com/2018/06/25/%E5%9F%9F%E5%90%8Dyoumei.io%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
-    <id>https://blog.markhoo.com/2018/06/25/域名youmei.io的由来/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/%E5%9F%9F%E5%90%8Dyoumei.io%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
+    <id>https://boke.markhoo.com/2018/06/25/域名youmei.io的由来/</id>
     <published>2018-06-24T17:00:18.315Z</published>
     <updated>2018-06-24T17:31:02.802Z</updated>
     
@@ -35,17 +35,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="域名" scheme="https://blog.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
+      <category term="域名" scheme="https://boke.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
     
   </entry>
   
   <entry>
     <title>vim常用命令总结</title>
-    <link href="https://blog.markhoo.com/2018/06/25/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
-    <id>https://blog.markhoo.com/2018/06/25/vim常用命令总结/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
+    <id>https://boke.markhoo.com/2018/06/25/vim常用命令总结/</id>
     <published>2018-06-24T17:00:16.040Z</published>
     <updated>2018-06-24T17:32:25.066Z</updated>
     
@@ -60,17 +60,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="Vim" scheme="https://blog.markhoo.com/tags/Vim/"/>
+      <category term="Vim" scheme="https://boke.markhoo.com/tags/Vim/"/>
     
   </entry>
   
   <entry>
     <title>两种网易云音乐播放器调用代码 网站可直接调用</title>
-    <link href="https://blog.markhoo.com/2018/06/25/%E4%B8%A4%E7%A7%8D%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81%20%E7%BD%91%E7%AB%99%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8/"/>
-    <id>https://blog.markhoo.com/2018/06/25/两种网易云音乐播放器调用代码 网站可直接调用/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/%E4%B8%A4%E7%A7%8D%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81%20%E7%BD%91%E7%AB%99%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8/"/>
+    <id>https://boke.markhoo.com/2018/06/25/两种网易云音乐播放器调用代码 网站可直接调用/</id>
     <published>2018-06-24T16:39:04.114Z</published>
     <updated>2018-06-24T17:31:41.751Z</updated>
     
@@ -86,19 +86,19 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="网易云音乐" scheme="https://blog.markhoo.com/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
+      <category term="网易云音乐" scheme="https://boke.markhoo.com/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
     
-      <category term="音乐播放器" scheme="https://blog.markhoo.com/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
+      <category term="音乐播放器" scheme="https://boke.markhoo.com/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
     
   </entry>
   
   <entry>
     <title>CentOS7 常用命令集合</title>
-    <link href="https://blog.markhoo.com/2018/06/25/CentOS7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/"/>
-    <id>https://blog.markhoo.com/2018/06/25/CentOS7常用命令集合/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/CentOS7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/"/>
+    <id>https://boke.markhoo.com/2018/06/25/CentOS7常用命令集合/</id>
     <published>2018-06-24T16:39:03.895Z</published>
     <updated>2018-06-24T17:33:06.916Z</updated>
     
@@ -115,19 +115,19 @@
     
     </summary>
     
-      <category term="Linux" scheme="https://blog.markhoo.com/categories/Linux/"/>
+      <category term="Linux" scheme="https://boke.markhoo.com/categories/Linux/"/>
     
     
-      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
+      <category term="CentOS7" scheme="https://boke.markhoo.com/tags/CentOS7/"/>
     
-      <category term="Linux" scheme="https://blog.markhoo.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://boke.markhoo.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>闲置域名</title>
-    <link href="https://blog.markhoo.com/2018/06/25/%E9%97%B2%E7%BD%AE%E5%9F%9F%E5%90%8D/"/>
-    <id>https://blog.markhoo.com/2018/06/25/闲置域名/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/%E9%97%B2%E7%BD%AE%E5%9F%9F%E5%90%8D/"/>
+    <id>https://boke.markhoo.com/2018/06/25/闲置域名/</id>
     <published>2018-06-24T16:39:01.119Z</published>
     <updated>2018-06-24T17:31:34.514Z</updated>
     
@@ -143,17 +143,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="域名" scheme="https://blog.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
+      <category term="域名" scheme="https://boke.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
     
   </entry>
   
   <entry>
     <title>Python学习资料</title>
-    <link href="https://blog.markhoo.com/2018/06/25/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
-    <id>https://blog.markhoo.com/2018/06/25/Python学习资料/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    <id>https://boke.markhoo.com/2018/06/25/Python学习资料/</id>
     <published>2018-06-24T16:39:00.530Z</published>
     <updated>2018-06-24T17:32:44.288Z</updated>
     
@@ -169,23 +169,23 @@
     
     </summary>
     
-      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
     
     
-      <category term="Linux" scheme="https://blog.markhoo.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://boke.markhoo.com/tags/Linux/"/>
     
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
     
-      <category term="IDE" scheme="https://blog.markhoo.com/tags/IDE/"/>
+      <category term="IDE" scheme="https://boke.markhoo.com/tags/IDE/"/>
     
-      <category term="数据库" scheme="https://blog.markhoo.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="https://boke.markhoo.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>安装Django时提示pip版本问题解决方法</title>
-    <link href="https://blog.markhoo.com/2018/06/25/%E5%AE%89%E8%A3%85Django%E6%97%B6%E6%8F%90%E7%A4%BApip%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>https://blog.markhoo.com/2018/06/25/安装Django时提示pip版本问题解决方法/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/%E5%AE%89%E8%A3%85Django%E6%97%B6%E6%8F%90%E7%A4%BApip%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://boke.markhoo.com/2018/06/25/安装Django时提示pip版本问题解决方法/</id>
     <published>2018-06-24T16:39:00.304Z</published>
     <updated>2018-06-24T17:32:13.931Z</updated>
     
@@ -200,19 +200,19 @@
     
     </summary>
     
-      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
+      <category term="Django" scheme="https://boke.markhoo.com/categories/Django/"/>
     
     
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>Django使用基础常用命令</title>
-    <link href="https://blog.markhoo.com/2018/06/25/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://blog.markhoo.com/2018/06/25/Django使用基础常用命令/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://boke.markhoo.com/2018/06/25/Django使用基础常用命令/</id>
     <published>2018-06-24T16:38:59.814Z</published>
     <updated>2018-06-24T17:33:01.339Z</updated>
     
@@ -227,19 +227,19 @@
     
     </summary>
     
-      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
+      <category term="Django" scheme="https://boke.markhoo.com/categories/Django/"/>
     
     
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
-    <link href="https://blog.markhoo.com/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
-    <id>https://blog.markhoo.com/2018/06/25/用Python3.6.2+Django1.11.13重新开发blog/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
+    <id>https://boke.markhoo.com/2018/06/25/用Python3.6.2+Django1.11.13重新开发blog/</id>
     <published>2018-06-24T16:38:59.814Z</published>
     <updated>2018-06-24T17:31:16.950Z</updated>
     
@@ -255,17 +255,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>nginx django 的配置步骤</title>
-    <link href="https://blog.markhoo.com/2018/06/25/nginxdjango%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/"/>
-    <id>https://blog.markhoo.com/2018/06/25/nginxdjango的配置步骤/</id>
+    <link href="https://boke.markhoo.com/2018/06/25/nginxdjango%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://boke.markhoo.com/2018/06/25/nginxdjango的配置步骤/</id>
     <published>2018-06-24T16:38:59.310Z</published>
     <updated>2018-06-24T17:32:54.237Z</updated>
     
@@ -280,19 +280,19 @@
     
     </summary>
     
-      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
+      <category term="Django" scheme="https://boke.markhoo.com/categories/Django/"/>
     
     
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>博客建设历程</title>
-    <link href="https://blog.markhoo.com/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/"/>
-    <id>https://blog.markhoo.com/2018/06/24/博客成长日记/</id>
+    <link href="https://boke.markhoo.com/2018/06/24/%E5%8D%9A%E5%AE%A2%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/"/>
+    <id>https://boke.markhoo.com/2018/06/24/博客成长日记/</id>
     <published>2018-06-24T12:40:28.978Z</published>
     <updated>2018-06-24T17:32:09.275Z</updated>
     
@@ -310,14 +310,14 @@
     </summary>
     
     
-      <category term="blog" scheme="https://blog.markhoo.com/tags/blog/"/>
+      <category term="blog" scheme="https://boke.markhoo.com/tags/blog/"/>
     
   </entry>
   
   <entry>
     <title>关于Python的面试题</title>
-    <link href="https://blog.markhoo.com/2018/06/24/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>https://blog.markhoo.com/2018/06/24/关于Python的面试题/</id>
+    <link href="https://boke.markhoo.com/2018/06/24/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://boke.markhoo.com/2018/06/24/关于Python的面试题/</id>
     <published>2018-06-24T12:36:03.693Z</published>
     <updated>2018-06-24T17:31:57.170Z</updated>
     
@@ -333,14 +333,14 @@
     
     </summary>
     
-      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
     
-      <category term="面试题" scheme="https://blog.markhoo.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+      <category term="面试题" scheme="https://boke.markhoo.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
-      <category term="算法" scheme="https://blog.markhoo.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="https://boke.markhoo.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
