@@ -172,9 +172,9 @@
       <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
-    
       <category term="Linux" scheme="https://boke.markhoo.com/tags/Linux/"/>
+    
+      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
     
       <category term="IDE" scheme="https://boke.markhoo.com/tags/IDE/"/>
     
@@ -210,32 +210,6 @@
   </entry>
   
   <entry>
-    <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
-    <link href="https://boke.markhoo.com/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
-    <id>https://boke.markhoo.com/2018/06/25/用Python3.6.2+Django1.11.13重新开发blog/</id>
-    <published>2018-06-24T16:38:59.814Z</published>
-    <updated>2018-06-24T17:31:16.950Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。<br>先定个小目标，特此记录一下</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。&lt;br&gt;先定个小目标，特此记录一下&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
-    
-    
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Django使用基础常用命令</title>
     <link href="https://boke.markhoo.com/2018/06/25/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://boke.markhoo.com/2018/06/25/Django使用基础常用命令/</id>
@@ -257,6 +231,32 @@
     
     
       <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+    
+      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
+    <link href="https://boke.markhoo.com/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
+    <id>https://boke.markhoo.com/2018/06/25/用Python3.6.2+Django1.11.13重新开发blog/</id>
+    <published>2018-06-24T16:38:59.814Z</published>
+    <updated>2018-06-24T17:31:16.950Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。<br>先定个小目标，特此记录一下</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。&lt;br&gt;先定个小目标，特此记录一下&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
     
       <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
     
