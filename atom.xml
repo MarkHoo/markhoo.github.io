@@ -50,15 +50,15 @@
     <link href="https://boke.markhoo.com/2018/07/12/Django%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91/"/>
     <id>https://boke.markhoo.com/2018/07/12/Django学习视频/</id>
     <published>2018-07-12T01:58:04.000Z</published>
-    <updated>2018-07-13T03:45:11.123Z</updated>
+    <updated>2018-07-13T08:32:24.129Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Try-DJANGO-TUTORIAL-Series-v1-11-–-Learn-Django-Version-1-11"><a href="/2018/07/12/Django学习视频/#Try-DJANGO-TUTORIAL-Series-v1-11-–-Learn-Django-Version-1-11" class="headerlink" title="Try DJANGO TUTORIAL Series (v1.11) – Learn Django Version 1.11"></a>Try DJANGO TUTORIAL Series (v1.11) – Learn Django Version 1.11</h1><iframe src="//player.bilibili.com/player.html?aid=25609947&cid=43647399&page=1" quality="high" width="900" height="626" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true"> </iframe><h1 id="Build-a-Rest-API-with-the-Django-REST-Framework"><a href="/2018/07/12/Django学习视频/#Build-a-Rest-API-with-the-Django-REST-Framework" class="headerlink" title="Build a Rest API with the Django REST Framework"></a>Build a Rest API with the Django REST Framework</h1><iframe src="//player.bilibili.com/player.html?aid=25577527&cid=43573682&page=1" quality="high" width="900" height="626" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true"> </iframe>]]></content>
+    <content type="html"><![CDATA[<h1 id="Django1-11-学习教程"><a href="/2018/07/12/Django学习视频/#Django1-11-学习教程" class="headerlink" title="Django1.11 学习教程"></a>Django1.11 学习教程</h1><iframe src="//player.bilibili.com/player.html?aid=25609947&cid=43647399&page=1" quality="high" width="900" height="626" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true"> </iframe><h1 id="使用Django-REST-Framework构建Rest-API"><a href="/2018/07/12/Django学习视频/#使用Django-REST-Framework构建Rest-API" class="headerlink" title="使用Django REST Framework构建Rest API"></a>使用Django REST Framework构建Rest API</h1><iframe src="//player.bilibili.com/player.html?aid=25577527&cid=43573682&page=1" quality="high" width="900" height="626" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true"> </iframe>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Try-DJANGO-TUTORIAL-Series-v1-11-–-Learn-Django-Version-1-11&quot;&gt;&lt;a href=&quot;/2018/07/12/Django学习视频/#Try-DJANGO-TUTORIAL-Series-v1-11-–-Le
+        &lt;h1 id=&quot;Django1-11-学习教程&quot;&gt;&lt;a href=&quot;/2018/07/12/Django学习视频/#Django1-11-学习教程&quot; class=&quot;headerlink&quot; title=&quot;Django1.11 学习教程&quot;&gt;&lt;/a&gt;Django1.11 学习教程&lt;/h
       
     
     </summary>
@@ -175,9 +175,9 @@
       <category term="Linux" scheme="https://boke.markhoo.com/categories/Linux/"/>
     
     
-      <category term="CentOS7" scheme="https://boke.markhoo.com/tags/CentOS7/"/>
-    
       <category term="Linux" scheme="https://boke.markhoo.com/tags/Linux/"/>
+    
+      <category term="CentOS7" scheme="https://boke.markhoo.com/tags/CentOS7/"/>
     
   </entry>
   
