@@ -398,10 +398,18 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>升级并安装 pip<br>sudo apt-get update<br>sudo apt-get install python-pip<br>安装虚拟环境<br>sudo pip install virtualenv virtualenvwrapper<br>加入到环境变量中<br>当前用户目录下的 Env为虚拟环境存放的目录</p>
-<p>echo “export WORKON_HOME=~/Env” &gt;&gt; ~/.bashrc<br>echo “source /usr/local/bin/virtualenvwrapper.sh” &gt;&gt; ~/.bashrc<br>激活配置<br>source ~/.bashrc<br>创建虚拟环境<br>环境名为:firstsite</p>
-<p>在用户当前目录下创建 Django工程<br>cd ~<br>django-admin.py startproject firstsite<br>django 的初始化<br>cd ~/firstsite<br>./manage.py migrate<br>./manage.py createsuperuser<br>Django静态文件配置<br>nano firstsite/settings.py<br>STATIC_ROOT = os.path.join(BASE_DIR, “static/“)<br>./manage.py collectstatic<br>安装 uWSGI<br>sudo apt-get install python-dev<br>sudo pip install uwsgi<br>测试是否能够正常访问 django 项目</p>
-<p>http 指定进程端口8080<br>home指定虚拟环境目录<br>chdir指定 项目工程所在目录<br>uwsgi –http :8080 –home /home/pi/Env/firstsite –chdir /home/pi/firstsite -w firstsite.wsgi<br>创建 uwsgi 的配置文件<br>sudo mkdir -p /etc/uwsgi/sites<br>cd /etc/uwsgi/sites<br>uwsgi 的配置相关内容(重点)<br>[uwsgi]<br>project = firstsite<br>base = /home/pi</p>
+        <h2 id="升级并安装-pip"><a href="/2018/06/25/nginxdjango的配置步骤/#升级并安装-pip" class="headerlink" title="升级并安装 pip"></a>升级并安装 pip</h2><p>sudo apt-get update<br>sudo apt-get install python-pip</p>
+<h2 id="安装虚拟环境"><a href="/2018/06/25/nginxdjango的配置步骤/#安装虚拟环境" class="headerlink" title="安装虚拟环境"></a>安装虚拟环境</h2><p>sudo pip install virtualenv virtualenvwrapper<br>加入到环境变量中<br>当前用户目录下的 Env为虚拟环境存放的目录</p>
+<p>echo “export WORKON_HOME=~/Env” &gt;&gt; ~/.bashrc<br>echo “source /usr/local/bin/virtualenvwrapper.sh” &gt;&gt; ~/.bashrc</p>
+<h2 id="激活配置"><a href="/2018/06/25/nginxdjango的配置步骤/#激活配置" class="headerlink" title="激活配置"></a>激活配置</h2><p>source ~/.bashrc</p>
+<h2 id="创建虚拟环境"><a href="/2018/06/25/nginxdjango的配置步骤/#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><p>环境名为:firstsite</p>
+<p>在用户当前目录下创建 Django工程<br>cd ~<br>django-admin.py startproject firstsite</p>
+<h2 id="django-的初始化"><a href="/2018/06/25/nginxdjango的配置步骤/#django-的初始化" class="headerlink" title="django 的初始化"></a>django 的初始化</h2><p>cd ~/firstsite<br>./manage.py migrate<br>./manage.py createsuperuser</p>
+<h2 id="Django静态文件配置"><a href="/2018/06/25/nginxdjango的配置步骤/#Django静态文件配置" class="headerlink" title="Django静态文件配置"></a>Django静态文件配置</h2><p>nano firstsite/settings.py<br>STATIC_ROOT = os.path.join(BASE_DIR, “static/“)<br>./manage.py collectstatic</p>
+<h2 id="安装-uWSGI"><a href="/2018/06/25/nginxdjango的配置步骤/#安装-uWSGI" class="headerlink" title="安装 uWSGI"></a>安装 uWSGI</h2><p>sudo apt-get install python-dev<br>sudo pip install uwsgi</p>
+<h2 id="测试是否能够正常访问-django-项目"><a href="/2018/06/25/nginxdjango的配置步骤/#测试是否能够正常访问-django-项目" class="headerlink" title="测试是否能够正常访问 django 项目"></a>测试是否能够正常访问 django 项目</h2><p>http 指定进程端口8080<br>home指定虚拟环境目录<br>chdir指定 项目工程所在目录<br>uwsgi –http :8080 –home /home/pi/Env/firstsite –chdir /home/pi/firstsite -w firstsite.wsgi</p>
+<h2 id="创建-uwsgi-的配置文件"><a href="/2018/06/25/nginxdjango的配置步骤/#创建-uwsgi-的配置文件" class="headerlink" title="创建 uwsgi 的配置文件"></a>创建 uwsgi 的配置文件</h2><p>sudo mkdir -p /etc/uwsgi/sites<br>cd /etc/uwsgi/sites</p>
+<h2 id="uwsgi-的配置相关内容-重点"><a href="/2018/06/25/nginxdjango的配置步骤/#uwsgi-的配置相关内容-重点" class="headerlink" title="uwsgi 的配置相关内容(重点)"></a>uwsgi 的配置相关内容(重点)</h2><p>[uwsgi]<br>project = firstsite<br>base = /home/pi</p>
 <p>chdir = %(base)/%(project)<br>home = %(base)/Env/%(project)<br>module = %(project).wsgi:application</p>
 <p>master = true<br>processes = 5</p>
 <p>socket = %(base)/%(project)/%(project).sock<br>chmod-socket = 666<br>vacuum = true<br>启动守护进程<br>vim /etc/systemd/system/uwsgi.service</p>
@@ -565,7 +573,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#升级并安装-pip"><span class="toc-number">1.</span> <span class="toc-text">升级并安装 pip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装虚拟环境"><span class="toc-number">2.</span> <span class="toc-text">安装虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#激活配置"><span class="toc-number">3.</span> <span class="toc-text">激活配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建虚拟环境"><span class="toc-number">4.</span> <span class="toc-text">创建虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#django-的初始化"><span class="toc-number">5.</span> <span class="toc-text">django 的初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django静态文件配置"><span class="toc-number">6.</span> <span class="toc-text">Django静态文件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-uWSGI"><span class="toc-number">7.</span> <span class="toc-text">安装 uWSGI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试是否能够正常访问-django-项目"><span class="toc-number">8.</span> <span class="toc-text">测试是否能够正常访问 django 项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-uwsgi-的配置文件"><span class="toc-number">9.</span> <span class="toc-text">创建 uwsgi 的配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uwsgi-的配置相关内容-重点"><span class="toc-number">10.</span> <span class="toc-text">uwsgi 的配置相关内容(重点)</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -578,6 +586,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -764,7 +774,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/24/博客成长日记/" >博客建设历程</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/24/关于Python的面试题/" >关于Python的面试题</a>
         </li>
     
     
@@ -792,7 +802,21 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/25/CentOS7常用命令集合/" >CentOS7 常用命令集合</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/25/Django使用基础常用命令/" >Django使用基础常用命令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/25/用Python3.6.2+Django1.11.13重新开发blog/" >用 Python 3.6.2 + Django 1.11.13 重新开发 blog</a>
         </li>
     
     
@@ -820,7 +844,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/25/用Python3.6.2+Django1.11.13重新开发blog/" >用 Python 3.6.2 + Django 1.11.13 重新开发 blog</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/25/CentOS7常用命令集合/" >CentOS7 常用命令集合</a>
         </li>
     
     
@@ -834,21 +858,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/25/Django使用基础常用命令/" >Django使用基础常用命令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/24/关于Python的面试题/" >关于Python的面试题</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/06/24/博客成长日记/" >博客建设历程</a>
         </li>
     
     </div>
@@ -856,29 +866,29 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="CentOS7"><span class="iconfont-archer">&#xe606;</span>CentOS7</span>
-    
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
-    
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="Django"><span class="iconfont-archer">&#xe606;</span>Django</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
         <span class="sidebar-tag-name" data-tags="IDE"><span class="iconfont-archer">&#xe606;</span>IDE</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
-        <span class="sidebar-tag-name" data-tags="Vim"><span class="iconfont-archer">&#xe606;</span>Vim</span>
-    
         <span class="sidebar-tag-name" data-tags="网易云音乐"><span class="iconfont-archer">&#xe606;</span>网易云音乐</span>
     
         <span class="sidebar-tag-name" data-tags="音乐播放器"><span class="iconfont-archer">&#xe606;</span>音乐播放器</span>
     
-        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+        <span class="sidebar-tag-name" data-tags="Vim"><span class="iconfont-archer">&#xe606;</span>Vim</span>
+    
+        <span class="sidebar-tag-name" data-tags="CentOS7"><span class="iconfont-archer">&#xe606;</span>CentOS7</span>
     
         <span class="sidebar-tag-name" data-tags="面试题"><span class="iconfont-archer">&#xe606;</span>面试题</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
         <span class="sidebar-tag-name" data-tags="域名"><span class="iconfont-archer">&#xe606;</span>域名</span>
     
@@ -915,13 +925,13 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Linux"><span class="iconfont-archer">&#xe60a;</span>Linux</span>
-    
         <span class="sidebar-category-name" data-categories="Django"><span class="iconfont-archer">&#xe60a;</span>Django</span>
     
         <span class="sidebar-category-name" data-categories="Python"><span class="iconfont-archer">&#xe60a;</span>Python</span>
     
         <span class="sidebar-category-name" data-categories="默认分类"><span class="iconfont-archer">&#xe60a;</span>默认分类</span>
+    
+        <span class="sidebar-category-name" data-categories="Linux"><span class="iconfont-archer">&#xe60a;</span>Linux</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
