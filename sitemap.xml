@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://boke.markhoo.com/2018/07/14/Python%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    
+    <lastmod>2018-07-14T04:34:17.997Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://boke.markhoo.com/about/index.html</loc>
+    
+    <lastmod>2018-07-14T04:00:38.134Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://boke.markhoo.com/2018/07/12/Django%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91/</loc>
     
     <lastmod>2018-07-13T08:32:24.129Z</lastmod>
@@ -75,13 +89,6 @@
     <loc>https://boke.markhoo.com/2018/06/25/%E5%9F%9F%E5%90%8Dyoumei.io%E7%9A%84%E7%94%B1%E6%9D%A5/</loc>
     
     <lastmod>2018-07-13T00:26:04.679Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://boke.markhoo.com/about/index.html</loc>
-    
-    <lastmod>2018-07-12T12:58:34.456Z</lastmod>
     
   </url>
   
