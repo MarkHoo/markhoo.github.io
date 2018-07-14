@@ -3,10 +3,10 @@
   
     
     <entry>
-      <title>Django学习视频</title>
+      <title>Python面试题</title>
       <link href="/2018/07/14/Python%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
       <url>/2018/07/14/Python%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-      <content type="html"><![CDATA[<ul><li>暂时整理这么多，有好的答案可以在下面留言，并注明问题序号</li><li>题目有描述错误的也欢迎指正</li><li>部分问题答案可参考:</li></ul><ol><li><a href="https://blog.markhoo.com/2018/07/13/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank" rel="noopener">关于Python的面试题</a>(带目录)</li><li><a href="http://www.markhoo.com/index.php/archives/49/" target="_blank" rel="noopener">关于Python的面试题</a>(不带目录)</li></ol><p>注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言</p><ul><li><a href="https://www.imooc.com/article/43902" target="_blank" rel="noopener">慕课文章页</a></li><li><a href="http://www.markhoo.com/index.php/archives/105/" target="_blank" rel="noopener">Blog主站文章页</a></li></ul><p>======================================</p><ol><li>简要描述Python的垃圾回收机制（garbage collection）？</li><li>这些是什么意思：@classmethod， @staticmethod， @property？</li><li>这两个参数是什么意思： *args， **kwargs？我们为什么要使用它们？</li><li>“猴子补丁” （monkey patching）指的是什么？这种做法好吗？</li><li>解释什么是Python？</li><li>Python中的模块和包是什么？</li><li>Python中的docstring是什么？</li><li>在Python中什么是构造器？</li><li>在Python中什么是silcing？</li><li>Python中的unittest是什么？</li><li>为什么lambda没有语句？</li><li>什么是Python的命名空间？</li><li>Python都有哪些自带的数据结构？</li><li>字典推导式和列表推导式是什么？</li><li>参数按值传递和引用传递是怎样实现的？</li><li>数组和元组之间的区别是什么？</li><li>什么是Python装饰器？</li><li>Python是怎样管理内存的？</li><li>Python是如何被解释的？</li><li>什么是pickling和unpickling？</li><li>什么是PEP8？</li><li>Python是如何进行内存管理的？</li><li>单引号，双引号，三引号的区别？</li><li>Python里关于“堆”这种数据结构的模块是哪个？“堆”有什么优点和缺点？</li><li>写一个类，并让它尽可能多的支持操作符</li><li>说说decorator的用法和它的应用场景，如果可以的话，请写一个decorator</li><li>有一个长度是101的数组，存在1-100的数字，有一个是重复的，如何把重复的找出来？</li><li>Python列表与元组的区别是什么？分别在什么情况下使用？</li><li>介绍一下Python getopt模块？</li><li>打乱一个排好序的list对象alist</li><li>有一个dict对象adict，里面包含了一百万个元素，查找其中的某个元素的平均需要多少次比较？</li><li>Python代码怎么得到列表list的交集与差集</li><li>Python里面如何实现tuple和list的转换？</li><li>Python匹配HTML tag的时候，&lt;.<em>&gt; 和 &lt;.</em>?&gt; 有什么区别？</li><li>Python中如何定义一个函数？</li><li>Python里如何反序的迭代一个序列？</li><li>是否遇到过Python的模块间循环引用的问题，如何避免它？</li><li>什么是元类（meta_class）？</li><li>调试Python代码的方法有哪些？</li><li>交叉链表求交点</li><li>合并两个有序列表</li><li>如何1-&gt;2-&gt;3-&gt;4转换成2-&gt;1-&gt;4-&gt;3？</li><li>用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠的覆盖一个2*n的大矩形，总共有多少种方法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>解释XSRF和XSS</li><li>网站用户密码保存问题</li><li>Apache和Nginx的区别？</li><li>cookie和session的异同点？</li><li>urllib和urllib2的区别？</li><li>什么是三次握手？</li><li>解释MylSAM和InnoDB</li><li>解释下乐观锁和悲观锁</li><li><strong>new</strong> 和 <strong>init</strong> 的区别是什么？</li><li>Python中重载是什么？</li><li>什么是鸭子类型？</li><li>什么是自省？</li><li>什么是协程？</li><li>什么是GIL线程全局锁？</li><li>Python中的作用域</li><li>如何用Python来发送邮件？</li><li>Python里面如何实现tuple和list的转换？</li><li>Python如何捕获异常？</li><li>写一个简单的Python socket编程</li><li>Python如何copy一个文件？</li><li>如何用Python删除一个文件？</li><li>如何在一个function里面设置一个全局的变量？</li><li>有没有一个工具可以帮助查找Python的bug和进行静态的代码分析？</li><li>proc，lambda，和Proc的区别？</li><li>Python里面如何生成随机数？</li><li>Python里面 secarch() 和 match() 的区别？</li><li>如何用Python来进行查询和替换一个文本字符串？</li><li>介绍一下Python下range()函数的用法</li><li>如何知道一个Python对象的类型？</li><li>Python中pass语句的作用是什么？</li><li>介绍一下except的用法和作用</li><li>Python里面如何拷贝一个对象？</li><li>介绍一下Python Date Time方面的类</li><li>请写出一段Python代码实现删除一个list里面的重复元素</li><li>Python是如何进行类型转换的？</li><li>介绍一下Python的and-or语法</li><li>介绍一下Python中webbrowser的用法</li><li>如何用Python输出一个Fibonacci数列？</li><li>什么是lambda函数？它有什么好处？</li><li>Python下多线程的限制以及多进程中传递参数的方式</li><li>alias的用法，alias与alias_method的区别</li><li>Python如何实现单例模式？</li><li>RE模块中match和search的方法的不同</li></ol>]]></content>
+      <content type="html"><![CDATA[<ul><li>暂时整理这么多，有好的答案可以在下面留言，并注明问题序号</li><li>题目有描述错误的也欢迎指正</li><li>部分问题答案可参考:</li></ul><ol><li><a href="https://blog.markhoo.com/2018/07/13/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank" rel="noopener">关于Python的面试题</a>(带目录)</li><li><a href="http://www.markhoo.com/index.php/archives/49/" target="_blank" rel="noopener">关于Python的面试题</a>(不带目录)</li></ol><p>注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言</p><ul><li><a href="https://www.imooc.com/article/43902" target="_blank" rel="noopener">慕课文章页</a></li><li><a href="http://www.markhoo.com/index.php/archives/105/" target="_blank" rel="noopener">Blog主站文章页</a></li></ul><p>======================================</p><ol><li>简要描述Python的垃圾回收机制（garbage collection）？</li><li>这些是什么意思：@classmethod， @staticmethod， @property？</li><li>这两个参数是什么意思： *args， **kwargs？我们为什么要使用它们？</li><li>“猴子补丁” （monkey patching）指的是什么？这种做法好吗？</li><li>解释什么是Python？</li><li>Python中的模块和包是什么？</li><li>Python中的docstring是什么？</li><li>在Python中什么是构造器？</li><li>在Python中什么是silcing？</li><li>Python中的unittest是什么？</li><li>为什么lambda没有语句？</li><li>什么是Python的命名空间？</li><li>Python都有哪些自带的数据结构？</li><li>字典推导式和列表推导式是什么？</li><li>参数按值传递和引用传递是怎样实现的？</li><li>数组和元组之间的区别是什么？</li><li>什么是Python装饰器？</li><li>Python是怎样管理内存的？</li><li>Python是如何被解释的？</li><li>什么是pickling和unpickling？</li><li>什么是PEP8？</li><li>Python是如何进行内存管理的？</li><li>单引号，双引号，三引号的区别？</li><li>Python里关于“堆”这种数据结构的模块是哪个？“堆”有什么优点和缺点？</li><li>写一个类，并让它尽可能多的支持操作符</li><li>说说decorator的用法和它的应用场景，如果可以的话，请写一个decorator</li><li>有一个长度是101的数组，存在1-100的数字，有一个是重复的，如何把重复的找出来？</li><li>Python列表与元组的区别是什么？分别在什么情况下使用？</li><li>介绍一下Python getopt模块？</li><li>打乱一个排好序的list对象alist</li><li>有一个dict对象adict，里面包含了一百万个元素，查找其中的某个元素的平均需要多少次比较？</li><li>Python代码怎么得到列表list的交集与差集</li><li>Python里面如何实现tuple和list的转换？</li><li>Python匹配HTML tag的时候，&lt;.*&gt; 和 &lt;.*?&gt; 有什么区别？</li><li>Python中如何定义一个函数？</li><li>Python里如何反序的迭代一个序列？</li><li>是否遇到过Python的模块间循环引用的问题，如何避免它？</li><li>什么是元类（meta_class）？</li><li>调试Python代码的方法有哪些？</li><li>交叉链表求交点</li><li>合并两个有序列表</li><li>如何1-&gt;2-&gt;3-&gt;4转换成2-&gt;1-&gt;4-&gt;3？</li><li>用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠的覆盖一个2*n的大矩形，总共有多少种方法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>解释XSRF和XSS</li><li>网站用户密码保存问题</li><li>Apache和Nginx的区别？</li><li>cookie和session的异同点？</li><li>urllib和urllib2的区别？</li><li>什么是三次握手？</li><li>解释MylSAM和InnoDB</li><li>解释下乐观锁和悲观锁</li><li>__new__ 和 __init__ 的区别是什么？</li><li>Python中重载是什么？</li><li>什么是鸭子类型？</li><li>什么是自省？</li><li>什么是协程？</li><li>什么是GIL线程全局锁？</li><li>Python中的作用域</li><li>如何用Python来发送邮件？</li><li>Python里面如何实现tuple和list的转换？</li><li>Python如何捕获异常？</li><li>写一个简单的Python socket编程</li><li>Python如何copy一个文件？</li><li>如何用Python删除一个文件？</li><li>如何在一个function里面设置一个全局的变量？</li><li>有没有一个工具可以帮助查找Python的bug和进行静态的代码分析？</li><li>proc，lambda，和Proc的区别？</li><li>Python里面如何生成随机数？</li><li>Python里面 secarch() 和 match() 的区别？</li><li>如何用Python来进行查询和替换一个文本字符串？</li><li>介绍一下Python下range()函数的用法</li><li>如何知道一个Python对象的类型？</li><li>Python中pass语句的作用是什么？</li><li>介绍一下except的用法和作用</li><li>Python里面如何拷贝一个对象？</li><li>介绍一下Python Date Time方面的类</li><li>请写出一段Python代码实现删除一个list里面的重复元素</li><li>Python是如何进行类型转换的？</li><li>介绍一下Python的and-or语法</li><li>介绍一下Python中webbrowser的用法</li><li>如何用Python输出一个Fibonacci数列？</li><li>什么是lambda函数？它有什么好处？</li><li>Python下多线程的限制以及多进程中传递参数的方式</li><li>alias的用法，alias与alias_method的区别</li><li>Python如何实现单例模式？</li><li>RE模块中match和search的方法的不同</li></ol>]]></content>
       
       <categories>
           
@@ -157,9 +157,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> CentOS7 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -201,9 +201,9 @@
       
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Python </tag>
             
             <tag> IDE </tag>
             
@@ -237,27 +237,6 @@
     </entry>
     
     <entry>
-      <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
-      <link href="/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
-      <url>/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/</url>
-      <content type="html"><![CDATA[<p>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。<br>先定个小目标，特此记录一下</p>]]></content>
-      
-      <categories>
-          
-          <category> 默认分类 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Django </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Django使用基础常用命令</title>
       <link href="/2018/06/25/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2018/06/25/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
@@ -273,6 +252,27 @@
         <tags>
             
             <tag> Python </tag>
+            
+            <tag> Django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
+      <link href="/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
+      <url>/2018/06/25/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/</url>
+      <content type="html"><![CDATA[<p>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。<br>先定个小目标，特此记录一下</p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
             
             <tag> Django </tag>
             
