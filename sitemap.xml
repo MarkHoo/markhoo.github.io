@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://boke.markhoo.com/about/index.html</loc>
+    
+    <lastmod>2018-07-15T07:08:36.946Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://boke.markhoo.com/2018/07/15/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
     
     <lastmod>2018-07-15T04:52:39.629Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://boke.markhoo.com/2016/09/11/links/</loc>
     
     <lastmod>2018-07-15T04:31:49.793Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://boke.markhoo.com/about/index.html</loc>
-    
-    <lastmod>2018-07-15T01:27:29.729Z</lastmod>
     
   </url>
   
