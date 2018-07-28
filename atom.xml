@@ -5,9 +5,9 @@
   <subtitle>Silence is gold</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://boke.markhoo.com/"/>
+  <link href="https://blog.markhoo.com/"/>
   <updated>2018-07-28T03:06:04.925Z</updated>
-  <id>https://boke.markhoo.com/</id>
+  <id>https://blog.markhoo.com/</id>
   
   <author>
     <name>Mark Hoo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>更换pip源到国内镜像加速python pypi包的安装</title>
-    <link href="https://boke.markhoo.com/2018/07/28/%E6%9B%B4%E6%8D%A2pip%E6%BA%90%E5%88%B0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9Fpython%20pypi%E5%8C%85%E7%9A%84%E5%AE%89%E8%A3%85/"/>
-    <id>https://boke.markhoo.com/2018/07/28/更换pip源到国内镜像加速python pypi包的安装/</id>
+    <link href="https://blog.markhoo.com/2018/07/28/%E6%9B%B4%E6%8D%A2pip%E6%BA%90%E5%88%B0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9Fpython%20pypi%E5%8C%85%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <id>https://blog.markhoo.com/2018/07/28/更换pip源到国内镜像加速python pypi包的安装/</id>
     <published>2018-07-28T02:55:37.000Z</published>
     <updated>2018-07-28T03:06:04.925Z</updated>
     
@@ -35,21 +35,21 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
-      <category term="pip" scheme="https://boke.markhoo.com/tags/pip/"/>
+      <category term="pip" scheme="https://blog.markhoo.com/tags/pip/"/>
     
   </entry>
   
   <entry>
     <title>Python学习资源</title>
-    <link href="https://boke.markhoo.com/2018/07/22/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/"/>
-    <id>https://boke.markhoo.com/2018/07/22/Python学习资源/</id>
+    <link href="https://blog.markhoo.com/2018/07/22/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/"/>
+    <id>https://blog.markhoo.com/2018/07/22/Python学习资源/</id>
     <published>2018-07-22T02:59:11.000Z</published>
     <updated>2018-07-28T02:54:04.144Z</updated>
     
@@ -66,17 +66,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>C语言资源大全中文版</title>
-    <link href="https://boke.markhoo.com/2018/07/22/C%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90%E5%A4%A7%E5%85%A8%E4%B8%AD%E6%96%87%E7%89%88/"/>
-    <id>https://boke.markhoo.com/2018/07/22/C语言资源大全中文版/</id>
+    <link href="https://blog.markhoo.com/2018/07/22/C%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90%E5%A4%A7%E5%85%A8%E4%B8%AD%E6%96%87%E7%89%88/"/>
+    <id>https://blog.markhoo.com/2018/07/22/C语言资源大全中文版/</id>
     <published>2018-07-22T02:09:40.000Z</published>
     <updated>2018-07-22T02:10:51.621Z</updated>
     
@@ -98,8 +98,8 @@
   
   <entry>
     <title>PyCharm2018最新激活码</title>
-    <link href="https://boke.markhoo.com/2018/07/16/PyCharm2018%E6%9C%80%E6%96%B0%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
-    <id>https://boke.markhoo.com/2018/07/16/PyCharm2018最新激活码/</id>
+    <link href="https://blog.markhoo.com/2018/07/16/PyCharm2018%E6%9C%80%E6%96%B0%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
+    <id>https://blog.markhoo.com/2018/07/16/PyCharm2018最新激活码/</id>
     <published>2018-07-16T15:04:35.000Z</published>
     <updated>2018-07-16T15:26:54.114Z</updated>
     
@@ -116,23 +116,23 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
-      <category term="IDE" scheme="https://boke.markhoo.com/tags/IDE/"/>
+      <category term="IDE" scheme="https://blog.markhoo.com/tags/IDE/"/>
     
-      <category term="PyCharm" scheme="https://boke.markhoo.com/tags/PyCharm/"/>
+      <category term="PyCharm" scheme="https://blog.markhoo.com/tags/PyCharm/"/>
     
   </entry>
   
   <entry>
     <title>Python中的小技巧</title>
-    <link href="https://boke.markhoo.com/2018/07/15/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>https://boke.markhoo.com/2018/07/15/Python中的小技巧/</id>
+    <link href="https://blog.markhoo.com/2018/07/15/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>https://blog.markhoo.com/2018/07/15/Python中的小技巧/</id>
     <published>2018-07-15T04:50:04.000Z</published>
     <updated>2018-07-15T04:52:39.629Z</updated>
     
@@ -147,17 +147,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>闲置域名</title>
-    <link href="https://boke.markhoo.com/2018/07/15/%E9%97%B2%E7%BD%AE%E5%9F%9F%E5%90%8D/"/>
-    <id>https://boke.markhoo.com/2018/07/15/闲置域名/</id>
+    <link href="https://blog.markhoo.com/2018/07/15/%E9%97%B2%E7%BD%AE%E5%9F%9F%E5%90%8D/"/>
+    <id>https://blog.markhoo.com/2018/07/15/闲置域名/</id>
     <published>2018-07-15T01:06:41.000Z</published>
     <updated>2018-07-15T01:06:58.233Z</updated>
     
@@ -172,21 +172,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="域名" scheme="https://boke.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
+      <category term="域名" scheme="https://blog.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
     
   </entry>
   
   <entry>
     <title>Python面试题</title>
-    <link href="https://boke.markhoo.com/2018/07/14/Python%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>https://boke.markhoo.com/2018/07/14/Python面试题/</id>
+    <link href="https://blog.markhoo.com/2018/07/14/Python%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://blog.markhoo.com/2018/07/14/Python面试题/</id>
     <published>2018-07-14T03:59:11.000Z</published>
     <updated>2018-07-15T11:52:38.595Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>暂时整理这么多，有好的答案可以在下面留言，并注明问题序号</li><li>题目有描述错误的也欢迎指正</li><li>部分问题答案可参考:</li></ul><ol><li><a href="https://blog.markhoo.com/2017/11/13/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank" rel="noopener">关于Python的面试题</a>(带目录)</li><li><a href="http://www.markhoo.com/index.php/archives/49/" target="_blank" rel="noopener">关于Python的面试题</a>(不带目录)</li></ol><p>注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言</p><ul><li><a href="https://www.imooc.com/article/43902" target="_blank" rel="noopener">慕课文章页</a></li><li><a href="http://www.markhoo.com/index.php/archives/105/" target="_blank" rel="noopener">Blog主站文章页</a></li></ul><p>======================================</p><ol><li>简要描述Python的垃圾回收机制（garbage collection）？</li><li>这些是什么意思：@classmethod， @staticmethod， @property？</li><li>这两个参数是什么意思： *args， **kwargs？我们为什么要使用它们？</li><li>“猴子补丁” （monkey patching）指的是什么？这种做法好吗？</li><li>解释什么是Python？</li><li>Python中的模块和包是什么？</li><li>Python中的docstring是什么？</li><li>在Python中什么是构造器？</li><li>在Python中什么是silcing？</li><li>Python中的unittest是什么？</li><li>为什么lambda没有语句？</li><li>什么是Python的命名空间？</li><li>Python都有哪些自带的数据结构？</li><li>字典推导式和列表推导式是什么？</li><li>参数按值传递和引用传递是怎样实现的？</li><li>数组和元组之间的区别是什么？</li><li>什么是Python装饰器？</li><li>Python是怎样管理内存的？</li><li>Python是如何被解释的？</li><li>什么是pickling和unpickling？</li><li>什么是PEP8？</li><li>Python是如何进行内存管理的？</li><li>单引号，双引号，三引号的区别？</li><li>Python里关于“堆”这种数据结构的模块是哪个？“堆”有什么优点和缺点？</li><li>写一个类，并让它尽可能多的支持操作符</li><li>说说decorator的用法和它的应用场景，如果可以的话，请写一个decorator</li><li>有一个长度是101的数组，存在1-100的数字，有一个是重复的，如何把重复的找出来？</li><li>Python列表与元组的区别是什么？分别在什么情况下使用？</li><li>介绍一下Python getopt模块？</li><li>打乱一个排好序的list对象alist</li><li>有一个dict对象adict，里面包含了一百万个元素，查找其中的某个元素的平均需要多少次比较？</li><li>Python代码怎么得到列表list的交集与差集</li><li>Python里面如何实现tuple和list的转换？</li><li>Python匹配HTML tag的时候，&lt;.*&gt; 和 &lt;.*?&gt; 有什么区别？</li><li>Python中如何定义一个函数？</li><li>Python里如何反序的迭代一个序列？</li><li>是否遇到过Python的模块间循环引用的问题，如何避免它？</li><li>什么是元类（meta_class）？</li><li>调试Python代码的方法有哪些？</li><li>交叉链表求交点</li><li>合并两个有序列表</li><li>如何1-&gt;2-&gt;3-&gt;4转换成2-&gt;1-&gt;4-&gt;3？</li><li>用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠的覆盖一个2*n的大矩形，总共有多少种方法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>解释XSRF和XSS</li><li>网站用户密码保存问题</li><li>Apache和Nginx的区别？</li><li>cookie和session的异同点？</li><li>urllib和urllib2的区别？</li><li>什么是三次握手？</li><li>解释MylSAM和InnoDB</li><li>解释下乐观锁和悲观锁</li><li>__new__ 和 __init__ 的区别是什么？</li><li>Python中重载是什么？</li><li>什么是鸭子类型？</li><li>什么是自省？</li><li>什么是协程？</li><li>什么是GIL线程全局锁？</li><li>Python中的作用域</li><li>如何用Python来发送邮件？</li><li>Python里面如何实现tuple和list的转换？</li><li>Python如何捕获异常？</li><li>写一个简单的Python socket编程</li><li>Python如何copy一个文件？</li><li>如何用Python删除一个文件？</li><li>如何在一个function里面设置一个全局的变量？</li><li>有没有一个工具可以帮助查找Python的bug和进行静态的代码分析？</li><li>proc，lambda，和Proc的区别？</li><li>Python里面如何生成随机数？</li><li>Python里面 secarch() 和 match() 的区别？</li><li>如何用Python来进行查询和替换一个文本字符串？</li><li>介绍一下Python下range()函数的用法</li><li>如何知道一个Python对象的类型？</li><li>Python中pass语句的作用是什么？</li><li>介绍一下except的用法和作用</li><li>Python里面如何拷贝一个对象？</li><li>介绍一下Python Date Time方面的类</li><li>请写出一段Python代码实现删除一个list里面的重复元素</li><li>Python是如何进行类型转换的？</li><li>介绍一下Python的and-or语法</li><li>介绍一下Python中webbrowser的用法</li><li>如何用Python输出一个Fibonacci数列？</li><li>什么是lambda函数？它有什么好处？</li><li>Python下多线程的限制以及多进程中传递参数的方式</li><li>alias的用法，alias与alias_method的区别</li><li>Python如何实现单例模式？</li><li>RE模块中match和search的方法的不同</li></ol>]]></content>
+    <content type="html"><![CDATA[<ul><li>暂时整理这么多，有好的答案可以在下面留言，并注明问题序号</li><li>题目有描述错误的也欢迎指正</li><li>部分问题答案可参考:</li></ul><ol><li><a href="https://blog.markhoo.com/2017/11/13/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/">关于Python的面试题</a>(带目录)</li><li><a href="http://www.markhoo.com/index.php/archives/49/" target="_blank" rel="noopener">关于Python的面试题</a>(不带目录)</li></ol><p>注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言</p><ul><li><a href="https://www.imooc.com/article/43902" target="_blank" rel="noopener">慕课文章页</a></li><li><a href="http://www.markhoo.com/index.php/archives/105/" target="_blank" rel="noopener">Blog主站文章页</a></li></ul><p>======================================</p><ol><li>简要描述Python的垃圾回收机制（garbage collection）？</li><li>这些是什么意思：@classmethod， @staticmethod， @property？</li><li>这两个参数是什么意思： *args， **kwargs？我们为什么要使用它们？</li><li>“猴子补丁” （monkey patching）指的是什么？这种做法好吗？</li><li>解释什么是Python？</li><li>Python中的模块和包是什么？</li><li>Python中的docstring是什么？</li><li>在Python中什么是构造器？</li><li>在Python中什么是silcing？</li><li>Python中的unittest是什么？</li><li>为什么lambda没有语句？</li><li>什么是Python的命名空间？</li><li>Python都有哪些自带的数据结构？</li><li>字典推导式和列表推导式是什么？</li><li>参数按值传递和引用传递是怎样实现的？</li><li>数组和元组之间的区别是什么？</li><li>什么是Python装饰器？</li><li>Python是怎样管理内存的？</li><li>Python是如何被解释的？</li><li>什么是pickling和unpickling？</li><li>什么是PEP8？</li><li>Python是如何进行内存管理的？</li><li>单引号，双引号，三引号的区别？</li><li>Python里关于“堆”这种数据结构的模块是哪个？“堆”有什么优点和缺点？</li><li>写一个类，并让它尽可能多的支持操作符</li><li>说说decorator的用法和它的应用场景，如果可以的话，请写一个decorator</li><li>有一个长度是101的数组，存在1-100的数字，有一个是重复的，如何把重复的找出来？</li><li>Python列表与元组的区别是什么？分别在什么情况下使用？</li><li>介绍一下Python getopt模块？</li><li>打乱一个排好序的list对象alist</li><li>有一个dict对象adict，里面包含了一百万个元素，查找其中的某个元素的平均需要多少次比较？</li><li>Python代码怎么得到列表list的交集与差集</li><li>Python里面如何实现tuple和list的转换？</li><li>Python匹配HTML tag的时候，&lt;.*&gt; 和 &lt;.*?&gt; 有什么区别？</li><li>Python中如何定义一个函数？</li><li>Python里如何反序的迭代一个序列？</li><li>是否遇到过Python的模块间循环引用的问题，如何避免它？</li><li>什么是元类（meta_class）？</li><li>调试Python代码的方法有哪些？</li><li>交叉链表求交点</li><li>合并两个有序列表</li><li>如何1-&gt;2-&gt;3-&gt;4转换成2-&gt;1-&gt;4-&gt;3？</li><li>用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠的覆盖一个2*n的大矩形，总共有多少种方法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li><li>解释XSRF和XSS</li><li>网站用户密码保存问题</li><li>Apache和Nginx的区别？</li><li>cookie和session的异同点？</li><li>urllib和urllib2的区别？</li><li>什么是三次握手？</li><li>解释MylSAM和InnoDB</li><li>解释下乐观锁和悲观锁</li><li>__new__ 和 __init__ 的区别是什么？</li><li>Python中重载是什么？</li><li>什么是鸭子类型？</li><li>什么是自省？</li><li>什么是协程？</li><li>什么是GIL线程全局锁？</li><li>Python中的作用域</li><li>如何用Python来发送邮件？</li><li>Python里面如何实现tuple和list的转换？</li><li>Python如何捕获异常？</li><li>写一个简单的Python socket编程</li><li>Python如何copy一个文件？</li><li>如何用Python删除一个文件？</li><li>如何在一个function里面设置一个全局的变量？</li><li>有没有一个工具可以帮助查找Python的bug和进行静态的代码分析？</li><li>proc，lambda，和Proc的区别？</li><li>Python里面如何生成随机数？</li><li>Python里面 secarch() 和 match() 的区别？</li><li>如何用Python来进行查询和替换一个文本字符串？</li><li>介绍一下Python下range()函数的用法</li><li>如何知道一个Python对象的类型？</li><li>Python中pass语句的作用是什么？</li><li>介绍一下except的用法和作用</li><li>Python里面如何拷贝一个对象？</li><li>介绍一下Python Date Time方面的类</li><li>请写出一段Python代码实现删除一个list里面的重复元素</li><li>Python是如何进行类型转换的？</li><li>介绍一下Python的and-or语法</li><li>介绍一下Python中webbrowser的用法</li><li>如何用Python输出一个Fibonacci数列？</li><li>什么是lambda函数？它有什么好处？</li><li>Python下多线程的限制以及多进程中传递参数的方式</li><li>alias的用法，alias与alias_method的区别</li><li>Python如何实现单例模式？</li><li>RE模块中match和search的方法的不同</li></ol>]]></content>
     
     <summary type="html">
     
@@ -203,19 +203,19 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="面试题" scheme="https://boke.markhoo.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+      <category term="面试题" scheme="https://blog.markhoo.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>Django学习视频</title>
-    <link href="https://boke.markhoo.com/2018/07/12/Django%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91/"/>
-    <id>https://boke.markhoo.com/2018/07/12/Django学习视频/</id>
+    <link href="https://blog.markhoo.com/2018/07/12/Django%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91/"/>
+    <id>https://blog.markhoo.com/2018/07/12/Django学习视频/</id>
     <published>2018-07-12T01:58:04.000Z</published>
     <updated>2018-07-13T08:32:24.129Z</updated>
     
@@ -230,23 +230,23 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
-      <category term="Rest" scheme="https://boke.markhoo.com/tags/Rest/"/>
+      <category term="Rest" scheme="https://blog.markhoo.com/tags/Rest/"/>
     
-      <category term="API" scheme="https://boke.markhoo.com/tags/API/"/>
+      <category term="API" scheme="https://blog.markhoo.com/tags/API/"/>
     
   </entry>
   
   <entry>
     <title>用 Python 3.6.2 + Django 1.11.13 重新开发 blog</title>
-    <link href="https://boke.markhoo.com/2018/06/20/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
-    <id>https://boke.markhoo.com/2018/06/20/用Python3.6.2+Django1.11.13重新开发blog/</id>
+    <link href="https://blog.markhoo.com/2018/06/20/%E7%94%A8Python3.6.2+Django1.11.13%E9%87%8D%E6%96%B0%E5%BC%80%E5%8F%91blog/"/>
+    <id>https://blog.markhoo.com/2018/06/20/用Python3.6.2+Django1.11.13重新开发blog/</id>
     <published>2018-06-20T03:59:11.000Z</published>
     <updated>2018-07-15T01:07:31.764Z</updated>
     
@@ -262,17 +262,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>域名 youmei.io 的由来</title>
-    <link href="https://boke.markhoo.com/2018/05/14/%E5%9F%9F%E5%90%8Dyoumei.io%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
-    <id>https://boke.markhoo.com/2018/05/14/域名youmei.io的由来/</id>
+    <link href="https://blog.markhoo.com/2018/05/14/%E5%9F%9F%E5%90%8Dyoumei.io%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
+    <id>https://blog.markhoo.com/2018/05/14/域名youmei.io的由来/</id>
     <published>2018-05-14T02:41:23.000Z</published>
     <updated>2018-07-15T01:08:17.851Z</updated>
     
@@ -288,17 +288,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="域名" scheme="https://boke.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
+      <category term="域名" scheme="https://blog.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
     
   </entry>
   
   <entry>
     <title>安装Django时提示pip版本问题解决方法</title>
-    <link href="https://boke.markhoo.com/2018/04/11/%E5%AE%89%E8%A3%85Django%E6%97%B6%E6%8F%90%E7%A4%BApip%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>https://boke.markhoo.com/2018/04/11/安装Django时提示pip版本问题解决方法/</id>
+    <link href="https://blog.markhoo.com/2018/04/11/%E5%AE%89%E8%A3%85Django%E6%97%B6%E6%8F%90%E7%A4%BApip%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://blog.markhoo.com/2018/04/11/安装Django时提示pip版本问题解决方法/</id>
     <published>2018-04-11T04:19:31.000Z</published>
     <updated>2018-07-15T01:04:36.184Z</updated>
     
@@ -313,19 +313,19 @@
     
     </summary>
     
-      <category term="Django" scheme="https://boke.markhoo.com/categories/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>nginx django 的配置步骤</title>
-    <link href="https://boke.markhoo.com/2017/12/25/nginxdjango%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/"/>
-    <id>https://boke.markhoo.com/2017/12/25/nginxdjango的配置步骤/</id>
+    <link href="https://blog.markhoo.com/2017/12/25/nginxdjango%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://blog.markhoo.com/2017/12/25/nginxdjango的配置步骤/</id>
     <published>2017-12-25T02:22:33.000Z</published>
     <updated>2018-07-15T01:11:16.193Z</updated>
     
@@ -340,19 +340,19 @@
     
     </summary>
     
-      <category term="Django" scheme="https://boke.markhoo.com/categories/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>Django使用基础常用命令</title>
-    <link href="https://boke.markhoo.com/2017/11/20/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://boke.markhoo.com/2017/11/20/Django使用基础常用命令/</id>
+    <link href="https://blog.markhoo.com/2017/11/20/Django%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://blog.markhoo.com/2017/11/20/Django使用基础常用命令/</id>
     <published>2017-11-20T02:35:15.000Z</published>
     <updated>2018-07-15T01:10:10.479Z</updated>
     
@@ -367,19 +367,19 @@
     
     </summary>
     
-      <category term="Django" scheme="https://boke.markhoo.com/categories/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="Django" scheme="https://boke.markhoo.com/tags/Django/"/>
+      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>两种网易云音乐播放器调用代码 网站可直接调用</title>
-    <link href="https://boke.markhoo.com/2017/11/18/%E4%B8%A4%E7%A7%8D%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81%20%E7%BD%91%E7%AB%99%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8/"/>
-    <id>https://boke.markhoo.com/2017/11/18/两种网易云音乐播放器调用代码 网站可直接调用/</id>
+    <link href="https://blog.markhoo.com/2017/11/18/%E4%B8%A4%E7%A7%8D%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81%20%E7%BD%91%E7%AB%99%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8/"/>
+    <id>https://blog.markhoo.com/2017/11/18/两种网易云音乐播放器调用代码 网站可直接调用/</id>
     <published>2017-11-18T03:59:59.000Z</published>
     <updated>2018-07-15T01:05:18.763Z</updated>
     
@@ -394,19 +394,19 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="网易云音乐" scheme="https://boke.markhoo.com/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
+      <category term="网易云音乐" scheme="https://blog.markhoo.com/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
     
-      <category term="音乐播放器" scheme="https://boke.markhoo.com/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
+      <category term="音乐播放器" scheme="https://blog.markhoo.com/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
     
   </entry>
   
   <entry>
     <title>关于Python的面试题</title>
-    <link href="https://boke.markhoo.com/2017/11/13/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>https://boke.markhoo.com/2017/11/13/关于Python的面试题/</id>
+    <link href="https://blog.markhoo.com/2017/11/13/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://blog.markhoo.com/2017/11/13/关于Python的面试题/</id>
     <published>2017-11-13T01:58:04.000Z</published>
     <updated>2018-07-15T01:06:06.166Z</updated>
     
@@ -421,21 +421,21 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="面试题" scheme="https://boke.markhoo.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+      <category term="面试题" scheme="https://blog.markhoo.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
-      <category term="算法" scheme="https://boke.markhoo.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="https://blog.markhoo.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>CentOS7 常用命令集合</title>
-    <link href="https://boke.markhoo.com/2017/09/22/CentOS7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/"/>
-    <id>https://boke.markhoo.com/2017/09/22/CentOS7常用命令集合/</id>
+    <link href="https://blog.markhoo.com/2017/09/22/CentOS7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/"/>
+    <id>https://blog.markhoo.com/2017/09/22/CentOS7常用命令集合/</id>
     <published>2017-09-22T03:11:11.000Z</published>
     <updated>2018-07-15T01:09:14.135Z</updated>
     
@@ -450,19 +450,19 @@
     
     </summary>
     
-      <category term="Linux" scheme="https://boke.markhoo.com/categories/Linux/"/>
+      <category term="Linux" scheme="https://blog.markhoo.com/categories/Linux/"/>
     
     
-      <category term="CentOS7" scheme="https://boke.markhoo.com/tags/CentOS7/"/>
+      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
     
-      <category term="Linux" scheme="https://boke.markhoo.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://blog.markhoo.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Python学习资料</title>
-    <link href="https://boke.markhoo.com/2017/07/30/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
-    <id>https://boke.markhoo.com/2017/07/30/Python学习资料/</id>
+    <link href="https://blog.markhoo.com/2017/07/30/Python%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    <id>https://blog.markhoo.com/2017/07/30/Python学习资料/</id>
     <published>2017-07-30T03:58:23.000Z</published>
     <updated>2018-07-15T01:02:25.356Z</updated>
     
@@ -477,23 +477,23 @@
     
     </summary>
     
-      <category term="Python" scheme="https://boke.markhoo.com/categories/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="Linux" scheme="https://boke.markhoo.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://blog.markhoo.com/tags/Linux/"/>
     
-      <category term="Python" scheme="https://boke.markhoo.com/tags/Python/"/>
+      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
-      <category term="IDE" scheme="https://boke.markhoo.com/tags/IDE/"/>
+      <category term="IDE" scheme="https://blog.markhoo.com/tags/IDE/"/>
     
-      <category term="数据库" scheme="https://boke.markhoo.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="https://blog.markhoo.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>vim常用命令总结</title>
-    <link href="https://boke.markhoo.com/2016/09/11/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
-    <id>https://boke.markhoo.com/2016/09/11/vim常用命令总结/</id>
+    <link href="https://blog.markhoo.com/2016/09/11/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
+    <id>https://blog.markhoo.com/2016/09/11/vim常用命令总结/</id>
     <published>2016-09-11T02:29:23.000Z</published>
     <updated>2018-07-15T01:03:33.296Z</updated>
     
@@ -508,35 +508,36 @@
     
     </summary>
     
-      <category term="默认分类" scheme="https://boke.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="Vim" scheme="https://boke.markhoo.com/tags/Vim/"/>
+      <category term="Vim" scheme="https://blog.markhoo.com/tags/Vim/"/>
     
   </entry>
   
   <entry>
     <title>友情链接</title>
-    <link href="https://boke.markhoo.com/2016/09/11/links/"/>
-    <id>https://boke.markhoo.com/2016/09/11/links/</id>
+    <link href="https://blog.markhoo.com/2016/09/11/links/"/>
+    <id>https://blog.markhoo.com/2016/09/11/links/</id>
     <published>2016-09-11T01:58:04.000Z</published>
-    <updated>2018-07-15T04:31:49.793Z</updated>
+    <updated>2018-07-28T07:00:14.105Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="友链资料"><a href="/2016/09/11/links/#友链资料" class="headerlink" title="友链资料"></a>友链资料</h1><p>博客名称：沉默是金<br>博客网址：</p><ul><li><a href="http://www.markhoo.com" target="_blank" rel="noopener">http://www.markhoo.com</a>  (非HTTPS)</li><li><a href="https://blog.markhoo.com" target="_blank" rel="noopener">https://blog.markhoo.com</a>  (全站HTTPS)<br>博客头像：</li><li><a href="http://p9fjpr0jf.bkt.clouddn.com/touxiang.JPG" target="_blank" rel="noopener">http://p9fjpr0jf.bkt.clouddn.com/touxiang.JPG</a></li><li><a href="https://cn.gravatar.com/userimage/126811174/4306b86bb5824ba1179e99bd660483cb.jpeg" target="_blank" rel="noopener">https://cn.gravatar.com/userimage/126811174/4306b86bb5824ba1179e99bd660483cb.jpeg</a><br>博客介绍：Silence is gold</li></ul><p>友链申请开放中！想友链的小伙伴请在评论区参考我上面的格式留言，我看到会第一时间友链！</p><h1 id="声明："><a href="/2016/09/11/links/#声明：" class="headerlink" title="声明："></a>声明：</h1><p>1、百度未收录<br>2、经常死链，网站无法打开<br>3、网站水文或 C V 文章过多，且无原创<br>满足以上任意条件拒绝友链</p><p>1、申请友链前请自觉先添加友链，否则不加<br>2、由于本站开启全站HTTPS，因此申请友链链接最好以https://开头</p><p>对于友链后出现死链或者擅自取消本站友链的，直接删除，恕不另行通知。如需友链请再次申请</p><h1 id="大佬们"><a href="/2016/09/11/links/#大佬们" class="headerlink" title="大佬们"></a>大佬们</h1><table><thead><tr><th>名称</th><th>介绍</th></tr></thead><tbody><tr><td><a href="https://blog.markhoo.com" target="_blank" rel="noopener">Markhoo</a></td><td>Silence is gold!</td></tr><tr><td><a href="http://www.fkzone.com" target="_blank" rel="noopener">Fkzone!</a></td><td>Fkzone!</td></tr><tr><td><a href="https://www.ercc.cc" target="_blank" rel="noopener">无人小站</a></td><td>如你所见什么都没有，甚至都没有一个人</td></tr><tr><td><a href="https://jianjia.io" target="_blank" rel="noopener">蒹葭</a></td><td>蒹葭</td></tr><tr><td><a href="https://blog.20d.win" target="_blank" rel="noopener">薄荷小屋</a></td><td>爱赛艇的辣鸡薄荷</td></tr><tr><td><a href="https://www.ashite.com" target="_blank" rel="noopener">凌独小棧</a></td><td>“滋，滋，目标已锁定”</td></tr><tr><td><a href="http://www.joinsen.com" target="_blank" rel="noopener">Joinsen的博客</a></td><td>Joinsen的博客</td></tr><tr><td><a href="https://www.xujianhua.com" target="_blank" rel="noopener">许建华博客</a></td><td>一个草根站长的个人博客。</td></tr><tr><td><a href="https://www.smalli.org" target="_blank" rel="noopener">gsdad_white</a></td><td>当你剥开一个很酸的橘子而感到后悔了，可对于橘子来说，那是它的一切.</td></tr><tr><td><a href="https://www.c0smx.com" target="_blank" rel="noopener">c0sMx</a></td><td>本人，重 PY，轻 PY</td></tr><tr><td><a href="https://www.hostm.cn" target="_blank" rel="noopener">清楼小筑</a></td><td>没有人一路单纯到底，但请别忘了最初的自己</td></tr><tr><td><a href="http://bgods.cn" target="_blank" rel="noopener">Bgods</a></td><td>Bgods</td></tr><tr><td><a href="https://zhanghan.club" target="_blank" rel="noopener">ZhangHan’s BLOG</a></td><td>一个高中生的博客&amp;专注于互联网信息安全</td></tr><tr><td><a href="http://www.woguanni.cn" target="_blank" rel="noopener">星霜荏苒</a></td><td>时光固然无法倒流，回忆却能重温旧梦。</td></tr><tr><td><a href="https://blog.amost.cn" target="_blank" rel="noopener">艾乐の博客</a></td><td>比起悲伤来说，无法分享快乐这件事，要更加的寂寞吧。</td></tr><tr><td><a href="http://cnm.im" target="_blank" rel="noopener">LIFET</a></td><td>嗯~我是处男吗?</td></tr><tr><td><a href="http://www.izhuyue.com" target="_blank" rel="noopener">FROYO’s Blog</a></td><td>将来的你，一定会感谢现在努力的自己。</td></tr><tr><td><a href="https://zhang18.top" target="_blank" rel="noopener">ZLOE</a></td><td>ZLOE</td></tr><tr><td><a href="http://www.zhangzhousheng.top" target="_blank" rel="noopener">安の故乡</a></td><td>My small home.</td></tr><tr><td><a href="https://www.h-best.cn" target="_blank" rel="noopener">林阿三</a></td><td>既然爱可以做 那还谈它干嘛</td></tr><tr><td><a href="http://www.nothamor.cn" target="_blank" rel="noopener">欧尼酱</a></td><td>浑水摸鱼的咸鱼一条，伪Geek</td></tr><tr><td><a href="https://www.ailoli.org/" target="_blank" rel="noopener">Ailoli</a></td><td>永远年轻，永远热泪盈眶</td></tr><tr><td><a href="http://www.potter-cat.cn/" target="_blank" rel="noopener">码舍 ‘blog</a></td><td>码舍 ‘blog</td></tr><tr><td><a href="http://imalan.cn" target="_blank" rel="noopener">熊猫小A</a></td><td>持续中二，偶尔 Geek。</td></tr><tr><td><a href="https://www.v2ex.cc" target="_blank" rel="noopener">不稽一格</a></td><td>不稽一格</td></tr></tbody></table><h1 id="疑似凉了"><a href="/2016/09/11/links/#疑似凉了" class="headerlink" title="疑似凉了"></a>疑似凉了</h1><table><thead><tr><th>名称</th><th>介绍</th></tr></thead><tbody><tr><td><a href="https://blog.thkira.com" target="_blank" rel="noopener">兰陵の记事簿</a></td><td>Tech Otakus Save The World</td></tr></tbody></table>]]></content>
+    <content type="html"><![CDATA[<h1 id="友链资料"><a href="/2016/09/11/links/#友链资料" class="headerlink" title="友链资料"></a>友链资料</h1><p>博客名称：沉默是金</p><p>博客网址：</p><ul><li><a href="http://www.markhoo.com" target="_blank" rel="noopener">http://www.markhoo.com</a>  (非HTTPS)</li><li><a href="https://blog.markhoo.com">https://blog.markhoo.com</a>  (全站HTTPS)</li></ul><p>博客头像：</p><ul><li><a href="http://p9fjpr0jf.bkt.clouddn.com/touxiang.JPG" target="_blank" rel="noopener">http://p9fjpr0jf.bkt.clouddn.com/touxiang.JPG</a></li><li><a href="https://cn.gravatar.com/userimage/126811174/4306b86bb5824ba1179e99bd660483cb.jpeg" target="_blank" rel="noopener">https://cn.gravatar.com/userimage/126811174/4306b86bb5824ba1179e99bd660483cb.jpeg</a></li></ul><p>邮箱：<a href="/2016/09/11/links/mailto:markhoo911@gmail.com" target="_blank" rel="noopener">markhoo911@gmail.com</a></p><p>博客介绍：Silence is gold</p><p>友链申请开放中！想友链的小伙伴请在评论区参考我上面的格式留言，我看到会第一时间友链！</p><h1 id="声明："><a href="/2016/09/11/links/#声明：" class="headerlink" title="声明："></a>声明：</h1><h2 id="人品差爱装逼的拒绝友链"><a href="/2016/09/11/links/#人品差爱装逼的拒绝友链" class="headerlink" title="人品差爱装逼的拒绝友链"></a>人品差爱装逼的拒绝友链</h2><h2 id="申请友链前为表诚意请自觉先添加友链，否则不加"><a href="/2016/09/11/links/#申请友链前为表诚意请自觉先添加友链，否则不加" class="headerlink" title="申请友链前为表诚意请自觉先添加友链，否则不加"></a>申请友链前为表诚意请自觉先添加友链，否则不加</h2><h2 id="友链后出现死链或者擅自取消本站友链的，直接删除！恕不另行通知。"><a href="/2016/09/11/links/#友链后出现死链或者擅自取消本站友链的，直接删除！恕不另行通知。" class="headerlink" title="友链后出现死链或者擅自取消本站友链的，直接删除！恕不另行通知。"></a>友链后出现死链或者擅自取消本站友链的，直接删除！恕不另行通知。</h2><table><thead><tr><th>名称</th><th>介绍</th></tr></thead><tbody><tr><td><a href="https://blog.markhoo.com">Markhoo</a></td><td>Silence is gold!</td></tr><tr><td><a href="http://www.fkzone.com" target="_blank" rel="noopener">Fkzone!</a></td><td>Fkzone!</td></tr><tr><td><a href="https://www.ercc.cc" target="_blank" rel="noopener">无人小站</a></td><td>如你所见什么都没有，甚至都没有一个人</td></tr><tr><td><a href="https://jianjia.io" target="_blank" rel="noopener">蒹葭</a></td><td>蒹葭</td></tr><tr><td><a href="https://blog.20d.win" target="_blank" rel="noopener">薄荷小屋</a></td><td>爱赛艇的辣鸡薄荷</td></tr><tr><td><a href="https://www.ashite.com" target="_blank" rel="noopener">凌独小棧</a></td><td>“滋，滋，目标已锁定”</td></tr><tr><td><a href="http://www.joinsen.com" target="_blank" rel="noopener">Joinsen的博客</a></td><td>Joinsen的博客</td></tr><tr><td><a href="https://www.xujianhua.com" target="_blank" rel="noopener">许建华博客</a></td><td>一个草根站长的个人博客。</td></tr><tr><td><a href="https://www.smalli.org" target="_blank" rel="noopener">gsdad_white</a></td><td>当你剥开一个很酸的橘子而感到后悔了，可对于橘子来说，那是它的一切.</td></tr><tr><td><a href="https://www.c0smx.com" target="_blank" rel="noopener">c0sMx</a></td><td>本人，重 PY，轻 PY</td></tr><tr><td><a href="https://www.hostm.cn" target="_blank" rel="noopener">清楼小筑</a></td><td>没有人一路单纯到底，但请别忘了最初的自己</td></tr><tr><td><a href="http://bgods.cn" target="_blank" rel="noopener">Bgods</a></td><td>Bgods</td></tr><tr><td><a href="https://zhanghan.club" target="_blank" rel="noopener">ZhangHan’s BLOG</a></td><td>一个高中生的博客&amp;专注于互联网信息安全</td></tr><tr><td><a href="http://www.woguanni.cn" target="_blank" rel="noopener">星霜荏苒</a></td><td>时光固然无法倒流，回忆却能重温旧梦。</td></tr><tr><td><a href="https://blog.amost.cn" target="_blank" rel="noopener">艾乐の博客</a></td><td>比起悲伤来说，无法分享快乐这件事，要更加的寂寞吧。</td></tr><tr><td><a href="http://www.izhuyue.com" target="_blank" rel="noopener">FROYO’s Blog</a></td><td>将来的你，一定会感谢现在努力的自己。</td></tr><tr><td><a href="https://zhang18.top" target="_blank" rel="noopener">ZLOE</a></td><td>ZLOE</td></tr><tr><td><a href="https://www.h-best.cn" target="_blank" rel="noopener">林阿三</a></td><td>既然爱可以做 那还谈它干嘛</td></tr><tr><td><a href="http://www.nothamor.cn" target="_blank" rel="noopener">欧尼酱</a></td><td>浑水摸鱼的咸鱼一条，伪Geek</td></tr><tr><td><a href="https://www.ailoli.org/" target="_blank" rel="noopener">Ailoli</a></td><td>永远年轻，永远热泪盈眶</td></tr><tr><td><a href="http://imalan.cn" target="_blank" rel="noopener">熊猫小A</a></td><td>持续中二，偶尔 Geek。</td></tr><tr><td><a href="https://zhangshuqiao.org" target="_blank" rel="noopener">米米的博客</a></td><td>米米的博客!!</td></tr><tr><td><a href="https://www.v2ex.cc" target="_blank" rel="noopener">不稽一格</a></td><td>不稽一格</td></tr><tr><td><a href="https://b.markhoo.com" target="_blank" rel="noopener">Silence</a></td><td>Silence is gold!</td></tr><tr><td><a href="https://www.zhangzhousheng.top" target="_blank" rel="noopener">安の故乡</a></td><td>My small home.</td></tr></tbody></table><p>顺便出售仅剩的两个域名<br>tianshimao.cc 【天使猫，漫画‘天使猫与地狱狗’，阿里云一口价】<br>youmei.io【优美，幽魅，幽美。io科技型域名，议价。发邮件即可】</p><p>阿里云米店:<a href="https://mi.aliyun.com/shop/26468" target="_blank" rel="noopener">点击直达</a><br>阿里云产品优惠券：<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=od77opdu&amp;utm_source=od77opdu" target="_blank" rel="noopener">点击领取</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;友链资料&quot;&gt;&lt;a href=&quot;/2016/09/11/links/#友链资料&quot; class=&quot;headerlink&quot; title=&quot;友链资料&quot;&gt;&lt;/a&gt;友链资料&lt;/h1&gt;&lt;p&gt;博客名称：沉默是金&lt;br&gt;博客网址：&lt;/p&gt;
+        &lt;h1 id=&quot;友链资料&quot;&gt;&lt;a href=&quot;/2016/09/11/links/#友链资料&quot; class=&quot;headerlink&quot; title=&quot;友链资料&quot;&gt;&lt;/a&gt;友链资料&lt;/h1&gt;&lt;p&gt;博客名称：沉默是金&lt;/p&gt;
+&lt;p&gt;博客网址：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;htt
+&lt;li&gt;&lt;a href=
       
     
     </summary>
     
     
-      <category term="友情链接" scheme="https://boke.markhoo.com/tags/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/"/>
+      <category term="友情链接" scheme="https://blog.markhoo.com/tags/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/"/>
     
   </entry>
   
