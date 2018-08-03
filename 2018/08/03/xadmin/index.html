@@ -400,7 +400,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>官网太慢甚至打不开，所以干脆转载转来，方便学习。</p>
+        <p>官网太慢甚至打不开，所以干脆转载过来，方便学习。</p>
 <p>======================</p>
 <h2 id="插件原理"><a href="/2018/08/03/xadmin/#插件原理" class="headerlink" title="插件原理"></a>插件原理</h2><p>xadmin 的插件系统架构设计一定程度上借鉴了 <code>wordpress</code> 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| <code>AdminView</code> 的概念。<br>简单来说，就是 |xadmin| 系统中每一个页面都是一个 <code>AdminView</code> 对象返回的 <code>HttpResponse</code> 结果。|xadmin| 的插件系统做的事情其实就是在 <code>AdminView</code><br>运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。</p>
 <p>首先需要创建自己的插件类， 插件类继承 :class:<code>~xadmin.views.BaseAdminPlugin</code> ::</p>
@@ -969,6 +969,20 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 18
@@ -997,12 +1011,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/C语言资源大全中文版/" >C语言资源大全中文版</a>
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/Python学习资源/" >Python学习资源</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/Python学习资源/" >Python学习资源</a>
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/C语言资源大全中文版/" >C语言资源大全中文版</a>
         </li>
     
     
@@ -1126,9 +1140,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="音乐播放器"><span class="iconfont-archer">&#xe606;</span>音乐播放器</span>
     
-        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
-    
         <span class="sidebar-tag-name" data-tags="域名"><span class="iconfont-archer">&#xe606;</span>域名</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="pip"><span class="iconfont-archer">&#xe606;</span>pip</span>
     
@@ -1167,9 +1181,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="Linux"><span class="iconfont-archer">&#xe60a;</span>Linux</span>
     
-        <span class="sidebar-category-name" data-categories="Django"><span class="iconfont-archer">&#xe60a;</span>Django</span>
-    
         <span class="sidebar-category-name" data-categories="Python"><span class="iconfont-archer">&#xe60a;</span>Python</span>
+    
+        <span class="sidebar-category-name" data-categories="Django"><span class="iconfont-archer">&#xe60a;</span>Django</span>
     
         <span class="sidebar-category-name" data-categories="默认分类"><span class="iconfont-archer">&#xe60a;</span>默认分类</span>
     
