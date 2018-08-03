@@ -15,7 +15,7 @@
     <meta name="description" content="沉默是金--Silence is gold">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Python学习资料 · 沉默是金 Markhoo</title>
+    <title>xadmin 插件制作 · 沉默是金 Markhoo</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -210,7 +210,7 @@
                 <a href="/" >沉默是金</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Python学习资料</a>
+                <a href="#" class="post-name">xadmin 插件制作</a>
             </div>
     </div>
     
@@ -242,7 +242,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Python学习资料
+            xadmin 插件制作
             <!-- 404 -->
             
         </h1>
@@ -271,7 +271,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count">1,967</span> / Reading time: <span class="post-count">8 min</span></span>
+                        <span>Word count: <span class="post-count">1,962</span> / Reading time: <span class="post-count">8 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,7 +401,8 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>官网太慢甚至打不开，所以干脆转载转来，方便学习。</p>
-<h1 id="xadmin-插件制作"><a href="/2018/08/03/xadmin/#xadmin-插件制作" class="headerlink" title="|xadmin| 插件制作"></a>|xadmin| 插件制作</h1><h2 id="插件原理"><a href="/2018/08/03/xadmin/#插件原理" class="headerlink" title="插件原理"></a>插件原理</h2><p>|xadmin| 的插件系统架构设计一定程度上借鉴了 <code>wordpress</code> 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| <code>AdminView</code> 的概念。<br>简单来说，就是 |xadmin| 系统中每一个页面都是一个 <code>AdminView</code> 对象返回的 <code>HttpResponse</code> 结果。|xadmin| 的插件系统做的事情其实就是在 <code>AdminView</code><br>运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。</p>
+<p>======================</p>
+<h2 id="插件原理"><a href="/2018/08/03/xadmin/#插件原理" class="headerlink" title="插件原理"></a>插件原理</h2><p>xadmin 的插件系统架构设计一定程度上借鉴了 <code>wordpress</code> 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| <code>AdminView</code> 的概念。<br>简单来说，就是 |xadmin| 系统中每一个页面都是一个 <code>AdminView</code> 对象返回的 <code>HttpResponse</code> 结果。|xadmin| 的插件系统做的事情其实就是在 <code>AdminView</code><br>运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。</p>
 <p>首先需要创建自己的插件类， 插件类继承 :class:<code>~xadmin.views.BaseAdminPlugin</code> ::</p>
 <pre><code>class HelloWorldPlugin(BaseAdminPlugin):
     ...
@@ -741,7 +742,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xadmin-插件制作"><span class="toc-number">1.</span> <span class="toc-text">|xadmin| 插件制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件原理"><span class="toc-number">1.1.</span> <span class="toc-text">插件原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件实例"><span class="toc-number">1.2.</span> <span class="toc-text">插件实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件开发"><span class="toc-number">1.3.</span> <span class="toc-text">插件开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件规范"><span class="toc-number">1.4.</span> <span class="toc-text">插件规范</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件原理"><span class="toc-number">1.</span> <span class="toc-text">插件原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件实例"><span class="toc-number">2.</span> <span class="toc-text">插件实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件开发"><span class="toc-number">3.</span> <span class="toc-text">插件开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件规范"><span class="toc-number">4.</span> <span class="toc-text">插件规范</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -754,12 +755,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
     
     
     
@@ -992,7 +987,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2018/08/03/xadmin/" >Python学习资料</a>
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2018/08/03/xadmin/" >xadmin 插件制作</a>
         </li>
     
     
@@ -1002,12 +997,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/Python学习资源/" >Python学习资源</a>
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/C语言资源大全中文版/" >C语言资源大全中文版</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/C语言资源大全中文版/" >C语言资源大全中文版</a>
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2018/07/22/Python学习资源/" >Python学习资源</a>
         </li>
     
     
@@ -1117,6 +1112,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="IDE"><span class="iconfont-archer">&#xe606;</span>IDE</span>
     
+        <span class="sidebar-tag-name" data-tags="PyCharm"><span class="iconfont-archer">&#xe606;</span>PyCharm</span>
+    
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="面试题"><span class="iconfont-archer">&#xe606;</span>面试题</span>
@@ -1134,8 +1131,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="域名"><span class="iconfont-archer">&#xe606;</span>域名</span>
     
         <span class="sidebar-tag-name" data-tags="pip"><span class="iconfont-archer">&#xe606;</span>pip</span>
-    
-        <span class="sidebar-tag-name" data-tags="PyCharm"><span class="iconfont-archer">&#xe606;</span>PyCharm</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
