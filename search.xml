@@ -84,9 +84,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> CentOS7 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -107,6 +107,8 @@
       
         <tags>
             
+            <tag> CentOS7 </tag>
+            
             <tag> Python </tag>
             
             <tag> Django </tag>
@@ -114,8 +116,6 @@
             <tag> Gunicorn </tag>
             
             <tag> Nginx </tag>
-            
-            <tag> CentOS7 </tag>
             
         </tags>
       
@@ -163,6 +163,8 @@
       
         <tags>
             
+            <tag> CentOS7 </tag>
+            
             <tag> Python </tag>
             
             <tag> Django </tag>
@@ -170,8 +172,6 @@
             <tag> Gunicorn </tag>
             
             <tag> Nginx </tag>
-            
-            <tag> CentOS7 </tag>
             
         </tags>
       
@@ -529,9 +529,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> CentOS7 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -552,11 +552,11 @@
       
         <tags>
             
+            <tag> Linux </tag>
+            
             <tag> Python </tag>
             
             <tag> IDE </tag>
-            
-            <tag> Linux </tag>
             
             <tag> 数据库 </tag>
             
