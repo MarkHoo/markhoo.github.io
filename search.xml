@@ -107,11 +107,11 @@
       
         <tags>
             
-            <tag> CentOS7 </tag>
-            
             <tag> Python </tag>
             
             <tag> Django </tag>
+            
+            <tag> CentOS7 </tag>
             
             <tag> Gunicorn </tag>
             
@@ -163,11 +163,11 @@
       
         <tags>
             
-            <tag> CentOS7 </tag>
-            
             <tag> Python </tag>
             
             <tag> Django </tag>
+            
+            <tag> CentOS7 </tag>
             
             <tag> Gunicorn </tag>
             
@@ -552,9 +552,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Linux </tag>
             
             <tag> IDE </tag>
             
