@@ -15,7 +15,7 @@
     <meta name="description" content="沉默是金--Silence is gold">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>沉默是金 Markhoo</title>
+    <title>Gin Web Framework · 沉默是金 Markhoo</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -70,6 +70,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180709 as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= /css/mobile.css?v=20180709 media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -194,12 +196,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >沉默是金</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Gin Web Framework</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>沉默是金</a>
 </header>
@@ -213,24 +226,74 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://api.ixiaowai.cn/api/api.php)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            Gin Web Framework
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Go">Go</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count">114</span> / Reading time: <span class="post-count">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/10/30</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -331,45 +394,85 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/08/03/xadmin/" >
-            
-                <span>xadmin 插件制作</span>
-        </a>
-        <div class="abstract-content">
-            官网太慢甚至打不开，所以干脆转载过来，方便学习。
-======================
-插件原理xadmin 的插件系统架构设计一定程度上借鉴了 wordpress 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| AdminView 的概念。简单来说，就是 |xadmin| 系统中每一个页面都是一个 AdminView 对象返回的 HttpResponse 结果。|xadmin| 的插件系统做的事情其实就是在 AdminView运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Python">Python</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Django">Django</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "xadmin">xadmin</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Go语言中文官网镜像及资源"><a href="/2018/10/30/golang/#Go语言中文官网镜像及资源" class="headerlink" title="Go语言中文官网镜像及资源"></a>Go语言中文官网镜像及资源</h1><p><a href="https://tour.go-zh.org/" target="_blank" rel="noopener">Go 语言之旅</a><br><a href="https://go-zh.org/" target="_blank" rel="noopener">Go 编程语言</a><br><a href="https://github.com/golang-china" target="_blank" rel="noopener">Go语言文档翻译(QQ群:368836416)</a></p>
+<h1 id="Downloads"><a href="/2018/10/30/golang/#Downloads" class="headerlink" title="Downloads"></a>Downloads</h1><h2 id="Microsoft-Windows"><a href="/2018/10/30/golang/#Microsoft-Windows" class="headerlink" title="Microsoft Windows:"></a>Microsoft Windows:</h2><ul>
+<li><a href="http://image.markhoo.com/go1.11.1.windows-amd64.msi" target="_blank" rel="noopener">go1.11.1.windows-amd64.msi</a></li>
+<li><a href="http://image.markhoo.com/go1.10.4.windows-amd64.msi" target="_blank" rel="noopener">go1.10.4.windows-amd64.msi</a></li>
+<li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.windows-amd64.msi</a></li>
+</ul>
+<h2 id="Apple-macOS"><a href="/2018/10/30/golang/#Apple-macOS" class="headerlink" title="Apple macOS:"></a>Apple macOS:</h2><ul>
+<li><a href="http://image.markhoo.com/go1.11.1.darwin-amd64.pkg" target="_blank" rel="noopener">go1.11.1.darwin-amd64.pkg</a></li>
+<li><a href="http://image.markhoo.com/go1.10.4.darwin-amd64.pkg" target="_blank" rel="noopener">go1.10.4.darwin-amd64.pkg</a></li>
+<li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.darwin-amd64.pkg</a></li>
+</ul>
+<h2 id="Linux"><a href="/2018/10/30/golang/#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><ul>
+<li><a href="http://image.markhoo.com/go1.11.1.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.11.1.linux-amd64.tar.gz</a></li>
+<li><a href="http://image.markhoo.com/go1.10.4.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.10.4.linux-amd64.tar.gz</a></li>
+<li><a href="http://image.markhoo.com/go1.9.7.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.9.7.linux-amd64.tar.gz</a></li>
+</ul>
+<h2 id="Source"><a href="/2018/10/30/golang/#Source" class="headerlink" title="Source:"></a>Source:</h2><ul>
+<li><a href="http://image.markhoo.com/go1.11.1.src.tar.gz" target="_blank" rel="noopener">go1.11.1.src.tar.gz</a></li>
+<li><a href="http://image.markhoo.com/go1.10.4.src.tar.gz" target="_blank" rel="noopener">go1.10.4.src.tar.gz</a></li>
+<li><a href="http://image.markhoo.com/go1.9.7.src.tar.gz" target="_blank" rel="noopener">go1.9.7.src.tar.gz</a></li>
+</ul>
+<p><a href="https://m.aliyun.com/act/team1111/#/share?params=N.BuAJX5hK3X.od77opdu" target="_blank" rel="noopener"><img src="http://image.markhoo.com/970-240.jpg" alt="阿里云" title="阿里云ecs"></a></p>
+
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者: <a href="https://blog.markhoo.com">Mark Hoo</a>
+            <p>原文链接: <a href="https://blog.markhoo.com/2018/10/30/golang/">https://blog.markhoo.com/2018/10/30/golang/</a>
+            <p>发表日期: <a href="https://blog.markhoo.com/2018/10/30/golang/">October 30th 2018, 10:33:44 pm</a>
+            <p>版权声明: 本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/10/14/gogin/" title= Gin使用方法 >
+                    <div class="prevTitle">Gin使用方法</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zODAxMC8xNDU0MA==>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!--PC和WAP自适应版-->
+
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -463,6 +566,24 @@ var _hmt = _hmt || [];
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Go语言中文官网镜像及资源"><span class="toc-number">1.</span> <span class="toc-text">Go语言中文官网镜像及资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Downloads"><span class="toc-number">2.</span> <span class="toc-text">Downloads</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Microsoft-Windows"><span class="toc-number">2.1.</span> <span class="toc-text">Microsoft Windows:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apple-macOS"><span class="toc-number">2.2.</span> <span class="toc-text">Apple macOS:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">2.3.</span> <span class="toc-text">Linux:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Source"><span class="toc-number">2.4.</span> <span class="toc-text">Source:</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1106,6 +1227,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

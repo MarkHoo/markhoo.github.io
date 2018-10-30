@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.markhoo.com/"/>
-  <updated>2018-10-15T01:37:45.083Z</updated>
+  <updated>2018-10-30T07:51:00.310Z</updated>
   <id>https://blog.markhoo.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gin Web Framework</title>
+    <link href="https://blog.markhoo.com/2018/10/30/golang/"/>
+    <id>https://blog.markhoo.com/2018/10/30/golang/</id>
+    <published>2018-10-30T14:33:44.000Z</published>
+    <updated>2018-10-30T07:51:00.310Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Go语言中文官网镜像及资源"><a href="/2018/10/30/golang/#Go语言中文官网镜像及资源" class="headerlink" title="Go语言中文官网镜像及资源"></a>Go语言中文官网镜像及资源</h1><p><a href="https://tour.go-zh.org/" target="_blank" rel="noopener">Go 语言之旅</a><br><a href="https://go-zh.org/" target="_blank" rel="noopener">Go 编程语言</a><br><a href="https://github.com/golang-china" target="_blank" rel="noopener">Go语言文档翻译(QQ群:368836416)</a></p><h1 id="Downloads"><a href="/2018/10/30/golang/#Downloads" class="headerlink" title="Downloads"></a>Downloads</h1><h2 id="Microsoft-Windows"><a href="/2018/10/30/golang/#Microsoft-Windows" class="headerlink" title="Microsoft Windows:"></a>Microsoft Windows:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.windows-amd64.msi" target="_blank" rel="noopener">go1.11.1.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.10.4.windows-amd64.msi" target="_blank" rel="noopener">go1.10.4.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.windows-amd64.msi</a></li></ul><h2 id="Apple-macOS"><a href="/2018/10/30/golang/#Apple-macOS" class="headerlink" title="Apple macOS:"></a>Apple macOS:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.darwin-amd64.pkg" target="_blank" rel="noopener">go1.11.1.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.10.4.darwin-amd64.pkg" target="_blank" rel="noopener">go1.10.4.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.darwin-amd64.pkg</a></li></ul><h2 id="Linux"><a href="/2018/10/30/golang/#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.11.1.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.10.4.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.9.7.linux-amd64.tar.gz</a></li></ul><h2 id="Source"><a href="/2018/10/30/golang/#Source" class="headerlink" title="Source:"></a>Source:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.src.tar.gz" target="_blank" rel="noopener">go1.11.1.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.src.tar.gz" target="_blank" rel="noopener">go1.10.4.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.src.tar.gz" target="_blank" rel="noopener">go1.9.7.src.tar.gz</a></li></ul><p><a href="https://m.aliyun.com/act/team1111/#/share?params=N.BuAJX5hK3X.od77opdu" target="_blank" rel="noopener"><img src="http://image.markhoo.com/970-240.jpg" alt="阿里云" title="阿里云ecs"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Go语言中文官网镜像及资源&quot;&gt;&lt;a href=&quot;/2018/10/30/golang/#Go语言中文官网镜像及资源&quot; class=&quot;headerlink&quot; title=&quot;Go语言中文官网镜像及资源&quot;&gt;&lt;/a&gt;Go语言中文官网镜像及资源&lt;/h1&gt;&lt;p&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="Go" scheme="https://blog.markhoo.com/categories/Go/"/>
+    
+    
+      <category term="Go" scheme="https://blog.markhoo.com/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>Gin使用方法</title>
@@ -551,33 +576,6 @@
       
       
         &lt;h2 id=&quot;升级并安装-pip&quot;&gt;&lt;a href=&quot;/2017/12/25/nginxdjango/#升级并安装-pip&quot; class=&quot;headerlink&quot; title=&quot;升级并安装 pip&quot;&gt;&lt;/a&gt;升级并安装 pip&lt;/h2&gt;&lt;p&gt;sudo apt-get updat
-      
-    
-    </summary>
-    
-      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
-    
-    
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
-    
-      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Django使用基础常用命令</title>
-    <link href="https://blog.markhoo.com/2017/11/20/Djangoml/"/>
-    <id>https://blog.markhoo.com/2017/11/20/Djangoml/</id>
-    <published>2017-11-20T02:35:15.000Z</published>
-    <updated>2018-07-15T01:10:10.479Z</updated>
-    
-    <content type="html"><![CDATA[<p>查看django命令：django-admin 即可显示django的可用命令<br>创建项目命令：django-admin startproject [项目名称] 若没有报错则创建项目成功<br>查看manage.py常用命令：python manage.py 即可显示manage中的可用命令<br>启动项目服务器命令：python manage.py runserver 启动服务器<br>启动项目服务器并修改端口：python manage.py runserver 9999 使用9999端口来启动服务器<br>创建django应用需要进入与manage.py的同级目录进行创建<br>创建命令为：python manage.py startapp [项目名称]<br>创建完成后将应用名称添加到settings.py中的INSTALLED_APPS中完成应用的创建<br>models模型创建完毕后使用manage.py来生成数据表，models模型创建需要在应用目录中的models.py中进行创建<br>创建数据迁移命令：python manage.py makemigrations [应用名称] 进行数据迁移的准备步骤，输入以下命令完成数据迁移操作<br>开始数据迁移命令：python manage.py migrate<br>注：如果不输入应用名称则默认对django中的所有应用进行数据迁移操作<br>数据迁移完成后使用以下命令进行SQL语句查询<br>命令为：python manage.py sqlmigrate [应用名称] [文件id]<br>给django创建一个超级用户<br>命令为：python manage.py createsuperuser<br>浏览器中访问：localhost:8000/admin 进行访问admin页面<br>在应用下admin.py中引入自身的models模块，使用<br>编辑admin.py添加代码：admin.site.register(models.Article)<br>将admin管理后台进行配置升级<br>创建admin配置类<br>    class ArticleAdmin(admin.ModelAdmin)</p><p>注册：admin.site.register(Article,ArticleAdmin )</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;查看django命令：django-admin 即可显示django的可用命令&lt;br&gt;创建项目命令：django-admin startproject [项目名称] 若没有报错则创建项目成功&lt;br&gt;查看manage.py常用命令：python manage.py 即可显示m
       
     
     </summary>
