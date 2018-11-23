@@ -3,10 +3,31 @@
   
     
     <entry>
+      <title>为什么编程语言以及数据库要从1970年1月1日开始计算时间</title>
+      <link href="/2018/11/18/time1970/"/>
+      <url>/2018/11/18/time1970/</url>
+      <content type="html"><![CDATA[<p>话不多说直接上答案，看完这篇文章你应该就懂了。<br>注：这个答案也是某博主不断产生疑问层层挖掘出来的。<br><a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Unix_time</a></p>]]></content>
+      
+      <categories>
+          
+          <category> 默认分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Go官网资源</title>
       <link href="/2018/10/30/golang/"/>
       <url>/2018/10/30/golang/</url>
-      <content type="html"><![CDATA[<h1 id="Go语言中文官网镜像及资源"><a href="/2018/10/30/golang/#Go语言中文官网镜像及资源" class="headerlink" title="Go语言中文官网镜像及资源"></a>Go语言中文官网镜像及资源</h1><p><a href="https://tour.go-zh.org/" target="_blank" rel="noopener">Go 语言之旅</a><br><a href="https://go-zh.org/" target="_blank" rel="noopener">Go 编程语言</a><br><a href="https://github.com/golang-china" target="_blank" rel="noopener">Go语言文档翻译(QQ群:368836416)</a></p><h1 id="Download-Go"><a href="/2018/10/30/golang/#Download-Go" class="headerlink" title="Download Go"></a>Download Go</h1><h2 id="Microsoft-Windows"><a href="/2018/10/30/golang/#Microsoft-Windows" class="headerlink" title="Microsoft Windows:"></a>Microsoft Windows:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.windows-amd64.msi" target="_blank" rel="noopener">go1.11.1.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.10.4.windows-amd64.msi" target="_blank" rel="noopener">go1.10.4.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.windows-amd64.msi</a></li></ul><h2 id="Apple-macOS"><a href="/2018/10/30/golang/#Apple-macOS" class="headerlink" title="Apple macOS:"></a>Apple macOS:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.darwin-amd64.pkg" target="_blank" rel="noopener">go1.11.1.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.10.4.darwin-amd64.pkg" target="_blank" rel="noopener">go1.10.4.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.darwin-amd64.pkg</a></li></ul><h2 id="Linux"><a href="/2018/10/30/golang/#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.11.1.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.10.4.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.9.7.linux-amd64.tar.gz</a></li></ul><h2 id="Source"><a href="/2018/10/30/golang/#Source" class="headerlink" title="Source:"></a>Source:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.src.tar.gz" target="_blank" rel="noopener">go1.11.1.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.src.tar.gz" target="_blank" rel="noopener">go1.10.4.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.src.tar.gz" target="_blank" rel="noopener">go1.9.7.src.tar.gz</a></li></ul>]]></content>
+      <content type="html"><![CDATA[<h1 id="Go语言中文官网镜像及资源"><a href="/2018/10/30/golang/#Go语言中文官网镜像及资源" class="headerlink" title="Go语言中文官网镜像及资源"></a>Go语言中文官网镜像及资源</h1><p><a href="https://golang.google.cn" target="_blank" rel="noopener">Go中国官网</a><br><a href="http://www.slowbirdgogogo.com" target="_blank" rel="noopener">笨鸟学GO</a></p><p><a href="https://tour.go-zh.org/" target="_blank" rel="noopener">Go 语言之旅</a><br><a href="https://go-zh.org/" target="_blank" rel="noopener">Go 编程语言</a><br><a href="https://github.com/golang-china" target="_blank" rel="noopener">Go语言文档翻译(QQ群:368836416)</a></p><h1 id="Download-Go"><a href="/2018/10/30/golang/#Download-Go" class="headerlink" title="Download Go"></a>Download Go</h1><h2 id="Microsoft-Windows"><a href="/2018/10/30/golang/#Microsoft-Windows" class="headerlink" title="Microsoft Windows:"></a>Microsoft Windows:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.windows-amd64.msi" target="_blank" rel="noopener">go1.11.1.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.10.4.windows-amd64.msi" target="_blank" rel="noopener">go1.10.4.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.windows-amd64.msi</a></li></ul><h2 id="Apple-macOS"><a href="/2018/10/30/golang/#Apple-macOS" class="headerlink" title="Apple macOS:"></a>Apple macOS:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.darwin-amd64.pkg" target="_blank" rel="noopener">go1.11.1.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.10.4.darwin-amd64.pkg" target="_blank" rel="noopener">go1.10.4.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.darwin-amd64.pkg</a></li></ul><h2 id="Linux"><a href="/2018/10/30/golang/#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.11.1.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.10.4.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.9.7.linux-amd64.tar.gz</a></li></ul><h2 id="Source"><a href="/2018/10/30/golang/#Source" class="headerlink" title="Source:"></a>Source:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.src.tar.gz" target="_blank" rel="noopener">go1.11.1.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.src.tar.gz" target="_blank" rel="noopener">go1.10.4.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.src.tar.gz" target="_blank" rel="noopener">go1.9.7.src.tar.gz</a></li></ul>]]></content>
       
       <categories>
           
@@ -128,11 +149,11 @@
       
         <tags>
             
-            <tag> CentOS7 </tag>
-            
             <tag> Python </tag>
             
             <tag> Django </tag>
+            
+            <tag> CentOS7 </tag>
             
             <tag> Gunicorn </tag>
             
@@ -184,11 +205,11 @@
       
         <tags>
             
-            <tag> CentOS7 </tag>
-            
             <tag> Python </tag>
             
             <tag> Django </tag>
+            
+            <tag> CentOS7 </tag>
             
             <tag> Gunicorn </tag>
             
@@ -573,9 +594,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Linux </tag>
             
             <tag> IDE </tag>
             

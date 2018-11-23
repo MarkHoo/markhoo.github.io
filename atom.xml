@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.markhoo.com/"/>
-  <updated>2018-10-30T08:33:07.540Z</updated>
+  <updated>2018-11-23T04:23:02.032Z</updated>
   <id>https://blog.markhoo.com/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>为什么编程语言以及数据库要从1970年1月1日开始计算时间</title>
+    <link href="https://blog.markhoo.com/2018/11/18/time1970/"/>
+    <id>https://blog.markhoo.com/2018/11/18/time1970/</id>
+    <published>2018-11-18T12:31:02.000Z</published>
+    <updated>2018-11-23T04:23:02.032Z</updated>
+    
+    <content type="html"><![CDATA[<p>话不多说直接上答案，看完这篇文章你应该就懂了。<br>注：这个答案也是某博主不断产生疑问层层挖掘出来的。<br><a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Unix_time</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;话不多说直接上答案，看完这篇文章你应该就懂了。&lt;br&gt;注：这个答案也是某博主不断产生疑问层层挖掘出来的。&lt;br&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Unix_time&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="默认分类" scheme="https://blog.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="Go" scheme="https://blog.markhoo.com/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Go官网资源</title>
     <link href="https://blog.markhoo.com/2018/10/30/golang/"/>
     <id>https://blog.markhoo.com/2018/10/30/golang/</id>
     <published>2018-10-30T14:33:44.000Z</published>
-    <updated>2018-10-30T08:33:07.540Z</updated>
+    <updated>2018-11-23T04:18:59.778Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Go语言中文官网镜像及资源"><a href="/2018/10/30/golang/#Go语言中文官网镜像及资源" class="headerlink" title="Go语言中文官网镜像及资源"></a>Go语言中文官网镜像及资源</h1><p><a href="https://tour.go-zh.org/" target="_blank" rel="noopener">Go 语言之旅</a><br><a href="https://go-zh.org/" target="_blank" rel="noopener">Go 编程语言</a><br><a href="https://github.com/golang-china" target="_blank" rel="noopener">Go语言文档翻译(QQ群:368836416)</a></p><h1 id="Download-Go"><a href="/2018/10/30/golang/#Download-Go" class="headerlink" title="Download Go"></a>Download Go</h1><h2 id="Microsoft-Windows"><a href="/2018/10/30/golang/#Microsoft-Windows" class="headerlink" title="Microsoft Windows:"></a>Microsoft Windows:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.windows-amd64.msi" target="_blank" rel="noopener">go1.11.1.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.10.4.windows-amd64.msi" target="_blank" rel="noopener">go1.10.4.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.windows-amd64.msi</a></li></ul><h2 id="Apple-macOS"><a href="/2018/10/30/golang/#Apple-macOS" class="headerlink" title="Apple macOS:"></a>Apple macOS:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.darwin-amd64.pkg" target="_blank" rel="noopener">go1.11.1.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.10.4.darwin-amd64.pkg" target="_blank" rel="noopener">go1.10.4.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.darwin-amd64.pkg</a></li></ul><h2 id="Linux"><a href="/2018/10/30/golang/#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.11.1.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.10.4.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.9.7.linux-amd64.tar.gz</a></li></ul><h2 id="Source"><a href="/2018/10/30/golang/#Source" class="headerlink" title="Source:"></a>Source:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.src.tar.gz" target="_blank" rel="noopener">go1.11.1.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.src.tar.gz" target="_blank" rel="noopener">go1.10.4.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.src.tar.gz" target="_blank" rel="noopener">go1.9.7.src.tar.gz</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="Go语言中文官网镜像及资源"><a href="/2018/10/30/golang/#Go语言中文官网镜像及资源" class="headerlink" title="Go语言中文官网镜像及资源"></a>Go语言中文官网镜像及资源</h1><p><a href="https://golang.google.cn" target="_blank" rel="noopener">Go中国官网</a><br><a href="http://www.slowbirdgogogo.com" target="_blank" rel="noopener">笨鸟学GO</a></p><p><a href="https://tour.go-zh.org/" target="_blank" rel="noopener">Go 语言之旅</a><br><a href="https://go-zh.org/" target="_blank" rel="noopener">Go 编程语言</a><br><a href="https://github.com/golang-china" target="_blank" rel="noopener">Go语言文档翻译(QQ群:368836416)</a></p><h1 id="Download-Go"><a href="/2018/10/30/golang/#Download-Go" class="headerlink" title="Download Go"></a>Download Go</h1><h2 id="Microsoft-Windows"><a href="/2018/10/30/golang/#Microsoft-Windows" class="headerlink" title="Microsoft Windows:"></a>Microsoft Windows:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.windows-amd64.msi" target="_blank" rel="noopener">go1.11.1.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.10.4.windows-amd64.msi" target="_blank" rel="noopener">go1.10.4.windows-amd64.msi</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.windows-amd64.msi</a></li></ul><h2 id="Apple-macOS"><a href="/2018/10/30/golang/#Apple-macOS" class="headerlink" title="Apple macOS:"></a>Apple macOS:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.darwin-amd64.pkg" target="_blank" rel="noopener">go1.11.1.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.10.4.darwin-amd64.pkg" target="_blank" rel="noopener">go1.10.4.darwin-amd64.pkg</a></li><li><a href="http://image.markhoo.com/go1.9.7.darwin-amd64.pkg" target="_blank" rel="noopener">go1.9.7.darwin-amd64.pkg</a></li></ul><h2 id="Linux"><a href="/2018/10/30/golang/#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.11.1.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.10.4.linux-amd64.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.linux-amd64.tar.gz" target="_blank" rel="noopener">go1.9.7.linux-amd64.tar.gz</a></li></ul><h2 id="Source"><a href="/2018/10/30/golang/#Source" class="headerlink" title="Source:"></a>Source:</h2><ul><li><a href="http://image.markhoo.com/go1.11.1.src.tar.gz" target="_blank" rel="noopener">go1.11.1.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.10.4.src.tar.gz" target="_blank" rel="noopener">go1.10.4.src.tar.gz</a></li><li><a href="http://image.markhoo.com/go1.9.7.src.tar.gz" target="_blank" rel="noopener">go1.9.7.src.tar.gz</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -172,11 +197,11 @@
       <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
-    
       <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
       <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+    
+      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
     
       <category term="Gunicorn" scheme="https://blog.markhoo.com/tags/Gunicorn/"/>
     
@@ -238,11 +263,11 @@
       <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
     
     
-      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
-    
       <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
       <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+    
+      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
     
       <category term="Gunicorn" scheme="https://blog.markhoo.com/tags/Gunicorn/"/>
     
@@ -549,33 +574,6 @@
       
       
         &lt;h1 id=&quot;解决问题：&quot;&gt;&lt;a href=&quot;/2018/04/11/Djangopip/#解决问题：&quot; class=&quot;headerlink&quot; title=&quot;解决问题：&quot;&gt;&lt;/a&gt;解决问题：&lt;/h1&gt;&lt;p&gt;You are using pip version 9.0.1, how
-      
-    
-    </summary>
-    
-      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
-    
-    
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
-    
-      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx django 的配置步骤</title>
-    <link href="https://blog.markhoo.com/2017/12/25/nginxdjango/"/>
-    <id>https://blog.markhoo.com/2017/12/25/nginxdjango/</id>
-    <published>2017-12-25T02:22:33.000Z</published>
-    <updated>2018-07-15T01:11:16.193Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="升级并安装-pip"><a href="/2017/12/25/nginxdjango/#升级并安装-pip" class="headerlink" title="升级并安装 pip"></a>升级并安装 pip</h2><p>sudo apt-get update<br>sudo apt-get install python-pip</p><h2 id="安装虚拟环境"><a href="/2017/12/25/nginxdjango/#安装虚拟环境" class="headerlink" title="安装虚拟环境"></a>安装虚拟环境</h2><p>sudo pip install virtualenv virtualenvwrapper<br>加入到环境变量中<br>当前用户目录下的 Env为虚拟环境存放的目录</p><p>echo “export WORKON_HOME=~/Env” &gt;&gt; ~/.bashrc<br>echo “source /usr/local/bin/virtualenvwrapper.sh” &gt;&gt; ~/.bashrc</p><h2 id="激活配置"><a href="/2017/12/25/nginxdjango/#激活配置" class="headerlink" title="激活配置"></a>激活配置</h2><p>source ~/.bashrc</p><h2 id="创建虚拟环境"><a href="/2017/12/25/nginxdjango/#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><p>环境名为:firstsite</p><p>在用户当前目录下创建 Django工程<br>cd ~<br>django-admin.py startproject firstsite</p><h2 id="django-的初始化"><a href="/2017/12/25/nginxdjango/#django-的初始化" class="headerlink" title="django 的初始化"></a>django 的初始化</h2><p>cd ~/firstsite<br>./manage.py migrate<br>./manage.py createsuperuser</p><h2 id="Django静态文件配置"><a href="/2017/12/25/nginxdjango/#Django静态文件配置" class="headerlink" title="Django静态文件配置"></a>Django静态文件配置</h2><p>nano firstsite/settings.py<br>STATIC_ROOT = os.path.join(BASE_DIR, “static/“)<br>./manage.py collectstatic</p><h2 id="安装-uWSGI"><a href="/2017/12/25/nginxdjango/#安装-uWSGI" class="headerlink" title="安装 uWSGI"></a>安装 uWSGI</h2><p>sudo apt-get install python-dev<br>sudo pip install uwsgi</p><h2 id="测试是否能够正常访问-django-项目"><a href="/2017/12/25/nginxdjango/#测试是否能够正常访问-django-项目" class="headerlink" title="测试是否能够正常访问 django 项目"></a>测试是否能够正常访问 django 项目</h2><p>http 指定进程端口8080<br>home指定虚拟环境目录<br>chdir指定 项目工程所在目录<br>uwsgi –http :8080 –home /home/pi/Env/firstsite –chdir /home/pi/firstsite -w firstsite.wsgi</p><h2 id="创建-uwsgi-的配置文件"><a href="/2017/12/25/nginxdjango/#创建-uwsgi-的配置文件" class="headerlink" title="创建 uwsgi 的配置文件"></a>创建 uwsgi 的配置文件</h2><p>sudo mkdir -p /etc/uwsgi/sites<br>cd /etc/uwsgi/sites</p><h2 id="uwsgi-的配置相关内容-重点"><a href="/2017/12/25/nginxdjango/#uwsgi-的配置相关内容-重点" class="headerlink" title="uwsgi 的配置相关内容(重点)"></a>uwsgi 的配置相关内容(重点)</h2><p>[uwsgi]<br>project = firstsite<br>base = /home/pi</p><p>chdir = %(base)/%(project)<br>home = %(base)/Env/%(project)<br>module = %(project).wsgi:application</p><p>master = true<br>processes = 5</p><p>socket = %(base)/%(project)/%(project).sock<br>chmod-socket = 666<br>vacuum = true<br>启动守护进程<br>vim /etc/systemd/system/uwsgi.service</p><p>[Unit]<br>Description=uWSGI Emperor service<br>After=syslog.target</p><p>[Service]<br>ExecStart=/usr/local/bin/uwsgi –emperor /etc/uwsgi/sites<br>Restart=always<br>KillSignal=SIGQUIT<br>Type=notify<br>StandardError=syslog<br>NotifyAccess=all</p><p>[Install]<br>WantedBy=multi-user.target<br>重载守护进程的配置信息<br>sudo systemctl daemon-reload<br>保证系统重启后uwsgi守护进程自动重启<br>sudo systemctl enable uwsgi<br>启动uwsgi进程<br>sudo systemctl start uwsgi<br>nginx 的安装<br>sudo apt-get install nginx<br>nginx的配置<br>sudo nano /etc/nginx/sites-available/firstsite<br>server {<br>listen 80;<br>server_name firstsite.com <a href="http://www.firstsite.com" target="_blank" rel="noopener">www.firstsite.com</a>;</p><p>location = /favicon.ico { access_log off; log_not_found off; }<br>location /static/ {<br>root /home/pi/firstsite;<br>}</p><p>location / {<br>include uwsgi_params;<br>uwsgi_pass unix:/home/pi/firstsite/firstsite.sock;<br>}<br>}<br>nginx配置生效<br>sudo ln -s /etc/nginx/sites-available/firstsite /etc/nginx/sites-enabled<br>检查配置<br>sudo service nginx configtest<br>重启nginx<br>sudo service nginx restart<br>非 debug 模式<br>非 debug 模式需要重启uwsgi 服务</p><p>sudo systemctl restart uwsgi</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;升级并安装-pip&quot;&gt;&lt;a href=&quot;/2017/12/25/nginxdjango/#升级并安装-pip&quot; class=&quot;headerlink&quot; title=&quot;升级并安装 pip&quot;&gt;&lt;/a&gt;升级并安装 pip&lt;/h2&gt;&lt;p&gt;sudo apt-get updat
       
     
     </summary>
