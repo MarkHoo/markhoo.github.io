@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.markhoo.com/"/>
-  <updated>2018-11-23T04:23:02.032Z</updated>
+  <updated>2018-11-30T06:00:29.585Z</updated>
   <id>https://blog.markhoo.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java安装和环境配置</title>
+    <link href="https://blog.markhoo.com/2018/11/30/java/"/>
+    <id>https://blog.markhoo.com/2018/11/30/java/</id>
+    <published>2018-11-30T15:38:47.000Z</published>
+    <updated>2018-11-30T06:00:29.585Z</updated>
+    
+    <content type="html"><![CDATA[<p>搭建Java开发环境，第一步我们就需要安装JDK。大家可以在ORACLE官方网站上下载，下载路径：</p><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><p>不同平台和系统的安装文件是不一样的，根据自己电脑的情况选择合适的版本进行安装。查看计算机版本的方法：右击 <figure class="highlight plain"><figcaption><span>，选择 ```属性``` 。查看系统的类型是64位，选择下载的 JDK 版本也得是64位的。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># windows 系统下 Java 环境的配置</span><br><span class="line"></span><br><span class="line">## 第一步：安装JDK</span><br><span class="line"></span><br><span class="line">在 window 系统下，下载好JDK后，点开安装程序，按照指示安装就可以了。</span><br><span class="line"></span><br><span class="line">验证 JDK 是否安装成功：</span><br><span class="line"></span><br><span class="line">1. 点击```开始</span><br></pre></td></tr></table></figure></p><ol start="2"><li>在<figure class="highlight plain"><figcaption><span>cmd，按```回车```，打开 dos 命令行</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 输入命令 ```java -version``` ，按回车</span><br><span class="line"></span><br><span class="line">如果显示了 Java 的版本，那么表示 JDK 安装成功了。</span><br><span class="line"></span><br><span class="line">## 第二步：配置环境变量</span><br><span class="line"></span><br><span class="line">当我们安装好JDK后，就要配置环境变量了。一般来说，我们会配置这三个环境变量：</span><br><span class="line"></span><br><span class="line">- JAVA_HOME 配置 JDK 安装路径</span><br><span class="line">- PATH 配置 JDK 命令文件的位置</span><br><span class="line">- CLASSPATH 配置类库文件的位置</span><br><span class="line"></span><br><span class="line">步骤一：右击``计算机``，选择```属性</span><br></pre></td></tr></table></figure></li></ol><p>步骤二：打开<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">步骤三：选择```高级</span><br></pre></td></tr></table></figure></p><p>步骤四：选择<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">步骤五：在```系统变量```里配置JAVA_HOME</span><br><span class="line"></span><br><span class="line">1. 点击```系统变量```下的```新建</span><br></pre></td></tr></table></figure></p><ol start="2"><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ```变量值```填JDK的安装路径（若是默认安装路径，打开计算机-&gt;C盘-&gt;Program Files-&gt;Java-&gt;jdk1.8.0_191(或者其他版本)，拷贝路径就可以了）</span><br><span class="line"></span><br><span class="line">4. 点击确定</span><br><span class="line"></span><br><span class="line">步骤六：在```系统变量```里配置PATH变量</span><br><span class="line"></span><br><span class="line">1. ```系统变量```默认里有Path变量，找到它，点击```编辑</span><br></pre></td></tr></table></figure></li><li><p>在<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 将路径添加到Path```变量值```前面用```;```和后面的路径隔开</span><br><span class="line"></span><br><span class="line">步骤七:配置CLASSPATH变量</span><br><span class="line"></span><br><span class="line">1. 点击```系统变量```下的```新建</span><br></pre></td></tr></table></figure></p></li><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ```变量值```填JAVA的class路径与lib库路径（若是默认安装路径，打开计算机-&gt;C盘-&gt;Program Files-&gt;Java-&gt;jdk1.8.0_191(或者其他版本)-&gt;lib目录，拷贝路径就可以了）</span><br><span class="line"></span><br><span class="line">4. 点击确定</span><br><span class="line"></span><br><span class="line">## 第三步：验证环境配置是否正确</span><br><span class="line"></span><br><span class="line">1. 点击```开始</span><br></pre></td></tr></table></figure></li><li><p>在<figure class="highlight plain"><figcaption><span>cmd，按```回车```，打开 dos 命令行</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 输入命令 ```java``` ，按```回车</span><br></pre></td></tr></table></figure></p></li><li><p>下面会出现一系列的命令行，这些提示是Java工具的用法和作用</p></li><li><p>再执行一个命令，输入<code>javac</code>，按<code>回车</code></p></li><li><p>如果以上均给出提示，则开发环境配置是没有问题的</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;搭建Java开发环境，第一步我们就需要安装JDK。大家可以在ORACLE官方网站上下载，下载路径：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/index.html&quot; tar
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://blog.markhoo.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://blog.markhoo.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>为什么编程语言以及数据库要从1970年1月1日开始计算时间</title>
@@ -197,11 +223,11 @@
       <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
-    
       <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
       <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+    
+      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
     
       <category term="Gunicorn" scheme="https://blog.markhoo.com/tags/Gunicorn/"/>
     
@@ -263,11 +289,11 @@
       <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
     
     
-      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
-    
       <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
       <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
+    
+      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
     
       <category term="Gunicorn" scheme="https://blog.markhoo.com/tags/Gunicorn/"/>
     
@@ -557,33 +583,6 @@
     
     
       <category term="域名" scheme="https://blog.markhoo.com/tags/%E5%9F%9F%E5%90%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安装Django时提示pip版本问题解决方法</title>
-    <link href="https://blog.markhoo.com/2018/04/11/Djangopip/"/>
-    <id>https://blog.markhoo.com/2018/04/11/Djangopip/</id>
-    <published>2018-04-11T04:19:31.000Z</published>
-    <updated>2018-07-15T01:04:36.184Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="解决问题："><a href="/2018/04/11/Djangopip/#解决问题：" class="headerlink" title="解决问题："></a>解决问题：</h1><p>You are using pip version 9.0.1, however version 10.0.1 is available.<br>You should consider upgrading via the ‘pip install –upgrade pip’ command.</p><h1 id="解决方法"><a href="/2018/04/11/Djangopip/#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>直接运行命令：python -m pip install –upgrade pip 就可以了<br>如果你电脑上安装了两个版本的python，比如Mac上本来自带python2版本，但是你想安装在python3目录内，请把解决方法的运行命令的python改成python3</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;解决问题：&quot;&gt;&lt;a href=&quot;/2018/04/11/Djangopip/#解决问题：&quot; class=&quot;headerlink&quot; title=&quot;解决问题：&quot;&gt;&lt;/a&gt;解决问题：&lt;/h1&gt;&lt;p&gt;You are using pip version 9.0.1, how
-      
-    
-    </summary>
-    
-      <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
-    
-    
-      <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
-    
-      <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
     
   </entry>
   
