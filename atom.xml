@@ -249,8 +249,6 @@
       <category term="Python" scheme="https://blog.markhoo.com/categories/Python/"/>
     
     
-      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
-    
       <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
       <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
@@ -258,6 +256,8 @@
       <category term="Gunicorn" scheme="https://blog.markhoo.com/tags/Gunicorn/"/>
     
       <category term="Nginx" scheme="https://blog.markhoo.com/tags/Nginx/"/>
+    
+      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
     
   </entry>
   
@@ -315,8 +315,6 @@
       <category term="Django" scheme="https://blog.markhoo.com/categories/Django/"/>
     
     
-      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
-    
       <category term="Python" scheme="https://blog.markhoo.com/tags/Python/"/>
     
       <category term="Django" scheme="https://blog.markhoo.com/tags/Django/"/>
@@ -324,6 +322,8 @@
       <category term="Gunicorn" scheme="https://blog.markhoo.com/tags/Gunicorn/"/>
     
       <category term="Nginx" scheme="https://blog.markhoo.com/tags/Nginx/"/>
+    
+      <category term="CentOS7" scheme="https://blog.markhoo.com/tags/CentOS7/"/>
     
   </entry>
   
