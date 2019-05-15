@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,面试题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="沉默是金" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="暂时整理这么多，有好的答案可以在下面留言，并注明问题序号 题目有描述错误的也欢迎指正 部分问题答案可参考:   关于Python的面试题(带目录) 关于Python的面试题(不带目录)  注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言  慕课文章页 Blog主站文章页  ======================================  简要描述Python的垃圾回收">
+<meta name="keywords" content="Python,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python面试题目">
+<meta property="og:url" content="https://blog.markhoo.com/2018/07/14/pymianshiti/index.html">
+<meta property="og:site_name" content="沉默是金">
+<meta property="og:description" content="暂时整理这么多，有好的答案可以在下面留言，并注明问题序号 题目有描述错误的也欢迎指正 部分问题答案可参考:   关于Python的面试题(带目录) 关于Python的面试题(不带目录)  注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言  慕课文章页 Blog主站文章页  ======================================  简要描述Python的垃圾回收">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-06T01:24:06.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python面试题目">
+<meta name="twitter:description" content="暂时整理这么多，有好的答案可以在下面留言，并注明问题序号 题目有描述错误的也欢迎指正 部分问题答案可参考:   关于Python的面试题(带目录) 关于Python的面试题(不带目录)  注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言  慕课文章页 Blog主站文章页  ======================================  简要描述Python的垃圾回收">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '沉默是金'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.markhoo.com/2018/07/14/pymianshiti/"/>
+
+
+
+
+
+  <title>Python面试题目 | 沉默是金</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">沉默是金</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Silence is gold</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.markhoo.com/2018/07/14/pymianshiti/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark Hoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://image.markhoo.com/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="沉默是金">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python面试题目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-14T11:59:11+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>暂时整理这么多，有好的答案可以在下面留言，并注明问题序号</li>
+<li>题目有描述错误的也欢迎指正</li>
+<li>部分问题答案可参考:</li>
+</ul>
+<ol>
+<li><a href="https://blog.markhoo.com/2017/11/13/%E5%85%B3%E4%BA%8EPython%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/">关于Python的面试题</a>(带目录)</li>
+<li><a href="http://www.markhoo.com/index.php/archives/49/" target="_blank" rel="noopener">关于Python的面试题</a>(不带目录)</li>
+</ol>
+<p>注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言</p>
+<ul>
+<li><a href="https://www.imooc.com/article/43902" target="_blank" rel="noopener">慕课文章页</a></li>
+<li><a href="http://www.markhoo.com/index.php/archives/105/" target="_blank" rel="noopener">Blog主站文章页</a></li>
+</ul>
+<p>======================================</p>
+<ol>
+<li>简要描述Python的垃圾回收机制（garbage collection）？</li>
+<li>这些是什么意思：@classmethod， @staticmethod， @property？</li>
+<li>这两个参数是什么意思： *args， **kwargs？我们为什么要使用它们？</li>
+<li>“猴子补丁” （monkey patching）指的是什么？这种做法好吗？</li>
+<li>解释什么是Python？</li>
+<li>Python中的模块和包是什么？</li>
+<li>Python中的docstring是什么？</li>
+<li>在Python中什么是构造器？</li>
+<li>在Python中什么是silcing？</li>
+<li>Python中的unittest是什么？</li>
+<li>为什么lambda没有语句？</li>
+<li>什么是Python的命名空间？</li>
+<li>Python都有哪些自带的数据结构？</li>
+<li>字典推导式和列表推导式是什么？</li>
+<li>参数按值传递和引用传递是怎样实现的？</li>
+<li>数组和元组之间的区别是什么？</li>
+<li>什么是Python装饰器？</li>
+<li>Python是怎样管理内存的？</li>
+<li>Python是如何被解释的？</li>
+<li>什么是pickling和unpickling？</li>
+<li>什么是PEP8？</li>
+<li>Python是如何进行内存管理的？</li>
+<li>单引号，双引号，三引号的区别？</li>
+<li>Python里关于“堆”这种数据结构的模块是哪个？“堆”有什么优点和缺点？</li>
+<li>写一个类，并让它尽可能多的支持操作符</li>
+<li>说说decorator的用法和它的应用场景，如果可以的话，请写一个decorator</li>
+<li>有一个长度是101的数组，存在1-100的数字，有一个是重复的，如何把重复的找出来？</li>
+<li>Python列表与元组的区别是什么？分别在什么情况下使用？</li>
+<li>介绍一下Python getopt模块？</li>
+<li>打乱一个排好序的list对象alist</li>
+<li>有一个dict对象adict，里面包含了一百万个元素，查找其中的某个元素的平均需要多少次比较？</li>
+<li>Python代码怎么得到列表list的交集与差集</li>
+<li>Python里面如何实现tuple和list的转换？</li>
+<li>Python匹配HTML tag的时候，&lt;.*&gt; 和 &lt;.*?&gt; 有什么区别？</li>
+<li>Python中如何定义一个函数？</li>
+<li>Python里如何反序的迭代一个序列？</li>
+<li>是否遇到过Python的模块间循环引用的问题，如何避免它？</li>
+<li>什么是元类（meta_class）？</li>
+<li>调试Python代码的方法有哪些？</li>
+<li>交叉链表求交点</li>
+<li>合并两个有序列表</li>
+<li>如何1-&gt;2-&gt;3-&gt;4转换成2-&gt;1-&gt;4-&gt;3？</li>
+<li>用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠的覆盖一个2*n的大矩形，总共有多少种方法？</li>
+<li>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li>
+<li>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</li>
+<li>解释XSRF和XSS</li>
+<li>网站用户密码保存问题</li>
+<li>Apache和Nginx的区别？</li>
+<li>cookie和session的异同点？</li>
+<li>urllib和urllib2的区别？</li>
+<li>什么是三次握手？</li>
+<li>解释MylSAM和InnoDB</li>
+<li>解释下乐观锁和悲观锁</li>
+<li>__new__ 和 __init__ 的区别是什么？</li>
+<li>Python中重载是什么？</li>
+<li>什么是鸭子类型？</li>
+<li>什么是自省？</li>
+<li>什么是协程？</li>
+<li>什么是GIL线程全局锁？</li>
+<li>Python中的作用域</li>
+<li>如何用Python来发送邮件？</li>
+<li>Python里面如何实现tuple和list的转换？</li>
+<li>Python如何捕获异常？</li>
+<li>写一个简单的Python socket编程</li>
+<li>Python如何copy一个文件？</li>
+<li>如何用Python删除一个文件？</li>
+<li>如何在一个function里面设置一个全局的变量？</li>
+<li>有没有一个工具可以帮助查找Python的bug和进行静态的代码分析？</li>
+<li>proc，lambda，和Proc的区别？</li>
+<li>Python里面如何生成随机数？</li>
+<li>Python里面 secarch() 和 match() 的区别？</li>
+<li>如何用Python来进行查询和替换一个文本字符串？</li>
+<li>介绍一下Python下range()函数的用法</li>
+<li>如何知道一个Python对象的类型？</li>
+<li>Python中pass语句的作用是什么？</li>
+<li>介绍一下except的用法和作用</li>
+<li>Python里面如何拷贝一个对象？</li>
+<li>介绍一下Python Date Time方面的类</li>
+<li>请写出一段Python代码实现删除一个list里面的重复元素</li>
+<li>Python是如何进行类型转换的？</li>
+<li>介绍一下Python的and-or语法</li>
+<li>介绍一下Python中webbrowser的用法</li>
+<li>如何用Python输出一个Fibonacci数列？</li>
+<li>什么是lambda函数？它有什么好处？</li>
+<li>Python下多线程的限制以及多进程中传递参数的方式</li>
+<li>alias的用法，alias与alias_method的区别</li>
+<li>Python如何实现单例模式？</li>
+<li>RE模块中match和search的方法的不同</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/12/Djangoshipin/" rel="next" title="Django学习视频">
+                <i class="fa fa-chevron-left"></i> Django学习视频
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/15/Pyxjq/" rel="prev" title="Python中的小技巧">
+                Python中的小技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://image.markhoo.com/touxiang.jpg"
+                alt="Mark Hoo" />
+            
+              <p class="site-author-name" itemprop="name">Mark Hoo</p>
+              <p class="site-description motion-element" itemprop="description">沉默是金--Silence is gold</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.markhoo.com" title="沉默是金" target="_blank">沉默是金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://simpleisbetterthancomplex.com" title="Vitor Freitas" target="_blank">Vitor Freitas</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liujiangblog.com/blog" title="刘江博客" target="_blank">刘江博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com" title="廖雪峰博客" target="_blank">廖雪峰博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zmrenwu.com" title="追梦人物" target="_blank">追梦人物</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://itsayer.com" title="IT说" target="_blank">IT说</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.bjhee.com" title="思诚之道" target="_blank">思诚之道</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coolshell.cn" title="酷壳" target="_blank">酷壳</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ifeve.com" title="并发编程网" target="_blank">并发编程网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.ibireme.com" title="Garan no dou" target="_blank">Garan no dou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lepture.com" title="Just'lepture" target="_blank">Just'lepture</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://winter-cn.cnblogs.com" title="winter-cn" target="_blank">winter-cn</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/rubylouvre" title="Ruby's Louvre" target="_blank">Ruby's Louvre</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://evanyou.me" title="Evan You" target="_blank">Evan You</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://daimajia.com" title="代码家" target="_blank">代码家</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰" target="_blank">阮一峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.trinea.cn" title="Trinea" target="_blank">Trinea</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.codingnow.com" title="云风的 BLOG" target="_blank">云风的 BLOG</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.phodal.com/blog" title="PHODAL" target="_blank">PHODAL</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.zhaojie.me" title="老赵点滴" target="_blank">老赵点滴</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.markhoo.com" title="Markhoo" target="_blank">Markhoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://deepzz.com" title="Deepzz" target="_blank">Deepzz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.fkzone.com" title="Fkzone!" target="_blank">Fkzone!</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ercc.cc" title="无人小站" target="_blank">无人小站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xujianhua.com" title="许建华博客" target="_blank">许建华博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.c0smx.com" title="c0sMx" target="_blank">c0sMx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://bgods.cn" title="Bgods" target="_blank">Bgods</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.woguanni.cn" title="星霜荏苒" target="_blank">星霜荏苒</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.izhuyue.com" title="FROYO's Blog" target="_blank">FROYO's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhang18.top" title="ZLOE" target="_blank">ZLOE</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.uo33.cn" title="林阿三" target="_blank">林阿三</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.nothamor.cn" title="欧尼酱" target="_blank">欧尼酱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhangshuqiao.org" title="米米的博客" target="_blank">米米的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.v2ex.cc" title="不稽一格" target="_blank">不稽一格</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ailoli.org" title="Ailoli" target="_blank">Ailoli</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.sakuralove.cn" title="樱之恋" target="_blank">樱之恋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhangzhousheng.top" title="安の故乡" target="_blank">安の故乡</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xioaxin12.xyz" title="爱生活爱技术" target="_blank">爱生活爱技术</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://imalan.cn" title="熊猫小A" target="_blank">熊猫小A</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.hostm.cn" title="清楼小筑" target="_blank">清楼小筑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.4leaf.top" title="FecTok's Blog" target="_blank">FecTok's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cnm.im" title="尤质" target="_blank">尤质</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zgblog.net" title="博客之家" target="_blank">博客之家</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ilunp.com" title="歪小棧" target="_blank">歪小棧</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cssj.fun" title="琛苏设计" target="_blank">琛苏设计</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cnguu.cn" title="雨眠" target="_blank">雨眠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wikimoe.com" title="维基萌" target="_blank">维基萌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.joinsen.com" title="Joinsen的博客" target="_blank">Joinsen的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.potter-cat.cn" title="一缕清风" target="_blank">一缕清风</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.mioshu.com" title="奇妙大数据" target="_blank">奇妙大数据</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 - 2019 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark Hoo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

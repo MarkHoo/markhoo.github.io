@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CentOS7,Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="沉默是金" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="文件与目录操作命令 解析cd /home 进入 ‘/home’ 目录cd .. 返回上一级目录cd ../.. 返回上两级目录cd - 返回上次所在目录cp file1 file2 将file1复制为file2cp -a dir1 dir2 复制一个目录cp -a /tmp/dir1 . 复制一个目录到当前工作目录（.代表当前目录）ls 查看目录中的文件ls -a 显示隐藏文件ls -l 显示详细">
+<meta name="keywords" content="CentOS7,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7 常用命令集合">
+<meta property="og:url" content="https://blog.markhoo.com/2017/09/22/CentOS7ml/index.html">
+<meta property="og:site_name" content="沉默是金">
+<meta property="og:description" content="文件与目录操作命令 解析cd /home 进入 ‘/home’ 目录cd .. 返回上一级目录cd ../.. 返回上两级目录cd - 返回上次所在目录cp file1 file2 将file1复制为file2cp -a dir1 dir2 复制一个目录cp -a /tmp/dir1 . 复制一个目录到当前工作目录（.代表当前目录）ls 查看目录中的文件ls -a 显示隐藏文件ls -l 显示详细">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-07T14:05:05.830Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7 常用命令集合">
+<meta name="twitter:description" content="文件与目录操作命令 解析cd /home 进入 ‘/home’ 目录cd .. 返回上一级目录cd ../.. 返回上两级目录cd - 返回上次所在目录cp file1 file2 将file1复制为file2cp -a dir1 dir2 复制一个目录cp -a /tmp/dir1 . 复制一个目录到当前工作目录（.代表当前目录）ls 查看目录中的文件ls -a 显示隐藏文件ls -l 显示详细">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '沉默是金'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.markhoo.com/2017/09/22/CentOS7ml/"/>
+
+
+
+
+
+  <title>CentOS7 常用命令集合 | 沉默是金</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">沉默是金</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Silence is gold</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.markhoo.com/2017/09/22/CentOS7ml/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark Hoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://image.markhoo.com/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="沉默是金">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CentOS7 常用命令集合</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-22T11:11:11+08:00">
+                2017-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="文件与目录操作"><a href="/2017/09/22/CentOS7ml/#文件与目录操作" class="headerlink" title="文件与目录操作"></a>文件与目录操作</h1><p>命令 解析<br>cd /home 进入 ‘/home’ 目录<br>cd .. 返回上一级目录<br>cd ../.. 返回上两级目录<br>cd - 返回上次所在目录<br>cp file1 file2 将file1复制为file2<br>cp -a dir1 dir2 复制一个目录<br>cp -a /tmp/dir1 . 复制一个目录到当前工作目录（.代表当前目录）<br>ls 查看目录中的文件<br>ls -a 显示隐藏文件<br>ls -l 显示详细信息<br>ls -lrt 按时间显示文件（l表示详细列表，r表示反向排序，t表示按时间排序）<br>pwd 显示工作路径<br>mkdir dir1 创建 ‘dir1’ 目录<br>mkdir dir1 dir2 同时创建两个目录<br>mkdir -p /tmp/dir1/dir2 创建一个目录树<br>mv dir1 dir2 移动/重命名一个目录<br>rm -f file1 删除 ‘file1’<br>rm -rf dir1 删除 ‘dir1’ 目录及其子目录内容</p>
+<h1 id="查看文件内容"><a href="/2017/09/22/CentOS7ml/#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h1><p>命令 解析<br>cat file1 从第一个字节开始正向查看文件的内容<br>head -2 file1 查看一个文件的前两行<br>more file1 查看一个长文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>tail -3 file1 查看一个文件的最后三行<br>vi file 打开并浏览文件</p>
+<h1 id="文本内容处理"><a href="/2017/09/22/CentOS7ml/#文本内容处理" class="headerlink" title="文本内容处理"></a>文本内容处理</h1><p>命令 解析<br>grep str /tmp/test 在文件 ‘/tmp/test’ 中查找 “str”<br>grep ^str /tmp/test 在文件 ‘/tmp/test’ 中查找以 “str” 开始的行<br>grep [0-9] /tmp/test 查找 ‘/tmp/test’ 文件中所有包含数字的行<br>grep str -r /tmp/* 在目录 ‘/tmp’ 及其子目录中查找 “str”<br>diff file1 file2 找出两个文件的不同处<br>sdiff file1 file2 以对比的方式显示两个文件的不同</p>
+<h1 id="vi-file"><a href="/2017/09/22/CentOS7ml/#vi-file" class="headerlink" title="vi file"></a>vi file</h1><p>操作 解析<br>i 进入编辑文本模式<br>Esc 退出编辑文本模式<br>:w 保存当前修改<br>:q 不保存退出vi<br>:wq 保存当前修改并退出vi</p>
+<h1 id="查询操作"><a href="/2017/09/22/CentOS7ml/#查询操作" class="headerlink" title="查询操作"></a>查询操作</h1><p>命令 解析<br>find / -name file1 从 ‘/’ 开始进入根文件系统查找文件和目录<br>find / -user user1 查找属于用户 ‘user1’ 的文件和目录<br>find /home/user1 -name <em>.bin 在目录 ‘/ home/user1’ 中查找以 ‘.bin’ 结尾的文件<br>find /usr/bin -type f -atime +100 查找在过去100天内未被使用过的执行文件<br>find /usr/bin -type f -mtime -10 查找在10天内被创建或者修改过的文件<br>locate </em>.ps 寻找以 ‘.ps’ 结尾的文件，先运行 ‘updatedb’ 命令<br>find -name ‘*.[ch]’ | xargs grep -E ‘expr’ 在当前目录及其子目录所有.c和.h文件中查找 ‘expr’<br>find -type f -print0 | xargs -r0 grep -F ‘expr’ 在当前目录及其子目录的常规文件中查找 ‘expr’<br>find -maxdepth 1 -type f | xargs grep -F ‘expr’ 在当前目录中查找 ‘expr’</p>
+<h1 id="压缩、解压"><a href="/2017/09/22/CentOS7ml/#压缩、解压" class="headerlink" title="压缩、解压"></a>压缩、解压</h1><p>命令 解析<br>bzip2 file1 压缩 file1<br>bunzip2 file1.bz2 解压 file1.bz2<br>gzip file1 压缩 file1<br>gzip -9 file1 最大程度压缩 file1<br>gunzip file1.gz 解压 file1.gz<br>tar -cvf archive.tar file1 把file1打包成 archive.tar（-c: 建立压缩档案；-v: 显示所有过程；-f: 使用档案名字，是必须的，是最后一个参数）<br>tar -cvf archive.tar file1 dir1 把 file1，dir1 打包成 archive.tar<br>tar -tf archive.tar 显示一个包中的内容<br>tar -xvf archive.tar 释放一个包<br>tar -xvf archive.tar -C /tmp 把压缩包释放到 /tmp目录下<br>zip file1.zip file1 创建一个zip格式的压缩包<br>zip -r file1.zip file1 dir1 把文件和目录压缩成一个zip格式的压缩包<br>unzip file1.zip 解压一个zip格式的压缩包到当前目录<br>unzip test.zip -d /tmp/ 解压一个zip格式的压缩包到 /tmp 目录</p>
+<h1 id="yum安装器"><a href="/2017/09/22/CentOS7ml/#yum安装器" class="headerlink" title="yum安装器"></a>yum安装器</h1><p>命令 解析<br>yum -y install [package] 下载并安装一个rpm包<br>yum localinstall [package.rpm] 安装一个rpm包，使用你自己的软件仓库解决所有依赖关系<br>yum -y update 更新当前系统中安装的所有rpm包<br>yum update [package] 更新一个rpm包<br>yum remove [package] 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search [package] 在rpm仓库中搜寻软件包<br>yum clean [package] 清除缓存目录（/var/cache/yum）下的软件包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件</p>
+<h1 id="网络相关"><a href="/2017/09/22/CentOS7ml/#网络相关" class="headerlink" title="网络相关"></a>网络相关</h1><p>命令 解析<br>ifconfig eth0 显示一个以太网卡的配置<br>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 配置网卡的IP地址<br>ifdown eth0 禁用 ‘eth0’ 网络设备<br>ifup eth0 启用 ‘eth0’ 网络设备<br>iwconfig eth1 显示一个无线网卡的配置<br>iwlist scan 显示无线网络<br>ip addr show 显示网卡的IP地址</p>
+<h1 id="系统相关"><a href="/2017/09/22/CentOS7ml/#系统相关" class="headerlink" title="系统相关"></a>系统相关</h1><p>命令 解析<br>su - 切换到root权限（与su有区别）<br>shutdown -h now 关机<br>shutdown -r now 重启<br>top 罗列使用CPU资源最多的linux任务 （输入q退出）<br>pstree 以树状图显示程序<br>man ping 查看参考手册（例如ping 命令）<br>passwd 修改密码<br>df -h 显示磁盘的使用情况<br>cal -3 显示前一个月，当前月以及下一个月的月历<br>cal 10 1988 显示指定月，年的月历<br>date –date ‘1970-01-01 UTC 1427888888 seconds’ 把一相对于1970-01-01 00:00的秒数转换成时间<br>XSheel 5相关操作</p>
+<h1 id="窗体快捷键"><a href="/2017/09/22/CentOS7ml/#窗体快捷键" class="headerlink" title="窗体快捷键"></a>窗体快捷键</h1><p>命令 解析<br>Ctrl + u 删除光标之前到行首的字符<br>Ctrl + k 删除光标之前到行尾的字符<br>Ctrl + c 取消当前行输入的命令，相当于Ctrl + Break<br>Ctrl + a 光标移动到行首（ahead of line），相当于通常的Home键<br>Ctrl + e 光标移动到行尾（end of line）<br>Ctrl + f 光标向前（forward）移动一个字符位置<br>Ctrl + b 光标往回（backward）移动一个字符位置<br>Ctrl + l 清屏，相当于执行clear命令<br>Ctrl + r 显示:号提示，根据用户输入查找相关历史命令（reverse-i-search）<br>Ctrl + w 删除从光标位置前到当前所处单词（word）的开头<br>Ctrl + t 交换光标位置前的两个字符<br>Ctrl + y 粘贴最后一次被删除的单词<br>Ctrl + Alt + d 显示桌面<br>Alt + b 光标往回（backward）移动到前一个单词<br>Alt + d 删除从光标位置到当前所处单词的末尾<br>Alt + F2 运行<br>Alt + F4 关闭当前窗口<br>Alt + F9 最小化当前窗口<br>Alt + F10 最大化当前窗口<br>Alt + Tab 切换窗口<br>Alt + 左键 移动窗口（或在最下面的任务栏滚动鼠标滑轮）</p>
+<h1 id="操作小技巧"><a href="/2017/09/22/CentOS7ml/#操作小技巧" class="headerlink" title="操作小技巧"></a>操作小技巧</h1><p>鼠标中间键：粘贴突出显示的文本。(使用鼠标左键来选择文本。把光标指向想粘贴文本的地方。点击鼠标中间键来粘贴。)</p>
+<p>Tab：命令行自动补全。使用 shell 提示时可使用这一方式。键入命令或文件名的前几个字符，然后按 [Tab] 键，它会自动补全命令或显示匹配键入字符的所有命令。</p>
+<p>在滚动条的空白处点击鼠标中键：屏幕即滚动到那个地方。</p>
+<p>在桌面或文件管理器中直接按 / 就可以输入位置，打开文件管理器。</p>
+<p>在 vi 或 Firefox 中直接按 / 即可进入快速搜索状态。</p>
+<p>网站链接和图片可直接拖放到桌面或者目录，可以马上下载。</p>
+<p>直接将文件管理器中的文件拖到终端中就可以在终端中得到完整的路径名。</p>
+<p>结束语</p>
+<p>其实要学好Linux的操作并不是很困难的事情，在平常的使用过程中，碰到问题，学会去网上寻找答案不失为一个非常好的手段！谢谢大家！</p>
+<p>转自：<a href="http://blog.csdn.net/o0darknessyy0o/article/details/52072054" target="_blank" rel="noopener">http://blog.csdn.net/o0darknessyy0o/article/details/52072054</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CentOS7/" rel="tag"># CentOS7</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/30/Pyziliao/" rel="next" title="Python学习资料">
+                <i class="fa fa-chevron-left"></i> Python学习资料
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/13/pymianshidaan/" rel="prev" title="关于Python的面试题以及答案">
+                关于Python的面试题以及答案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://image.markhoo.com/touxiang.jpg"
+                alt="Mark Hoo" />
+            
+              <p class="site-author-name" itemprop="name">Mark Hoo</p>
+              <p class="site-description motion-element" itemprop="description">沉默是金--Silence is gold</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.markhoo.com" title="沉默是金" target="_blank">沉默是金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://simpleisbetterthancomplex.com" title="Vitor Freitas" target="_blank">Vitor Freitas</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liujiangblog.com/blog" title="刘江博客" target="_blank">刘江博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com" title="廖雪峰博客" target="_blank">廖雪峰博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zmrenwu.com" title="追梦人物" target="_blank">追梦人物</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://itsayer.com" title="IT说" target="_blank">IT说</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.bjhee.com" title="思诚之道" target="_blank">思诚之道</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coolshell.cn" title="酷壳" target="_blank">酷壳</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ifeve.com" title="并发编程网" target="_blank">并发编程网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.ibireme.com" title="Garan no dou" target="_blank">Garan no dou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lepture.com" title="Just'lepture" target="_blank">Just'lepture</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://winter-cn.cnblogs.com" title="winter-cn" target="_blank">winter-cn</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/rubylouvre" title="Ruby's Louvre" target="_blank">Ruby's Louvre</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://evanyou.me" title="Evan You" target="_blank">Evan You</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://daimajia.com" title="代码家" target="_blank">代码家</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰" target="_blank">阮一峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.trinea.cn" title="Trinea" target="_blank">Trinea</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.codingnow.com" title="云风的 BLOG" target="_blank">云风的 BLOG</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.phodal.com/blog" title="PHODAL" target="_blank">PHODAL</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.zhaojie.me" title="老赵点滴" target="_blank">老赵点滴</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.markhoo.com" title="Markhoo" target="_blank">Markhoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://deepzz.com" title="Deepzz" target="_blank">Deepzz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.fkzone.com" title="Fkzone!" target="_blank">Fkzone!</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ercc.cc" title="无人小站" target="_blank">无人小站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xujianhua.com" title="许建华博客" target="_blank">许建华博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.c0smx.com" title="c0sMx" target="_blank">c0sMx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://bgods.cn" title="Bgods" target="_blank">Bgods</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.woguanni.cn" title="星霜荏苒" target="_blank">星霜荏苒</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.izhuyue.com" title="FROYO's Blog" target="_blank">FROYO's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhang18.top" title="ZLOE" target="_blank">ZLOE</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.uo33.cn" title="林阿三" target="_blank">林阿三</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.nothamor.cn" title="欧尼酱" target="_blank">欧尼酱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhangshuqiao.org" title="米米的博客" target="_blank">米米的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.v2ex.cc" title="不稽一格" target="_blank">不稽一格</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ailoli.org" title="Ailoli" target="_blank">Ailoli</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.sakuralove.cn" title="樱之恋" target="_blank">樱之恋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhangzhousheng.top" title="安の故乡" target="_blank">安の故乡</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xioaxin12.xyz" title="爱生活爱技术" target="_blank">爱生活爱技术</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://imalan.cn" title="熊猫小A" target="_blank">熊猫小A</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.hostm.cn" title="清楼小筑" target="_blank">清楼小筑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.4leaf.top" title="FecTok's Blog" target="_blank">FecTok's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cnm.im" title="尤质" target="_blank">尤质</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zgblog.net" title="博客之家" target="_blank">博客之家</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ilunp.com" title="歪小棧" target="_blank">歪小棧</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cssj.fun" title="琛苏设计" target="_blank">琛苏设计</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cnguu.cn" title="雨眠" target="_blank">雨眠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wikimoe.com" title="维基萌" target="_blank">维基萌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.joinsen.com" title="Joinsen的博客" target="_blank">Joinsen的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.potter-cat.cn" title="一缕清风" target="_blank">一缕清风</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.mioshu.com" title="奇妙大数据" target="_blank">奇妙大数据</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件与目录操作"><span class="nav-number">1.</span> <span class="nav-text">文件与目录操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本内容处理"><span class="nav-number">3.</span> <span class="nav-text">文本内容处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vi-file"><span class="nav-number">4.</span> <span class="nav-text">vi file</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询操作"><span class="nav-number">5.</span> <span class="nav-text">查询操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#压缩、解压"><span class="nav-number">6.</span> <span class="nav-text">压缩、解压</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yum安装器"><span class="nav-number">7.</span> <span class="nav-text">yum安装器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络相关"><span class="nav-number">8.</span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统相关"><span class="nav-number">9.</span> <span class="nav-text">系统相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#窗体快捷键"><span class="nav-number">10.</span> <span class="nav-text">窗体快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作小技巧"><span class="nav-number">11.</span> <span class="nav-text">操作小技巧</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 - 2019 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark Hoo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
