@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.markhoo.com/links/index.html</loc>
+    
+    <lastmod>2019-06-07T12:28:36.117Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.markhoo.com/2019/05/06/JWT/</loc>
     
     <lastmod>2019-05-06T15:15:56.778Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://blog.markhoo.com/2018/11/30/java/</loc>
     
     <lastmod>2018-12-04T15:20:27.924Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.markhoo.com/links/index.html</loc>
-    
-    <lastmod>2018-11-23T04:30:56.673Z</lastmod>
     
   </url>
   
