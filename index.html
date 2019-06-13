@@ -2166,7 +2166,9 @@
 }
 </code></pre>
 <p>可以使用如下命令来试验这个行过滤器：</p>
+<blockquote>
 <p>$ echo ‘hello’ &gt; /tmp/lines<br>$ echo ‘filter’ &gt;&gt; /tmp/lines<br>$ cat /tmp/lines | go run line-filters.go</p>
+</blockquote>
 <h2 id="Command-Line-Arguments"><a href="/2019/06/08/gobyexample/#Command-Line-Arguments" class="headerlink" title="Command-Line Arguments"></a>Command-Line Arguments</h2><pre><code class="golang"><span class="keyword">package</span> main
 <span class="keyword">import</span> <span class="string">"os"</span>
 <span class="keyword">import</span> <span class="string">"fmt"</span>
@@ -2210,12 +2212,9 @@
 }
 </code></pre>
 <p>测试用例：</p>
-<p>$ go build command-line-flags.go</p>
-<h1 id="省略的标志将自动设定为默认值"><a href="/2019/06/08/gobyexample/#省略的标志将自动设定为默认值" class="headerlink" title="省略的标志将自动设定为默认值"></a>省略的标志将自动设定为默认值</h1><p>$ ./command-line-flags -word=opt</p>
-<h1 id="位置参数可以出现在任何标志后面"><a href="/2019/06/08/gobyexample/#位置参数可以出现在任何标志后面" class="headerlink" title="位置参数可以出现在任何标志后面"></a>位置参数可以出现在任何标志后面</h1><p>$ ./command-line-flags -word=opt a1 a2 a3</p>
-<h1 id="flag-包需要的所有标志出现在位置参数之前，否则标志将会被解析为位置参数"><a href="/2019/06/08/gobyexample/#flag-包需要的所有标志出现在位置参数之前，否则标志将会被解析为位置参数" class="headerlink" title="flag 包需要的所有标志出现在位置参数之前，否则标志将会被解析为位置参数"></a>flag 包需要的所有标志出现在位置参数之前，否则标志将会被解析为位置参数</h1><p>$ ./command-line-flags -word=opt a1 a2 a3 -numb=7</p>
-<h1 id="使用-h-或者-–help标志来得到自动生成的命令行帮助文本"><a href="/2019/06/08/gobyexample/#使用-h-或者-–help标志来得到自动生成的命令行帮助文本" class="headerlink" title="使用 -h 或者 –help标志来得到自动生成的命令行帮助文本"></a>使用 -h 或者 –help标志来得到自动生成的命令行帮助文本</h1><p>$ ./command-line-flags -h</p>
-<h1 id="如果提供了一个没有用-flag-包指定的标志，将会得到错误信息和帮助文档"><a href="/2019/06/08/gobyexample/#如果提供了一个没有用-flag-包指定的标志，将会得到错误信息和帮助文档" class="headerlink" title="如果提供了一个没有用 flag 包指定的标志，将会得到错误信息和帮助文档"></a>如果提供了一个没有用 flag 包指定的标志，将会得到错误信息和帮助文档</h1><p>$ ./command-line-flags -wat</p>
+<blockquote>
+<p>$ go build command-line-flags.go<br># 省略的标志将自动设定为默认值<br>$ ./command-line-flags -word=opt<br># 位置参数可以出现在任何标志后面<br>$ ./command-line-flags -word=opt a1 a2 a3<br># flag 包需要的所有标志出现在位置参数之前，否则标志将会被解析为位置参数<br>$ ./command-line-flags -word=opt a1 a2 a3 -numb=7<br># 使用 -h 或者 –help标志来得到自动生成的命令行帮助文本<br>$ ./command-line-flags -h<br># 如果提供了一个没有用 flag 包指定的标志，将会得到错误信息和帮助文档<br>$ ./command-line-flags -wat</p>
+</blockquote>
 <h2 id="Environment-Variables"><a href="/2019/06/08/gobyexample/#Environment-Variables" class="headerlink" title="Environment Variables"></a>Environment Variables</h2><pre><code class="golang"><span class="keyword">package</span> main
 <span class="keyword">import</span> <span class="string">"os"</span>
 <span class="keyword">import</span> <span class="string">"strings"</span>
