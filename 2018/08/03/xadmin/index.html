@@ -1,0 +1,1199 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="xadmin 插件制作, MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="description" content="官网太慢甚至打不开，所以干脆转载过来，方便学习。
+======================
+插件原理xadmin 的插件系统架构设计一定程度上借鉴了 wordpress 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>xadmin 插件制作 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-desc">
+            
+            MarkHoo&#39;s Blog | 沉默是金
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/markhoo" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/markhoo" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        xadmin 插件制作
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python/" target="_blank">
+                                <span class="chip bg-color">Python</span>
+                            </a>
+                        
+                            <a href="/tags/Django/" target="_blank">
+                                <span class="chip bg-color">Django</span>
+                            </a>
+                        
+                            <a href="/tags/xadmin/" target="_blank">
+                                <span class="chip bg-color">xadmin</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Django/" class="post-category" target="_blank">
+                                Django
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-08-03
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>官网太慢甚至打不开，所以干脆转载过来，方便学习。</p>
+<p>======================</p>
+<h2 id="插件原理"><a href="/2018/08/03/xadmin/#插件原理" class="headerlink" title="插件原理"></a>插件原理</h2><p>xadmin 的插件系统架构设计一定程度上借鉴了 <code>wordpress</code> 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| <code>AdminView</code> 的概念。<br>简单来说，就是 |xadmin| 系统中每一个页面都是一个 <code>AdminView</code> 对象返回的 <code>HttpResponse</code> 结果。|xadmin| 的插件系统做的事情其实就是在 <code>AdminView</code><br>运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。</p>
+<p>首先需要创建自己的插件类， 插件类继承 :class:<code>~xadmin.views.BaseAdminPlugin</code> ::</p>
+<pre><code>class HelloWorldPlugin(BaseAdminPlugin):
+    ...
+</code></pre><p>开发好的插件首先要注册到 |xadmin| 中， 示例代码如下::</p>
+<pre><code># ListAdminView 是 Model 列表页面
+xadmin.site.register_plugin(HelloWorldPlugin, ListAdminView)
+</code></pre><p>其中插件的注册和使用可以参看 :meth:<code>xadmin.sites.AdminSite.register_plugin</code></p>
+<p>当将插件注册到 |xadmin| 后， |xadmin| 在创建 <code>AdminView</code> 实例的时候会将该插件放入实例的 :attr:<code>plugins</code> 属性。当 <code>AdminView</code> 在处理请求<br>时，会首先逐个调用 :attr:<code>plugins</code> 中插件的 :meth:<code>~xadmin.views.BaseAdminPlugin.init_request</code> 方法，插件在该方法中一般进行初始化的操作并且返回一个 Boolean 值告诉 <code>AdminView</code><br>是否需要加载该插件。当 :meth:<code>~xadmin.views.BaseAdminPlugin.init_request</code> 方法返回值为 <code>False</code> 时， <code>AdminView</code> 不会加载该插件。实例如下::</p>
+<pre><code>class HelloWorldPlugin(BaseAdminPlugin):
+    say_hello = False
+    # 初始化方法根据 ``say_hello`` 属性值返回
+    def init_request(self, *args, **kwargs):
+        return bool(self.say_hello)
+</code></pre><p>在以上实例中，插件根据自身的 <code>say_hello</code> 属性来决定是否让自己被加载。您可能会迷惑， <code>say_hello</code> 属性看起来一直会是 <code>False</code> 呀，那样这个插件不是永远不会被加载？<br>其实 |xadmin| 在创建插件实例的时候会将 <code>OptionClass</code> 的同名属性替换插件的属性。这样，在不同的 <code>OptionClass</code> 下会有不同的插件结果，实例如下::</p>
+<pre><code>class SomeModelAdmin(object):
+    say_hello = True
+    ...
+site.register(SomeModel, SomeModelAdmin)
+</code></pre><p>理解以上内容后，让我们再看看插件具体是如何起作用的。在 <code>AdminView</code> 的执行过程中，可以被插件截获或修改的方法使用 :func:<code>~xadmin.views.base.filter_hook</code> 装饰，实例如下::</p>
+<pre><code>class ListAdminView(ModelAdminView):
+    # 可以被插件截获或修改的方法使用该装饰器装饰
+    @filter_hook
+    def get_context(self):
+        ...
+</code></pre><p>使用 :func:<code>~xadmin.views.base.filter_hook</code> 装饰的方法执行过程中会根据一定原则执行插件中的同名方法，具体信息查考该装饰器的文档内容。</p>
+<p>.. autofunction:: xadmin.views.base.filter_hook</p>
+<p>根据该装饰器的执行原则，如果我们想修改上面示例中 <code>ListAdminView</code> 的 <code>get_context</code> 的返回值，可以在插件中实现如下代码::</p>
+<pre><code>class HelloWorldPlugin(BaseAdminPlugin):
+    # 在插件中加入同名方法，修改 ``ListAdminView`` 的 ``get_context`` 返回的值
+    def get_context(self, context):
+        context.update({&apos;hello_target&apos;: &apos;World!!&apos;})
+        return context
+</code></pre><p>如果我们希望插件在 <code>AdminView</code> 的方法前执行，或是完全使用自己的方法替代 <code>AdminView</code> 的方法可以这样::</p>
+<pre><code>class HelloWorldPlugin(BaseAdminPlugin):
+    # 第一个参数为 ``__`` 。这样 ``__`` 即为 ``ListAdminView`` 的 ``get_context`` 方法本身，注意，这时还没有执行这个方法。
+    def get_context(self, __):
+        context = {&apos;hello_target&apos;: &apos;World!!&apos;}
+        #我们可以在任何时候执行 ``AdminView`` 的方法，或是根本不执行
+        context.update(__())
+        return context
+</code></pre><p>至此，加入的插件就实现了对 <code>AdminView</code> 方法的完全控制。</p>
+<p><strong>模板插件</strong></p>
+<p>我们知道，Django 中一个完整的 View 是包含模板的，模板用来生成 View 最终返回的 HTML 内容。当然，插件也可以在模板中插入自己的内容。我们来看看具体如何实现。</p>
+<p>首先让我们来看看 |xadmin| 中的模板代码示例片段 (change_list.html):</p>
+<p>.. code-block:: html</p>
+<pre><code>{% load xadmin %}
+...
+&lt;form id=&quot;changelist-form&quot; action=&quot;&quot; method=&quot;post&quot;{% view_block 'result_list_form' %}&gt;{% csrf_token %}
+  {% view_block 'results_top' %}
+  &lt;div class=&quot;results&quot;&gt;
+    {% if results %}
+    ...
+</code></pre><p>其中的 <code>view_block</code> Tag 即为插件的 <strong>插入点</strong> 。插件可以在自己的插件类中使用 <code>block_</code> + <code>插入点名称</code> 方法将 HTML 片段插入到页面的这个位置，示例如下:</p>
+<p>.. code-block:: python</p>
+<pre><code>class HelloWorldPlugin(BaseAdminPlugin):
+
+    # context 即为 TemplateContext， nodes 参数包含了其他插件的返回内容。
+    # 您可以直接返回 HTML 片段，或是将内容加入到 nodes 参数中
+    def block_results_top(self, context, nodes):
+        return s&quot;&lt;div class=&apos;info&apos;&gt;Hello %s&lt;/div&gt;&quot; % context[&apos;hello_target&apos;]
+</code></pre><h2 id="插件实例"><a href="/2018/08/03/xadmin/#插件实例" class="headerlink" title="插件实例"></a>插件实例</h2><p>下面让我们来看一个 |xadmin| 中完整的插件实例::</p>
+<pre><code>from django.template import loader
+
+from xadmin.sites import site
+from xadmin.views import BaseAdminPlugin, ListAdminView
+
+REFRESH_VAR = &apos;_refresh&apos;
+
+# 该插件实现了一个列表页面刷新器的效果
+class RefreshPlugin(BaseAdminPlugin):
+
+    # 用户可以定制刷新的频率，可以传入多个值。该属性会被 ``OptionClass`` 的同名属性替换
+    refresh_times = []
+
+    def init_request(self, *args, **kwargs):
+        # 根据用户是否制定了刷新器来决定是否启动该插件
+        return bool(self.refresh_times)
+
+    # 插件拦截了返回 Media 的方法，加入自己需要的 js 文件。
+    def get_media(self, media):
+        if self.request.GET.get(REFRESH_VAR):
+            # 放页面处于自动刷新状态时，加入自己的 js 制定刷新逻辑
+            media.add_js([self.static(&apos;xadmin/js/refresh.js&apos;)])
+        return media
+
+    # Block Views
+    # 在页面中插入 HTML 片段，显示刷新选项。
+    def block_top_toolbar(self, context, nodes):
+        current_refresh = self.request.GET.get(REFRESH_VAR)
+        context.update({
+            &apos;has_refresh&apos;: bool(current_refresh),
+            &apos;clean_refresh_url&apos;: self.admin_view.get_query_string(remove=(REFRESH_VAR,)),
+            &apos;current_refresh&apos;: current_refresh,
+            &apos;refresh_times&apos;: [{
+                &apos;time&apos;: r,
+                &apos;url&apos;: self.admin_view.get_query_string({REFRESH_VAR: r}),
+                &apos;selected&apos;: str(r) == current_refresh,
+            } for r in self.refresh_times],
+        })
+        # 可以将 HTML 片段加入 nodes 参数中
+        nodes.append(loader.render_to_string(&apos;xadmin/blocks/refresh.html&apos;, context_instance=context))
+# 注册插件
+site.register_plugin(RefreshPlugin, ListAdminView)
+</code></pre><p>最后不要忘记在适当的地方加载该代码， 让其执行。一般情况下，你可以将其写到 adminx.py 文件中，这样，只要您的 APP 加入到 Django Settings 的 INSTALL_APPS 中，<br>|xadmin| 就会自动执行 app 下的 adminx.py 文件。</p>
+<h2 id="插件开发"><a href="/2018/08/03/xadmin/#插件开发" class="headerlink" title="插件开发"></a>插件开发</h2><p>了解了插件的运行原理后我们就可以开发自己的插件了。首先我们需要了解插件类中的实用方法。因为插件是继承 :class:<code>~xadmin.views.BaseAdminPlugin</code> 类，而该类继承自<br>:class:<code>~xadmin.views.BaseAdminObject</code>，所以这两个类的方法都可以在插件中使用。</p>
+<p>|xadmin| 在创建插件时会自动注入以下属性到插件实例中:</p>
+<pre><code>* request : Http Request
+
+* user : 当前 User 对象
+
+* args : View 方法的 args 参数
+
+* kwargs : View 方法的 kwargs 参数
+
+* admin_view : ``AdminView`` 实例
+
+* admin_site : |xadmin| 的 ``admin_site`` 对象实例
+</code></pre><p>如果 <code>AdminView</code> 是 :class:<code>~xadmin.views.ModelAdminView</code> 的子类，还会自动注入以下属性:</p>
+<pre><code>* model : Model 对象
+
+* opts : Model 的 _meta 属性
+</code></pre><p>接下来您应该考虑打算制作什么功能的插件了。不同功能的插件额能需要注册到不同的 <code>AdminView</code> 上，|xadmin| 系统中<br>主要的 <code>AdminView</code> 有:</p>
+<pre><code>* :class:`~xadmin.views.BaseAdminView` : 所有 ``AdminView`` 的基础类，注册在该 View 上的插件可以影响所有的 ``AdminView``
+
+* :class:`~xadmin.views.CommAdminView` : 用户已经登陆后显示的 View，也是所有登陆后 View 的基础类。该 View主要作用是创建了 |xadmin| 的通用元素，例如：系统菜单，用户信息等。插件可以通过注册该 View 来修改这些信息。
+
+* :class:`~xadmin.views.ModelAdminView` : 基于 Model 的 ``AdminView`` 的基础类，注册的插件可以影响所有基于 Model 的 View。
+
+* :class:`~xadmin.views.ListAdminView` : Model 列表页面 View。
+
+* :class:`~xadmin.views.ModelFormAdminView` : Model 编辑页面 View。
+
+* :class:`~xadmin.views.CreateAdminView` : Model 创建页面 View。
+
+* :class:`~xadmin.views.UpdateAdminView` : Model 修改页面 View。
+
+* :class:`~xadmin.views.DeleteAdminView` : Model 删除页面 View。
+
+* :class:`~xadmin.views.DetailAdminView` : Model 详情页面 View。
+</code></pre><p>选择好目标 <code>AdminView</code> 后就要在自己的插件中编写方法来修改或增强这些 <code>AdminView</code> 。其中每个 <code>AdminView</code> 可以<br>拦截的方法及其介绍请参看各 <code>AdminView</code> 的文档。</p>
+<h2 id="插件规范"><a href="/2018/08/03/xadmin/#插件规范" class="headerlink" title="插件规范"></a>插件规范</h2><p><strong>文档模板</strong>::</p>
+<pre><code>&quot;&quot;&quot;
+Name
+======
+
+作者
+----
+
+该插件的作者信息
+
+功能
+----
+
+描述插件的主要功能
+
+截图
+----
+
+.. image:: /images/plugins/action.png
+
+使用
+----
+
+描述插件的使用方法,  以及使用示例.
+
+版本
+----
+
+描述插件的版本信息
+
+API
+---
+.. autoclass:: XXX
+
+&quot;&quot;&quot;
+</code></pre>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《xadmin 插件制作》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/08/03/xadmin/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                MarkHoo
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2018-08-03T16-12-15',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/08/14/blogbushu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目">
+                        
+                        <span class="card-title">使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
+本站目前的开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Guni
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Django/" class="post-category" target="_blank">
+                                    Django
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CentOS7/" target="_blank">
+                        <span class="chip bg-color">CentOS7</span>
+                    </a>
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
+                    </a>
+                    
+                    <a href="/tags/Gunicorn/" target="_blank">
+                        <span class="chip bg-color">Gunicorn</span>
+                    </a>
+                    
+                    <a href="/tags/Nginx/" target="_blank">
+                        <span class="chip bg-color">Nginx</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/07/28/pippypi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="更换pip源到国内镜像加速python pypi包的安装">
+                        
+                        <span class="card-title">更换pip源到国内镜像加速python pypi包的安装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            昨晚安装Django的时候总是安装到一半就报错，而且速度很慢，问题主要是国外的源连接不稳定会中断所致。后来就想到了切换到国内源。想到可能还会有同学碰到类似的问题，特此记录分享一下
+pip国内的一些镜像公网：http://e.pypi.pyt
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
+                    </a>
+                    
+                    <a href="/tags/pip/" target="_blank">
+                        <span class="chip bg-color">pip</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '作者: MarkHoo<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:markhoo@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=896275643" class="tooltipped" data-tooltip="QQ联系我: 896275643" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
