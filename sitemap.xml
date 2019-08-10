@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.markhoo.com/friends/index.html</loc>
+    
+    <lastmod>2019-08-10T14:15:49.314Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/about/index.html</loc>
+    
+    <lastmod>2019-08-10T14:08:43.349Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/tags/index.html</loc>
+    
+    <lastmod>2019-08-10T14:05:47.793Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/categories/index.html</loc>
+    
+    <lastmod>2019-08-10T14:05:23.582Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.markhoo.com/2019/06/08/gobyexample/</loc>
     
     <lastmod>2019-06-13T05:47:15.694Z</lastmod>
@@ -40,13 +68,6 @@
     <loc>https://blog.markhoo.com/2018/10/30/golang/</loc>
     
     <lastmod>2018-11-23T04:18:59.778Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.markhoo.com/about/index.html</loc>
-    
-    <lastmod>2018-10-30T08:34:21.038Z</lastmod>
     
   </url>
   
