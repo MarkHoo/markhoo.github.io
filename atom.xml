@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>沉默是金</title>
+  <title>MarkHoo&#39;s Blog</title>
   
-  <subtitle>Silence is gold</subtitle>
+  <subtitle>MarkHoo&#39;s Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.markhoo.com/"/>
@@ -10,7 +10,7 @@
   <id>https://blog.markhoo.com/</id>
   
   <author>
-    <name>Mark Hoo</name>
+    <name>MarkHoo</name>
     
   </author>
   

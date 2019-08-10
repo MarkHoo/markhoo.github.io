@@ -1,342 +1,433 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
 
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="http://image.markhoo.com/touxiang.jpg?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Python,面试题,算法," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="沉默是金" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="Python语言特性1 Python的函数参数传递看两个例子: 12345a = 1def fun(a):    a = 2fun(a)print a  # 1 12345a = []def fun(a):    a.append(1)fun(a)print a  # [1] 所有的变量都可以理解是内存中一个对象的“引用”，或者，也可以看似c中void*的感觉。 通过id来看引用a的内存地址可以比">
-<meta name="keywords" content="Python,面试题,算法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关于Python的面试题以及答案">
-<meta property="og:url" content="https://blog.markhoo.com/2017/11/13/pymianshidaan/index.html">
-<meta property="og:site_name" content="沉默是金">
-<meta property="og:description" content="Python语言特性1 Python的函数参数传递看两个例子: 12345a = 1def fun(a):    a = 2fun(a)print a  # 1 12345a = []def fun(a):    a.append(1)fun(a)print a  # [1] 所有的变量都可以理解是内存中一个对象的“引用”，或者，也可以看似c中void*的感觉。 通过id来看引用a的内存地址可以比">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hi.csdn.net/attachment/201106/28/0_1309244136MWLP.gif">
-<meta property="og:updated_time" content="2018-10-30T08:33:38.014Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于Python的面试题以及答案">
-<meta name="twitter:description" content="Python语言特性1 Python的函数参数传递看两个例子: 12345a = 1def fun(a):    a = 2fun(a)print a  # 1 12345a = []def fun(a):    a.append(1)fun(a)print a  # [1] 所有的变量都可以理解是内存中一个对象的“引用”，或者，也可以看似c中void*的感觉。 通过id来看引用a的内存地址可以比">
-<meta name="twitter:image" content="http://hi.csdn.net/attachment/201106/28/0_1309244136MWLP.gif">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '沉默是金'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://blog.markhoo.com/2017/11/13/pymianshidaan/"/>
-
-
-
-
-
-  <title>关于Python的面试题以及答案 | 沉默是金</title>
-  
-
-
-
-
-
-
-
-
+    <meta charset="utf-8">
+    <meta name="keywords" content="关于Python的面试题以及答案, MarkHoo&#39;s Blog">
+    <meta name="description" content="Python语言特性1 Python的函数参数传递看两个例子:
+12345a = 1def fun(a):    a = 2fun(a)print a  # 1
+12345a = []def fun(a):    a.append(1)fu">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>关于Python的面试题以及答案 | MarkHoo&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-  
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">MarkHoo's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">沉默是金</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">MarkHoo's Blog</div>
+        <div class="logo-desc">
+            
+            MarkHoo&#39;s Blog | 沉默是金
+            
+        </div>
     </div>
-      
-        <p class="site-subtitle">Silence is gold</p>
-      
-  </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            Sitemap
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.markhoo.com/2017/11/13/pymianshidaan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mark Hoo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://image.markhoo.com/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="沉默是金">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">关于Python的面试题以及答案</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-13T09:58:04+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        关于Python的面试题以及答案
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
 
-      
-      
+    #articleContent :focus {
+        outline: none;
+    }
 
-      
-        <h1 id="Python语言特性"><a href="/2017/11/13/pymianshidaan/#Python语言特性" class="headerlink" title="Python语言特性"></a>Python语言特性</h1><h2 id="1-Python的函数参数传递"><a href="/2017/11/13/pymianshidaan/#1-Python的函数参数传递" class="headerlink" title="1 Python的函数参数传递"></a>1 Python的函数参数传递</h2><p>看两个例子:</p>
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python/" target="_blank">
+                                <span class="chip bg-color">Python</span>
+                            </a>
+                        
+                            <a href="/tags/面试题/" target="_blank">
+                                <span class="chip bg-color">面试题</span>
+                            </a>
+                        
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                Python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-11-13
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Python语言特性"><a href="/2017/11/13/pymianshidaan/#Python语言特性" class="headerlink" title="Python语言特性"></a>Python语言特性</h1><h2 id="1-Python的函数参数传递"><a href="/2017/11/13/pymianshidaan/#1-Python的函数参数传递" class="headerlink" title="1 Python的函数参数传递"></a>1 Python的函数参数传递</h2><p>看两个例子:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(a)</span>:</span></span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line">fun(a)</span><br><span class="line"><span class="keyword">print</span> a  <span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(a)</span>:</span></span><br><span class="line">    a.append(<span class="number">1</span>)</span><br><span class="line">fun(a)</span><br><span class="line"><span class="keyword">print</span> a  <span class="comment"># [1]</span></span><br></pre></td></tr></table></figure>
 <p>所有的变量都可以理解是内存中一个对象的“引用”，或者，也可以看似c中void*的感觉。</p>
@@ -941,615 +1032,506 @@
 <p> 可参考：<a href="http://blog.csdn.net/mrlevo520/article/details/75676160" target="_blank" rel="noopener">动态规划(DP)的整理-Python描述</a></p>
 </blockquote>
 
-      
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    
-    
+</div>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/面试题/" rel="tag"># 面试题</a>
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
             
-              <a href="/2017/09/22/CentOS7ml/" rel="next" title="CentOS7 常用命令集合">
-                <i class="fa fa-chevron-left"></i> CentOS7 常用命令集合
-              </a>
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
             
-          </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/18/wangyi/" rel="prev" title="两种网易云音乐播放器调用代码 网站可直接调用">
-                两种网易云音乐播放器调用代码 网站可直接调用 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="http://image.markhoo.com/touxiang.jpg"
-                alt="Mark Hoo" />
-            
-              <p class="site-author-name" itemprop="name">Mark Hoo</p>
-              <p class="site-description motion-element" itemprop="description">沉默是金--Silence is gold</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">30</span>
-                  <span class="site-state-item-name">posts</span>
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
                 </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">categories</span>
-                
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
             </div>
-          
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《关于Python的面试题以及答案》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/11/13/pymianshidaan/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                MarkHoo
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
 
-          
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
 
-          
-          
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
 
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.markhoo.com" title="沉默是金" target="_blank">沉默是金</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://simpleisbetterthancomplex.com" title="Vitor Freitas" target="_blank">Vitor Freitas</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.liujiangblog.com/blog" title="刘江博客" target="_blank">刘江博客</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.liaoxuefeng.com" title="廖雪峰博客" target="_blank">廖雪峰博客</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.zmrenwu.com" title="追梦人物" target="_blank">追梦人物</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://itsayer.com" title="IT说" target="_blank">IT说</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.bjhee.com" title="思诚之道" target="_blank">思诚之道</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://coolshell.cn" title="酷壳" target="_blank">酷壳</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ifeve.com" title="并发编程网" target="_blank">并发编程网</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.ibireme.com" title="Garan no dou" target="_blank">Garan no dou</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://lepture.com" title="Just'lepture" target="_blank">Just'lepture</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://winter-cn.cnblogs.com" title="winter-cn" target="_blank">winter-cn</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.cnblogs.com/rubylouvre" title="Ruby's Louvre" target="_blank">Ruby's Louvre</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://evanyou.me" title="Evan You" target="_blank">Evan You</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://daimajia.com" title="代码家" target="_blank">代码家</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.ruanyifeng.com/home.html" title="阮一峰" target="_blank">阮一峰</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.trinea.cn" title="Trinea" target="_blank">Trinea</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.codingnow.com" title="云风的 BLOG" target="_blank">云风的 BLOG</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.phodal.com/blog" title="PHODAL" target="_blank">PHODAL</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://blog.zhaojie.me" title="老赵点滴" target="_blank">老赵点滴</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.markhoo.com" title="Markhoo" target="_blank">Markhoo</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://deepzz.com" title="Deepzz" target="_blank">Deepzz</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.fkzone.com" title="Fkzone!" target="_blank">Fkzone!</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.ercc.cc" title="无人小站" target="_blank">无人小站</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.xujianhua.com" title="许建华博客" target="_blank">许建华博客</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.c0smx.com" title="c0sMx" target="_blank">c0sMx</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://bgods.cn" title="Bgods" target="_blank">Bgods</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.woguanni.cn" title="星霜荏苒" target="_blank">星霜荏苒</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.izhuyue.com" title="FROYO's Blog" target="_blank">FROYO's Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://zhang18.top" title="ZLOE" target="_blank">ZLOE</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.uo33.cn" title="林阿三" target="_blank">林阿三</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.nothamor.cn" title="欧尼酱" target="_blank">欧尼酱</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://zhangshuqiao.org" title="米米的博客" target="_blank">米米的博客</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.v2ex.cc" title="不稽一格" target="_blank">不稽一格</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.ailoli.org" title="Ailoli" target="_blank">Ailoli</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.sakuralove.cn" title="樱之恋" target="_blank">樱之恋</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.zhangzhousheng.top" title="安の故乡" target="_blank">安の故乡</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.xioaxin12.xyz" title="爱生活爱技术" target="_blank">爱生活爱技术</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://imalan.cn" title="熊猫小A" target="_blank">熊猫小A</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.hostm.cn" title="清楼小筑" target="_blank">清楼小筑</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.4leaf.top" title="FecTok's Blog" target="_blank">FecTok's Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://cnm.im" title="尤质" target="_blank">尤质</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://zgblog.net" title="博客之家" target="_blank">博客之家</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.ilunp.com" title="歪小棧" target="_blank">歪小棧</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.cssj.fun" title="琛苏设计" target="_blank">琛苏设计</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://cnguu.cn" title="雨眠" target="_blank">雨眠</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.wikimoe.com" title="维基萌" target="_blank">维基萌</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.joinsen.com" title="Joinsen的博客" target="_blank">Joinsen的博客</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.potter-cat.cn" title="一缕清风" target="_blank">一缕清风</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.mioshu.com" title="奇妙大数据" target="_blank">奇妙大数据</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
 
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python语言特性"><span class="nav-number">1.</span> <span class="nav-text">Python语言特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Python的函数参数传递"><span class="nav-number">1.1.</span> <span class="nav-text">1 Python的函数参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Python中的元类-metaclass"><span class="nav-number">1.2.</span> <span class="nav-text">2 Python中的元类(metaclass)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-staticmethod和-classmethod"><span class="nav-number">1.3.</span> <span class="nav-text">3 @staticmethod和@classmethod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-类变量和实例变量"><span class="nav-number">1.4.</span> <span class="nav-text">4 类变量和实例变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Python自省"><span class="nav-number">1.5.</span> <span class="nav-text">5 Python自省</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-字典推导式"><span class="nav-number">1.6.</span> <span class="nav-text">6 字典推导式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Python中单下划线和双下划线"><span class="nav-number">1.7.</span> <span class="nav-text">7 Python中单下划线和双下划线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-字符串格式化-和-format"><span class="nav-number">1.8.</span> <span class="nav-text">8 字符串格式化:%和.format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-迭代器和生成器"><span class="nav-number">1.9.</span> <span class="nav-text">9 迭代器和生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-args-and-kwargs"><span class="nav-number">1.10.</span> <span class="nav-text">10 *args and **kwargs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-面向切面编程AOP和装饰器"><span class="nav-number">1.11.</span> <span class="nav-text">11 面向切面编程AOP和装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-鸭子类型"><span class="nav-number">1.12.</span> <span class="nav-text">12 鸭子类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Python中重载"><span class="nav-number">1.13.</span> <span class="nav-text">13 Python中重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-新式类和旧式类"><span class="nav-number">1.14.</span> <span class="nav-text">14 新式类和旧式类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-new-和-init-的区别"><span class="nav-number">1.15.</span> <span class="nav-text">15 __new__和__init__的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-单例模式"><span class="nav-number">1.16.</span> <span class="nav-text">16 单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用-new-方法"><span class="nav-number">1.16.1.</span> <span class="nav-text">1 使用__new__方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-共享属性"><span class="nav-number">1.16.2.</span> <span class="nav-text">2 共享属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-装饰器版本"><span class="nav-number">1.16.3.</span> <span class="nav-text">3 装饰器版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-import方法"><span class="nav-number">1.16.4.</span> <span class="nav-text">4 import方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-Python中的作用域"><span class="nav-number">1.17.</span> <span class="nav-text">17 Python中的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-GIL线程全局锁"><span class="nav-number">1.18.</span> <span class="nav-text">18 GIL线程全局锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-协程"><span class="nav-number">1.19.</span> <span class="nav-text">19 协程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-闭包"><span class="nav-number">1.20.</span> <span class="nav-text">20 闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-lambda函数"><span class="nav-number">1.21.</span> <span class="nav-text">21 lambda函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-Python函数式编程"><span class="nav-number">1.22.</span> <span class="nav-text">22 Python函数式编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-Python里的拷贝"><span class="nav-number">1.23.</span> <span class="nav-text">23 Python里的拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-Python垃圾回收机制"><span class="nav-number">1.24.</span> <span class="nav-text">24 Python垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-引用计数"><span class="nav-number">1.24.1.</span> <span class="nav-text">1 引用计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-标记-清除机制"><span class="nav-number">1.24.2.</span> <span class="nav-text">2 标记-清除机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-分代技术"><span class="nav-number">1.24.3.</span> <span class="nav-text">3 分代技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-Python的List"><span class="nav-number">1.25.</span> <span class="nav-text">25 Python的List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-Python的is"><span class="nav-number">1.26.</span> <span class="nav-text">26 Python的is</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27-read-readline和readlines"><span class="nav-number">1.27.</span> <span class="nav-text">27 read,readline和readlines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28-Python2和3的区别"><span class="nav-number">1.28.</span> <span class="nav-text">28 Python2和3的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-super-init"><span class="nav-number">1.29.</span> <span class="nav-text">29 super init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#30-range-and-xrange"><span class="nav-number">1.30.</span> <span class="nav-text">30 range and xrange</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统"><span class="nav-number">2.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-select-poll和epoll"><span class="nav-number">2.1.</span> <span class="nav-text">1 select,poll和epoll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-调度算法"><span class="nav-number">2.2.</span> <span class="nav-text">2 调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-死锁"><span class="nav-number">2.3.</span> <span class="nav-text">3 死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-程序编译与链接"><span class="nav-number">2.4.</span> <span class="nav-text">4 程序编译与链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-预处理"><span class="nav-number">2.4.1.</span> <span class="nav-text">1 预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-编译"><span class="nav-number">2.4.2.</span> <span class="nav-text">2 编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-汇编"><span class="nav-number">2.4.3.</span> <span class="nav-text">3 汇编</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-链接"><span class="nav-number">2.4.4.</span> <span class="nav-text">4 链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-静态链接和动态链接"><span class="nav-number">2.5.</span> <span class="nav-text">5 静态链接和动态链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-虚拟内存技术"><span class="nav-number">2.6.</span> <span class="nav-text">6 虚拟内存技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-分页和分段"><span class="nav-number">2.7.</span> <span class="nav-text">7 分页和分段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分页与分段的主要区别"><span class="nav-number">2.7.1.</span> <span class="nav-text">分页与分段的主要区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-页面置换算法"><span class="nav-number">2.8.</span> <span class="nav-text">8 页面置换算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-边沿触发和水平触发"><span class="nav-number">2.9.</span> <span class="nav-text">9 边沿触发和水平触发</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-number">3.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-事务"><span class="nav-number">3.1.</span> <span class="nav-text">1 事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数据库索引"><span class="nav-number">3.2.</span> <span class="nav-text">2 数据库索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Redis原理"><span class="nav-number">3.3.</span> <span class="nav-text">3 Redis原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis是什么？"><span class="nav-number">3.3.1.</span> <span class="nav-text">Redis是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis数据库"><span class="nav-number">3.3.2.</span> <span class="nav-text">Redis数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis缺点"><span class="nav-number">3.3.3.</span> <span class="nav-text">Redis缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-乐观锁和悲观锁"><span class="nav-number">3.4.</span> <span class="nav-text">4 乐观锁和悲观锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-MVCC"><span class="nav-number">3.5.</span> <span class="nav-text">5 MVCC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL的innodb引擎是如何实现MVCC的"><span class="nav-number">3.5.1.</span> <span class="nav-text">MySQL的innodb引擎是如何实现MVCC的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-MyISAM和InnoDB"><span class="nav-number">3.6.</span> <span class="nav-text">6 MyISAM和InnoDB</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">4.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-三次握手"><span class="nav-number">4.1.</span> <span class="nav-text">1 三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-四次挥手"><span class="nav-number">4.2.</span> <span class="nav-text">2 四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ARP协议"><span class="nav-number">4.3.</span> <span class="nav-text">3 ARP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-urllib和urllib2的区别"><span class="nav-number">4.4.</span> <span class="nav-text">4 urllib和urllib2的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Post和Get"><span class="nav-number">4.5.</span> <span class="nav-text">5 Post和Get</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Cookie和Session"><span class="nav-number">4.6.</span> <span class="nav-text">6 Cookie和Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-apache和nginx的区别"><span class="nav-number">4.7.</span> <span class="nav-text">7 apache和nginx的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-网站用户密码保存"><span class="nav-number">4.8.</span> <span class="nav-text">8 网站用户密码保存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-HTTP和HTTPS"><span class="nav-number">4.9.</span> <span class="nav-text">9 HTTP和HTTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-XSRF和XSS"><span class="nav-number">4.10.</span> <span class="nav-text">10 XSRF和XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-幂等-Idempotence"><span class="nav-number">4.11.</span> <span class="nav-text">11 幂等 Idempotence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-RESTful架构-SOAP-RPC"><span class="nav-number">4.12.</span> <span class="nav-text">12 RESTful架构(SOAP,RPC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-SOAP"><span class="nav-number">4.13.</span> <span class="nav-text">13 SOAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-RPC"><span class="nav-number">4.14.</span> <span class="nav-text">14 RPC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-CGI和WSGI"><span class="nav-number">4.15.</span> <span class="nav-text">15 CGI和WSGI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-中间人攻击"><span class="nav-number">4.16.</span> <span class="nav-text">16 中间人攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-c10k问题"><span class="nav-number">4.17.</span> <span class="nav-text">17 c10k问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-socket"><span class="nav-number">4.18.</span> <span class="nav-text">18 socket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-浏览器缓存"><span class="nav-number">4.19.</span> <span class="nav-text">19 浏览器缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-HTTP1-0和HTTP1-1"><span class="nav-number">4.20.</span> <span class="nav-text">20 HTTP1.0和HTTP1.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-Ajax"><span class="nav-number">4.21.</span> <span class="nav-text">21 Ajax</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NIX"><span class="nav-number">5.</span> <span class="nav-text">*NIX</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unix进程间通信方式-IPC"><span class="nav-number">5.1.</span> <span class="nav-text">unix进程间通信方式(IPC)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">6.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-红黑树"><span class="nav-number">6.1.</span> <span class="nav-text">1 红黑树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程题"><span class="nav-number">7.</span> <span class="nav-text">编程题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-台阶问题-斐波那契"><span class="nav-number">7.1.</span> <span class="nav-text">1 台阶问题/斐波那契</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-变态台阶问题"><span class="nav-number">7.2.</span> <span class="nav-text">2 变态台阶问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-矩形覆盖"><span class="nav-number">7.3.</span> <span class="nav-text">3 矩形覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-杨氏矩阵查找"><span class="nav-number">7.4.</span> <span class="nav-text">4 杨氏矩阵查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-去除列表中的重复元素"><span class="nav-number">7.5.</span> <span class="nav-text">5 去除列表中的重复元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-链表成对调换"><span class="nav-number">7.6.</span> <span class="nav-text">6 链表成对调换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-创建字典的方法"><span class="nav-number">7.7.</span> <span class="nav-text">7 创建字典的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-直接创建"><span class="nav-number">7.7.1.</span> <span class="nav-text">1 直接创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-工厂方法"><span class="nav-number">7.7.2.</span> <span class="nav-text">2 工厂方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-fromkeys-方法"><span class="nav-number">7.7.3.</span> <span class="nav-text">3 fromkeys()方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-合并两个有序列表"><span class="nav-number">7.8.</span> <span class="nav-text">8 合并两个有序列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-交叉链表求交点"><span class="nav-number">7.9.</span> <span class="nav-text">9 交叉链表求交点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-二分查找"><span class="nav-number">7.10.</span> <span class="nav-text">10 二分查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-快排"><span class="nav-number">7.11.</span> <span class="nav-text">11 快排</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-找零问题"><span class="nav-number">7.12.</span> <span class="nav-text">12 找零问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-广度遍历和深度遍历二叉树"><span class="nav-number">7.13.</span> <span class="nav-text">13 广度遍历和深度遍历二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-二叉树节点"><span class="nav-number">7.14.</span> <span class="nav-text">14 二叉树节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-层次遍历"><span class="nav-number">7.15.</span> <span class="nav-text">15 层次遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-深度遍历"><span class="nav-number">7.16.</span> <span class="nav-text">16 深度遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-前中后序遍历"><span class="nav-number">7.17.</span> <span class="nav-text">17 前中后序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-求最大树深"><span class="nav-number">7.18.</span> <span class="nav-text">18 求最大树深</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-求两棵树是否相同"><span class="nav-number">7.19.</span> <span class="nav-text">19 求两棵树是否相同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-前序中序求后序"><span class="nav-number">7.20.</span> <span class="nav-text">20 前序中序求后序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-单链表逆置"><span class="nav-number">7.21.</span> <span class="nav-text">21 单链表逆置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-两个字符串是否是变位词"><span class="nav-number">7.22.</span> <span class="nav-text">22 两个字符串是否是变位词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-动态规划问题"><span class="nav-number">7.23.</span> <span class="nav-text">23 动态规划问题</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
 
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
         
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Mark Hoo</span>
-
-  
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/11/18/wangyi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="两种网易云音乐播放器调用代码 网站可直接调用">
+                        
+                        <span class="card-title">两种网易云音乐播放器调用代码 网站可直接调用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            第一种：效果：&lt;span data-mce-type=”bookmark” style=”display: inline-block; width: 0px; overflow: hidden; line-height: 0;” cl
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/默认分类/" class="post-category" target="_blank">
+                                    默认分类
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/网易云音乐/" target="_blank">
+                        <span class="chip bg-color">网易云音乐</span>
+                    </a>
+                    
+                    <a href="/tags/音乐播放器/" target="_blank">
+                        <span class="chip bg-color">音乐播放器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/09/22/CentOS7ml/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="CentOS7 常用命令集合">
+                        
+                        <span class="card-title">CentOS7 常用命令集合</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            文件与目录操作命令 解析cd /home 进入 ‘/home’ 目录cd .. 返回上一级目录cd ../.. 返回上两级目录cd - 返回上次所在目录cp file1 file2 将file1复制为file2cp -a dir1 dir2
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CentOS7/" target="_blank">
+                        <span class="chip bg-color">CentOS7</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
 
 
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
 
-  <span class="post-meta-divider">|</span>
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
 
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
 
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
 
         
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
 
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
 
-
-
-
-
-
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
         
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    });
 </script>
+    
 
+</main>
 
 
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
+            
 
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
 
 
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
-  
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
 
 
 
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
 
+<div class="progress-bar"></div>
 
 
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
 
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
 
 
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
+    <script src="/libs/others/clicklove.js"></script>
 
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
