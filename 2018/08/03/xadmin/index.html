@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="xadmin 插件制作, MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="keywords" content="xadmin 插件制作, 沉默是金">
     <meta name="description" content="官网太慢甚至打不开，所以干脆转载过来，方便学习。
 ======================
 插件原理xadmin 的插件系统架构设计一定程度上借鉴了 wordpress 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 ">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>xadmin 插件制作 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>xadmin 插件制作 | 沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -30,7 +30,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -43,7 +43,7 @@
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -118,7 +118,7 @@
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -428,6 +428,20 @@
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1,962
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        8 分
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -473,13 +487,13 @@ site.register(SomeModel, SomeModelAdmin)
 <pre><code>class HelloWorldPlugin(BaseAdminPlugin):
     # 在插件中加入同名方法，修改 ``ListAdminView`` 的 ``get_context`` 返回的值
     def get_context(self, context):
-        context.update({&apos;hello_target&apos;: &apos;World!!&apos;})
+        context.update({&#39;hello_target&#39;: &#39;World!!&#39;})
         return context
 </code></pre><p>如果我们希望插件在 <code>AdminView</code> 的方法前执行，或是完全使用自己的方法替代 <code>AdminView</code> 的方法可以这样::</p>
 <pre><code>class HelloWorldPlugin(BaseAdminPlugin):
     # 第一个参数为 ``__`` 。这样 ``__`` 即为 ``ListAdminView`` 的 ``get_context`` 方法本身，注意，这时还没有执行这个方法。
     def get_context(self, __):
-        context = {&apos;hello_target&apos;: &apos;World!!&apos;}
+        context = {&#39;hello_target&#39;: &#39;World!!&#39;}
         #我们可以在任何时候执行 ``AdminView`` 的方法，或是根本不执行
         context.update(__())
         return context
@@ -502,14 +516,14 @@ site.register(SomeModel, SomeModelAdmin)
     # context 即为 TemplateContext， nodes 参数包含了其他插件的返回内容。
     # 您可以直接返回 HTML 片段，或是将内容加入到 nodes 参数中
     def block_results_top(self, context, nodes):
-        return s&quot;&lt;div class=&apos;info&apos;&gt;Hello %s&lt;/div&gt;&quot; % context[&apos;hello_target&apos;]
+        return s&quot;&lt;div class=&#39;info&#39;&gt;Hello %s&lt;/div&gt;&quot; % context[&#39;hello_target&#39;]
 </code></pre><h2 id="插件实例"><a href="/2018/08/03/xadmin/#插件实例" class="headerlink" title="插件实例"></a>插件实例</h2><p>下面让我们来看一个 |xadmin| 中完整的插件实例::</p>
 <pre><code>from django.template import loader
 
 from xadmin.sites import site
 from xadmin.views import BaseAdminPlugin, ListAdminView
 
-REFRESH_VAR = &apos;_refresh&apos;
+REFRESH_VAR = &#39;_refresh&#39;
 
 # 该插件实现了一个列表页面刷新器的效果
 class RefreshPlugin(BaseAdminPlugin):
@@ -525,7 +539,7 @@ class RefreshPlugin(BaseAdminPlugin):
     def get_media(self, media):
         if self.request.GET.get(REFRESH_VAR):
             # 放页面处于自动刷新状态时，加入自己的 js 制定刷新逻辑
-            media.add_js([self.static(&apos;xadmin/js/refresh.js&apos;)])
+            media.add_js([self.static(&#39;xadmin/js/refresh.js&#39;)])
         return media
 
     # Block Views
@@ -533,17 +547,17 @@ class RefreshPlugin(BaseAdminPlugin):
     def block_top_toolbar(self, context, nodes):
         current_refresh = self.request.GET.get(REFRESH_VAR)
         context.update({
-            &apos;has_refresh&apos;: bool(current_refresh),
-            &apos;clean_refresh_url&apos;: self.admin_view.get_query_string(remove=(REFRESH_VAR,)),
-            &apos;current_refresh&apos;: current_refresh,
-            &apos;refresh_times&apos;: [{
-                &apos;time&apos;: r,
-                &apos;url&apos;: self.admin_view.get_query_string({REFRESH_VAR: r}),
-                &apos;selected&apos;: str(r) == current_refresh,
+            &#39;has_refresh&#39;: bool(current_refresh),
+            &#39;clean_refresh_url&#39;: self.admin_view.get_query_string(remove=(REFRESH_VAR,)),
+            &#39;current_refresh&#39;: current_refresh,
+            &#39;refresh_times&#39;: [{
+                &#39;time&#39;: r,
+                &#39;url&#39;: self.admin_view.get_query_string({REFRESH_VAR: r}),
+                &#39;selected&#39;: str(r) == current_refresh,
             } for r in self.refresh_times],
         })
         # 可以将 HTML 片段加入 nodes 参数中
-        nodes.append(loader.render_to_string(&apos;xadmin/blocks/refresh.html&apos;, context_instance=context))
+        nodes.append(loader.render_to_string(&#39;xadmin/blocks/refresh.html&#39;, context_instance=context))
 # 注册插件
 site.register_plugin(RefreshPlugin, ListAdminView)
 </code></pre><p>最后不要忘记在适当的地方加载该代码， 让其执行。一般情况下，你可以将其写到 adminx.py 文件中，这样，只要您的 APP 加入到 Django Settings 的 INSTALL_APPS 中，<br>|xadmin| 就会自动执行 app 下的 adminx.py 文件。</p>
@@ -857,7 +871,7 @@ API
                     <div class="summary block-with-text">
                         
                             使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
-本站目前的开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Guni
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunico
                         
                     </div>
                     <div class="publish-info">
@@ -994,7 +1008,7 @@ pip国内的一些镜像公网：http://e.pypi.pyt
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '来源: 沉默是金<br />'
             + '作者: MarkHoo<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -1106,8 +1120,11 @@ pip国内的一些镜像公网：http://e.pypi.pyt
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             

@@ -4,8 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Python中的小技巧, MarkHoo&#39;s Blog | 沉默是金">
-    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646">
+    <meta name="keywords" content="Python中的小技巧, 沉默是金">
+    <meta name="description" content="#coding:utf-8
+
+
+# NO.1
+def dispatch_if(operator, x, y):
+    if operator == &#39;add&#39;:
+        return x + y
+    elif operator">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Python中的小技巧 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>Python中的小技巧 | 沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -28,7 +35,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -41,7 +48,7 @@
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -116,7 +123,7 @@
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -418,6 +425,20 @@
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        184
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        1 分
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -430,7 +451,81 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># NO.1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dispatch_if</span><span class="params">(operator, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> operator == <span class="string">'add'</span>:</span><br><span class="line">        <span class="keyword">return</span> x + y</span><br><span class="line">    <span class="keyword">elif</span> operator == <span class="string">'sub'</span>:</span><br><span class="line">        <span class="keyword">return</span> x - y</span><br><span class="line">    <span class="keyword">elif</span> operator == <span class="string">'mul'</span>:</span><br><span class="line">        <span class="keyword">return</span> x * y</span><br><span class="line">    <span class="keyword">elif</span> operator == <span class="string">'div'</span>:</span><br><span class="line">        <span class="keyword">return</span> x / y</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dispatch_dict</span><span class="params">(operator, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'add'</span>: <span class="keyword">lambda</span>: x + y,</span><br><span class="line">        <span class="string">'sub'</span>: <span class="keyword">lambda</span>: x - y,</span><br><span class="line">        <span class="string">'mul'</span>: <span class="keyword">lambda</span>: x * y,</span><br><span class="line">        <span class="string">'div'</span>: <span class="keyword">lambda</span>: x / y,</span><br><span class="line">    &#125;.get(operator, <span class="keyword">lambda</span>: <span class="keyword">None</span>)()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(dispatch_if(<span class="string">'sub'</span>, <span class="number">5</span>, <span class="number">9</span>))</span><br><span class="line">print(dispatch_dict(<span class="string">'mul'</span>, <span class="number">3</span>, <span class="number">7</span>))</span><br><span class="line">print(dispatch_if(<span class="string">'unknown'</span>, <span class="number">2</span>, <span class="number">8</span>))</span><br><span class="line">print(dispatch_dict(<span class="string">'unknown'</span>, <span class="number">2</span>, <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># NO.2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(a, b)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line">funcs = [myfunc]</span><br><span class="line">print(funcs[<span class="number">0</span>])</span><br><span class="line">print(funcs[<span class="number">0</span>](<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># NO.3</span></span><br><span class="line">my_mapping = &#123;<span class="string">'a'</span>: <span class="number">23</span>, <span class="string">'b'</span>: <span class="number">42</span>, <span class="string">'c'</span>: <span class="number">0xc0ffee</span>&#125;</span><br><span class="line">print(my_mapping)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">print(json.dumps(my_mapping, indent=<span class="number">4</span>, sort_keys=<span class="keyword">True</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># json.dumps(&#123;all: 'yup'&#125;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># NO.4</span></span><br><span class="line">name_for_userid = &#123;</span><br><span class="line">    <span class="number">382</span>: <span class="string">"Alice"</span>,</span><br><span class="line">    <span class="number">590</span>: <span class="string">"Bob"</span>,</span><br><span class="line">    <span class="number">951</span>: <span class="string">"Dilbert"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greeting</span><span class="params">(userid)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hi %s!"</span> % name_for_userid.get(userid, <span class="string">"there"</span>)</span><br><span class="line"></span><br><span class="line">print(greeting(<span class="number">951</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># NO.5</span></span><br><span class="line">xs = &#123;<span class="string">'a'</span>: <span class="number">4</span>, <span class="string">'b'</span>: <span class="number">3</span>, <span class="string">'c'</span>: <span class="number">2</span>, <span class="string">'d'</span>: <span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">S = (sorted(xs.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>]))</span><br><span class="line">print(S)</span><br><span class="line"><span class="comment"># Or:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line">S = sorted(xs.items(), key=operator.itemgetter(<span class="number">1</span>))</span><br><span class="line">print(S)</span><br></pre></td></tr></table></figure>
+                <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#coding:utf-8</span>
+
+
+<span class="token comment" spellcheck="true"># NO.1</span>
+<span class="token keyword">def</span> <span class="token function">dispatch_if</span><span class="token punctuation">(</span>operator<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> operator <span class="token operator">==</span> <span class="token string">'add'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> x <span class="token operator">+</span> y
+    <span class="token keyword">elif</span> operator <span class="token operator">==</span> <span class="token string">'sub'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> x <span class="token operator">-</span> y
+    <span class="token keyword">elif</span> operator <span class="token operator">==</span> <span class="token string">'mul'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> x <span class="token operator">*</span> y
+    <span class="token keyword">elif</span> operator <span class="token operator">==</span> <span class="token string">'div'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> x <span class="token operator">/</span> y
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> None
+
+
+<span class="token keyword">def</span> <span class="token function">dispatch_dict</span><span class="token punctuation">(</span>operator<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">'add'</span><span class="token punctuation">:</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> x <span class="token operator">+</span> y<span class="token punctuation">,</span>
+        <span class="token string">'sub'</span><span class="token punctuation">:</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> x <span class="token operator">-</span> y<span class="token punctuation">,</span>
+        <span class="token string">'mul'</span><span class="token punctuation">:</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> x <span class="token operator">*</span> y<span class="token punctuation">,</span>
+        <span class="token string">'div'</span><span class="token punctuation">:</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> x <span class="token operator">/</span> y<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span>operator<span class="token punctuation">,</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> None<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>dispatch_if<span class="token punctuation">(</span><span class="token string">'sub'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dispatch_dict<span class="token punctuation">(</span><span class="token string">'mul'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dispatch_if<span class="token punctuation">(</span><span class="token string">'unknown'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dispatch_dict<span class="token punctuation">(</span><span class="token string">'unknown'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># NO.2</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+
+funcs <span class="token operator">=</span> <span class="token punctuation">[</span>myfunc<span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>funcs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>funcs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># NO.3</span>
+my_mapping <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">:</span> <span class="token number">0xc0ffee</span><span class="token punctuation">}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>my_mapping<span class="token punctuation">)</span>
+
+<span class="token keyword">import</span> json
+<span class="token keyword">print</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>my_mapping<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> sort_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># json.dumps({all: 'yup'})</span>
+
+
+<span class="token comment" spellcheck="true"># NO.4</span>
+name_for_userid <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token number">382</span><span class="token punctuation">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span>
+    <span class="token number">590</span><span class="token punctuation">:</span> <span class="token string">"Bob"</span><span class="token punctuation">,</span>
+    <span class="token number">951</span><span class="token punctuation">:</span> <span class="token string">"Dilbert"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">def</span> <span class="token function">greeting</span><span class="token punctuation">(</span>userid<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"Hi %s!"</span> <span class="token operator">%</span> name_for_userid<span class="token punctuation">.</span>get<span class="token punctuation">(</span>userid<span class="token punctuation">,</span> <span class="token string">"there"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>greeting<span class="token punctuation">(</span><span class="token number">951</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># NO.5</span>
+xs <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+
+S <span class="token operator">=</span> <span class="token punctuation">(</span>sorted<span class="token punctuation">(</span>xs<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Or:</span>
+
+<span class="token keyword">import</span> operator
+S <span class="token operator">=</span> sorted<span class="token punctuation">(</span>xs<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span>operator<span class="token punctuation">.</span>itemgetter<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span>
+</code></pre>
+
             </div>
             <hr/>
 
@@ -670,8 +765,8 @@
                         
                             有一些学习Python的同学，安装PyCharm后不知道怎么激活，或者总是激活不成功，特此写一篇文章分享一下
 激活之前需要先修改hosts文件，在里面增加如下一条代码：
-10.0.0.0 account.jetbrains.com
-Linu
+0.0.0.0 account.jetbrains.com
+Linux
                         
                     </div>
                     <div class="publish-info">
@@ -808,7 +903,7 @@ Linu
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '来源: 沉默是金<br />'
             + '作者: MarkHoo<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -920,8 +1015,11 @@ Linu
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JWT简介, MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="keywords" content="JWT简介, 沉默是金">
     <meta name="description" content="本文翻译自JWT官方网站对JWT是什么以及能做什么的简介。
 JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表述性声明规范。JWT作为一个开放的标准（RFC 7519），定义了一种简洁的，自包含的方法用于通信双方之间以Json对象">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@ JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>JWT简介 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>JWT简介 | 沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -29,7 +29,7 @@ JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表�
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -42,7 +42,7 @@ JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表�
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -117,7 +117,7 @@ JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表�
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -419,6 +419,20 @@ JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表�
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1,325
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        5 分
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -454,8 +468,14 @@ JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表�
 <li><p>Signature 签名</p>
 </li>
 </ul>
-<p>其结构看起来是这样的<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxxxx<span class="selector-class">.yyyyy</span><span class="selector-class">.zzzzz</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Header"><a href="/2019/05/06/JWT/#Header" class="headerlink" title="Header"></a>Header</h3><p>在header中通常包含了两部分：token类型和采用的加密算法。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"alg"</span>: <span class="string">"HS256"</span>,</span><br><span class="line">  <span class="attr">"typ"</span>: <span class="string">"JWT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其结构看起来是这样的</p>
+<pre><code>xxxxx.yyyyy.zzzzz
+</code></pre><h3 id="Header"><a href="/2019/05/06/JWT/#Header" class="headerlink" title="Header"></a>Header</h3><p>在header中通常包含了两部分：token类型和采用的加密算法。</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"alg"</span><span class="token operator">:</span> <span class="token string">"HS256"</span><span class="token punctuation">,</span>
+  <span class="token property">"typ"</span><span class="token operator">:</span> <span class="token string">"JWT"</span>
+<span class="token punctuation">}</span>  
+</code></pre>
 <p>接下来对这部分内容使用 Base64Url 编码组成了JWT结构的第一部分。</p>
 <h3 id="Payload"><a href="/2019/05/06/JWT/#Payload" class="headerlink" title="Payload"></a>Payload</h3><p>Token的第二部分是负载，它包含了claim， Claim是一些实体（通常指的用户）的状态和额外的元数据，有三种类型的claim： reserved, public 和 private.</p>
 <ul>
@@ -466,16 +486,27 @@ JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表�
 <li><p>Private claims：这些是自定义的字段，可以用来在双方之间交换信息</p>
 </li>
 </ul>
-<p>负载使用的例子：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"sub"</span>: <span class="string">"1234567890"</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">  <span class="attr">"admin"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>负载使用的例子：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"sub"</span><span class="token operator">:</span> <span class="token string">"1234567890"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"John Doe"</span><span class="token punctuation">,</span>
+  <span class="token property">"admin"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>上述的负载需要经过Base64Url编码后作为JWT结构的第二部分。</p>
-<h3 id="Signature"><a href="/2019/05/06/JWT/#Signature" class="headerlink" title="Signature"></a>Signature</h3><p>创建签名需要使用编码后的header和payload以及一个秘钥，使用header中指定签名算法进行签名。例如如果希望使用HMAC SHA256算法，那么签名应该使用下列方式创建：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HMACSHA256(</span><br><span class="line">  base64UrlEncode(<span class="name">header</span>) + <span class="string">"."</span> +</span><br><span class="line">  base64UrlEncode(<span class="name">payload</span>),</span><br><span class="line">  secret)</span><br></pre></td></tr></table></figure></p>
-<p>签名用于验证消息的发送者以及消息是没有经过篡改的。</p>
+<h3 id="Signature"><a href="/2019/05/06/JWT/#Signature" class="headerlink" title="Signature"></a>Signature</h3><p>创建签名需要使用编码后的header和payload以及一个秘钥，使用header中指定签名算法进行签名。例如如果希望使用HMAC SHA256算法，那么签名应该使用下列方式创建：</p>
+<pre><code>HMACSHA256(
+  base64UrlEncode(header) + &quot;.&quot; +
+  base64UrlEncode(payload),
+  secret)  
+</code></pre><p>签名用于验证消息的发送者以及消息是没有经过篡改的。</p>
 <h3 id="完整的JWT"><a href="/2019/05/06/JWT/#完整的JWT" class="headerlink" title="完整的JWT"></a>完整的JWT</h3><p>JWT格式的输出是以.分隔的三段Base64编码，与SAML等基于XML的标准相比，JWT在HTTP和HTML环境中更容易传递。</p>
 <p>下列的JWT展示了一个完整的JWT格式，它拼接了之前的Header， Payload以及秘钥签名：</p>
 <p><img src="http://image.markhoo.com/encoded-jwt3.png" alt="jwt"></p>
 <h2 id="如何使用JWT？"><a href="/2019/05/06/JWT/#如何使用JWT？" class="headerlink" title="如何使用JWT？"></a>如何使用JWT？</h2><p>在身份鉴定的实现中，传统方法是在服务端存储一个session，给客户端返回一个cookie，而使用JWT之后，当用户使用它的认证信息登陆系统之后，会返回给用户一个JWT，用户只需要本地保存该token（通常使用local storage，也可以使用cookie）即可。</p>
-<p>当用户希望访问一个受保护的路由或者资源的时候，通常应该在Authorization头部使用Bearer模式添加JWT，其内容看起来是下面这样：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Authorization:</span> Bearer <span class="params">&lt;token&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>因为用户的状态在服务端的内存中是不存储的，所以这是一种无状态的认证机制。服务端的保护路由将会检查请求头Authorization中的JWT信息，如果合法，则允许用户的行为。由于JWT是自包含的，因此减少了需要查询数据库的需要。</p>
+<p>当用户希望访问一个受保护的路由或者资源的时候，通常应该在Authorization头部使用Bearer模式添加JWT，其内容看起来是下面这样：</p>
+<pre><code>Authorization: Bearer &lt;token&gt;
+</code></pre><p>因为用户的状态在服务端的内存中是不存储的，所以这是一种无状态的认证机制。服务端的保护路由将会检查请求头Authorization中的JWT信息，如果合法，则允许用户的行为。由于JWT是自包含的，因此减少了需要查询数据库的需要。</p>
 <p>JWT的这些特性使得我们可以完全依赖其无状态的特性提供数据API服务，甚至是创建一个下载流服务。因为JWT并不使用Cookie的，所以你可以使用任何域名提供你的API服务而不需要担心跨域资源共享问题（CORS）。</p>
 <p>下面的序列图展示了该过程：</p>
 <p><img src="http://image.markhoo.com/jwt-diagram.png" alt="jwt"></p>
@@ -842,7 +873,7 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '来源: 沉默是金<br />'
             + '作者: MarkHoo<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -954,8 +985,11 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             

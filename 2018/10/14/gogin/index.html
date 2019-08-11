@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Gin使用方法, MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="keywords" content="Gin使用方法, 沉默是金">
     <meta name="description" content="安装gin直接使用 go get github.com/gin-gonic/gin 即可。
-官方README中提供了非常多的例子。例如最简单的实例代码:1234567891011package mainimport &#34;github.com/">
+官方README中提供了非常多的例子。例如最简单的实例代码:
+package main
+import &#34;github.com/gin-gonic/g">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Gin使用方法 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>Gin使用方法 | 沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -29,7 +31,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -42,7 +44,7 @@
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -117,7 +119,7 @@
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -423,6 +425,20 @@
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        390
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        2 分
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -436,17 +452,77 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="安装gin"><a href="/2018/10/14/gogin/#安装gin" class="headerlink" title="安装gin"></a>安装gin</h1><p>直接使用 go get github.com/gin-gonic/gin 即可。</p>
-<p>官方README中提供了非常多的例子。例如最简单的实例代码:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"> r := gin.Default()</span><br><span class="line"> r.GET(<span class="string">"/ping"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line"> c.JSON(<span class="number">200</span>, gin.H&#123;</span><br><span class="line">  <span class="string">"message"</span>: <span class="string">"pong"</span>,</span><br><span class="line"> &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line"> r.Run() <span class="comment">// listen and serve on 0.0.0.0:8080</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="路由"><a href="/2018/10/14/gogin/#路由" class="headerlink" title="路由"></a>路由</h1><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">router := gin.Default() <span class="comment">// 默认是带有Logger和Recovery中间件的</span></span><br><span class="line">router := gin.New() <span class="comment">// 不带中间件的路由</span></span><br><span class="line">router.<span class="keyword">Use</span>(gin.Logger()) <span class="comment">// 可以使用这种方式来指明中间件</span></span><br><span class="line">router.<span class="built_in">GET</span>(<span class="string">"/test"</span>, MyMiddleware(), testEndpoint) <span class="comment">// 也可以用这种方式给指定路由添加中间件</span></span><br><span class="line">router.<span class="built_in">GET</span>(<span class="string">"/someGet"</span>, getting) <span class="comment">// 支持所有Restful的操作</span></span><br><span class="line"><span class="comment">// 带参数的路由</span></span><br><span class="line">router.<span class="built_in">GET</span>(<span class="string">"/user/:name"</span>, func(c *gin.Context) &#123;</span><br><span class="line"> name := c.Param(<span class="string">"name"</span>)</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 参数可选/通配符功能</span></span><br><span class="line">router.<span class="built_in">GET</span>(<span class="string">"/user/:name/*action"</span>, ...)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 路由分组</span></span><br><span class="line">v1 := router.<span class="built_in">Group</span>(<span class="string">"/v1"</span>)</span><br><span class="line">&#123;</span><br><span class="line">  v1.<span class="keyword">POST</span>(<span class="string">"/login"</span>, loginEndpoint)</span><br><span class="line">  v1.<span class="keyword">POST</span>(<span class="string">"/submit"</span>, submitEndpoint)</span><br><span class="line">&#125;</span><br><span class="line">v1.<span class="keyword">Use</span>(AuthRequired()) &#123;&#125; <span class="comment">// 路由分组单独指定中间件</span></span><br></pre></td></tr></table></figure>
-<h1 id="请求与响应"><a href="/2018/10/14/gogin/#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h1><p>请求<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取路由参数，假设有路由为"/user/:name"</span></span><br><span class="line"><span class="selector-tag">c</span><span class="selector-class">.Params</span><span class="selector-class">.ByName</span>(<span class="string">"name"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 获取query参数</span></span><br><span class="line"><span class="selector-tag">c</span><span class="selector-class">.Query</span>(<span class="string">"name"</span>)</span><br><span class="line"><span class="selector-tag">c</span><span class="selector-class">.DefaultQuery</span>(<span class="string">"name"</span>, <span class="string">"Guest"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 获取表单参数</span></span><br><span class="line"><span class="selector-tag">c</span><span class="selector-class">.PostForm</span>(<span class="string">"name"</span>)</span><br><span class="line"><span class="selector-tag">c</span><span class="selector-class">.DefaultPostForm</span>(<span class="string">"name"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>官方README中提供了非常多的例子。例如最简单的实例代码:</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">"github.com/gin-gonic/gin"</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ r <span class="token operator">:=</span> gin<span class="token punctuation">.</span><span class="token function">Default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+ r<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">"/ping"</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c <span class="token operator">*</span>gin<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ c<span class="token punctuation">.</span><span class="token function">JSON</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> gin<span class="token punctuation">.</span>H<span class="token punctuation">{</span>
+  <span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"pong"</span><span class="token punctuation">,</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span>
+ r<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// listen and serve on 0.0.0.0:8080</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="路由"><a href="/2018/10/14/gogin/#路由" class="headerlink" title="路由"></a>路由</h1><pre class=" language-go"><code class="language-go">router <span class="token operator">:=</span> gin<span class="token punctuation">.</span><span class="token function">Default</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 默认是带有Logger和Recovery中间件的</span>
+router <span class="token operator">:=</span> gin<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 不带中间件的路由</span>
+router<span class="token punctuation">.</span><span class="token function">Use</span><span class="token punctuation">(</span>gin<span class="token punctuation">.</span><span class="token function">Logger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 可以使用这种方式来指明中间件</span>
+router<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">"/test"</span><span class="token punctuation">,</span> <span class="token function">MyMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> testEndpoint<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 也可以用这种方式给指定路由添加中间件</span>
+router<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">"/someGet"</span><span class="token punctuation">,</span> getting<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 支持所有Restful的操作</span>
+<span class="token comment" spellcheck="true">// 带参数的路由</span>
+router<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">"/user/:name"</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c <span class="token operator">*</span>gin<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ name <span class="token operator">:=</span> c<span class="token punctuation">.</span><span class="token function">Param</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 参数可选/通配符功能</span>
+router<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">"/user/:name/*action"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 路由分组</span>
+v1 <span class="token operator">:=</span> router<span class="token punctuation">.</span><span class="token function">Group</span><span class="token punctuation">(</span><span class="token string">"/v1"</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  v1<span class="token punctuation">.</span><span class="token function">POST</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">,</span> loginEndpoint<span class="token punctuation">)</span>
+  v1<span class="token punctuation">.</span><span class="token function">POST</span><span class="token punctuation">(</span><span class="token string">"/submit"</span><span class="token punctuation">,</span> submitEndpoint<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+v1<span class="token punctuation">.</span><span class="token function">Use</span><span class="token punctuation">(</span><span class="token function">AuthRequired</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 路由分组单独指定中间件</span>
+</code></pre>
+<h1 id="请求与响应"><a href="/2018/10/14/gogin/#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h1><p>请求</p>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 获取路由参数，假设有路由为"/user/:name"</span>
+c<span class="token punctuation">.</span>Params<span class="token punctuation">.</span><span class="token function">ByName</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 获取query参数</span>
+c<span class="token punctuation">.</span><span class="token function">Query</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">DefaultQuery</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"Guest"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 获取表单参数</span>
+c<span class="token punctuation">.</span><span class="token function">PostForm</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">DefaultPostForm</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span>
+</code></pre>
 <h1 id="参数绑定"><a href="/2018/10/14/gogin/#参数绑定" class="headerlink" title="参数绑定"></a>参数绑定</h1><p>请求验证</p>
 <p>响应</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回简单的字符串</span></span><br><span class="line"><span class="built_in">c</span>.<span class="type">String</span>(<span class="number">200</span>, <span class="string">"pong"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 返回JSON数据</span></span><br><span class="line"><span class="built_in">c</span>.<span class="type">JSON</span>(<span class="number">200</span>, gin.<span class="type">H</span>&#123;</span><br><span class="line">  <span class="string">"message"</span>: <span class="string">"pong"</span>,</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 重定向</span></span><br><span class="line"><span class="built_in">c</span>.<span class="type">Redirect</span>(http.<span class="type">StatusMovedPermanently</span>, <span class="string">"https://google.com"</span>)</span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 返回简单的字符串</span>
+c<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"pong"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 返回JSON数据</span>
+c<span class="token punctuation">.</span><span class="token function">JSON</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> gin<span class="token punctuation">.</span>H<span class="token punctuation">{</span>
+  <span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"pong"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 重定向</span>
+c<span class="token punctuation">.</span><span class="token function">Redirect</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span>StatusMovedPermanently<span class="token punctuation">,</span> <span class="token string">"https://google.com"</span><span class="token punctuation">)</span>
+</code></pre>
 <h1 id="中间件"><a href="/2018/10/14/gogin/#中间件" class="headerlink" title="中间件"></a>中间件</h1><p>自定义中间件</p>
 <p>BasicAuth中间件</p>
 <p>异步协程</p>
 <p>gin可以借助协程来实现异步任务，但是这时候得手动copy上下文，并且只能是可读取的。</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">router.GET(<span class="string">"/async"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span> &#123;</span></span><br><span class="line">  cCp := c.Copy()</span><br><span class="line">  go <span class="function"><span class="keyword">func</span><span class="params">()</span> &#123;</span></span><br><span class="line">    time.<span class="built_in">Sleep</span>(<span class="number">5</span> * time.Second)</span><br><span class="line">    <span class="built_in">log</span>.Println(<span class="string">"Done! in path"</span> + cCp.Request.URL.Path)</span><br><span class="line">  &#125;()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go">router<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">"/async"</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c <span class="token operator">*</span>gin<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  cCp <span class="token operator">:=</span> c<span class="token punctuation">.</span><span class="token function">Copy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+    log<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Done! in path"</span> <span class="token operator">+</span> cCp<span class="token punctuation">.</span>Request<span class="token punctuation">.</span>URL<span class="token punctuation">.</span>Path<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 
             </div>
             <hr/>
@@ -829,7 +905,7 @@ channel
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '来源: 沉默是金<br />'
             + '作者: MarkHoo<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -941,8 +1017,11 @@ channel
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             

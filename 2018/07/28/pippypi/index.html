@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="更换pip源到国内镜像加速python pypi包的安装, MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="keywords" content="更换pip源到国内镜像加速python pypi包的安装, 沉默是金">
     <meta name="description" content="昨晚安装Django的时候总是安装到一半就报错，而且速度很慢，问题主要是国外的源连接不稳定会中断所致。后来就想到了切换到国内源。想到可能还会有同学碰到类似的问题，特此记录分享一下
 pip国内的一些镜像公网：http://e.pypi.pyt">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@ pip国内的一些镜像公网：http://e.pypi.pyt">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>更换pip源到国内镜像加速python pypi包的安装 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>更换pip源到国内镜像加速python pypi包的安装 | 沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -29,7 +29,7 @@ pip国内的一些镜像公网：http://e.pypi.pyt">
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -42,7 +42,7 @@ pip国内的一些镜像公网：http://e.pypi.pyt">
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -117,7 +117,7 @@ pip国内的一些镜像公网：http://e.pypi.pyt">
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -427,6 +427,20 @@ pip国内的一些镜像公网：http://e.pypi.pyt">
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        331
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        1 分
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -449,9 +463,13 @@ pip国内的一些镜像公网：http://e.pypi.pyt">
 <blockquote>
 <p>pip install -r “/home/admin/$APP_NAME/conf/requirements.txt” -i  “<a href="http://mirrors.aliyun.com/pypi/simple&quot;" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple&quot;</a> –trusted-host “mirrors.aliyun.com” &amp;&amp; \ #通过阿里云镜像安装三方库</p>
 </blockquote>
-<h2 id="永久修改："><a href="/2018/07/28/pippypi/#永久修改：" class="headerlink" title="永久修改："></a>永久修改：</h2><h3 id="Linux"><a href="/2018/07/28/pippypi/#Linux" class="headerlink" title="Linux:"></a>Linux:</h3><p>修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="built_in">index</span>-url = http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br></pre></td></tr></table></figure></p>
-<h3 id="Windows"><a href="/2018/07/28/pippypi/#Windows" class="headerlink" title="Windows:"></a>Windows:</h3><p>直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="built_in">index</span>-url = http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br></pre></td></tr></table></figure></p>
-<p>参考：<a href="https://pip.pypa.io/en/latest/configuration/" target="_blank" rel="noopener">https://pip.pypa.io/en/latest/configuration/</a></p>
+<h2 id="永久修改："><a href="/2018/07/28/pippypi/#永久修改：" class="headerlink" title="永久修改："></a>永久修改：</h2><h3 id="Linux"><a href="/2018/07/28/pippypi/#Linux" class="headerlink" title="Linux:"></a>Linux:</h3><p>修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：</p>
+<pre><code>[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre><h3 id="Windows"><a href="/2018/07/28/pippypi/#Windows" class="headerlink" title="Windows:"></a>Windows:</h3><p>直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下</p>
+<pre><code>[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre><p>参考：<a href="https://pip.pypa.io/en/latest/configuration/" target="_blank" rel="noopener">https://pip.pypa.io/en/latest/configuration/</a></p>
 
             </div>
             <hr/>
@@ -813,7 +831,7 @@ A curated list of awesome Python frameworks, libraries, software and resource
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '来源: 沉默是金<br />'
             + '作者: MarkHoo<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -925,8 +943,11 @@ A curated list of awesome Python frameworks, libraries, software and resource
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             

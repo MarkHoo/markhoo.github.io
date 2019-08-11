@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="《High Performance Django》阅读笔记, MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="keywords" content="《High Performance Django》阅读笔记, 沉默是金">
     <meta name="description" content="第一章：The Big Picture作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。
 
 Django’s scaling success stories are almost t">
@@ -15,7 +15,7 @@ Django’s scaling success stories are almost t">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>《High Performance Django》阅读笔记 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>《High Performance Django》阅读笔记 | 沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -30,7 +30,7 @@ Django’s scaling success stories are almost t">
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -43,7 +43,7 @@ Django’s scaling success stories are almost t">
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -118,7 +118,7 @@ Django’s scaling success stories are almost t">
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -432,6 +432,20 @@ Django’s scaling success stories are almost t">
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        8,358
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        30 分
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -477,7 +491,15 @@ Django’s scaling success stories are almost t">
 </li>
 </ul>
 <p>这里作者有提到一个小技巧，那就是环境变量的值都是字符串，那么如果将值转换为布尔值，元组甚至字典呢？答案就是可以使用 ast 模块:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;</span>&gt; ast.literal_eval(<span class="string">'True'</span>)</span><br><span class="line"> True</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; ast.literal_eval(<span class="string">'1, 2, 3'</span>)</span><br><span class="line"> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; ast.literal_eval(<span class="string">'&#123;"foo": "bar"&#125;'</span>)</span><br><span class="line"> &#123;<span class="string">'foo'</span>: <span class="string">'bar'</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sh"><code class="language-sh">    >>> ast.literal_eval('True')
+     True
+
+    >>> ast.literal_eval('1, 2, 3')
+     (1, 2, 3)
+
+    >>> ast.literal_eval('{"foo": "bar"}')
+     {'foo': 'bar'}
+</code></pre>
 <h2 id="小心第三方-APP"><a href="/2018/09/15/HighDjango/#小心第三方-APP" class="headerlink" title="小心第三方 APP"></a>小心第三方 APP</h2><p>在决定使用某个第三方 APP 之前，先回答下面几个问题：</p>
 <ul>
 <li>它真的符合你的需求吗？还是只是有点相近？</li>
@@ -525,11 +547,24 @@ Django’s scaling success stories are almost t">
 <li>generic 外键。generic 外键是个很 cool 的功能，但是它会生成一些特别复杂的查询，所以可能的话，不要使用它。如果你一定要用的话，记得这是个需要缓存的地方。</li>
 <li>优化 model 方法。如果某个 model 方法在一个请求内会多次被调用，可以使用 <code>cache_property</code> 缓存方法解决（缓存只在该请求内有效）</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.functional <span class="keyword">import</span> cached_property</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TheModel</span><span class="params">(models.Model)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @cached_property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">expensive</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="comment"># ...</span></span><br><span class="line">       <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>functional <span class="token keyword">import</span> cached_property
+
+<span class="token keyword">class</span> <span class="token class-name">TheModel</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    @cached_property
+    <span class="token keyword">def</span> <span class="token function">expensive</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+       <span class="token comment" spellcheck="true"># ...</span>
+       <span class="token keyword">return</span> result
+</code></pre>
 <ul>
 <li>结果太大了，包含了不需要的字段。使用 <code>defer</code>, <code>only</code>, <code>values</code>, <code>values_list</code> 限制结果大小:</li>
 </ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">posts = Post<span class="selector-class">.objects</span><span class="selector-class">.all</span>().defer(<span class="string">'body'</span>)</span><br><span class="line">posts = Post<span class="selector-class">.objects</span><span class="selector-class">.all</span>().only(<span class="string">'title'</span>)</span><br><span class="line">posts = Post<span class="selector-class">.objects</span><span class="selector-class">.all</span>().values(<span class="string">'id'</span>)</span><br><span class="line">posts = Post<span class="selector-class">.objects</span><span class="selector-class">.all</span>().values_list(<span class="string">'id'</span>)</span><br><span class="line">posts = Post<span class="selector-class">.objects</span><span class="selector-class">.all</span>().values_list(<span class="string">'id'</span>, flat=True)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">posts <span class="token operator">=</span> Post<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>defer<span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span>
+posts <span class="token operator">=</span> Post<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>only<span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span>
+posts <span class="token operator">=</span> Post<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span>
+posts <span class="token operator">=</span> Post<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values_list<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span>
+posts <span class="token operator">=</span> Post<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values_list<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> flat<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
 <ul>
 <li><p>缓存查询结果。这里提到两个库: Johnny Cache 和 Cache Machine 这两个库的原理都是在 ORM 和数据库中间加了一个缓存层，将 ORM 生成的 SQL 作为 key 来缓存查询结果。</p>
 </li>
@@ -544,7 +579,17 @@ Django’s scaling success stories are almost t">
 <ul>
 <li>俄罗斯套娃式缓存。在一个模板里缓存嵌套缓存，就像俄罗斯套娃一样，一层套一层。比如:</li>
 </ul>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">cache</span> MIDDLE_TTL "post_list" request.GET.page %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">include</span></span> "inc/post/header.html" %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-list"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> post <span class="keyword">in</span> post_list %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">        </span><span class="template-tag">&#123;% <span class="name">cache</span> LONG_TTL "post_teaser_" post.id post.last_modified %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">            </span><span class="template-tag">&#123;% <span class="name"><span class="name">include</span></span> "inc/post/teaser.html" %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">        </span><span class="template-tag">&#123;% <span class="name">endcache</span> %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">endcache</span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html">{% cache MIDDLE_TTL "post_list" request.GET.page %}
+    {% include "inc/post/header.html" %}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    {% for post in post_list %}
+        {% cache LONG_TTL "post_teaser_" post.id post.last_modified %}
+            {% include "inc/post/teaser.html" %}
+        {% endcache %}
+    {% endfor %}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+{% endcache %}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li>自定义一个支持通过 url 参数刷新模板缓存的 cache 标签，这样就可以随时刷新缓存了</li>
 </ul>
@@ -1086,7 +1131,7 @@ virtualenv：创建独立 Py
                     <div class="summary block-with-text">
                         
                             使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
-本站目前的开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Guni
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunico
                         
                     </div>
                     <div class="publish-info">
@@ -1165,7 +1210,7 @@ virtualenv：创建独立 Py
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '来源: 沉默是金<br />'
             + '作者: MarkHoo<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -1277,8 +1322,11 @@ virtualenv：创建独立 Py
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             

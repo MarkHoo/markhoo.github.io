@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目, MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="keywords" content="使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目, 沉默是金">
     <meta name="description" content="使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
-本站目前的开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Guni">
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目 | MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目 | 沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -29,7 +29,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -42,7 +42,7 @@
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -117,7 +117,7 @@
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -435,6 +435,20 @@
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        5,190
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        21 分
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -448,7 +462,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目</p>
-<p>本站目前的开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunicorn</p>
+<p>本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunicorn</p>
 <p>blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部署的笔记由于内容较多，没时间整理。今天抽空整理了一下午，发布出来供需要的同学借鉴参考。文中如有错误请多多指正</p>
 <p>部署前的准备</p>
 <h1 id="服务器"><a href="/2018/08/14/blogbushu/#服务器" class="headerlink" title="服务器"></a>服务器</h1><p>要部署项目就要先购买服务器，如腾讯云，阿里云等等</p>
@@ -529,10 +543,21 @@
 <p>pip3 install –upgrade pip</p>
 </blockquote>
 <h1 id="部署前的项目配置"><a href="/2018/08/14/blogbushu/#部署前的项目配置" class="headerlink" title="部署前的项目配置"></a>部署前的项目配置</h1><p>Django 项目中会有一些 CSS、JavaScript 等静态文件，为了能够方便地让 Nginx 处理这些静态文件的请求，我们把项目中的全部静态文件收集到一个统一的目录下，这个目录通常位于 Django 项目的根目录，并且命名为 static。为了完成这些任务，需要在项目的配置文件里做一些必要的配置：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">myblog/settings.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其他配置...</span></span><br><span class="line"></span><br><span class="line">STATIC_URL = '/static/'</span><br><span class="line"><span class="comment"># 加入下面的配置</span></span><br><span class="line">STATIC_ROOT = os.path.join(BASE_DIR, 'static')</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">myblog<span class="token operator">/</span>settings<span class="token punctuation">.</span>py
+
+<span class="token comment" spellcheck="true"># 其他配置...</span>
+
+STATIC_URL <span class="token operator">=</span> <span class="token string">'/static/'</span>
+<span class="token comment" spellcheck="true"># 加入下面的配置</span>
+STATIC_ROOT <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'static'</span><span class="token punctuation">)</span>
+</code></pre>
 <p>STATIC_ROOT 指明了静态文件的收集目录，即项目根目录（BASE_DIR）下的 static 文件夹。</p>
 <p>为了安全起见，在生产环境下需要关闭 DEBUG 选项以及设置允许访问的域名。打开 settings.py 文件，找到 DEBUG 和 ALLOWED_HOSTS 这两个选项，将它们设置成如下的值： </p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myblog/settings.py</span><br><span class="line"></span><br><span class="line">DEBUG = False</span><br><span class="line">ALLOWED_HOSTS = [<span class="string">'127.0.0.1'</span>, <span class="string">'localhost '</span>, <span class="string">'.markhoo.com'</span>]</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">myblog<span class="token operator">/</span>settings<span class="token punctuation">.</span>py
+
+DEBUG <span class="token operator">=</span> <span class="token boolean">False</span>
+ALLOWED_HOSTS <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span> <span class="token string">'localhost '</span><span class="token punctuation">,</span> <span class="token string">'.markhoo.com'</span><span class="token punctuation">]</span>
+</code></pre>
 <p>ALLOWED_HOSTS 是允许访问的域名列表，127.0.0.1 和 localhost 是本地访问的域名，.markhoo.com 是访问服务器的域名（换成你自己的域名）。域名前加一个点表示允许访问该域名下的子域名，比如 <a href="http://www.markhoo.com" target="_blank" rel="noopener">www.markhoo.com</a>  test.markhoo.com 等二级域名同样允许访问。如果不加前面的点则只允许访问 markhoo.com。</p>
 <p>项目还会依赖一些第三方 Python 库，为了方便在服务器上一次性安装，我们将全部依赖写入一个叫 requirements.txt 的文本文件中。激活本地的虚拟环境（如果你使用了虚拟环境的话），并进入项目的根目录，运行 pip freeze &gt; requirements.txt 命令：</p>
 <blockquote>
@@ -567,10 +592,15 @@
 </blockquote>
 <p>注意：数据库文件不要上传！要是SQLLITE3里面有你测试的重要数据，将可能会泄露。</p>
 <h1 id="设置服务器目录结构"><a href="/2018/08/14/blogbushu/#设置服务器目录结构" class="headerlink" title="设置服务器目录结构"></a>设置服务器目录结构</h1><p>接下来需要把代码上传到服务器了。我服务器上存放代码的目录结构一般是这样的：</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/home/<span class="keyword">markhoo/</span></span><br><span class="line"><span class="keyword"> </span>   sites/</span><br><span class="line">        <span class="keyword">markhoo.com/</span></span><br><span class="line"><span class="keyword"> </span>           myblog_env/</span><br><span class="line">            myblog/</span><br></pre></td></tr></table></figure>
-<p>一台服务器可能部署多个网站，所有网站代码都放在 sites/ 目录下。markhoo.com/ 这个文件夹以网站的域名命名，便于区分。myblog_env 是 python 虚拟环境目录。myblog 是 Django 博客项目目录。<br>创建这个目录结构，注意目录名替换为你自己的域名，以后涉及到 markhoo.com 的地方通常都要替换你自己的域名，后面就不再一一指出了。<br>备注：上面的我的目录结构.可能会有新手看不懂，解释一下,就像下面这样一直创建下去</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/home/m</span>arkhoo<span class="regexp">/sites/m</span>arkhoo.com<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
-<p>最后的 myblog_env 和 myblog 是同级目录位于markhoo.com下，这里自己先不要创建。</p>
+<pre><code>/home/markhoo/
+    sites/
+        markhoo.com/
+            myblog_env/
+            myblog/
+
+</code></pre><p>一台服务器可能部署多个网站，所有网站代码都放在 sites/ 目录下。markhoo.com/ 这个文件夹以网站的域名命名，便于区分。myblog_env 是 python 虚拟环境目录。myblog 是 Django 博客项目目录。<br>创建这个目录结构，注意目录名替换为你自己的域名，以后涉及到 markhoo.com 的地方通常都要替换你自己的域名，后面就不再一一指出了。<br>备注：上面的我的目录结构.可能会有新手看不懂，解释一下,就像下面这样一直创建下去</p>
+<pre><code>/home/markhoo/sites/markhoo.com/
+</code></pre><p>最后的 myblog_env 和 myblog 是同级目录位于markhoo.com下，这里自己先不要创建。</p>
 <p>创建目录的命令为： mkdir (文件夹名称)<br>删除目录的命令为： rmdir (文件夹名称)</p>
 <h1 id="安装virtualenv"><a href="/2018/08/14/blogbushu/#安装virtualenv" class="headerlink" title="安装virtualenv"></a>安装virtualenv</h1><p>为了不影响外界环境的清洁，所以我们使用虚拟环境来配置 Django 项目<br>首先用xshell登录到你的服务器，然后按一下步骤操作</p>
 <blockquote>
@@ -665,7 +695,20 @@
 <p>exit</p>
 </blockquote>
 <p>修改配置文件，与 Mysql 数据库相关联<br>编辑 myblog/settings.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Database</span></span><br><span class="line"><span class="comment"># https://docs.djangoproject.com/en/1.11/ref/settings/#databases</span></span><br><span class="line"></span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'myblog'</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>:<span class="string">'admin123'</span>,</span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,</span><br><span class="line">        <span class="string">'HOST'</span>:<span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'PORT'</span>:<span class="string">'3306'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Database</span>
+<span class="token comment" spellcheck="true"># https://docs.djangoproject.com/en/1.11/ref/settings/#databases</span>
+
+DATABASES <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'default'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'ENGINE'</span><span class="token punctuation">:</span> <span class="token string">'django.db.backends.mysql'</span><span class="token punctuation">,</span>
+        <span class="token string">'NAME'</span><span class="token punctuation">:</span> <span class="token string">'myblog'</span><span class="token punctuation">,</span>
+        <span class="token string">'PASSWORD'</span><span class="token punctuation">:</span><span class="token string">'admin123'</span><span class="token punctuation">,</span>
+        <span class="token string">'USER'</span><span class="token punctuation">:</span> <span class="token string">'root'</span><span class="token punctuation">,</span>
+        <span class="token string">'HOST'</span><span class="token punctuation">:</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span>
+        <span class="token string">'PORT'</span><span class="token punctuation">:</span><span class="token string">'3306'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>创建 Django 数据库</p>
 <blockquote>
 <p>(myblog_env) [root@instance-pkb22o0h myblog]# cd /home/markhoo/sites/markhoo.com/myblog<br>(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py migrate</p>
@@ -705,8 +748,20 @@
 <p>vim /etc/systemd/system/gunicorn.service</p>
 </blockquote>
 <p>修改内容如下：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=gunicorn daemon</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">User</span>=root</span><br><span class="line"><span class="attr">Group</span>=nginx</span><br><span class="line"><span class="attr">WorkingDirectory</span>=/home/markhoo/sites/markhoo.com/myblog</span><br><span class="line"><span class="attr">ExecStart</span>=/home/markhoo/sites/markhoo.com/myblog_env/bin/gunicorn --workers <span class="number">3</span> --bind unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock myblog.wsgi:application</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
-<p>一定要注意自己的项目路径和虚拟环境路径<br>WorkingDirectory与ExecStart 修改为自己的路径</p>
+<pre><code>[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=nginx
+WorkingDirectory=/home/markhoo/sites/markhoo.com/myblog
+ExecStart=/home/markhoo/sites/markhoo.com/myblog_env/bin/gunicorn --workers 3 --bind unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock myblog.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+</code></pre><p>一定要注意自己的项目路径和虚拟环境路径<br>WorkingDirectory与ExecStart 修改为自己的路径</p>
 <p>开启Gunicorn服务并开机自启,运行以下命令</p>
 <blockquote>
 <p>systemctl start gunicorn<br>systemctl enable gunicorn</p>
@@ -717,10 +772,117 @@
 <p>(myblog_env) [root@instance-pkb22o0h myblog]# cd /etc/nginx/<br>(myblog_env) [root@instance-pkb22o0h nginx]# ls<br>conf.d     fastcgi.conf          fastcgi_params          koi-utf  mime.types          nginx.conf          scgi_params          uwsgi<br>default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.default  nginx.conf.default  scgi_params.default  uwsgi<br>(myblog_env) [root@instance-pkb22o0h nginx]# vi nginx.conf<br>或者直接运行<br>vim /etc/nginx/nginx.conf</p>
 </blockquote>
 <p>打开后默认的内容如下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For more information on configuration, see:</span></span><br><span class="line"><span class="comment">#   * Official English Documentation: http://nginx.org/en/docs/</span></span><br><span class="line"><span class="comment">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">user</span> nginx;</span><br><span class="line"><span class="attribute">worker_processes</span> auto;</span><br><span class="line"><span class="attribute">error_log</span> /var/log/nginx/error.log;</span><br><span class="line"><span class="attribute">pid</span> /run/nginx.pid;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load dynamic modules. See /usr/share/nginx/README.dynamic.</span></span><br><span class="line"><span class="attribute">include</span> /usr/share/nginx/modules/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">'<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] "<span class="variable">$request</span>" '</span></span><br><span class="line">                      <span class="string">'<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> "<span class="variable">$http_referer</span>" '</span></span><br><span class="line">                      <span class="string">'"<span class="variable">$http_user_agent</span>" "<span class="variable">$http_x_forwarded_for</span>"'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>            <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">tcp_nopush</span>          <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">tcp_nodelay</span>         <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">keepalive_timeout</span>   <span class="number">65</span>;</span><br><span class="line">    <span class="attribute">types_hash_max_size</span> <span class="number">2048</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span>             /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>        application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span></span><br><span class="line">    <span class="comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span></span><br><span class="line">    <span class="comment"># for more information.</span></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span> default_server;</span><br><span class="line">        <span class="attribute">listen</span>       [::]:<span class="number">80</span> default_server;</span><br><span class="line">        <span class="attribute">server_name</span>  _;</span><br><span class="line">        <span class="attribute">root</span>         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load configuration files for the default server block.</span></span><br><span class="line">        <span class="attribute">include</span> /etc/nginx/default.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</span><br><span class="line">            <span class="attribute">location</span> = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">            <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Settings for a TLS enabled server.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#    server &#123;</span></span><br><span class="line"><span class="comment">#        listen       443 ssl http2 default_server;</span></span><br><span class="line"><span class="comment">#        listen       [::]:443 ssl http2 default_server;</span></span><br><span class="line"><span class="comment">#        server_name  _;</span></span><br><span class="line"><span class="comment">#        root         /usr/share/nginx/html;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#        ssl_certificate "/etc/pki/nginx/server.crt";</span></span><br><span class="line"><span class="comment">#        ssl_certificate_key "/etc/pki/nginx/private/server.key";</span></span><br><span class="line"><span class="comment">#        ssl_session_cache shared:SSL:1m;</span></span><br><span class="line"><span class="comment">#        ssl_session_timeout  10m;</span></span><br><span class="line"><span class="comment">#        ssl_ciphers HIGH:!aNULL:!MD5;</span></span><br><span class="line"><span class="comment">#        ssl_prefer_server_ciphers on;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#        # Load configuration files for the default server block.</span></span><br><span class="line"><span class="comment">#        include /etc/nginx/default.d/*.conf;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#        location / &#123;</span></span><br><span class="line"><span class="comment">#        &#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#        error_page 404 /404.html;</span></span><br><span class="line"><span class="comment">#            location = /40x.html &#123;</span></span><br><span class="line"><span class="comment">#        &#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#        error_page 500 502 503 504 /50x.html;</span></span><br><span class="line"><span class="comment">#            location = /50x.html &#123;</span></span><br><span class="line"><span class="comment">#        &#125;</span></span><br><span class="line"><span class="comment">#    &#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>找到server内容进行修改，具体内容如下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  markhoo.com <span class="number">0.0.0.0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> = /favicon.ico &#123; <span class="attribute">access_log</span> <span class="literal">off</span>; <span class="attribute">log_not_found</span> <span class="literal">off</span>; &#125;</span><br><span class="line">        <span class="attribute">location</span> /static/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /home/markhoo/sites/markhoo.com/myblog;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$http_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>注意修改自己的IP地址或域名，还有文件路径<br>server_domain_or_IP 代表你的IP地址或域名</p>
+<pre><code># For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }
+
+# Settings for a TLS enabled server.
+#
+#    server {
+#        listen       443 ssl http2 default_server;
+#        listen       [::]:443 ssl http2 default_server;
+#        server_name  _;
+#        root         /usr/share/nginx/html;
+#
+#        ssl_certificate &quot;/etc/pki/nginx/server.crt&quot;;
+#        ssl_certificate_key &quot;/etc/pki/nginx/private/server.key&quot;;
+#        ssl_session_cache shared:SSL:1m;
+#        ssl_session_timeout  10m;
+#        ssl_ciphers HIGH:!aNULL:!MD5;
+#        ssl_prefer_server_ciphers on;
+#
+#        # Load configuration files for the default server block.
+#        include /etc/nginx/default.d/*.conf;
+#
+#        location / {
+#        }
+#
+#        error_page 404 /404.html;
+#            location = /40x.html {
+#        }
+#
+#        error_page 500 502 503 504 /50x.html;
+#            location = /50x.html {
+#        }
+#    }
+
+}
+</code></pre><p>找到server内容进行修改，具体内容如下：</p>
+<pre><code>server {
+    listen 80;
+    server_name  markhoo.com 0.0.0.0;
+
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location /static/ {
+        root /home/markhoo/sites/markhoo.com/myblog;
+        }
+
+        location / {
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock;
+        }
+
+    }
+
+
+</code></pre><p>注意修改自己的IP地址或域名，还有文件路径<br>server_domain_or_IP 代表你的IP地址或域名</p>
 <ul>
 <li>这里的域名为 markhoo.com，其次一定要添加 0.0.0.0 否则无法访问，两个之间用空格隔开。</li>
 <li>所有URL 带有 /static 的请求均由 Nginx 处理，alias 指明了静态文件的存放目录。</li>
@@ -1111,7 +1273,7 @@ Django’s scaling success stories are almost t
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: MarkHoo's Blog | 沉默是金<br />'
+            + '来源: 沉默是金<br />'
             + '作者: MarkHoo<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -1223,8 +1385,11 @@ Django’s scaling success stories are almost t
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             

@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MarkHoo&#39;s Blog | 沉默是金">
-    <meta name="description" content="MarkHoo&#39;s Blog | 沉默是金">
+    <meta name="keywords" content="沉默是金">
+    <meta name="description" content="沉默是金">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MarkHoo&#39;s Blog | 沉默是金</title>
+    <title>沉默是金</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -28,7 +28,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"></head>
 
 
 <body>
@@ -41,7 +41,7 @@
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">MarkHoo's Blog | 沉默是金</span>
+                    <span class="logo-span">沉默是金</span>
                 </a>
             </div>
             
@@ -116,7 +116,7 @@
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">MarkHoo's Blog | 沉默是金</div>
+        <div class="logo-name">沉默是金</div>
         <div class="logo-desc">
             
             MarkHoo&#39;s Blog | 沉默是金
@@ -302,6 +302,13 @@
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
+    <div id="prev-cover" class="left waves-effect carousel-control">
+        <i class="icon fa fa-angle-left"></i>
+    </div>
+    <div id="next-cover" class="right waves-effect carousel-control">
+        <i class="icon fa fa-angle-right"></i>
+    </div>
+    
 
     <div class="carousel-item red white-text bg-cover about-cover">
         <div class="container">
@@ -361,6 +368,86 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     </div>
 
     
+    
+
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('/medias/featureimages/18.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">《High Performance Django》阅读笔记</div>
+                    <div class="description center-align">
+                    
+                        第一章：The Big Picture作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。
+
+Django’s scaling success stories are almost t
+                    
+                    </div>
+                    <div class="cover-btns">
+                        <a href="/2018/09/15/HighDjango/" class="waves-effect waves-light btn" target="_blank">
+                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('/medias/featureimages/9.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目</div>
+                    <div class="description center-align">
+                    
+                        使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunico
+                    
+                    </div>
+                    <div class="cover-btns">
+                        <a href="/2018/08/14/blogbushu/" class="waves-effect waves-light btn" target="_blank">
+                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('/medias/featureimages/7.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">Go by Example</div>
+                    <div class="description center-align">
+                    
+                        Hello World我们第一个程序就是打印经典的“hello world”，下面是完整的代码
+package main
+import "fmt"
+func main(){
+  fmt.Println("hello world")
+}
+
+要
+                    
+                    </div>
+                    <div class="cover-btns">
+                        <a href="/2019/06/08/gobyexample/" class="waves-effect waves-light btn" target="_blank">
+                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
 </div>
 
 <script>
@@ -414,12 +501,64 @@ $(function () {
             <div class="card">
                 <div class="card-content">
                     
+                        <div class="dream">
+    
+    <div class="title center-align">
+        <i class="fa fa-lightbulb-o"></i>&nbsp;&nbsp;名言警句
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
+            学而不思则罔，思而不学则殆。</br>纸上得来终觉浅，绝知此事要躬行。
+        </div>
+    </div>
+</div>
+                    
 
+                    
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="title center-align">
+        <i class="fa fa-music"></i>&nbsp;&nbsp;听听音乐
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'false' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '6',
+        audio: JSON.parse('[{"name":"富士山下","artist":"梅艳芳","url":"http://image.markhoo.com/%E6%A2%85%E8%89%B3%E8%8A%B3-%E5%AF%8C%E5%A3%AB%E5%B1%B1%E4%B8%8B.mp3","cover":"http://image.markhoo.com/touxiang.jpg"},{"name":"アシタカせっ記","artist":"エンディング","url":"http://image.markhoo.com/%E3%82%A2%E3%82%B7%E3%82%BF%E3%82%AB%E3%81%9B%E3%81%A3%E8%A8%98%E3%80%80%E3%82%A8%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0.flac","cover":"http://image.markhoo.com/touxiang.jpg"},{"name":"Blue","artist":"Rob Simonsen","url":"http://image.markhoo.com/Rob%20Simonsen%20-%20Blue.mp3","cover":"http://image.markhoo.com/touxiang.jpg"},{"name":"Helmet to Helmet","artist":"Brand X Music","url":"http://image.markhoo.com/Brand%20X%20Music%20-%20Helmet%20to%20Helmet.mp3","cover":"http://image.markhoo.com/touxiang.jpg"},{"name":"River Flows in You","artist":"Yiruma","url":"http://image.markhoo.com/Yiruma%20-%20River%20Flows%20in%20You.mp3","cover":"http://image.markhoo.com/touxiang.jpg"},{"name":"一无所有","artist":"王杰","url":"http://image.markhoo.com/%E7%8E%8B%E6%9D%B0-%E6%98%AF%E5%90%A6%E6%88%91%E7%9C%9F%E7%9A%84%E4%B8%80%E6%97%A0%E6%89%80%E6%9C%89.mp3","cover":"http://image.markhoo.com/touxiang.jpg"},{"name":"Go Time","artist":"Mark Petrie","url":"http://image.markhoo.com/Mark%20Petrie%20-%20Go%20Time.mp3","cover":"http://image.markhoo.com/touxiang.jpg"},{"name":"ツナ覚醒","artist":"佐橋俊彦","url":"http://image.markhoo.com/%E4%BD%90%E6%A9%8B%E4%BF%8A%E5%BD%A6%20-%20%E3%83%84%E3%83%8A%E8%A6%9A%E9%86%92.mp3","cover":"http://image.markhoo.com/touxiang.jpg"}]')
+    });
+});
+</script>
                     
 
                     
                         <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
 <div class="video-player">
+    
+    <div class="title center-align">
+        <i class="fa fa-video-camera"></i>&nbsp;&nbsp;精彩视频
+    </div>
     
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s12">
@@ -434,14 +573,14 @@ $(function () {
     $(function () {
         new DPlayer({
             container: document.getElementById('dplayer'),
-            autoplay: 'true' === 'true',
+            autoplay: 'false' === 'true',
             theme: '#42b983',
             loop: 'false' === 'true',
             lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
             preload: 'auto',
             volume: Number('0.7'),
             video: {
-                url: '',
+                url: 'https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
                 pic: '',
                 thumbnails: ''
             }
@@ -453,6 +592,39 @@ $(function () {
                     <div id="recommend-sections" class="recommend">
                         
 
+
+
+
+
+<div class="title"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;推荐文章</div>
+
+<div class="row">
+
+    
+    
+    <div class="col s12" >
+        <div class="post-card" style="background-image: url('/medias/featureimages/9.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/Django/" class="category" target="_blank">Django</a>
+                    
+                </div>
+                <a href="/2018/08/14/blogbushu/" target="_blank">
+                    <h3 class="post-title">使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目</h3>
+                </a>
+                <p class="post-description">使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
+本项目开发环境是 Python3.5.2+Django1.10.6+S</p>
+                <a href="/2018/08/14/blogbushu/" target="_blank"
+                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
 
 
                     </div>
@@ -658,8 +830,8 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Go/" target="_blank">
-                            <span class="chip bg-color">Go</span>
+                        <a href="/tags/Unix/" target="_blank">
+                            <span class="chip bg-color">Unix</span>
                         </a>
                         
                     </div>
@@ -734,7 +906,9 @@ go1.11.1.windows-amd64.msi
                         <div class="summary block-with-text">
                             
                                 安装gin直接使用 go get github.com/gin-gonic/gin 即可。
-官方README中提供了非常多的例子。例如最简单的实例代码:1234567891011package mainimport "github.com/
+官方README中提供了非常多的例子。例如最简单的实例代码:
+package main
+import "github.com/gin-gonic/g
                             
                         </div>
                         <div class="publish-info">
@@ -1104,7 +1278,7 @@ Django’s scaling success stories are almost t
                         <div class="summary block-with-text">
                             
                                 使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
-本站目前的开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Guni
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunico
                             
                         </div>
                         <div class="publish-info">
@@ -1186,8 +1360,11 @@ Django’s scaling success stories are almost t
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright © 2019  <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a>
+            Copyright © 2019  &nbsp; <a href="https://blog.markhoo.com" target="_blank">MarkHoo's Blog</a> &nbsp; 苏ICP备17044309号 &nbsp;
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">97.4k</span>
             
 
             
