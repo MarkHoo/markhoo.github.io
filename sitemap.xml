@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.markhoo.com/2019/08/27/nginx-config/</loc>
+    
+    <lastmod>2019-08-27T09:13:00.257Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.markhoo.com/2017/12/25/nginxdjango/</loc>
     
     <lastmod>2019-08-11T06:45:13.451Z</lastmod>
