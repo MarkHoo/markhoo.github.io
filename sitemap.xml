@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.markhoo.com/friends/index.html</loc>
+    
+    <lastmod>2019-12-08T16:52:04.550Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/links/index.html</loc>
+    
+    <lastmod>2019-12-08T16:51:47.892Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/about/index.html</loc>
+    
+    <lastmod>2019-12-08T16:47:17.272Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/2018/10/12/gin/</loc>
+    
+    <lastmod>2019-12-08T16:45:45.864Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.markhoo.com/2019/05/06/JWT/</loc>
+    
+    <lastmod>2019-12-08T16:44:47.554Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.markhoo.com/2019/08/27/nginx-config/</loc>
     
     <lastmod>2019-08-27T09:13:00.257Z</lastmod>
@@ -37,23 +72,9 @@
   </url>
   
   <url>
-    <loc>https://blog.markhoo.com/2019/05/06/JWT/</loc>
-    
-    <lastmod>2019-08-11T06:33:17.197Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.markhoo.com/2017/11/18/wangyi/</loc>
     
     <lastmod>2019-08-11T06:32:43.120Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.markhoo.com/2018/10/12/gin/</loc>
-    
-    <lastmod>2019-08-11T06:32:25.660Z</lastmod>
     
   </url>
   
@@ -219,20 +240,6 @@
   </url>
   
   <url>
-    <loc>https://blog.markhoo.com/friends/index.html</loc>
-    
-    <lastmod>2019-08-10T14:15:49.314Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.markhoo.com/about/index.html</loc>
-    
-    <lastmod>2019-08-10T14:08:43.349Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.markhoo.com/tags/index.html</loc>
     
     <lastmod>2019-08-10T14:05:47.793Z</lastmod>
@@ -243,13 +250,6 @@
     <loc>https://blog.markhoo.com/categories/index.html</loc>
     
     <lastmod>2019-08-10T14:05:23.582Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.markhoo.com/links/index.html</loc>
-    
-    <lastmod>2019-06-08T15:14:29.823Z</lastmod>
     
   </url>
   
