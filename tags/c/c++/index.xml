@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C/C&#43;&#43; on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/c/c&#43;&#43;/</link>
+    <description>Recent content in C/C&#43;&#43; on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    
+	<atom:link href="https://www.markhoo.com/tags/c/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C语言资源大全中文版</title>
+      <link>https://www.markhoo.com/archives/cl/</link>
+      <pubDate>Sun, 22 Jul 2018 10:09:40 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/cl/</guid>
+      <description>构建系统 下面是一些 C 项目的自动化构建和测试工具。
+ aimake：一个被设计来避免复杂配置的构建工具。GNU GPL3 或更高版本。官网 Autoconf：一个可扩展的 M4 宏指令包，提供命令行脚本来自动配置软件源码包，是 Autotools 的一部分。GNU GPL3 或更高版本。官网 Automake：一个自动生成符合 GNU 代码标准的 Makefile.in 文件的工具。需要与 Autoconf 配合使用，它也是 Autotools 的一部分。GNU GPL3 或更高版本。官网 Jam：一个构建系统，它被设计的比make更加易用。隐式地理解 C 的构建规则。Jam License。官网 Libtool：一个通用库支持脚本，是 Autotools 的一部分。GNU GPL3 或更高版本。官网 Meson：一个非常快，用户友好的构建系统，基于 Ninja。Apache2.0。官网  编译器  Clang：一个基于 LLVM 的 C 的编译器，支持 C11 标准。NCSA。官网 CompCert：一个经过充分验证的 C 编译器。支持几乎所有的 C89 标准。GNU GPL2.1 或更高版本。官网 GCC：在它的编译器集合中提供了 C 编译器。支持 C11 和 OpenMP 的标准。GNU GPL3 或更高版本。官网 PCC：一个值得尊敬的 C 编译器，支持 C99 标准。Various licenses，完全免费。官网 TCC：一个迷你，速度快的 C 编译器，支持 C99（除了复杂的类型）。 LGPL2.</description>
+    </item>
+    
+  </channel>
+</rss>

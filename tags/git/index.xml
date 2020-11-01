@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/git/</link>
+    <description>Recent content in Git on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 15 Jul 2018 20:25:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git基本常用命令</title>
+      <link>https://www.markhoo.com/archives/git/</link>
+      <pubDate>Sun, 15 Jul 2018 20:25:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/git/</guid>
+      <description>Git基本常用命令： mkdir： XX (创建一个空目录 XX指目录名) pwd： 显示当前目录的路径。 git init ： 把当前的目录变成可以管理的git仓库，生成隐藏.git文件。 git add XX ： 把xx文件添加到暂存区去。 git commit -m “XX” ： 提交文件 –m 后面的是注释。 git status： 查看仓库状态 git diff XX ： 查看XX文件修改了那些内容 git log ： 查看历史记录 git reset &amp;ndash;hard HEAD^ ：或者 git reset &amp;ndash;hard HEAD~ 回退到上一个版本 (如果想回退到100个版本，使用git reset &amp;ndash;hard HEAD~100 ) cat XX ： 查看XX文件内容 git reflog ： 查看历史记录的版本号id git checkout &amp;ndash; XX ： 把XX文件在工作区的修改全部撤销。 git rm XX ： 删除XX文件 git remote add origin https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

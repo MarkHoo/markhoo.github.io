@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unix on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/unix/</link>
+    <description>Recent content in Unix on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 18 Nov 2018 20:31:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>为什么编程语言以及数据库要从1970年1月1日开始计算时间</title>
+      <link>https://www.markhoo.com/archives/time1970/</link>
+      <pubDate>Sun, 18 Nov 2018 20:31:02 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/time1970/</guid>
+      <description>话不多说直接上答案，看完这篇文章你应该就懂了。 注：这个答案也是某博主不断产生疑问层层挖掘出来的。 https://en.wikipedia.org/wiki/Unix_time</description>
+    </item>
+    
+  </channel>
+</rss>

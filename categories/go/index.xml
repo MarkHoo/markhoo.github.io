@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/categories/go/</link>
+    <description>Recent content in Go on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sat, 08 Jun 2019 23:00:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go by Example</title>
+      <link>https://www.markhoo.com/archives/gobyexample/</link>
+      <pubDate>Sat, 08 Jun 2019 23:00:49 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gobyexample/</guid>
+      <description>Hello World 我们第一个程序就是打印经典的“hello world”，下面是完整的代码
+package mainimport &amp;#34;fmt&amp;#34;func main(){fmt.Println(&amp;#34;hello world&amp;#34;)}要运行这个程序，将代码保存为 hello-world.go，然后使用go run
+有时候我们想让程序编译成二进制文件，可以使用go build，然后就可以直接运行了。
+Values Go 有多种值的类型，包括 string，integer，float，boolean 等。如下是几个基本例子。
+package mainimport &amp;#34;fmt&amp;#34;func main(){//string 可以使用 + 连接在一起 fmt.Println(&amp;#34;go&amp;#34;+&amp;#34;lang&amp;#34;)fmt.Println(&amp;#34;1+1=&amp;#34;,1+1)fmt.Pritnln(&amp;#34;7.0/3.0=&amp;#34;,7.0/3.0)fmt.Println(true&amp;amp;&amp;amp;false)fmt.Println(true||false)fmt.Pritnln(!true)}Variables 在 Go 中，变量被编译器显式的声明和使用，例如检查函数调用类型的正确性。
+package mainimport &amp;#34;fmt&amp;#34;func main(){// 声明一个或多个变量 var a string=&amp;#34;initial&amp;#34;fmt.Println(a)var b,c int = 1,2fmt.Println(b,c)//Go 将推断变量的初始化类型 var d = truefmt.</description>
+    </item>
+    
+    <item>
+      <title>Go官网资源</title>
+      <link>https://www.markhoo.com/archives/golang/</link>
+      <pubDate>Tue, 30 Oct 2018 22:33:44 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/golang/</guid>
+      <description>Go语言中文官网镜像及资源 Go中国官网 笨鸟学GO
+Go 语言之旅 Go 编程语言 Go语言文档翻译(QQ群:368836416)
+Download Go Microsoft Windows:  go1.11.1.windows-amd64.msi go1.10.4.windows-amd64.msi go1.9.7.windows-amd64.msi  Apple macOS:  go1.11.1.darwin-amd64.pkg go1.10.4.darwin-amd64.pkg go1.9.7.darwin-amd64.pkg  Linux:  go1.11.1.linux-amd64.tar.gz go1.10.4.linux-amd64.tar.gz go1.9.7.linux-amd64.tar.gz  Source:  go1.11.1.src.tar.gz go1.10.4.src.tar.gz go1.9.7.src.tar.gz  </description>
+    </item>
+    
+    <item>
+      <title>Gin使用方法</title>
+      <link>https://www.markhoo.com/archives/gogin/</link>
+      <pubDate>Sun, 14 Oct 2018 19:12:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gogin/</guid>
+      <description>安装gin 直接使用 go get github.com/gin-gonic/gin 即可。
+官方README中提供了非常多的例子。例如最简单的实例代码:
+package mainimport &amp;#34;github.com/gin-gonic/gin&amp;#34;func main() {r := gin.Default()r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) {c.JSON(200, gin.H{&amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;,})})r.Run() // listen and serve on 0.0.0.0:8080}路由 router := gin.Default() // 默认是带有Logger和Recovery中间件的router := gin.New() // 不带中间件的路由router.Use(gin.Logger()) // 可以使用这种方式来指明中间件router.GET(&amp;#34;/test&amp;#34;, MyMiddleware(), testEndpoint) // 也可以用这种方式给指定路由添加中间件router.GET(&amp;#34;/someGet&amp;#34;, getting) // 支持所有Restful的操作// 带参数的路由router.GET(&amp;#34;/user/:name&amp;#34;, func(c *gin.Context) {name := c.Param(&amp;#34;name&amp;#34;)})// 参数可选/通配符功能router.</description>
+    </item>
+    
+    <item>
+      <title>Go关键字和预定义标识符</title>
+      <link>https://www.markhoo.com/archives/go/</link>
+      <pubDate>Sun, 14 Oct 2018 12:01:34 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/go/</guid>
+      <description>Go 语言中的关键字(25个)    关键字 描述     break 退出循环   default 选择结构默认项（switch、select）   func 定义函数   interface 定义接口   select channel   case 选择结构标签   chan 定义channel   const 常量   continue 跳过本次循环   defer 延迟执行内容（收尾工作）   go 并发执行   map map类型   struct 定义结构体   else 选择结构   goto 跳转语句   package 包   switch 选择结构   fallthrough 流程控制   if 选择结构   range 从slice、map等结构中取元素   type 定义类型   for 循环   import 导入包   return 返回   var 定义变量    预定义标识符(36个)    - - - - - -     append bool byte cap close complex   complex64 complex128 uint16 copy false float32   float64 imag int int8 int16 uint32   int32 int64 iota len make new   nil panic uint64 print println real   recover string true uint uint8 uintptr    Go语言的语言符号又称为记法元素，共包括5类，标签符(identifier)、关键字(keyword)、操作符(operator)、分隔符(delimiter)、字面量(literal),它们是组成Go语言代码和程序的最基本单位。</description>
+    </item>
+    
+    <item>
+      <title>Gin Web Framework</title>
+      <link>https://www.markhoo.com/archives/gin/</link>
+      <pubDate>Fri, 12 Oct 2018 20:31:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gin/</guid>
+      <description>Gin is a web framework written in Go (Golang). It features a martini-like API with much better performance, up to 40 times faster thanks to httprouter. If you need performance and good productivity, you will love Gin.
+Installation To install Gin package, you need to install Go and set your Go workspace first.
+ Download and install it:  $ go get -u github.com/gin-gonic/ginImport it in your code:  import &amp;#34;github.</description>
+    </item>
+    
+  </channel>
+</rss>

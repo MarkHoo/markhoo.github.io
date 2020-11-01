@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html><head>
+<title>使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目" />
+<meta property="og:description" content="使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目
+本项目开发环境是 Python3.5.2&#43;Django1.10.6&#43;Sqlite3&#43;Centos7.5&#43;Nginx1.12.2&#43;Gunicorn
+blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部署的笔记由于内容较多，没时间整理。今天抽空整理了一下午，发布出来供需要的同学借鉴参考。文中如有错误请多多指正
+部署前的准备
+服务器 要部署项目就要先购买服务器，如腾讯云，阿里云等等
+注意：服务器在国内的话，必须要备案！不然无法使用。
+阿里云优惠券：点击前往领取 腾讯云代金券：点击前往领取 腾讯云首页:点击直达 腾讯云西南区云产品促销链接：点击直达 腾讯云服务器购买链接：点击直达
+域名 域名购买选择，可以到百度云，腾讯云，阿里云，GoDaddy，namecheap等等
+购买域名后就是解析域名，打开域名解析面板，添加解析记录 记录类型：A 主机记录：test.markhoo.com，这个markhoo.com是你的一级域名，二级域名你可以设置为www.markhoo.com 解析线路：可以默认也可以选别的 记录值：填写你的服务器IP地址 TTL：域名生效时间，也就是多久生效 设置好以上内容，点击确定。解析完成
+主机记录中这个markhoo.com是你的一级域名，二级域名你也可以设置为 www.markhoo.com 或者别的 xxx.markhoo.com 也可以。 注意：域名是否在国内购买不重要，只要服务器不在大陆购买，即使未备案照样可以使用。要是要解析的服务器是大陆服务商则必须要备案。备案后一个域名可以同时接入多个服务商。
+域名解析记录类型说明：
+ A：将域名指向一个IPv4地址 AAAA：将域名指向一个IPv6地址 CNAME：将域名指向另外一个域名 NS：将子域名指定其他DNS服务器解析 MX：将域名指向邮件服务器地址 SRV：记录提供特定的服务的服务器 TXT：文本长度限制512，通常做SPF记录(反垃圾邮件) CAA：CA证书颁发机构授权校验 显性URL：将域名302重定向到另外一个地址 隐性URL：与显性URL类似，但是会隐藏真实目标地址  xshell下载与安装 主要用于远程登录服务器进行相关操作。在官网注册后发送下载链接到你的注册邮箱，或者到搜索引擎搜索下载。 个人版免费，企业版收费。 下载后一路点击下一步，完成。
+登录服务器步骤： 点击左上角&#39;文件&rsquo;&ndash;&lsquo;新建&rsquo; 然后弹出对话框 常规：名称，这个你可以随便取什么名字 协议：SSH，一般默认 主机：空，填上你的服务器IP地址 端口号：22，默认的就行 填好以上选项内容，点击左侧的&#39;用户身份验证&rsquo;，然后看右侧，方法选择&rsquo;Password&rsquo;，在下面输入你的服务器登录用户名和密码，最后点击下面的&#39;连接&rsquo;。 登录成功！进入界面。
+百度网盘官网软件下载链接： 链接: https://pan.baidu.com/s/19K5q1JkmD9qnYaGRTALyLg 密码: r6hx
+安装Nginx 首先用xshell登录服务器 通过 yum 安装 Nginx
+ yum install nginx
+ 启动 Nginx 服务" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.markhoo.com/archives/blogbushu/" />
+<meta property="article:published_time" content="2018-08-14T18:46:15+08:00" />
+<meta property="article:modified_time" content="2018-08-14T18:46:15+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目"/>
+<meta name="twitter:description" content="使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目
+本项目开发环境是 Python3.5.2&#43;Django1.10.6&#43;Sqlite3&#43;Centos7.5&#43;Nginx1.12.2&#43;Gunicorn
+blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部署的笔记由于内容较多，没时间整理。今天抽空整理了一下午，发布出来供需要的同学借鉴参考。文中如有错误请多多指正
+部署前的准备
+服务器 要部署项目就要先购买服务器，如腾讯云，阿里云等等
+注意：服务器在国内的话，必须要备案！不然无法使用。
+阿里云优惠券：点击前往领取 腾讯云代金券：点击前往领取 腾讯云首页:点击直达 腾讯云西南区云产品促销链接：点击直达 腾讯云服务器购买链接：点击直达
+域名 域名购买选择，可以到百度云，腾讯云，阿里云，GoDaddy，namecheap等等
+购买域名后就是解析域名，打开域名解析面板，添加解析记录 记录类型：A 主机记录：test.markhoo.com，这个markhoo.com是你的一级域名，二级域名你可以设置为www.markhoo.com 解析线路：可以默认也可以选别的 记录值：填写你的服务器IP地址 TTL：域名生效时间，也就是多久生效 设置好以上内容，点击确定。解析完成
+主机记录中这个markhoo.com是你的一级域名，二级域名你也可以设置为 www.markhoo.com 或者别的 xxx.markhoo.com 也可以。 注意：域名是否在国内购买不重要，只要服务器不在大陆购买，即使未备案照样可以使用。要是要解析的服务器是大陆服务商则必须要备案。备案后一个域名可以同时接入多个服务商。
+域名解析记录类型说明：
+ A：将域名指向一个IPv4地址 AAAA：将域名指向一个IPv6地址 CNAME：将域名指向另外一个域名 NS：将子域名指定其他DNS服务器解析 MX：将域名指向邮件服务器地址 SRV：记录提供特定的服务的服务器 TXT：文本长度限制512，通常做SPF记录(反垃圾邮件) CAA：CA证书颁发机构授权校验 显性URL：将域名302重定向到另外一个地址 隐性URL：与显性URL类似，但是会隐藏真实目标地址  xshell下载与安装 主要用于远程登录服务器进行相关操作。在官网注册后发送下载链接到你的注册邮箱，或者到搜索引擎搜索下载。 个人版免费，企业版收费。 下载后一路点击下一步，完成。
+登录服务器步骤： 点击左上角&#39;文件&rsquo;&ndash;&lsquo;新建&rsquo; 然后弹出对话框 常规：名称，这个你可以随便取什么名字 协议：SSH，一般默认 主机：空，填上你的服务器IP地址 端口号：22，默认的就行 填好以上选项内容，点击左侧的&#39;用户身份验证&rsquo;，然后看右侧，方法选择&rsquo;Password&rsquo;，在下面输入你的服务器登录用户名和密码，最后点击下面的&#39;连接&rsquo;。 登录成功！进入界面。
+百度网盘官网软件下载链接： 链接: https://pan.baidu.com/s/19K5q1JkmD9qnYaGRTALyLg 密码: r6hx
+安装Nginx 首先用xshell登录服务器 通过 yum 安装 Nginx
+ yum install nginx
+ 启动 Nginx 服务"/>
+
+
+
+
+
+
+
+<script src="/vendor/js/jquery.min.js" ></script>
+<script src="/vendor/js/popper.min.js" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<script src="/vendor/js/smooth-scroll.polyfills.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<script src="/vendor/js/vue.min.js" ></script>
+
+
+
+
+<link rel="icon" href="https://media.markhoo.com/favicon.ico">
+
+
+
+
+<link rel="stylesheet" href="https://www.markhoo.com/scss/journal.min.c116bc90d171283f099f173854157ec8f183f9073b93443b2c8ad82899ee9025.css" integrity="sha256-wRa8kNFxKD8Jnxc4VBV&#43;yPGD&#43;Qc7k0Q7LIrYKJnukCU=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://www.markhoo.com/scss/dark-mode.min.552aae4638a84aa57cf0b195750a49ea9131d3bb621d1ed3ebc9b14b18166536.css" integrity="sha256-VSquRjioSqV88LGVdQpJ6pEx07tiHR7T68mxSxgWZTY=" media="screen">
+
+
+<script src="https://www.markhoo.com/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+
+
+
+  
+    <script src="https://www.markhoo.com/js/toc.js"></script>
+  
+
+
+
+
+
+
+
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div ref="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://www.markhoo.com">
+    
+        <div class="nav-title">
+            南有嘉鱼
+        </div>
+        
+        <div class="nav-subtitle">
+            MarkHoo&#39;s Blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/archives">
+                歸檔
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分類
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/resources">
+                學習資源
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/video">
+                混剪視頻
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/links">
+                左鄰右舍
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/messages">
+                留言板
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                關於
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼
+	
+
+    </div>
+    
+</div><div ref="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8" onclick="onNavClick(`#服务器-nav`)" id="服务器-nav">
+									服务器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9f%9f%e5%90%8d" onclick="onNavClick(`#域名-nav`)" id="域名-nav">
+									域名
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#xshell%e4%b8%8b%e8%bd%bd%e4%b8%8e%e5%ae%89%e8%a3%85" onclick="onNavClick(`#xshell下载与安装-nav`)" id="xshell下载与安装-nav">
+									xshell下载与安装
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85nginx" onclick="onNavClick(`#安装nginx-nav`)" id="安装nginx-nav">
+									安装Nginx
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#centos75%e5%ae%89%e8%a3%85python3" onclick="onNavClick(`#centos75安装python3-nav`)" id="centos75安装python3-nav">
+									Centos7.5安装Python3
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2%e5%89%8d%e7%9a%84%e9%a1%b9%e7%9b%ae%e9%85%8d%e7%bd%ae" onclick="onNavClick(`#部署前的项目配置-nav`)" id="部署前的项目配置-nav">
+									部署前的项目配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%b0%86%e4%bb%a3%e7%a0%81%e4%b8%8a%e4%bc%a0%e5%88%b0-github--gitee--%e6%88%96%e8%80%85coding" onclick="onNavClick(`#将代码上传到-github--gitee--或者coding-nav`)" id="将代码上传到-github--gitee--或者coding-nav">
+									将代码上传到 GitHub 、 Gitee 、 或者Coding
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#git%e7%9a%84%e5%ae%89%e8%a3%85%e5%92%8c%e4%b8%8a%e4%bc%a0%e4%bb%a3%e7%a0%81%e7%9a%84%e7%ae%80%e5%8d%95%e6%96%b9%e6%b3%95" onclick="onNavClick(`#git的安装和上传代码的简单方法-nav`)" id="git的安装和上传代码的简单方法-nav">
+									Git的安装和上传代码的简单方法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%ae%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" onclick="onNavClick(`#设置服务器目录结构-nav`)" id="设置服务器目录结构-nav">
+									设置服务器目录结构
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85virtualenv" onclick="onNavClick(`#安装virtualenv-nav`)" id="安装virtualenv-nav">
+									安装virtualenv
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#venv%e7%9a%84%e4%bd%bf%e7%94%a8" onclick="onNavClick(`#venv的使用-nav`)" id="venv的使用-nav">
+									venv的使用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9c%a8%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83%e4%b8%ad%e5%ae%89%e8%a3%85-django-%e4%bb%a5%e5%8f%8a%e4%be%9d%e8%b5%96%e5%8c%85%e5%b9%b6%e5%88%9d%e5%a7%8b%e5%8c%96%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#在虚拟环境中安装-django-以及依赖包并初始化项目-nav`)" id="在虚拟环境中安装-django-以及依赖包并初始化项目-nav">
+									在虚拟环境中安装 django 以及依赖包并初始化项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85-mysql-%e4%bd%bf%e7%94%a8mysql%e6%95%b0%e6%8d%ae%e5%ba%93%e5%90%8c%e5%ad%a6%e5%8f%af%e4%bb%a5%e5%80%9f%e9%89%b4" onclick="onNavClick(`#安装-mysql-使用mysql数据库同学可以借鉴-nav`)" id="安装-mysql-使用mysql数据库同学可以借鉴-nav">
+									安装 Mysql (使用MySQL数据库同学可以借鉴)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8-gunicorn" onclick="onNavClick(`#使用-gunicorn-nav`)" id="使用-gunicorn-nav">
+									使用 Gunicorn
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae-nginx" onclick="onNavClick(`#配置-nginx-nav`)" id="配置-nginx-nav">
+									配置 Nginx
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a class="pagination-action" v-on:click="toggleDarkMode">
+            <i class="material-icons pagination-action-icon" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons pagination-action-icon" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/archives">
+                    歸檔
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分類
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/resources">
+                    學習資源
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/video">
+                    混剪視頻
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/links">
+                    左鄰右舍
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/messages">
+                    留言板
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    關於
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8" onclick="onNavClick(`#服务器-nav`)" id="服务器-nav">
+									服务器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9f%9f%e5%90%8d" onclick="onNavClick(`#域名-nav`)" id="域名-nav">
+									域名
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#xshell%e4%b8%8b%e8%bd%bd%e4%b8%8e%e5%ae%89%e8%a3%85" onclick="onNavClick(`#xshell下载与安装-nav`)" id="xshell下载与安装-nav">
+									xshell下载与安装
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85nginx" onclick="onNavClick(`#安装nginx-nav`)" id="安装nginx-nav">
+									安装Nginx
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#centos75%e5%ae%89%e8%a3%85python3" onclick="onNavClick(`#centos75安装python3-nav`)" id="centos75安装python3-nav">
+									Centos7.5安装Python3
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2%e5%89%8d%e7%9a%84%e9%a1%b9%e7%9b%ae%e9%85%8d%e7%bd%ae" onclick="onNavClick(`#部署前的项目配置-nav`)" id="部署前的项目配置-nav">
+									部署前的项目配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%b0%86%e4%bb%a3%e7%a0%81%e4%b8%8a%e4%bc%a0%e5%88%b0-github--gitee--%e6%88%96%e8%80%85coding" onclick="onNavClick(`#将代码上传到-github--gitee--或者coding-nav`)" id="将代码上传到-github--gitee--或者coding-nav">
+									将代码上传到 GitHub 、 Gitee 、 或者Coding
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#git%e7%9a%84%e5%ae%89%e8%a3%85%e5%92%8c%e4%b8%8a%e4%bc%a0%e4%bb%a3%e7%a0%81%e7%9a%84%e7%ae%80%e5%8d%95%e6%96%b9%e6%b3%95" onclick="onNavClick(`#git的安装和上传代码的简单方法-nav`)" id="git的安装和上传代码的简单方法-nav">
+									Git的安装和上传代码的简单方法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%ae%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" onclick="onNavClick(`#设置服务器目录结构-nav`)" id="设置服务器目录结构-nav">
+									设置服务器目录结构
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85virtualenv" onclick="onNavClick(`#安装virtualenv-nav`)" id="安装virtualenv-nav">
+									安装virtualenv
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#venv%e7%9a%84%e4%bd%bf%e7%94%a8" onclick="onNavClick(`#venv的使用-nav`)" id="venv的使用-nav">
+									venv的使用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9c%a8%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83%e4%b8%ad%e5%ae%89%e8%a3%85-django-%e4%bb%a5%e5%8f%8a%e4%be%9d%e8%b5%96%e5%8c%85%e5%b9%b6%e5%88%9d%e5%a7%8b%e5%8c%96%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#在虚拟环境中安装-django-以及依赖包并初始化项目-nav`)" id="在虚拟环境中安装-django-以及依赖包并初始化项目-nav">
+									在虚拟环境中安装 django 以及依赖包并初始化项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85-mysql-%e4%bd%bf%e7%94%a8mysql%e6%95%b0%e6%8d%ae%e5%ba%93%e5%90%8c%e5%ad%a6%e5%8f%af%e4%bb%a5%e5%80%9f%e9%89%b4" onclick="onNavClick(`#安装-mysql-使用mysql数据库同学可以借鉴-nav`)" id="安装-mysql-使用mysql数据库同学可以借鉴-nav">
+									安装 Mysql (使用MySQL数据库同学可以借鉴)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8-gunicorn" onclick="onNavClick(`#使用-gunicorn-nav`)" id="使用-gunicorn-nav">
+									使用 Gunicorn
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae-nginx" onclick="onNavClick(`#配置-nginx-nav`)" id="配置-nginx-nav">
+									配置 Nginx
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="https://www.markhoo.com">
+            南有嘉鱼
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" v-on:click="toggleDarkMode">
+            <i class="material-icons" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://www.markhoo.com">
+        <div class="single-column-header-title">南有嘉鱼</div>
+        
+        <div class="single-column-header-subtitle">MarkHoo&#39;s Blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                
+                    
+                    
+                    style="background-image: url('https://api.ixiaowai.cn/gqapi/gqapi.php')"
+                    
+                
+            >
+                <div class="post-title">
+                    使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2018-08-14 18:46
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/django">Django</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/django">Django</a>
+                                &nbsp;
+                            
+                                <a href="/tags/python">Python</a>
+                                &nbsp;
+                            
+                                <a href="/tags/gunicorn">Gunicorn</a>
+                                &nbsp;
+                            
+                                <a href="/tags/nginx">Nginx</a>
+                                &nbsp;
+                            
+                                <a href="/tags/centos7">CentOS7</a>
+                                &nbsp;
+                            
+                        
+                        
+                            <i class="material-icons" style="">schedule</i>
+                            
+
+                            
+                            
+
+                            
+                            28 min
+                            
+                            12 s.
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目</p>
+<p>本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunicorn</p>
+<p>blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部署的笔记由于内容较多，没时间整理。今天抽空整理了一下午，发布出来供需要的同学借鉴参考。文中如有错误请多多指正</p>
+<p>部署前的准备</p>
+<h1 id="服务器">服务器</h1>
+<p>要部署项目就要先购买服务器，如腾讯云，阿里云等等</p>
+<p>注意：服务器在国内的话，必须要备案！不然无法使用。</p>
+<p>阿里云优惠券：<a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=od77opdu&amp;utm_source=od77opdu">点击前往领取</a>
+腾讯云代金券：<a href="https://cloud.tencent.com/redirect.php?redirect=1025&amp;cps_key=e45aa4e4a119335f28464633e4f42262&amp;from=console">点击前往领取</a>
+腾讯云首页:<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=e45aa4e4a119335f28464633e4f42262&amp;from=console">点击直达</a>
+腾讯云西南区云产品促销链接：<a href="https://cloud.tencent.com/redirect.php?redirect=1014&amp;cps_key=e45aa4e4a119335f28464633e4f42262&amp;from=console">点击直达</a>
+腾讯云服务器购买链接：<a href="https://cloud.tencent.com/redirect.php?redirect=1001&amp;cps_key=e45aa4e4a119335f28464633e4f42262&amp;from=console">点击直达</a></p>
+<h1 id="域名">域名</h1>
+<p>域名购买选择，可以到百度云，腾讯云，阿里云，GoDaddy，namecheap等等</p>
+<p>购买域名后就是解析域名，打开域名解析面板，添加解析记录
+记录类型：A
+主机记录：test.markhoo.com，这个markhoo.com是你的一级域名，二级域名你可以设置为www.markhoo.com
+解析线路：可以默认也可以选别的
+记录值：填写你的服务器IP地址
+TTL：域名生效时间，也就是多久生效
+设置好以上内容，点击确定。解析完成</p>
+<p>主机记录中这个markhoo.com是你的一级域名，二级域名你也可以设置为 <a href="http://www.markhoo.com">www.markhoo.com</a> 或者别的 xxx.markhoo.com 也可以。
+注意：域名是否在国内购买不重要，只要服务器不在大陆购买，即使未备案照样可以使用。要是要解析的服务器是大陆服务商则必须要备案。备案后一个域名可以同时接入多个服务商。</p>
+<p>域名解析记录类型说明：</p>
+<ul>
+<li>A：将域名指向一个IPv4地址</li>
+<li>AAAA：将域名指向一个IPv6地址</li>
+<li>CNAME：将域名指向另外一个域名</li>
+<li>NS：将子域名指定其他DNS服务器解析</li>
+<li>MX：将域名指向邮件服务器地址</li>
+<li>SRV：记录提供特定的服务的服务器</li>
+<li>TXT：文本长度限制512，通常做SPF记录(反垃圾邮件)</li>
+<li>CAA：CA证书颁发机构授权校验</li>
+<li>显性URL：将域名302重定向到另外一个地址</li>
+<li>隐性URL：与显性URL类似，但是会隐藏真实目标地址</li>
+</ul>
+<h1 id="xshell下载与安装">xshell下载与安装</h1>
+<p>主要用于远程登录服务器进行相关操作。在官网注册后发送下载链接到你的注册邮箱，或者到搜索引擎搜索下载。
+个人版免费，企业版收费。
+下载后一路点击下一步，完成。</p>
+<p>登录服务器步骤：
+点击左上角'文件&rsquo;&ndash;&lsquo;新建&rsquo;
+然后弹出对话框
+常规：名称，这个你可以随便取什么名字
+协议：SSH，一般默认
+主机：空，填上你的服务器IP地址
+端口号：22，默认的就行
+填好以上选项内容，点击左侧的'用户身份验证&rsquo;，然后看右侧，方法选择&rsquo;Password&rsquo;，在下面输入你的服务器登录用户名和密码，最后点击下面的'连接&rsquo;。
+登录成功！进入界面。</p>
+<p>百度网盘官网软件下载链接：
+链接: <a href="https://pan.baidu.com/s/19K5q1JkmD9qnYaGRTALyLg">https://pan.baidu.com/s/19K5q1JkmD9qnYaGRTALyLg</a> 密码: r6hx</p>
+<h1 id="安装nginx">安装Nginx</h1>
+<p>首先用xshell登录服务器
+通过 yum 安装 Nginx</p>
+<blockquote>
+<p>yum install nginx</p>
+</blockquote>
+<p>启动 Nginx 服务</p>
+<blockquote>
+<p>systemctl start nginx</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>systemctl start nginx.service
+systemctl enable nginx.service</p>
+</blockquote>
+<p>访问服务器IP地址，可以看到 nginx 的欢迎界面</p>
+<p>Nginx相关命令：
+停止nginx</p>
+<blockquote>
+<p>nginx -s stop
+重启nginx
+nginx -s reload</p>
+</blockquote>
+<h1 id="centos75安装python3">Centos7.5安装Python3</h1>
+<p>由于centos7.5原本默认安装了Python2，而且这个Python2不能被删除，因为有很多系统命令，比如yum都要用到。
+以下操作首先要用xshell登录到服务器
+输入Python命令，查看可以得知是Python2.7.5版本</p>
+<p>输入</p>
+<blockquote>
+<p>which python</p>
+</blockquote>
+<p>可以查看位置，一般是位于/usr/bin/python目录下。</p>
+<p>下面介绍安装Python3的方法</p>
+<p>首先安装依赖包</p>
+<blockquote>
+<p>yum -y groupinstall &ldquo;Development tools&rdquo;
+yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</p>
+</blockquote>
+<p>然后根据自己需求下载不同版本的Python3，我下载的是Python3.5.2</p>
+<p>注：如果速度不够快，可以直接去官网下载，利用WinSCP等软件传到服务器上指定位置。</p>
+<p>我的存放目录是/usr/local/python3，使用命令：</p>
+<blockquote>
+<p>mkdir /usr/local/python3</p>
+</blockquote>
+<p>建立好一个空文件夹，进入该目录</p>
+<blockquote>
+<p>cd /usr/local/python3</p>
+</blockquote>
+<p>使用一下命令下载压缩包</p>
+<blockquote>
+<p>wget <a href="https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz">https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz</a></p>
+</blockquote>
+<p>然后解压压缩包安装Python3</p>
+<blockquote>
+<p>tar -xvJf  Python-3.5.2.tar.xz
+cd Python-3.5.2
+./configure &ndash;prefix=/usr/local/python3
+make &amp;&amp; make install</p>
+</blockquote>
+<p>最后创建软链接</p>
+<blockquote>
+<p>ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3</p>
+</blockquote>
+<p>在命令行中输入python3测试</p>
+<p>升级pip3命令：</p>
+<blockquote>
+<p>pip3 install &ndash;upgrade pip</p>
+</blockquote>
+<h1 id="部署前的项目配置">部署前的项目配置</h1>
+<p>Django 项目中会有一些 CSS、JavaScript 等静态文件，为了能够方便地让 Nginx 处理这些静态文件的请求，我们把项目中的全部静态文件收集到一个统一的目录下，这个目录通常位于 Django 项目的根目录，并且命名为 static。为了完成这些任务，需要在项目的配置文件里做一些必要的配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">myblog<span style="color:#f92672">/</span>settings<span style="color:#f92672">.</span>py
+
+<span style="color:#75715e"># 其他配置...</span>
+
+STATIC_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/static/&#39;</span>
+<span style="color:#75715e"># 加入下面的配置</span>
+STATIC_ROOT <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BASE_DIR, <span style="color:#e6db74">&#39;static&#39;</span>)
+</code></pre></div><p>STATIC_ROOT 指明了静态文件的收集目录，即项目根目录（BASE_DIR）下的 static 文件夹。</p>
+<p>为了安全起见，在生产环境下需要关闭 DEBUG 选项以及设置允许访问的域名。打开 settings.py 文件，找到 DEBUG 和 ALLOWED_HOSTS 这两个选项，将它们设置成如下的值：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">myblog<span style="color:#f92672">/</span>settings<span style="color:#f92672">.</span>py
+
+DEBUG <span style="color:#f92672">=</span> False
+ALLOWED_HOSTS <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;127.0.0.1&#39;</span>, <span style="color:#e6db74">&#39;localhost &#39;</span>, <span style="color:#e6db74">&#39;.markhoo.com&#39;</span>]
+</code></pre></div><p>ALLOWED_HOSTS 是允许访问的域名列表，127.0.0.1 和 localhost 是本地访问的域名，.markhoo.com 是访问服务器的域名（换成你自己的域名）。域名前加一个点表示允许访问该域名下的子域名，比如 <a href="http://www.markhoo.com">www.markhoo.com</a>  test.markhoo.com 等二级域名同样允许访问。如果不加前面的点则只允许访问 markhoo.com。</p>
+<p>项目还会依赖一些第三方 Python 库，为了方便在服务器上一次性安装，我们将全部依赖写入一个叫 requirements.txt 的文本文件中。激活本地的虚拟环境（如果你使用了虚拟环境的话），并进入项目的根目录，运行 pip freeze &gt; requirements.txt 命令：</p>
+<blockquote>
+<p>(myblog_env) D:\Djangoprojects\myblog&gt;
+pip freeze &gt; requirements.txt</p>
+</blockquote>
+<p>这时项目根目录下会生成了一个 requirements.txt 的文本文件，其内容记录了项目的全部依赖。由于有一些依赖包也有先后依赖关系，该调整的需要进去txt文件调整一下。</p>
+<p>如果上传到服务器后修改，可以使用 &lsquo;vi (文件名称)&rsquo; 打开文件，然后点击键盘 &lsquo;i&rsquo; 键切换到输入模式。
+修改完需要退出，先按键盘 &lsquo;Esc&rsquo; 键，然后输入 &lsquo;:wq&rsquo; 保存退出。如果不想修改又无法退出可以用 &lsquo;:q!&rsquo; 强制退出，这样不会保存你修改的内容
+更多的vi、vim命令使用方法可以自行到搜索引擎搜索学习，这里就不一一讲解了。</p>
+<h1 id="将代码上传到-github--gitee--或者coding">将代码上传到 GitHub 、 Gitee 、 或者Coding</h1>
+<p>将代码上传到 GitHub 等代码托管平台，这样我们就可以方便地把代码拉取到服务器了。
+如果访问慢或者打不开GitHub的话，可以上传到国内的Gitee或者Coding</p>
+<h1 id="git的安装和上传代码的简单方法">Git的安装和上传代码的简单方法</h1>
+<p>安装Git可以到官网 <a href="https://git-scm.com">https://git-scm.com</a> 下载，安装的话可以一直下一步，完成。</p>
+<p>首先你需要一个GitHub 、 Gitee 、 或者Coding账号，所以还没有的话先去注册吧！</p>
+<p><a href="https://github.com">https://github.com</a>
+<a href="https://gitee.com">https://gitee.com</a>
+<a href="https://coding.net">https://coding.net</a></p>
+<p>1.进入Github首页，点击New repository新建一个项目</p>
+<p>2.填写相应信息后点击create即可</p>
+<p>Repository name: 仓库名称</p>
+<p>Description(可选): 仓库描述介绍</p>
+<p>Public, Private : 仓库权限（公开共享，私有或指定合作者）</p>
+<p>Initialize this repository with a README: 添加一个README.md</p>
+<p>gitignore: 不需要进行版本管理的仓库类型，对应生成文件.gitignore</p>
+<p>license: 证书类型，对应生成文件LICENSE</p>
+<p>一般可以填写项目仓库名称，点击create就可以了。因为免费用户只有 Gitee 才可以创建私有仓库</p>
+<p>3.创建好项目仓库后，在项目仓库页面点击Clone or dowload会出现一个地址，copy这个地址备用。</p>
+<p>4.接下来就到本地操作了，首先右键你的项目，如果你之前安装git成功的话，右键会出现两个新选项，分别为Git Gui Here,Git Bash Here,这里我们选择Git Bash Here进入界面，我的本地项目名为myblog。</p>
+<p>5.接下来输入如下代码（关键步骤），把github上面的仓库克隆到本地</p>
+<blockquote>
+<p>git clone (粘贴上你之前复制的地址)</p>
+</blockquote>
+<p>6.操作步骤5以后你的本地项目文件夹下面就会多出个文件夹，该文件夹名即为你github上面的项目名，如我多出了个myblogsite文件夹，我们把本地项目文件夹下的所有文件（除了新多出的那个文件夹不用），其余都复制到那个新多出的文件夹下。</p>
+<p>7.接着继续输入命令 cd myblogsite，进入myblogsite文件夹</p>
+<p>8.接下来依次输入以下代码即可完成其他剩余操作：</p>
+<blockquote>
+<p>git add .        （注：别忘记后面的.，此操作是把myblogsite文件夹下面的文件都添加进来）
+git commit  -m  &ldquo;提交信息&rdquo;  （注：“提交信息”里面换成你需要，如“first commit”）
+git push -u origin master   （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入GitHub帐号和密码）</p>
+</blockquote>
+<p>注意：数据库文件不要上传！要是SQLLITE3里面有你测试的重要数据，将可能会泄露。</p>
+<h1 id="设置服务器目录结构">设置服务器目录结构</h1>
+<p>接下来需要把代码上传到服务器了。我服务器上存放代码的目录结构一般是这样的：</p>
+<pre><code>/home/markhoo/
+    sites/
+        markhoo.com/
+            myblog_env/
+            myblog/
+
+</code></pre><p>一台服务器可能部署多个网站，所有网站代码都放在 sites/ 目录下。markhoo.com/ 这个文件夹以网站的域名命名，便于区分。myblog_env 是 python 虚拟环境目录。myblog 是 Django 博客项目目录。
+创建这个目录结构，注意目录名替换为你自己的域名，以后涉及到 markhoo.com 的地方通常都要替换你自己的域名，后面就不再一一指出了。
+备注：上面的我的目录结构.可能会有新手看不懂，解释一下,就像下面这样一直创建下去</p>
+<pre><code>/home/markhoo/sites/markhoo.com/
+</code></pre><p>最后的 myblog_env 和 myblog 是同级目录位于markhoo.com下，这里自己先不要创建。</p>
+<p>创建目录的命令为： mkdir (文件夹名称)
+删除目录的命令为： rmdir (文件夹名称)</p>
+<h1 id="安装virtualenv">安装virtualenv</h1>
+<p>为了不影响外界环境的清洁，所以我们使用虚拟环境来配置 Django 项目
+首先用xshell登录到你的服务器，然后按一下步骤操作</p>
+<blockquote>
+<p>pip3 install virtualenv</p>
+</blockquote>
+<p>接下来创建虚拟环境，先进入到 markhoo.com 目录下，然后运行 virtualenv 命令创建虚拟环境：</p>
+<blockquote>
+<p>[root@instance-pkb22o0h]# cd /home/markhoo/sites/markhoo.com
+[root@instance-pkb22o0h markhoo.com]# virtualenv -p /usr/bin/python3 –-no-site-packages myblog_env</p>
+</blockquote>
+<p>命令说明：
+-p： 指定你要虚拟的Python版本，这里选择了本地的python3
+–-no-site-packages：表示在建立虚拟环境时不将原版本中的第三方库拷贝过来，这样就能获得一个纯净的Python环境。
+myblog_env:表明在该目录下，建立一个叫做myblog_env的虚拟环境，这样的命名方式，让你一眼就能看出这个虚拟环境是为谁建立的。</p>
+<p>virtualenv的命令使用方法：
+创建虚拟环境： $ virtualenv -p /usr/bin/python3.5 –-no-site-packages myblog_env
+启动虚拟环境： $ source myblog_env/bin/activate　
+退出虚拟环境： $ deactivate　
+删除虚拟环境： $ rm –r myblog_env</p>
+<p>检查一下虚拟环境是否创建成功，运行 ls 命令列出当前目录下的文件和文件夹，看到 myblog_env 这个文件夹说明虚拟环境创建成功。</p>
+<blockquote>
+<p>[root@instance-pkb22o0h markhoo.com]# ls
+myblog_env</p>
+</blockquote>
+<h1 id="venv的使用">venv的使用</h1>
+<p>由于我只是测试项目，所以使用了Python自带的venv。
+先进入到 markhoo.com 目录下，然后运行 python3 -m venv myblog_env 创建虚拟环境：</p>
+<blockquote>
+<p>[root@instance-pkb22o0h]# cd /home/markhoo/sites/markhoo.com
+[root@instance-pkb22o0h markhoo.com]# python3 -m venv myblog_env</p>
+</blockquote>
+<p>检查一下虚拟环境是否创建成功，运行 ls 命令列出当前目录下的文件和文件夹，看到 myblog_env 这个文件夹说明虚拟环境创建成功。</p>
+<blockquote>
+<p>[root@instance-pkb22o0h markhoo.com]# ls
+myblog_env</p>
+</blockquote>
+<h1 id="在虚拟环境中安装-django-以及依赖包并初始化项目">在虚拟环境中安装 django 以及依赖包并初始化项目</h1>
+<p>接着再从代码仓库把项目代码拉取过来，把 git clone 后的地址换成你自己的 GitHub 仓库地址！</p>
+<blockquote>
+<p>[root@instance-pkb22o0h markhoo.com]# git clone <a href="https://github.com/MarkHoo/myblog.git">https://github.com/MarkHoo/myblog.git</a></p>
+</blockquote>
+<p>运行 ls 命令检查一下是否拉取成功：</p>
+<blockquote>
+<p>[root@instance-pkb22o0h markhoo.com]# ls
+myblog  myblog_env</p>
+</blockquote>
+<p>多了 myblog 文件夹（文件夹名称由你的 GitHub 仓库名决定），说明拉取成功了。</p>
+<p>接下来执行命令，启动虚拟环境</p>
+<blockquote>
+<p>[root@instance-pkb22o0h markhoo.com]# source myblog_env/bin/activate
+(myblog_env) [root@instance-pkb22o0h markhoo.com]#</p>
+</blockquote>
+<p>安装项目环境依赖</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h markhoo.com]# cd myblog
+(myblog_env) [root@instance-pkb22o0h myblog]# pip3 install -r requirements.txt</p>
+</blockquote>
+<p>收集静态文件
+运行 python manage.py collectstatic 命令收集静态文件到 static 目录下</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py collectstatic</p>
+</blockquote>
+<p>生成数据库</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py migrate</p>
+</blockquote>
+<p>创建超级用户</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py createsuperuser</p>
+</blockquote>
+<p>然后就会出现以下内容，第一个是用户名，第二个是邮箱，第三和第四是密码（输入时没有任何显示，实际上已经输入了）。最后显示创建成功！</p>
+<blockquote>
+<p>Username (leave blank to use &lsquo;root&rsquo;): admin
+Email address: <a href="mailto:admin@markhoo.com">admin@markhoo.com</a>
+Password: 
+Password (again): 
+Superuser created successfully.</p>
+</blockquote>
+<p>备注：这里使用的是Django默认生成的sqlite3数据库，我使用了这个，简单写写博客够用了。</p>
+<p>启动 Django</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py runserver 0.0.0.0:8000</p>
+</blockquote>
+<p>如果没有报错，就说明 Django 已经安装成功了，打开浏览器输入你的服务器IP：8000，就可以看到你的网站了</p>
+<p>退出 Django</p>
+<p>按 ctrl+c 退出 Django 服务</p>
+<h1 id="安装-mysql-使用mysql数据库同学可以借鉴">安装 Mysql (使用MySQL数据库同学可以借鉴)</h1>
+<p>安装并启动 mariadb</p>
+<p>因为 CentOS 7 之后的版本都不在提供 Mysql 安装源，这里我们使用 mariadb 代替 mysql，依次执行下列命令</p>
+<blockquote>
+<p>yum install mariadb mariadb-server -y
+yum install MySQL-python -y
+systemctl start mariadb</p>
+</blockquote>
+<p>对 mariadb 进行初始化设置</p>
+<ul>
+<li>执行下面命令，根据提示操作</li>
+<li>设置新密码为 test</li>
+<li>默认密码为空，直接回车即可</li>
+</ul>
+<blockquote>
+<p>mysql_secure_installation</p>
+</blockquote>
+<p>使用设置的密码登陆 mariadb</p>
+<ul>
+<li>登陆 db，这里假设密码被设置为 admin123</li>
+</ul>
+<blockquote>
+<p>mysql -uroot -ptest</p>
+</blockquote>
+<p>创建一个数据库</p>
+<blockquote>
+<p>create database myblog;</p>
+</blockquote>
+<p>成功后，输入 exit 命令退出 db</p>
+<blockquote>
+<p>exit</p>
+</blockquote>
+<p>修改配置文件，与 Mysql 数据库相关联
+编辑 myblog/settings.py</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Database</span>
+<span style="color:#75715e"># https://docs.djangoproject.com/en/1.11/ref/settings/#databases</span>
+
+DATABASES <span style="color:#f92672">=</span> {
+    <span style="color:#e6db74">&#39;default&#39;</span>: {
+        <span style="color:#e6db74">&#39;ENGINE&#39;</span>: <span style="color:#e6db74">&#39;django.db.backends.mysql&#39;</span>,
+        <span style="color:#e6db74">&#39;NAME&#39;</span>: <span style="color:#e6db74">&#39;myblog&#39;</span>,
+        <span style="color:#e6db74">&#39;PASSWORD&#39;</span>:<span style="color:#e6db74">&#39;admin123&#39;</span>,
+        <span style="color:#e6db74">&#39;USER&#39;</span>: <span style="color:#e6db74">&#39;root&#39;</span>,
+        <span style="color:#e6db74">&#39;HOST&#39;</span>:<span style="color:#e6db74">&#39;127.0.0.1&#39;</span>,
+        <span style="color:#e6db74">&#39;PORT&#39;</span>:<span style="color:#e6db74">&#39;3306&#39;</span>,
+    }
+}
+</code></pre></div><p>创建 Django 数据库</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# cd /home/markhoo/sites/markhoo.com/myblog
+(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py migrate</p>
+</blockquote>
+<p>创建超级用户</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py createsuperuser</p>
+</blockquote>
+<p>然后就会出现以下内容，第一个是用户名，第二个是邮箱，第三和第四是密码（输入时没有任何显示，实际上已经输入了）。最后显示创建成功！</p>
+<blockquote>
+<p>Username (leave blank to use &lsquo;root&rsquo;): admin
+Email address: <a href="mailto:admin@markhoo.com">admin@markhoo.com</a>
+Password: 
+Password (again): 
+Superuser created successfully.</p>
+</blockquote>
+<p>启动 Django</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# python manage.py runserver 0.0.0.0:8000</p>
+</blockquote>
+<p>如果没有报错，就说明 Django 已经安装成功了，并且跟 Mysql 的连接正常。打开浏览器输入你的服务器IP：8000，就可以看到你的网站了</p>
+<p>退出 Django</p>
+<p>按 ctrl+c 退出 Django 服务</p>
+<h1 id="使用-gunicorn">使用 Gunicorn</h1>
+<p>Gunicorn 一般用来管理多个进程，有进程挂了Gunicorn 可以把它拉起来，防止服务器长时间停止服务，还可以动态调整 worker 的数量，请求多的时候增加 worker 的数量，请求少的时候减少。</p>
+<p>在虚拟环境下，安装 Gunicorn：</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# pip3 install gunicorn</p>
+</blockquote>
+<p>测试Gunicorn是否能启动你的项目服务</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# gunicorn &ndash;bind 0.0.0.0:8000 myblog.wsgi:application</p>
+</blockquote>
+<p>注意：myblog.wsgi:application这里的myblog对应的是 /home/markhoo/sites/markhoo.com/myblog/myblog, 根据自己的修改。浏览器输入域名，可以看到访问成功了！</p>
+<p>访问ip地址看浏览器是否能正常查看内容（此时没有退出虚拟环境） 
+完成测试后，按CTRL-C 停止 Gunicorn 运行</p>
+<p>退出虚拟环境</p>
+<blockquote>
+<p>deactivate</p>
+</blockquote>
+<p>创建一个 Gunicorn Systemd Service 文件，直接运行以下命令</p>
+<blockquote>
+<p>vim /etc/systemd/system/gunicorn.service</p>
+</blockquote>
+<p>修改内容如下：</p>
+<pre><code>[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=nginx
+WorkingDirectory=/home/markhoo/sites/markhoo.com/myblog
+ExecStart=/home/markhoo/sites/markhoo.com/myblog_env/bin/gunicorn --workers 3 --bind unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock myblog.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+</code></pre><p>一定要注意自己的项目路径和虚拟环境路径 
+WorkingDirectory与ExecStart 修改为自己的路径</p>
+<p>开启Gunicorn服务并开机自启,运行以下命令</p>
+<blockquote>
+<p>systemctl start gunicorn
+systemctl enable gunicorn</p>
+</blockquote>
+<h1 id="配置-nginx">配置 Nginx</h1>
+<p>接下是配置 Nginx 来处理用户请求</p>
+<p>配置nginx代理通过Gunicorn
+依次运行以下命令</p>
+<blockquote>
+<p>(myblog_env) [root@instance-pkb22o0h myblog]# cd /etc/nginx/
+(myblog_env) [root@instance-pkb22o0h nginx]# ls
+conf.d     fastcgi.conf          fastcgi_params          koi-utf  mime.types          nginx.conf          scgi_params          uwsgi
+default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.default  nginx.conf.default  scgi_params.default  uwsgi
+(myblog_env) [root@instance-pkb22o0h nginx]# vi nginx.conf
+或者直接运行
+vim /etc/nginx/nginx.conf</p>
+</blockquote>
+<p>打开后默认的内容如下：</p>
+<pre><code># For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+                      '$status $body_bytes_sent &quot;$http_referer&quot; '
+                      '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }
+
+# Settings for a TLS enabled server.
+#
+#    server {
+#        listen       443 ssl http2 default_server;
+#        listen       [::]:443 ssl http2 default_server;
+#        server_name  _;
+#        root         /usr/share/nginx/html;
+#
+#        ssl_certificate &quot;/etc/pki/nginx/server.crt&quot;;
+#        ssl_certificate_key &quot;/etc/pki/nginx/private/server.key&quot;;
+#        ssl_session_cache shared:SSL:1m;
+#        ssl_session_timeout  10m;
+#        ssl_ciphers HIGH:!aNULL:!MD5;
+#        ssl_prefer_server_ciphers on;
+#
+#        # Load configuration files for the default server block.
+#        include /etc/nginx/default.d/*.conf;
+#
+#        location / {
+#        }
+#
+#        error_page 404 /404.html;
+#            location = /40x.html {
+#        }
+#
+#        error_page 500 502 503 504 /50x.html;
+#            location = /50x.html {
+#        }
+#    }
+
+}
+</code></pre><p>找到server内容进行修改，具体内容如下：</p>
+<pre><code>server {
+    listen 80;
+    server_name  markhoo.com 0.0.0.0;
+
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location /static/ {
+        root /home/markhoo/sites/markhoo.com/myblog;
+        }
+
+        location / {
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock;
+        }
+
+    }
+
+
+</code></pre><p>注意修改自己的IP地址或域名，还有文件路径 
+server_domain_or_IP 代表你的IP地址或域名</p>
+<ul>
+<li>这里的域名为 markhoo.com，其次一定要添加 0.0.0.0 否则无法访问，两个之间用空格隔开。</li>
+<li>所有URL 带有 /static 的请求均由 Nginx 处理，alias 指明了静态文件的存放目录。</li>
+<li>其它请求转发给 Django 处理。proxy_pass 后面使用了 unix 套接字，其作用是防止端口冲突，这里就不再详述。</li>
+</ul>
+<p>修改所涉及到的vim命令使用方法：使用 &lsquo;vi (文件名称)&rsquo; 是打开文件，然后点击键盘 &lsquo;i&rsquo; 键切换到输入模式。修改完需要退出vim编辑器，先按键盘 &lsquo;Esc&rsquo; 键，然后输入 &lsquo;:wq&rsquo; 保存退出。如果不想修改又无法退出可以用 &lsquo;:q!&rsquo; 强制退出，这样不会保存你修改的内容。
+更多的vi、vim命令的具体使用方法可以自行到搜索引擎搜索学习，这里也不一一讲解了。</p>
+<p>修改nginx的权限</p>
+<blockquote>
+<p>usermod -a -G root nginx
+chmod 710 /home/
+nginx -t</p>
+</blockquote>
+<p>如果没有报错，就行下一步操作</p>
+<p>开启nginx服务并开机自启</p>
+<blockquote>
+<p>systemctl start nginx
+systemctl enable nginx</p>
+</blockquote>
+<p>现在，一切配置完成！你可以访问你的域名了！</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">上次修改於 2018-08-14</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://www.markhoo.com/archives/highdjango/">
+			下回<br>《High Performance Django》阅读笔记
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://www.markhoo.com/archives/xadmin/">
+			上回<br>xadmin 插件制作
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+<div id="vcomments"></div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼
+	
+</div>
+            </div>
+    <script>
+let app;
+
+app = new Vue({
+    el: '#app',
+    data: {
+        scrollY: 0,
+        navOpacity: 0,
+        isDrawerOpen: false,
+        mounted: false,
+        isDarkMode: false
+    },
+    methods: {
+            sgn(t, x) {
+                let k = 1. / (1. - 2 * t);
+                if (x <= t) return 0;
+                else if (x >= 1 - t) return 1;
+                else {
+                    return k * (x - t);
+                }
+            },
+            handleScroll() {
+                this.scrollY = window.scrollY;
+                this.navOpacity = this.sgn(.0, Math.min(1, Math.max(0, window.scrollY / (this.pageHeadHeight() - this.navBarHeight() * 0.8))));
+                const {navBar, navBackground, navTitle, extraContainer, streamContainer} = this.$refs;
+
+                if (this.navOpacity >= 1) {
+                    navBackground.style.opacity = 1;
+                    navTitle.style.opacity = 1;
+                } else {
+                    navBackground.style.opacity = 0;
+                    navTitle.style.opacity = 0;
+                }
+            },
+            handleResize() {
+                const {navBar, navBackground, navTitle, extraContainer, streamContainer} = this.$refs;
+                extraContainer.style.left = (streamContainer.offsetWidth - extraContainer.offsetWidth) + 'px';
+            },
+            navBarHeight() {
+                return this.$refs.navBar.offsetHeight;
+            },
+            pageHeadHeight() {
+                return this.$refs.pageHead.offsetHeight;
+            },
+            toggleDrawer() {
+                this.isDrawerOpen = !this.isDrawerOpen;
+                document.getElementsByTagName('html')[0].style.overflow = this.isDrawerOpen ? 'hidden' : 'unset';
+            },
+            closeDrawer() {
+                this.isDrawerOpen = false;
+                document.getElementsByTagName('html')[0].style.overflow = this.isDrawerOpen ? 'hidden' : 'unset';
+            },
+            toggleDarkMode() {
+                this.isDarkMode = !this.isDarkMode;
+                if (this.isDarkMode==true){
+                    document.cookie = "night=1;path=/";
+                    document.body.classList.add("night");
+                } else {
+                    document.cookie = "night=0;path=/";
+                    document.body.classList.remove("night");
+                }
+            }
+    },
+    created() {
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
+        window._nonDesktop = function () {
+            let check = false;
+            (function (a) {
+                if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+            })(navigator.userAgent || navigator.vendor || window.opera);
+            return check;
+        };
+        
+        var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        if (night==""){
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                
+                this.toggleDarkMode();
+                
+            }
+        }else{
+            
+            if (night=="1") {
+                this.toggleDarkMode();
+            }
+        }
+    },
+    mounted() {
+        this.handleScroll();
+        this.handleResize();
+        this.mounted = true;
+
+        
+            new Valine({
+                el: '#vcomments',
+                appId: "GcGwcIQtBTnxuIqPqgKMetAj-gzGzoHsz",
+                appKey: "3ncva6Vn8OidA80nvzdwtP0B",
+                requiredFields: ['nick','mail'],
+                enableQQ: true,
+                recordIP: true,
+            })
+        
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
+    }
+});
+</script>
+
+<script src="https://www.markhoo.com/js/journal.js"></script>
+    </body>
+</html>

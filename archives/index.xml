@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archives on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/archives/</link>
+    <description>Recent content in Archives on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 01 Nov 2020 15:46:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/archives/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>博客迁移测试文章</title>
+      <link>https://www.markhoo.com/archives/test/</link>
+      <pubDate>Sun, 01 Nov 2020 15:46:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/test/</guid>
+      <description>博客已迁移到 Hugo ，至于为啥不是 Hexo ，因为它生成速度实在是太慢了！尽管它的主题很丰富。
+以下是测试内容：
+这是一级标题 代码 use std::io;use rand::Rng;use std::cmp::Ordering;fn main() {println!(&amp;#34;Guess the number!&amp;#34;);let secret_number = rand::thread_rng().gen_range(1, 101);println!(&amp;#34;The secret number is: {}&amp;#34;, secret_number);loop {println!(&amp;#34;Please input your guess:&amp;#34;);let mut guess = String::new();io::stdin().read_line(&amp;amp;mut guess).expect(&amp;#34;Failed to read line&amp;#34;);let guess: u32 = match guess.trim().parse(){Ok(num) =&amp;gt; num,Err(_) =&amp;gt; continue,};println!(&amp;#34;You guessed: {}&amp;#34;,guess);match guess.cmp(&amp;amp;secret_number) {Ordering::Less =&amp;gt; println!(&amp;#34;Too small!&amp;#34;),Ordering::Greater =&amp;gt; println!</description>
+    </item>
+    
+    <item>
+      <title>五一</title>
+      <link>https://www.markhoo.com/archives/20200501/</link>
+      <pubDate>Fri, 01 May 2020 16:04:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/20200501/</guid>
+      <description>转眼都五一了，时间过的真快，很久没更新了。发条动态表示我还在。
+对了，前几天还给我这个域名一次性续费到了2025年，目前在腾讯云，用了优惠券，每年40￥（本来续费60￥，优惠券20￥），还不错，但是每个人名下可以有三个账号领券，可以把域名进行账号间转移，一秒就转过去了。链接分享出来有需要的自取：优惠券
+祝大家五一快乐</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7.7安装Erlang和Elixir</title>
+      <link>https://www.markhoo.com/archives/centos7installerlangandelixir/</link>
+      <pubDate>Wed, 11 Dec 2019 22:01:38 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/centos7installerlangandelixir/</guid>
+      <description>安装之前，先看一下它们的简要说明
+Erlang Erlang是一种开源编程语言，用于构建对高可用性有要求的大规模可扩展的软实时系统。它通常用于电信，银行，电子商务，计算机电话和即时消息中。Erlang的runtime系统具有对并发，分发和容错的内置支持。它是在爱立信计算机科学实验室设计的。
+Elixir Elixir是一种动态的功能语言，旨在用于构建可伸缩和可维护的应用程序。Elixir利用了以运行低延迟，分布式和容错系统而著称的Erlang VM，同时也成功地用于Web开发和嵌入式软件领域。
+现在开始在CentOS 7.7 64位服务器中安装Erlang和Elixir。
+安装前的准备 安装Erlang和Elixir之前，需要安装以下依赖。
+ yum update
+  yum install epel-release
+  yum install gcc gcc-c++ glibc-devel make ncurses-devel openssl-devel autoconf java-1.8.0-openjdk-devel git wget wxBase.x86_64
+ 安装Erlang 由于官方存储库中的Erlang版本可能比较旧，这里我将下载并安装最新的Erlang版本。
+添加Erlang官方存储库以安装最新的Erlang。
+首先到**Erlang存储库页面**，根据你使用的发行版下载存储库：
+由于现在在CentOS 7.7中安装Erlang，因此我将添加以下存储库。
+ wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+ 使用以下命令更新存储库列表：
+ yum update
+ 使用以下命令安装erlang
+ yum install erlang
+ 现在最新版本的Erlang已安装完成。
+验证Erlang 运行以下命令以验证是否已安装Erlang。
+ erl
+ 输出示例：
+Erlang/OTP 22 [erts-10.6] [source] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:1] [hipe]Eshell V10.</description>
+    </item>
+    
+    <item>
+      <title>Nginx配置详解</title>
+      <link>https://www.markhoo.com/archives/nginx-config/</link>
+      <pubDate>Tue, 27 Aug 2019 21:27:28 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/nginx-config/</guid>
+      <description>#运行用户#user nobody;#启动进程，通常设置成和cpu的数量相等或者2倍于cpu的个数(具体结合cpu和内存)。默认为1worker_processes 1;#全局的错误日志和日志级别[ debug | info | notice | warn | error | crit ]#error_log logs/error.log;#error_log logs/error.log notice;#error_log logs/error.log info;#pid进程文件#pid logs/nginx.pid;#一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（系统的值ulimit -n）#与nginx进程数相除，但是nginx分配请求并不均匀，所以建议与ulimit -n的值保持一致。#默认不需设置#worker_rlimit_nofile 65535;#工作模式以及连接数上限events {#epoll是多路复用IO(I/O Multiplexing)中的一种方式，#仅用于linux2.6以上内核，可以大大的提高nginx的性能#参考事件模型，use [ kqueue | rtsig | epoll | /dev/poll | select | poll ];#在FreeBSD上面，就用kqueue模型#window下没有epoll#use epoll;#单个后台worker process进程的最大并发连接数。默认为1024#单个进程最大连接数（最大连接数=连接数*进程数）worker_connections 1024;#并发总数是worker_processes和worker_connections的乘积#即 max_clients=worker_processes * worker_connections#在设置了反向代理的情况下，max_clients=worker_processes * worker_connections / 4#worker_connections 值的设置跟物理内存大小有关#因为并发受IO约束，max_clients的值须小于系统可以打开的最大文件数#而系统可以打开的最大文件数和内存大小成正比，一般1GB内存的机器上可以打开的文件数大约是10万左右#我们来看看360M内存的VPS可以打开的文件句柄数是多少：#$ cat /proc/sys/fs/file-max#输出 34336#32000 &amp;lt; 34336，即并发连接总数小于系统可以打开的文件句柄总数，这样就在操作系统可以承受的范围之内#所以，worker_connections 的值需根据 worker_processes 进程数目和系统可以打开的最大文件总数进行适当地进行设置#使得并发总数小于操作系统可以打开的最大文件数目#其实质也就是根据主机的物理CPU和内存进行配置#当然，理论上的并发总数可能会和实际有所偏差，因为主机还有其他的工作进程需要消耗系统资源。#ulimit -SHn 65535}#设定http服务器http {#设定mime类型,类型由mime.</description>
+    </item>
+    
+    <item>
+      <title>Go by Example</title>
+      <link>https://www.markhoo.com/archives/gobyexample/</link>
+      <pubDate>Sat, 08 Jun 2019 23:00:49 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gobyexample/</guid>
+      <description>Hello World 我们第一个程序就是打印经典的“hello world”，下面是完整的代码
+package mainimport &amp;#34;fmt&amp;#34;func main(){fmt.Println(&amp;#34;hello world&amp;#34;)}要运行这个程序，将代码保存为 hello-world.go，然后使用go run
+有时候我们想让程序编译成二进制文件，可以使用go build，然后就可以直接运行了。
+Values Go 有多种值的类型，包括 string，integer，float，boolean 等。如下是几个基本例子。
+package mainimport &amp;#34;fmt&amp;#34;func main(){//string 可以使用 + 连接在一起 fmt.Println(&amp;#34;go&amp;#34;+&amp;#34;lang&amp;#34;)fmt.Println(&amp;#34;1+1=&amp;#34;,1+1)fmt.Pritnln(&amp;#34;7.0/3.0=&amp;#34;,7.0/3.0)fmt.Println(true&amp;amp;&amp;amp;false)fmt.Println(true||false)fmt.Pritnln(!true)}Variables 在 Go 中，变量被编译器显式的声明和使用，例如检查函数调用类型的正确性。
+package mainimport &amp;#34;fmt&amp;#34;func main(){// 声明一个或多个变量 var a string=&amp;#34;initial&amp;#34;fmt.Println(a)var b,c int = 1,2fmt.Println(b,c)//Go 将推断变量的初始化类型 var d = truefmt.</description>
+    </item>
+    
+    <item>
+      <title>JWT简介</title>
+      <link>https://www.markhoo.com/archives/jwt/</link>
+      <pubDate>Mon, 06 May 2019 23:15:35 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/jwt/</guid>
+      <description>本文翻译自JWT官方网站对JWT是什么以及能做什么的简介。
+JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表述性声明规范。JWT作为一个开放的标准（RFC 7519），定义了一种简洁的，自包含的方法用于通信双方之间以Json对象的形式安全的传递信息。因为数字签名的存在，这些信息是可信的，JWT可以使用HMAC算法或者是RSA的公私秘钥对进行签名。
+  简洁(Compact): 可以通过URL，POST参数或者在HTTP header发送，因为数据量小，传输速度也很快
+  自包含(Self-contained)：负载中包含了所有用户所需要的信息，避免了多次查询数据库
+  JWT的主要应用场景   身份认证 在这种场景下，一旦用户完成了登陆，在接下来的每个请求中包含JWT，可以用来验证用户身份以及对路由，服务和资源的访问权限进行验证。由于它的开销非常小，可以轻松的在不同域名的系统中传递，所有目前在单点登录（SSO）中比较广泛的使用了该技术。
+  信息交换 在通信的双方之间使用JWT对数据进行编码是一种非常安全的方式，由于它的信息是经过签名的，可以确保发送者发送的信息是没有经过伪造的。
+  JWT的结构 JWT包含了使用.分隔的三部分：
+  Header 头部
+  Payload 负载
+  Signature 签名
+  其结构看起来是这样的
+xxxxx.yyyyy.zzzzzHeader 在header中通常包含了两部分：token类型和采用的加密算法。
+{&amp;#34;alg&amp;#34;: &amp;#34;HS256&amp;#34;,&amp;#34;typ&amp;#34;: &amp;#34;JWT&amp;#34;} 接下来对这部分内容使用 Base64Url 编码组成了JWT结构的第一部分。
+Payload Token的第二部分是负载，它包含了claim， Claim是一些实体（通常指的用户）的状态和额外的元数据，有三种类型的claim： reserved, public 和 private.
+  Reserved claims: 这些claim是JWT预先定义的，在JWT中并不会强制使用它们，而是推荐使用，常用的有 iss（签发者）, exp（过期时间戳）, sub（面向的用户）, aud（接收方）, iat（签发时间）。</description>
+    </item>
+    
+    <item>
+      <title>Java安装和环境配置</title>
+      <link>https://www.markhoo.com/archives/java/</link>
+      <pubDate>Fri, 30 Nov 2018 23:38:47 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/java/</guid>
+      <description>搭建Java开发环境，第一步我们就需要安装JDK。大家可以在ORACLE官方网站上下载，下载路径：
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+不同平台和系统的安装文件是不一样的，根据自己电脑的情况选择合适的版本进行安装。查看计算机版本的方法：右击计算机，选择属性 。查看系统的类型是64位，选择下载的 JDK 版本也得是64位的。
+windows 系统下 Java 环境的配置 第一步：安装JDK 在 window 系统下，下载好JDK后，点开安装程序，按照指示安装就可以了。
+验证 JDK 是否安装成功：
+  点击开始
+  在搜索中输入 cmd，按回车，打开 dos 命令行
+  输入命令java -version，按回车
+  如果显示了 Java 的版本，那么表示 JDK 安装成功了。 注意：最好不要安装在C盘
+第二步：配置环境变量 当我们安装好JDK后，就要配置环境变量了。一般来说，我们会配置这三个环境变量：
+ JAVA_HOME 配置 JDK 安装路径 PATH 配置 JDK 命令文件的位置 CLASSPATH 配置类库文件的位置  注意：安装完只要正确配置JAVA_HOME变量值，后面的PATH和CLASSPATH的配置是固定的，不管你的JDK装在什么地方 步骤一：右击计算机，选择属性
+步骤二：打开高级系统设置
+步骤三：选择高级
+步骤四：选择环境变量
+步骤五：在系统变量 里配置JAVA_HOME
+  点击系统变量下的新建
+  变量名填JAVA_HOME
+  变量值填JDK的安装路径（若是默认安装路径，打开计算机-&amp;gt;C盘-&amp;gt;Program Files-&amp;gt;Java-&amp;gt;jdk1.8.0_192(或者其他版本)，拷贝路径就可以了）
+  点击确定</description>
+    </item>
+    
+    <item>
+      <title>为什么编程语言以及数据库要从1970年1月1日开始计算时间</title>
+      <link>https://www.markhoo.com/archives/time1970/</link>
+      <pubDate>Sun, 18 Nov 2018 20:31:02 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/time1970/</guid>
+      <description>话不多说直接上答案，看完这篇文章你应该就懂了。 注：这个答案也是某博主不断产生疑问层层挖掘出来的。 https://en.wikipedia.org/wiki/Unix_time</description>
+    </item>
+    
+    <item>
+      <title>Go官网资源</title>
+      <link>https://www.markhoo.com/archives/golang/</link>
+      <pubDate>Tue, 30 Oct 2018 22:33:44 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/golang/</guid>
+      <description>Go语言中文官网镜像及资源 Go中国官网 笨鸟学GO
+Go 语言之旅 Go 编程语言 Go语言文档翻译(QQ群:368836416)
+Download Go Microsoft Windows:  go1.11.1.windows-amd64.msi go1.10.4.windows-amd64.msi go1.9.7.windows-amd64.msi  Apple macOS:  go1.11.1.darwin-amd64.pkg go1.10.4.darwin-amd64.pkg go1.9.7.darwin-amd64.pkg  Linux:  go1.11.1.linux-amd64.tar.gz go1.10.4.linux-amd64.tar.gz go1.9.7.linux-amd64.tar.gz  Source:  go1.11.1.src.tar.gz go1.10.4.src.tar.gz go1.9.7.src.tar.gz  </description>
+    </item>
+    
+    <item>
+      <title>Gin使用方法</title>
+      <link>https://www.markhoo.com/archives/gogin/</link>
+      <pubDate>Sun, 14 Oct 2018 19:12:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gogin/</guid>
+      <description>安装gin 直接使用 go get github.com/gin-gonic/gin 即可。
+官方README中提供了非常多的例子。例如最简单的实例代码:
+package mainimport &amp;#34;github.com/gin-gonic/gin&amp;#34;func main() {r := gin.Default()r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) {c.JSON(200, gin.H{&amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;,})})r.Run() // listen and serve on 0.0.0.0:8080}路由 router := gin.Default() // 默认是带有Logger和Recovery中间件的router := gin.New() // 不带中间件的路由router.Use(gin.Logger()) // 可以使用这种方式来指明中间件router.GET(&amp;#34;/test&amp;#34;, MyMiddleware(), testEndpoint) // 也可以用这种方式给指定路由添加中间件router.GET(&amp;#34;/someGet&amp;#34;, getting) // 支持所有Restful的操作// 带参数的路由router.GET(&amp;#34;/user/:name&amp;#34;, func(c *gin.Context) {name := c.Param(&amp;#34;name&amp;#34;)})// 参数可选/通配符功能router.</description>
+    </item>
+    
+    <item>
+      <title>Go关键字和预定义标识符</title>
+      <link>https://www.markhoo.com/archives/go/</link>
+      <pubDate>Sun, 14 Oct 2018 12:01:34 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/go/</guid>
+      <description>Go 语言中的关键字(25个)    关键字 描述     break 退出循环   default 选择结构默认项（switch、select）   func 定义函数   interface 定义接口   select channel   case 选择结构标签   chan 定义channel   const 常量   continue 跳过本次循环   defer 延迟执行内容（收尾工作）   go 并发执行   map map类型   struct 定义结构体   else 选择结构   goto 跳转语句   package 包   switch 选择结构   fallthrough 流程控制   if 选择结构   range 从slice、map等结构中取元素   type 定义类型   for 循环   import 导入包   return 返回   var 定义变量    预定义标识符(36个)    - - - - - -     append bool byte cap close complex   complex64 complex128 uint16 copy false float32   float64 imag int int8 int16 uint32   int32 int64 iota len make new   nil panic uint64 print println real   recover string true uint uint8 uintptr    Go语言的语言符号又称为记法元素，共包括5类，标签符(identifier)、关键字(keyword)、操作符(operator)、分隔符(delimiter)、字面量(literal),它们是组成Go语言代码和程序的最基本单位。</description>
+    </item>
+    
+    <item>
+      <title>Gin Web Framework</title>
+      <link>https://www.markhoo.com/archives/gin/</link>
+      <pubDate>Fri, 12 Oct 2018 20:31:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gin/</guid>
+      <description>Gin is a web framework written in Go (Golang). It features a martini-like API with much better performance, up to 40 times faster thanks to httprouter. If you need performance and good productivity, you will love Gin.
+Installation To install Gin package, you need to install Go and set your Go workspace first.
+ Download and install it:  $ go get -u github.com/gin-gonic/ginImport it in your code:  import &amp;#34;github.</description>
+    </item>
+    
+    <item>
+      <title>免费的编程中文书籍索引</title>
+      <link>https://www.markhoo.com/archives/cnbook/</link>
+      <pubDate>Sun, 07 Oct 2018 21:42:36 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/cnbook/</guid>
+      <description>语言无关类 操作系统  开源世界旅行手册 鸟哥的Linux私房菜 The Linux Command Line (中英文版) Linux 设备驱动 (第三版) 深入分析Linux内核源码 UNIX TOOLBOX Docker中文指南 Docker —— 从入门到实践 Docker入门实战 Docker Cheat Sheet FreeRADIUS新手入门 Mac 开发配置手册 FreeBSD 使用手册 Linux 命令行(中文版) Linux 构建指南 Linux工具快速教程 Linux Documentation (中文版) 嵌入式 Linux 知识库 (eLinux.org 中文版) 理解Linux进程 命令行的艺术 SystemTap新手指南 操作系统思考  智能系统  一步步搭建物联网系统  分布式系统  走向分布式  编译原理  《计算机程序的结构和解释》公开课 翻译项目  函数式概念  傻瓜函数编程  计算机图形学  OpenGL 教程 WebGL自学网  WEB服务器  Nginx开发从入门到精通 (淘宝团队出品) Nginx教程从入门到精通(PDF版本，运维生存时间出品) OpenResty最佳实践 Apache 中文手册  版本控制  Git教程 （本文由 廖雪峰 创作，如果觉得本教程对您有帮助，可以去 iTunes 购买） git - 简易指南 猴子都能懂的GIT入门 Git 参考手册 Pro Git Pro Git 中文版 (整理在gitbook上) Git Magic GotGitHub Git权威指南 Git Community Book 中文版 Mercurial 使用教程 HgInit (中文版) 沉浸式学 Git Git-Cheat-Sheet （感谢 @flyhigher139 翻译了中文版） GitHub秘籍 GitHub帮助文档 git-flow 备忘清单 svn 手册 GitHub漫游指南  编辑器  exvim&amp;ndash;vim 改良成IDE项目 笨方法学Vimscript 中译本 Vim中文文档 所需即所获：像 IDE 一样使用 vim Atom飞行手册中文版 Markdown·简单的世界 一年成为 Emacs 高手 Emacs 生存指南 Atom官方手册  NoSQL  NoSQL数据库笔谈 Redis 设计与实现 Redis 命令参考 带有详细注释的 Redis 3.</description>
+    </item>
+    
+    <item>
+      <title>Python 资源大全中文版</title>
+      <link>https://www.markhoo.com/archives/cnpython/</link>
+      <pubDate>Tue, 18 Sep 2018 21:00:39 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/cnpython/</guid>
+      <description>环境管理 管理 Python 版本和环境的工具
+  p：非常简单的交互式 python 版本管理工具。官网
+  pyenv：简单的 Python 版本管理工具。官网
+  Vex：可以在虚拟环境中执行命令。官网
+  virtualenv：创建独立 Python 环境的工具。官网
+  virtualenvwrapper：virtualenv 的一组扩展。官网
+  包管理 管理包和依赖的工具。
+  pip：Python 包和依赖关系管理工具。官网
+  pip-tools：保证 Python 包依赖关系更新的一组工具。官网
+  pipenv：Pyhton 官方推荐的新一代包管理工具。官网
+  conda：跨平台，Python 二进制包管理工具。官网
+  Curdling：管理 Python 包的命令行工具。官网
+  wheel：Python 分发的新标准，意在取代 eggs。官网
+  包仓库 本地 PyPI 仓库服务和代理。
+  warehouse：下一代 PyPI。官网
+  bandersnatch：PyPA 提供的 PyPI 镜像工具。官网</description>
+    </item>
+    
+    <item>
+      <title>《High Performance Django》阅读笔记</title>
+      <link>https://www.markhoo.com/archives/highdjango/</link>
+      <pubDate>Sat, 15 Sep 2018 21:59:32 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/highdjango/</guid>
+      <description>第一章：The Big Picture 作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。
+ Django’s scaling success stories are almost too numerous to list at this point. It backs Disqus, Instagram, and Pinterest. Want some more proof? Instagram was able to sustain over 30 million users on Django with only 3 engineers (2 of which had no back-end development experience). Disqus serves over 8 billion page views per month. Those are some huge numbers. These teams have proven Django most certainly does scale.</description>
+    </item>
+    
+    <item>
+      <title>使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目</title>
+      <link>https://www.markhoo.com/archives/blogbushu/</link>
+      <pubDate>Tue, 14 Aug 2018 18:46:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/blogbushu/</guid>
+      <description>使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunicorn
+blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部署的笔记由于内容较多，没时间整理。今天抽空整理了一下午，发布出来供需要的同学借鉴参考。文中如有错误请多多指正
+部署前的准备
+服务器 要部署项目就要先购买服务器，如腾讯云，阿里云等等
+注意：服务器在国内的话，必须要备案！不然无法使用。
+阿里云优惠券：点击前往领取 腾讯云代金券：点击前往领取 腾讯云首页:点击直达 腾讯云西南区云产品促销链接：点击直达 腾讯云服务器购买链接：点击直达
+域名 域名购买选择，可以到百度云，腾讯云，阿里云，GoDaddy，namecheap等等
+购买域名后就是解析域名，打开域名解析面板，添加解析记录 记录类型：A 主机记录：test.markhoo.com，这个markhoo.com是你的一级域名，二级域名你可以设置为www.markhoo.com 解析线路：可以默认也可以选别的 记录值：填写你的服务器IP地址 TTL：域名生效时间，也就是多久生效 设置好以上内容，点击确定。解析完成
+主机记录中这个markhoo.com是你的一级域名，二级域名你也可以设置为 www.markhoo.com 或者别的 xxx.markhoo.com 也可以。 注意：域名是否在国内购买不重要，只要服务器不在大陆购买，即使未备案照样可以使用。要是要解析的服务器是大陆服务商则必须要备案。备案后一个域名可以同时接入多个服务商。
+域名解析记录类型说明：
+ A：将域名指向一个IPv4地址 AAAA：将域名指向一个IPv6地址 CNAME：将域名指向另外一个域名 NS：将子域名指定其他DNS服务器解析 MX：将域名指向邮件服务器地址 SRV：记录提供特定的服务的服务器 TXT：文本长度限制512，通常做SPF记录(反垃圾邮件) CAA：CA证书颁发机构授权校验 显性URL：将域名302重定向到另外一个地址 隐性URL：与显性URL类似，但是会隐藏真实目标地址  xshell下载与安装 主要用于远程登录服务器进行相关操作。在官网注册后发送下载链接到你的注册邮箱，或者到搜索引擎搜索下载。 个人版免费，企业版收费。 下载后一路点击下一步，完成。
+登录服务器步骤： 点击左上角&#39;文件&amp;rsquo;&amp;ndash;&amp;lsquo;新建&amp;rsquo; 然后弹出对话框 常规：名称，这个你可以随便取什么名字 协议：SSH，一般默认 主机：空，填上你的服务器IP地址 端口号：22，默认的就行 填好以上选项内容，点击左侧的&#39;用户身份验证&amp;rsquo;，然后看右侧，方法选择&amp;rsquo;Password&amp;rsquo;，在下面输入你的服务器登录用户名和密码，最后点击下面的&#39;连接&amp;rsquo;。 登录成功！进入界面。
+百度网盘官网软件下载链接： 链接: https://pan.baidu.com/s/19K5q1JkmD9qnYaGRTALyLg 密码: r6hx
+安装Nginx 首先用xshell登录服务器 通过 yum 安装 Nginx
+ yum install nginx
+ 启动 Nginx 服务</description>
+    </item>
+    
+    <item>
+      <title>xadmin 插件制作</title>
+      <link>https://www.markhoo.com/archives/xadmin/</link>
+      <pubDate>Fri, 03 Aug 2018 16:12:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/xadmin/</guid>
+      <description>官网太慢甚至打不开，所以干脆转载过来，方便学习。
+======================
+插件原理 xadmin 的插件系统架构设计一定程度上借鉴了 wordpress 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| AdminView 的概念。 简单来说，就是 |xadmin| 系统中每一个页面都是一个 AdminView 对象返回的 HttpResponse 结果。|xadmin| 的插件系统做的事情其实就是在 AdminView 运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。
+首先需要创建自己的插件类， 插件类继承 :class:~xadmin.views.BaseAdminPlugin ::
+class HelloWorldPlugin(BaseAdminPlugin):... 开发好的插件首先要注册到 |xadmin| 中， 示例代码如下::
+# ListAdminView 是 Model 列表页面xadmin.site.register_plugin(HelloWorldPlugin, ListAdminView) 其中插件的注册和使用可以参看 :meth:xadmin.sites.AdminSite.register_plugin
+当将插件注册到 |xadmin| 后， |xadmin| 在创建 AdminView 实例的时候会将该插件放入实例的 :attr:plugins 属性。当 AdminView 在处理请求 时，会首先逐个调用 :attr:plugins 中插件的 :meth:~xadmin.views.BaseAdminPlugin.init_request 方法，插件在该方法中一般进行初始化的操作并且返回一个 Boolean 值告诉 AdminView 是否需要加载该插件。当 :meth:~xadmin.views.BaseAdminPlugin.init_request 方法返回值为 False 时， AdminView 不会加载该插件。实例如下::</description>
+    </item>
+    
+    <item>
+      <title>更换pip源到国内镜像加速python pypi包的安装</title>
+      <link>https://www.markhoo.com/archives/pippypi/</link>
+      <pubDate>Sat, 28 Jul 2018 10:55:37 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pippypi/</guid>
+      <description>昨晚安装Django的时候总是安装到一半就报错，而且速度很慢，问题主要是国外的源连接不稳定会中断所致。后来就想到了切换到国内源。想到可能还会有同学碰到类似的问题，特此记录分享一下
+pip国内的一些镜像 公网：http://e.pypi.python.org/simple 教育网：http://pypi.tuna.tsinghua.edu.cn/simple 清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/ 豆瓣(douban) http://pypi.douban.com/simple/ 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 华中理工大学http://pypi.hustunique.com/simple 山东理工大学http://pypi.sdutlinux.org/simple
+修改源方法： 临时使用： 可以在使用pip的时候在后面加上-i参数，指定pip源
+ pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple
+ 指定需要安装的库requirements.txt
+ pip install -r &amp;ldquo;/home/admin/$APP_NAME/conf/requirements.txt&amp;rdquo; -i &amp;ldquo;http://mirrors.aliyun.com/pypi/simple&amp;quot; &amp;ndash;trusted-host &amp;ldquo;mirrors.aliyun.com&amp;rdquo; &amp;amp;&amp;amp; \ #通过阿里云镜像安装三方库
+ 永久修改： Linux: 修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simpleWindows: 直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下
+[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple参考：https://pip.pypa.io/en/latest/configuration/</description>
+    </item>
+    
+    <item>
+      <title>Python学习资源</title>
+      <link>https://www.markhoo.com/archives/pyziyuan/</link>
+      <pubDate>Sun, 22 Jul 2018 10:59:11 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pyziyuan/</guid>
+      <description>GitHub star过万的Python学习资源。有空慢慢翻译，或者使用翻译插件查看
+A curated list of awesome Python frameworks, libraries, software and resources.
+Inspired by awesome-php
+ Admin Panels Libraries for administrative interfaces.
+ Ajenti - The admin panel your servers deserve. django-suit - Alternative Django Admin-Interface (free only for Non-commercial use). django-xadmin - Drop-in replacement of Django admin comes with lots of goodies. flask-admin - Simple and extensible administrative interface framework for Flask. flower - Real-time monitor and web admin for Celery.</description>
+    </item>
+    
+    <item>
+      <title>C语言资源大全中文版</title>
+      <link>https://www.markhoo.com/archives/cl/</link>
+      <pubDate>Sun, 22 Jul 2018 10:09:40 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/cl/</guid>
+      <description>构建系统 下面是一些 C 项目的自动化构建和测试工具。
+ aimake：一个被设计来避免复杂配置的构建工具。GNU GPL3 或更高版本。官网 Autoconf：一个可扩展的 M4 宏指令包，提供命令行脚本来自动配置软件源码包，是 Autotools 的一部分。GNU GPL3 或更高版本。官网 Automake：一个自动生成符合 GNU 代码标准的 Makefile.in 文件的工具。需要与 Autoconf 配合使用，它也是 Autotools 的一部分。GNU GPL3 或更高版本。官网 Jam：一个构建系统，它被设计的比make更加易用。隐式地理解 C 的构建规则。Jam License。官网 Libtool：一个通用库支持脚本，是 Autotools 的一部分。GNU GPL3 或更高版本。官网 Meson：一个非常快，用户友好的构建系统，基于 Ninja。Apache2.0。官网  编译器  Clang：一个基于 LLVM 的 C 的编译器，支持 C11 标准。NCSA。官网 CompCert：一个经过充分验证的 C 编译器。支持几乎所有的 C89 标准。GNU GPL2.1 或更高版本。官网 GCC：在它的编译器集合中提供了 C 编译器。支持 C11 和 OpenMP 的标准。GNU GPL3 或更高版本。官网 PCC：一个值得尊敬的 C 编译器，支持 C99 标准。Various licenses，完全免费。官网 TCC：一个迷你，速度快的 C 编译器，支持 C99（除了复杂的类型）。 LGPL2.</description>
+    </item>
+    
+    <item>
+      <title>PyCharm2018最新激活码</title>
+      <link>https://www.markhoo.com/archives/pycharm2018/</link>
+      <pubDate>Mon, 16 Jul 2018 23:04:35 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pycharm2018/</guid>
+      <description>有一些学习Python的同学，安装PyCharm后不知道怎么激活，或者总是激活不成功，特此写一篇文章分享一下
+激活之前需要先修改hosts文件，在里面增加如下一条代码：
+0.0.0.0 account.jetbrains.com Linux中路径/etc/hosts，默认为只读文件，需要运行 sudo vim hosts 输入密码后进入修改。 Windows中路径C:\Windows\System32\drivers\etc\hosts,直接用记事本打开就可以编辑。
+完成以上步骤后，选择PyCharm code激活，粘贴一下代码后点击确认即可激活，亲测有效
+EB101IWSWD-eyJsaWNlbnNlSWQiOiJFQjEwMUlXU1dEIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiSUkiLCJwYWlkVXBUbyI6IjIwMTgtMTAtMTQifSx7ImNvZGUiOiJSUzAiLCJwYWlkVXBUbyI6IjIwMTgtMTAtMTQifSx7ImNvZGUiOiJXUyIsInBhaWRVcFRvIjoiMjAxOC0xMC0xNCJ9LHsiY29kZSI6IlJEIiwicGFpZFVwVG8iOiIyMDE4LTEwLTE0In0seyJjb2RlIjoiUkMiLCJwYWlkVXBUbyI6IjIwMTgtMTAtMTQifSx7ImNvZGUiOiJEQyIsInBhaWRVcFRvIjoiMjAxOC0xMC0xNCJ9LHsiY29kZSI6IkRCIiwicGFpZFVwVG8iOiIyMDE4LTEwLTE0In0seyJjb2RlIjoiUk0iLCJwYWlkVXBUbyI6IjIwMTgtMTAtMTQifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxOC0xMC0xNCJ9LHsiY29kZSI6IkFDIiwicGFpZFVwVG8iOiIyMDE4LTEwLTE0In0seyJjb2RlIjoiRFBOIiwicGFpZFVwVG8iOiIyMDE4LTEwLTE0In0seyJjb2RlIjoiUFMiLCJwYWlkVXBUbyI6IjIwMTgtMTAtMTQifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAxOC0xMC0xNCJ9LHsiY29kZSI6IlBDIiwicGFpZFVwVG8iOiIyMDE4LTEwLTE0In0seyJjb2RlIjoiUlNVIiwicGFpZFVwVG8iOiIyMDE4LTEwLTE0In1dLCJoYXNoIjoiNjk0NDAzMi8wIiwiZ3JhY2VQZXJpb2REYXlzIjowLCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-Gbb7jeR8JWOVxdUFaXfJzVU/O7c7xHQyaidCnhYLp7v32zdeXiHUU7vlrrm5y9ZX0lmQk3plCCsW+phrC9gGAPd6WDKhkal10qVNg0larCR2tQ3u8jfv1t2JAvWrMOJfFG9kKsJuw1P4TozZ/E7Qvj1cupf/rldhoOmaXMyABxNN1af1RV3bVhe4FFZe0p7xlIJF/ctZkFK62HYmh8V3AyhUNTzrvK2k+t/tlDJz2LnW7nYttBLHld8LabPlEEjpTHswhzlthzhVqALIgvF0uNbIJ5Uwpb7NqR4U/2ob0Z+FIcRpFUIAHEAw+RLGwkCge5DyZKfx+RoRJ/In4q/UpA==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog== 按步骤操作有什么问题可以留言或发邮件给我。邮件在个人介绍页</description>
+    </item>
+    
+    <item>
+      <title>Git基本常用命令</title>
+      <link>https://www.markhoo.com/archives/git/</link>
+      <pubDate>Sun, 15 Jul 2018 20:25:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/git/</guid>
+      <description>Git基本常用命令： mkdir： XX (创建一个空目录 XX指目录名) pwd： 显示当前目录的路径。 git init ： 把当前的目录变成可以管理的git仓库，生成隐藏.git文件。 git add XX ： 把xx文件添加到暂存区去。 git commit -m “XX” ： 提交文件 –m 后面的是注释。 git status： 查看仓库状态 git diff XX ： 查看XX文件修改了那些内容 git log ： 查看历史记录 git reset &amp;ndash;hard HEAD^ ：或者 git reset &amp;ndash;hard HEAD~ 回退到上一个版本 (如果想回退到100个版本，使用git reset &amp;ndash;hard HEAD~100 ) cat XX ： 查看XX文件内容 git reflog ： 查看历史记录的版本号id git checkout &amp;ndash; XX ： 把XX文件在工作区的修改全部撤销。 git rm XX ： 删除XX文件 git remote add origin https://github.</description>
+    </item>
+    
+    <item>
+      <title>Python中的小技巧</title>
+      <link>https://www.markhoo.com/archives/pyxjq/</link>
+      <pubDate>Sun, 15 Jul 2018 12:50:04 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pyxjq/</guid>
+      <description>#coding:utf-8 # NO.1 def dispatch_if(operator, x, y):if operator == &amp;#39;add&amp;#39;:return x + yelif operator == &amp;#39;sub&amp;#39;:return x - yelif operator == &amp;#39;mul&amp;#39;:return x * yelif operator == &amp;#39;div&amp;#39;:return x / yelse:return Nonedef dispatch_dict(operator, x, y):return {&amp;#39;add&amp;#39;: lambda: x + y,&amp;#39;sub&amp;#39;: lambda: x - y,&amp;#39;mul&amp;#39;: lambda: x * y,&amp;#39;div&amp;#39;: lambda: x / y,}.</description>
+    </item>
+    
+    <item>
+      <title>Python面试题目</title>
+      <link>https://www.markhoo.com/archives/pymianshiti/</link>
+      <pubDate>Sat, 14 Jul 2018 11:59:11 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pymianshiti/</guid>
+      <description> 暂时整理这么多，有好的答案可以在下面留言，并注明问题序号 题目有描述错误的也欢迎指正 部分问题答案可参考:   关于Python的面试题(带目录) 关于Python的面试题(不带目录)  注：如果评论模块无法加载，可以到慕课或者本Blog主站下面留言
+ 慕课文章页 Blog主站文章页  ======================================
+ 简要描述Python的垃圾回收机制（garbage collection）？ 这些是什么意思：@classmethod， @staticmethod， @property？ 这两个参数是什么意思： *args， **kwargs？我们为什么要使用它们？ “猴子补丁” （monkey patching）指的是什么？这种做法好吗？ 解释什么是Python？ Python中的模块和包是什么？ Python中的docstring是什么？ 在Python中什么是构造器？ 在Python中什么是silcing？ Python中的unittest是什么？ 为什么lambda没有语句？ 什么是Python的命名空间？ Python都有哪些自带的数据结构？ 字典推导式和列表推导式是什么？ 参数按值传递和引用传递是怎样实现的？ 数组和元组之间的区别是什么？ 什么是Python装饰器？ Python是怎样管理内存的？ Python是如何被解释的？ 什么是pickling和unpickling？ 什么是PEP8？ Python是如何进行内存管理的？ 单引号，双引号，三引号的区别？ Python里关于“堆”这种数据结构的模块是哪个？“堆”有什么优点和缺点？ 写一个类，并让它尽可能多的支持操作符 说说decorator的用法和它的应用场景，如果可以的话，请写一个decorator 有一个长度是101的数组，存在1-100的数字，有一个是重复的，如何把重复的找出来？ Python列表与元组的区别是什么？分别在什么情况下使用？ 介绍一下Python getopt模块？ 打乱一个排好序的list对象alist 有一个dict对象adict，里面包含了一百万个元素，查找其中的某个元素的平均需要多少次比较？ Python代码怎么得到列表list的交集与差集 Python里面如何实现tuple和list的转换？ Python匹配HTML tag的时候，&amp;lt;.*&amp;gt; 和 &amp;lt;.*?&amp;gt; 有什么区别？ Python中如何定义一个函数？ Python里如何反序的迭代一个序列？ 是否遇到过Python的模块间循环引用的问题，如何避免它？ 什么是元类（meta_class）？ 调试Python代码的方法有哪些？ 交叉链表求交点 合并两个有序列表 如何1-&amp;gt;2-&amp;gt;3-&amp;gt;4转换成2-&amp;gt;1-&amp;gt;4-&amp;gt;3？ 用21的小矩形横着或者竖着去覆盖更大的矩形。请问用n个21的小矩形无重叠的覆盖一个2*n的大矩形，总共有多少种方法？ 一只青蛙一次可以跳上1级台阶，也可以跳上2级&amp;hellip;&amp;hellip;它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？ 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？ 解释XSRF和XSS 网站用户密码保存问题 Apache和Nginx的区别？ cookie和session的异同点？ urllib和urllib2的区别？ 什么是三次握手？ 解释MylSAM和InnoDB 解释下乐观锁和悲观锁 __new__ 和 __init__ 的区别是什么？ Python中重载是什么？ 什么是鸭子类型？ 什么是自省？ 什么是协程？ 什么是GIL线程全局锁？ Python中的作用域 如何用Python来发送邮件？ Python里面如何实现tuple和list的转换？ Python如何捕获异常？ 写一个简单的Python socket编程 Python如何copy一个文件？ 如何用Python删除一个文件？ 如何在一个function里面设置一个全局的变量？ 有没有一个工具可以帮助查找Python的bug和进行静态的代码分析？ proc，lambda，和Proc的区别？ Python里面如何生成随机数？ Python里面 secarch() 和 match() 的区别？ 如何用Python来进行查询和替换一个文本字符串？ 介绍一下Python下range()函数的用法 如何知道一个Python对象的类型？ Python中pass语句的作用是什么？ 介绍一下except的用法和作用 Python里面如何拷贝一个对象？ 介绍一下Python Date Time方面的类 请写出一段Python代码实现删除一个list里面的重复元素 Python是如何进行类型转换的？ 介绍一下Python的and-or语法 介绍一下Python中webbrowser的用法 如何用Python输出一个Fibonacci数列？ 什么是lambda函数？它有什么好处？ Python下多线程的限制以及多进程中传递参数的方式 alias的用法，alias与alias_method的区别 Python如何实现单例模式？ RE模块中match和search的方法的不同  </description>
+    </item>
+    
+    <item>
+      <title>Django学习视频</title>
+      <link>https://www.markhoo.com/archives/djangoshipin/</link>
+      <pubDate>Thu, 12 Jul 2018 09:58:04 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/djangoshipin/</guid>
+      <description>Django1.11 学习教程  使用Django REST Framework构建Rest API  </description>
+    </item>
+    
+    <item>
+      <title>用 Python 3.6.2 &#43; Django 1.11.13 重新开发 blog</title>
+      <link>https://www.markhoo.com/archives/kaifablog/</link>
+      <pubDate>Wed, 20 Jun 2018 11:59:11 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/kaifablog/</guid>
+      <description>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。 先定个小目标，特此记录一下</description>
+    </item>
+    
+    <item>
+      <title>域名 youmei.io 的由来</title>
+      <link>https://www.markhoo.com/archives/youmei/</link>
+      <pubDate>Mon, 14 May 2018 10:41:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/youmei/</guid>
+      <description>对于入手【youmei.io】域名的原因，我是根据以下规则来的，当然最初不是这么想的，只是想要的域名都已经被注册了。。。
+30字口诀： 小宝淘乐趣，大多优美妙。一五点微友，好天通万家。金易贝米人，快闪超聚帮。 小（小红书、小站教育） 宝（余额宝、驾考宝典） 淘（淘世界、蜜淘、淘汽档口） 乐（分期乐、乐流、乐动力） 趣（趣分期、我趣旅行） 大（大姨吗、大众点评、大智慧） 多（房多多、多盟、多看阅读） 优（优信拍、优酷土豆） 美（美团、美拍、美丽说、美图秀秀） 妙（奇妙清单、妙计旅行） 一（一个、一刻、一条、一席） 五（58到家、51talk） 点（养车点点、点名时间） 微（微信、微博、微在、微会） 友（友盟、友秘） 好（平安好房、好屋中国、好奇心日报） 天（天猫、天天果园、天天用车） 通（百度股市通、人脉通） 万（WIFI万能钥匙、十万个冷笑话） 家（汽车之家、河狸家） 金（金斧子、金数据） 易（网易、易车） 贝（贝贝、贝米） 米（小米、米聊） 人（人人、人人车） 快（快手、快的） 闪（闪电购、闪银） 超（超级课程表、超好玩） 聚（聚划算、聚美） 帮（阿姨帮、作业帮） 取名字总结有：10大“门派” 植物学派：蘑菇街、荔枝FM、土豆、IT桔子 动物学派：猿题库、功夫熊、小猪短租、小马购车、土巴兔、考拉FM、蜻蜓FM、企鹅吃喝指南、搜狗、搜狐 数字学派：51信用卡、58同城，59store 叠字学派：陌陌、探探、抱抱、人人、脉脉 字母学派：YY，QQ，JJ棋牌、KK唱响 拟声学派：滴滴、么么搜、嘟嘟美甲 实物学派：豆瓣、穿衣助手、饭本、觅食、团车、爱屋吉屋、药给力 创意学派：拉勾网、3W咖啡、托福Easy姐、喜马拉雅、黄油相机、面包旅行、雪球、斗鱼 国学学派：凤凰网、知乎、金箍棒、榫卯 洋气学派：UCloud，OneAPM，Keep，Fork，MONO，EMIE、NICE、IN、Face++
+其他： 衍生学派：找钢网、找塑料、找叉叉 同业学派：易果生鲜、一米鲜、每日优鲜、爱鲜蜂 游戏学派：三国叉叉、萌叉叉、全民叉叉 取名字的关键有：3点friendly需要注意： 1.大脑记忆friendly：简而言之，容易记住。 2.输入法friendly：按音一次就能打出来，不会有生僻字。 3.搜索引擎friendly：搜索结果不会和一些常用或者热门词汇竞争。 案例：今日头条、周末去哪儿、学霸君 很好奇其他国家的互联网公司起名有什么规律~</description>
+    </item>
+    
+    <item>
+      <title>安装Django时提示pip版本问题解决方法</title>
+      <link>https://www.markhoo.com/archives/djangopip/</link>
+      <pubDate>Wed, 11 Apr 2018 12:19:31 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/djangopip/</guid>
+      <description>解决问题： You are using pip version 9.0.1, however version 10.0.1 is available. You should consider upgrading via the &amp;#39;pip install --upgrade pip&amp;#39; command. 解决方法 直接运行命令：python -m pip install &amp;ndash;upgrade pip 就可以了 如果你电脑上安装了两个版本的python，比如Mac上本来自带python2版本，但是你想安装在python3目录内，请把解决方法的运行命令的python改成python3</description>
+    </item>
+    
+    <item>
+      <title>nginx django 的配置步骤</title>
+      <link>https://www.markhoo.com/archives/nginxdjango/</link>
+      <pubDate>Mon, 25 Dec 2017 10:22:33 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/nginxdjango/</guid>
+      <description>升级并安装 pip  sudo apt-get update
+  sudo apt-get install python-pip
+ 安装虚拟环境  sudo pip install virtualenv virtualenvwrapper
+ 加入到环境变量中 当前用户目录下的 Env为虚拟环境存放的目录
+ echo &amp;ldquo;export WORKON_HOME=~/Env&amp;rdquo; &amp;raquo; ~/.bashrc
+  echo &amp;ldquo;source /usr/local/bin/virtualenvwrapper.sh&amp;rdquo; &amp;raquo; ~/.bashrc
+ 激活配置  source ~/.bashrc
+ 创建虚拟环境 环境名为:firstsite
+在用户当前目录下创建 Django工程
+ cd ~
+  django-admin.py startproject firstsite
+ django 的初始化  cd ~/firstsite
+  ./manage.py migrate
+  ./manage.py createsuperuser
+ Django静态文件配置  nano firstsite/settings.</description>
+    </item>
+    
+    <item>
+      <title>Django使用基础常用命令</title>
+      <link>https://www.markhoo.com/archives/djangoml/</link>
+      <pubDate>Mon, 20 Nov 2017 10:35:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/djangoml/</guid>
+      <description>查看django命令：django-admin 即可显示django的可用命令 创建项目命令：django-admin startproject [项目名称] 若没有报错则创建项目成功 查看manage.py常用命令：python manage.py 即可显示manage中的可用命令 启动项目服务器命令：python manage.py runserver 启动服务器 启动项目服务器并修改端口：python manage.py runserver 9999 使用9999端口来启动服务器 创建django应用需要进入与manage.py的同级目录进行创建 创建命令为：python manage.py startapp [项目名称] 创建完成后将应用名称添加到settings.py中的INSTALLED_APPS中完成应用的创建 models模型创建完毕后使用manage.py来生成数据表，models模型创建需要在应用目录中的models.py中进行创建 创建数据迁移命令：python manage.py makemigrations [应用名称] 进行数据迁移的准备步骤，输入以下命令完成数据迁移操作 开始数据迁移命令：python manage.py migrate 注：如果不输入应用名称则默认对django中的所有应用进行数据迁移操作 数据迁移完成后使用以下命令进行SQL语句查询 命令为：python manage.py sqlmigrate [应用名称] [文件id] 给django创建一个超级用户 命令为：python manage.py createsuperuser 浏览器中访问：localhost:8000/admin 进行访问admin页面 在应用下admin.py中引入自身的models模块，使用 编辑admin.py添加代码：admin.site.register(models.Article) 将admin管理后台进行配置升级 创建admin配置类 class ArticleAdmin(admin.ModelAdmin)
+注册：admin.site.register(Article,ArticleAdmin )</description>
+    </item>
+    
+    <item>
+      <title>两种网易云音乐播放器调用代码 网站可直接调用</title>
+      <link>https://www.markhoo.com/archives/wangyi/</link>
+      <pubDate>Sat, 18 Nov 2017 11:59:59 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/wangyi/</guid>
+      <description>第一种： 效果： &amp;lt;span data-mce-type=&#34;bookmark&#34; style=&#34;display: inline-block; width: 0px; overflow: hidden; line-height: 0;&#34; class=&#34;mce_SELRES_start&#34;&amp;gt;&amp;lt;/span&amp;gt; 代码： &amp;lt;iframe src=&amp;quot;//music.163.com/outchain/player?type=2&amp;amp;amp;id=4341314&amp;amp;amp;auto=1&amp;amp;amp;height=66&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;86&amp;quot; frameborder=&amp;quot;no&amp;quot; marginwidth=&amp;quot;0&amp;quot; marginheight=&amp;quot;0&amp;quot;&amp;gt;&amp;amp;lt;span data-mce-type=&amp;quot;bookmark&amp;quot; style=&amp;quot;display: inline-block; width: 0px; overflow: hidden; line-height: 0;&amp;quot; class=&amp;quot;mce_SELRES_start&amp;quot;&amp;amp;gt;&amp;amp;lt;/span&amp;amp;gt;&amp;lt;/iframe&amp;gt; 参数说明： 播放器可修改参数：
+width=100% #自适应宽度 height=86 #根据自己喜好修改 id=4341314 #为歌曲的ID http://music.163.com/#/song?id=4341314 auto=0 #0为不自动播放，1为自动播放
+第二种： 效果：  代码： &amp;lt;iframe frameborder=&amp;quot;no&amp;quot; border=&amp;quot;0&amp;quot; marginwidth=&amp;quot;0&amp;quot; marginheight=&amp;quot;0&amp;quot; width=100% height=450 src=&amp;quot;//music.163.com/outchain/player?type=0&amp;amp;id=967047669&amp;amp;auto=0&amp;amp;height=430&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>关于Python的面试题以及答案</title>
+      <link>https://www.markhoo.com/archives/pymianshidaan/</link>
+      <pubDate>Mon, 13 Nov 2017 09:58:04 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pymianshidaan/</guid>
+      <description>Python语言特性 1 Python的函数参数传递 看两个例子:
+a = 1 def fun(a): a = 2 fun(a) print a # 1 a = [] def fun(a): a.append(1) fun(a) print a # [1] 所有的变量都可以理解是内存中一个对象的“引用”，或者，也可以看似c中void*的感觉。
+通过id来看引用a的内存地址可以比较理解：
+a = 1 def fun(a): print &amp;#34;func_in&amp;#34;,id(a) # func_in 41322472 a = 2 print &amp;#34;re-point&amp;#34;,id(a), id(2) # re-point 41322448 41322448 print &amp;#34;func_out&amp;#34;,id(a), id(1) # func_out 41322472 41322472 fun(a) print a # 1 注：具体的值在不同电脑上运行时可能不同。
+可以看到，在执行完a = 2之后，a引用中保存的值，即内存地址发生变化，由原来1对象的所在的地址变成了2这个实体对象的内存地址。
+而第2个例子a引用保存的内存值就不会发生变化：
+a = [] def fun(a): print &amp;#34;func_in&amp;#34;,id(a) # func_in 53629256 a.</description>
+    </item>
+    
+    <item>
+      <title>CentOS7 常用命令集合</title>
+      <link>https://www.markhoo.com/archives/centos7ml/</link>
+      <pubDate>Fri, 22 Sep 2017 11:11:11 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/centos7ml/</guid>
+      <description>文件与目录操作 命令 解析 cd /home 进入 ‘/home’ 目录 cd .. 返回上一级目录 cd ../.. 返回上两级目录 cd - 返回上次所在目录 cp file1 file2 将file1复制为file2 cp -a dir1 dir2 复制一个目录 cp -a /tmp/dir1 . 复制一个目录到当前工作目录（.代表当前目录） ls 查看目录中的文件 ls -a 显示隐藏文件 ls -l 显示详细信息 ls -lrt 按时间显示文件（l表示详细列表，r表示反向排序，t表示按时间排序） pwd 显示工作路径 mkdir dir1 创建 ‘dir1’ 目录 mkdir dir1 dir2 同时创建两个目录 mkdir -p /tmp/dir1/dir2 创建一个目录树 mv dir1 dir2 移动/重命名一个目录 rm -f file1 删除 ‘file1’ rm -rf dir1 删除 ‘dir1’ 目录及其子目录内容</description>
+    </item>
+    
+    <item>
+      <title>Python学习资料</title>
+      <link>https://www.markhoo.com/archives/pyziliao/</link>
+      <pubDate>Sun, 30 Jul 2017 11:58:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pyziliao/</guid>
+      <description>电子书下载： 简明Python教程2.7 简明Python教程3.5 笨办法学 Python （第三版） python标准库中文版PDF(带章节书签) 深入理解Python中文版高清PDF 【Python 2.7教程】廖雪峰 django_book中文版 简明Python教程 Python编程指南 以上电子书著作版权归原作者所有！链接后期有空会重新补充
+编辑器下载： Python官网下载 https://www.python.org/downloads/ sublimetext官网下载 http://www.sublimetext.com/ Visual Studio Code官网下载 （中文官网） https://code.visualstudio.com/Download Vim官网下载 https://www.vim.org/download.php Atom官网下载 https://atom.io/ PyCharm官网下载 https://www.jetbrains.com/pycharm/ Eclipse官网下载 https://www.eclipse.org/downloads/ Emacs官网下载 http://www.gnu.org/software/emacs/
+Linux下载： Redhat官网下载 https://access.redhat.com/downloads CentOS官网下载 https://www.centos.org/download/ Ubuntu官网下载 https://cn.ubuntu.com/download/ Mint官网下载 https://www.linuxmint.com/download.php Debian官网下载 https://www.debian.org/distrib/ Arch官网下载 https://www.archlinux.org/download/ Fedora官网下载 https://getfedora.org/zh_CN/ deepin官网下载 https://www.deepin.org/download/
+数据库下载： MYSQL官网下载 https://www.mysql.com/downloads/ MongoDB官网下载 https://www.mongodb.com/ Redis官网下载 https://redis.io/download
+内容有错误的或者有需要补充的，请在评论区留言</description>
+    </item>
+    
+    <item>
+      <title>vim常用命令总结</title>
+      <link>https://www.markhoo.com/archives/vimml/</link>
+      <pubDate>Sun, 11 Sep 2016 10:29:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/vimml/</guid>
+      <description>在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版。 vim 选择文本，删除，复制，粘贴 文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v 从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。 V 从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。 Ctrl + v 从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。 ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾 选中后就可以用编辑命令对其进行编辑，如 d 删除 y 复制 （默认是复制到&amp;quot;寄存器） p 粘贴 （默认从&amp;quot;寄存器取出内容粘贴） &amp;ldquo;+y 复制到系统剪贴板(也就是vim的+寄存器） &amp;ldquo;+p 从系统剪贴板粘贴
+=============================================================
+vim命令总结 1.删除字符 要删除一个字符，只需要将光标移到该字符上按下&amp;quot;x&amp;rdquo;。
+2.删除一行 删除一整行内容使用&amp;quot;dd&amp;quot;命令。删除后下面的行会移上来填补空缺。
+3.删除换行符 在Vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了：命令是&amp;quot;J&amp;rdquo;。
+4.撤销 如果你误删了过多的内容。显然你可以再输入一遍，但是命令&amp;quot;u&amp;rdquo; 更简便，它可以撤消上一次的操作。
+5.重做 如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，&amp;ldquo;U&amp;quot;命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个&amp;quot;U&amp;quot;的操作。用&amp;quot;u&amp;quot;和CTRL-R你可以找回任何一个操作状态。
+6.追加 &amp;ldquo;i&amp;quot;命令可以在当前光标之前插入文本。 &amp;ldquo;a&amp;quot;命令可以在当前光标之后插入文本。 &amp;ldquo;o&amp;quot;命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。 &amp;ldquo;O&amp;quot;命令(注意是大写的字母O)将在当前行的上面另起一行。
+7.使用命令计数 假设你要向上移动9行。这可以用&amp;quot;kkkkkkkkk&amp;quot;或&amp;quot;9k&amp;quot;来完成。事实上，很多命令都可以接受一个数字作为重复执行同一命令的次数。比如刚才的例子，要在行尾追加三个感叹号，当时用的命令是&amp;quot;a!!!&amp;quot;。另一个办法是用&amp;quot;3a!&amp;ldquo;命令。3说明该命令将被重复执行3次。同样，删除3个字符可以用&amp;quot;3x&amp;rdquo;。指定的数字要紧挨在它所要修饰的命令前面。
+8.退出 要退出Vim，用命令&amp;quot;ZZ&amp;rdquo;。该命令保存当前文件并退出Vim。
+9.放弃编辑 丢弃所有的修改并退出，用命令&amp;rdquo;:q!&amp;quot;。用&amp;rdquo;:e!&amp;ldquo;命令放弃所有修改并重新载入该文件的原始内容。
+###10.以Word为单位的移动 使用&amp;quot;w&amp;quot;命令可以将光标向前移动一个word的首字符上；比如&amp;quot;3w&amp;quot;将光标向前移动3个words。&amp;ldquo;b&amp;quot;命令则将光标向后移动到前一个word的首字符上。 &amp;ldquo;e&amp;quot;命令会将光标移动到下一个word的最后一个字符。命令&amp;quot;ge&amp;rdquo;，它将光标移动到前一个word的最后一个字符上。、
+11.移动到行首或行尾 &amp;ldquo;$&amp;quot;命令将光标移动到当前行行尾。如果你的键盘上有一个键，它的作用也一样。&amp;ldquo;^&amp;quot;命令将光标移动到当前行的第一个非空白字符上。&amp;ldquo;0&amp;quot;命令则总是把光标移动到当前行的第一个字符上。键也是如此。&amp;ldquo;$&amp;quot;命令还可接受一个计数，如&amp;quot;1$&amp;quot;会将光标移动到当前行行尾，&amp;ldquo;2$&amp;quot;则会移动到下一行的行尾，如此类推。&amp;ldquo;0&amp;quot;命令却不能接受类似这样的计数，命令&amp;quot;^&amp;quot;前加上一个计数也没有任何效果。
+12.移动到指定字符上 命令&amp;quot;fx&amp;quot;在当前行上查找下一个字符x（向右方向），可以带一个命令计数&amp;quot;F&amp;quot;命令向左方向搜索。&amp;ldquo;tx&amp;quot;命令形同&amp;quot;fx&amp;quot;命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：&amp;ldquo;t&amp;quot;意为&amp;quot;To&amp;rdquo;。该命令的反方向版是&amp;quot;Tx&amp;rdquo;。这4个命令都可以用&amp;rdquo;;&amp;ldquo;来重复。以&amp;rdquo;,&amp;ldquo;也是重复同样的命令，但是方向与原命令的方向相反。
+13.以匹配一个括号为目的移动 用命令&amp;rdquo;%&amp;ldquo;跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在&amp;rdquo;(&amp;ldquo;上，它就向前跳转到与它匹配的&amp;rdquo;)&amp;ldquo;上，如果当前在&amp;rdquo;)&amp;ldquo;上，它就向后自动跳转到匹配的&amp;rdquo;(&amp;ldquo;上去.
+14.移动到指定行 用&amp;quot;G&amp;quot;命令指定一个命令计数，这个命令就会把光标定位到由命令计数指定的行上。比如&amp;quot;33G&amp;quot;就会把光标置于第33行上。没有指定命令计数作为参数的话, &amp;ldquo;G&amp;quot;会把光标定位到最后一行上。&amp;ldquo;gg&amp;quot;命令是跳转到第一行的快捷的方法。 另一个移动到某行的方法是在命令&amp;rdquo;%&amp;ldquo;之前指定一个命令计数比如&amp;quot;50%&amp;ldquo;将会把光标定位在文件的中间. &amp;ldquo;90%&amp;ldquo;跳到接近文件尾的地方。 命令&amp;quot;H&amp;rdquo;,&amp;ldquo;M&amp;rdquo;,&amp;ldquo;L&amp;rdquo;,分别将光标跳转到第一行，中间行，结尾行部分。</description>
+    </item>
+    
+  </channel>
+</rss>

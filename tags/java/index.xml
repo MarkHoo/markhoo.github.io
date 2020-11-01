@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/java/</link>
+    <description>Recent content in Java on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Fri, 30 Nov 2018 23:38:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java安装和环境配置</title>
+      <link>https://www.markhoo.com/archives/java/</link>
+      <pubDate>Fri, 30 Nov 2018 23:38:47 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/java/</guid>
+      <description>搭建Java开发环境，第一步我们就需要安装JDK。大家可以在ORACLE官方网站上下载，下载路径：
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+不同平台和系统的安装文件是不一样的，根据自己电脑的情况选择合适的版本进行安装。查看计算机版本的方法：右击计算机，选择属性 。查看系统的类型是64位，选择下载的 JDK 版本也得是64位的。
+windows 系统下 Java 环境的配置 第一步：安装JDK 在 window 系统下，下载好JDK后，点开安装程序，按照指示安装就可以了。
+验证 JDK 是否安装成功：
+  点击开始
+  在搜索中输入 cmd，按回车，打开 dos 命令行
+  输入命令java -version，按回车
+  如果显示了 Java 的版本，那么表示 JDK 安装成功了。 注意：最好不要安装在C盘
+第二步：配置环境变量 当我们安装好JDK后，就要配置环境变量了。一般来说，我们会配置这三个环境变量：
+ JAVA_HOME 配置 JDK 安装路径 PATH 配置 JDK 命令文件的位置 CLASSPATH 配置类库文件的位置  注意：安装完只要正确配置JAVA_HOME变量值，后面的PATH和CLASSPATH的配置是固定的，不管你的JDK装在什么地方 步骤一：右击计算机，选择属性
+步骤二：打开高级系统设置
+步骤三：选择高级
+步骤四：选择环境变量
+步骤五：在系统变量 里配置JAVA_HOME
+  点击系统变量下的新建
+  变量名填JAVA_HOME
+  变量值填JDK的安装路径（若是默认安装路径，打开计算机-&amp;gt;C盘-&amp;gt;Program Files-&amp;gt;Java-&amp;gt;jdk1.8.0_192(或者其他版本)，拷贝路径就可以了）
+  点击确定</description>
+    </item>
+    
+  </channel>
+</rss>

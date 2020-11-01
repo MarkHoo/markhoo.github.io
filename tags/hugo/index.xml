@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/hugo/</link>
+    <description>Recent content in Hugo on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 01 Nov 2020 15:46:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>博客迁移测试文章</title>
+      <link>https://www.markhoo.com/archives/test/</link>
+      <pubDate>Sun, 01 Nov 2020 15:46:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/test/</guid>
+      <description>博客已迁移到 Hugo ，至于为啥不是 Hexo ，因为它生成速度实在是太慢了！尽管它的主题很丰富。
+以下是测试内容：
+这是一级标题 代码 use std::io;use rand::Rng;use std::cmp::Ordering;fn main() {println!(&amp;#34;Guess the number!&amp;#34;);let secret_number = rand::thread_rng().gen_range(1, 101);println!(&amp;#34;The secret number is: {}&amp;#34;, secret_number);loop {println!(&amp;#34;Please input your guess:&amp;#34;);let mut guess = String::new();io::stdin().read_line(&amp;amp;mut guess).expect(&amp;#34;Failed to read line&amp;#34;);let guess: u32 = match guess.trim().parse(){Ok(num) =&amp;gt; num,Err(_) =&amp;gt; continue,};println!(&amp;#34;You guessed: {}&amp;#34;,guess);match guess.cmp(&amp;amp;secret_number) {Ordering::Less =&amp;gt; println!(&amp;#34;Too small!&amp;#34;),Ordering::Greater =&amp;gt; println!</description>
+    </item>
+    
+  </channel>
+</rss>

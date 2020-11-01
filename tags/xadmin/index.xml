@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xadmin on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/xadmin/</link>
+    <description>Recent content in xadmin on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Fri, 03 Aug 2018 16:12:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/xadmin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>xadmin 插件制作</title>
+      <link>https://www.markhoo.com/archives/xadmin/</link>
+      <pubDate>Fri, 03 Aug 2018 16:12:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/xadmin/</guid>
+      <description>官网太慢甚至打不开，所以干脆转载过来，方便学习。
+======================
+插件原理 xadmin 的插件系统架构设计一定程度上借鉴了 wordpress 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| AdminView 的概念。 简单来说，就是 |xadmin| 系统中每一个页面都是一个 AdminView 对象返回的 HttpResponse 结果。|xadmin| 的插件系统做的事情其实就是在 AdminView 运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。
+首先需要创建自己的插件类， 插件类继承 :class:~xadmin.views.BaseAdminPlugin ::
+class HelloWorldPlugin(BaseAdminPlugin):... 开发好的插件首先要注册到 |xadmin| 中， 示例代码如下::
+# ListAdminView 是 Model 列表页面xadmin.site.register_plugin(HelloWorldPlugin, ListAdminView) 其中插件的注册和使用可以参看 :meth:xadmin.sites.AdminSite.register_plugin
+当将插件注册到 |xadmin| 后， |xadmin| 在创建 AdminView 实例的时候会将该插件放入实例的 :attr:plugins 属性。当 AdminView 在处理请求 时，会首先逐个调用 :attr:plugins 中插件的 :meth:~xadmin.views.BaseAdminPlugin.init_request 方法，插件在该方法中一般进行初始化的操作并且返回一个 Boolean 值告诉 AdminView 是否需要加载该插件。当 :meth:~xadmin.views.BaseAdminPlugin.init_request 方法返回值为 False 时， AdminView 不会加载该插件。实例如下::</description>
+    </item>
+    
+  </channel>
+</rss>

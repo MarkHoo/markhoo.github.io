@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gin on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/gin/</link>
+    <description>Recent content in Gin on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 14 Oct 2018 19:12:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/gin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gin使用方法</title>
+      <link>https://www.markhoo.com/archives/gogin/</link>
+      <pubDate>Sun, 14 Oct 2018 19:12:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gogin/</guid>
+      <description>安装gin 直接使用 go get github.com/gin-gonic/gin 即可。
+官方README中提供了非常多的例子。例如最简单的实例代码:
+package mainimport &amp;#34;github.com/gin-gonic/gin&amp;#34;func main() {r := gin.Default()r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context) {c.JSON(200, gin.H{&amp;#34;message&amp;#34;: &amp;#34;pong&amp;#34;,})})r.Run() // listen and serve on 0.0.0.0:8080}路由 router := gin.Default() // 默认是带有Logger和Recovery中间件的router := gin.New() // 不带中间件的路由router.Use(gin.Logger()) // 可以使用这种方式来指明中间件router.GET(&amp;#34;/test&amp;#34;, MyMiddleware(), testEndpoint) // 也可以用这种方式给指定路由添加中间件router.GET(&amp;#34;/someGet&amp;#34;, getting) // 支持所有Restful的操作// 带参数的路由router.GET(&amp;#34;/user/:name&amp;#34;, func(c *gin.Context) {name := c.Param(&amp;#34;name&amp;#34;)})// 参数可选/通配符功能router.</description>
+    </item>
+    
+    <item>
+      <title>Gin Web Framework</title>
+      <link>https://www.markhoo.com/archives/gin/</link>
+      <pubDate>Fri, 12 Oct 2018 20:31:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/gin/</guid>
+      <description>Gin is a web framework written in Go (Golang). It features a martini-like API with much better performance, up to 40 times faster thanks to httprouter. If you need performance and good productivity, you will love Gin.
+Installation To install Gin package, you need to install Go and set your Go workspace first.
+ Download and install it:  $ go get -u github.com/gin-gonic/ginImport it in your code:  import &amp;#34;github.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JWT on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/jwt/</link>
+    <description>Recent content in JWT on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Mon, 06 May 2019 23:15:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JWT简介</title>
+      <link>https://www.markhoo.com/archives/jwt/</link>
+      <pubDate>Mon, 06 May 2019 23:15:35 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/jwt/</guid>
+      <description>本文翻译自JWT官方网站对JWT是什么以及能做什么的简介。
+JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表述性声明规范。JWT作为一个开放的标准（RFC 7519），定义了一种简洁的，自包含的方法用于通信双方之间以Json对象的形式安全的传递信息。因为数字签名的存在，这些信息是可信的，JWT可以使用HMAC算法或者是RSA的公私秘钥对进行签名。
+  简洁(Compact): 可以通过URL，POST参数或者在HTTP header发送，因为数据量小，传输速度也很快
+  自包含(Self-contained)：负载中包含了所有用户所需要的信息，避免了多次查询数据库
+  JWT的主要应用场景   身份认证 在这种场景下，一旦用户完成了登陆，在接下来的每个请求中包含JWT，可以用来验证用户身份以及对路由，服务和资源的访问权限进行验证。由于它的开销非常小，可以轻松的在不同域名的系统中传递，所有目前在单点登录（SSO）中比较广泛的使用了该技术。
+  信息交换 在通信的双方之间使用JWT对数据进行编码是一种非常安全的方式，由于它的信息是经过签名的，可以确保发送者发送的信息是没有经过伪造的。
+  JWT的结构 JWT包含了使用.分隔的三部分：
+  Header 头部
+  Payload 负载
+  Signature 签名
+  其结构看起来是这样的
+xxxxx.yyyyy.zzzzzHeader 在header中通常包含了两部分：token类型和采用的加密算法。
+{&amp;#34;alg&amp;#34;: &amp;#34;HS256&amp;#34;,&amp;#34;typ&amp;#34;: &amp;#34;JWT&amp;#34;} 接下来对这部分内容使用 Base64Url 编码组成了JWT结构的第一部分。
+Payload Token的第二部分是负载，它包含了claim， Claim是一些实体（通常指的用户）的状态和额外的元数据，有三种类型的claim： reserved, public 和 private.
+  Reserved claims: 这些claim是JWT预先定义的，在JWT中并不会强制使用它们，而是推荐使用，常用的有 iss（签发者）, exp（过期时间戳）, sub（面向的用户）, aud（接收方）, iat（签发时间）。</description>
+    </item>
+    
+  </channel>
+</rss>

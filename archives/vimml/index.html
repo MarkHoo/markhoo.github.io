@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html><head>
+<title>vim常用命令总结</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="vim常用命令总结" />
+<meta property="og:description" content="在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版。 vim 选择文本，删除，复制，粘贴 文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v 从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。 V 从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。 Ctrl &#43; v 从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl &#43; v结束。 ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾 选中后就可以用编辑命令对其进行编辑，如 d 删除 y 复制 （默认是复制到&quot;寄存器） p 粘贴 （默认从&quot;寄存器取出内容粘贴） &ldquo;&#43;y 复制到系统剪贴板(也就是vim的&#43;寄存器） &ldquo;&#43;p 从系统剪贴板粘贴
+=============================================================
+vim命令总结 1.删除字符 要删除一个字符，只需要将光标移到该字符上按下&quot;x&rdquo;。
+2.删除一行 删除一整行内容使用&quot;dd&quot;命令。删除后下面的行会移上来填补空缺。
+3.删除换行符 在Vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了：命令是&quot;J&rdquo;。
+4.撤销 如果你误删了过多的内容。显然你可以再输入一遍，但是命令&quot;u&rdquo; 更简便，它可以撤消上一次的操作。
+5.重做 如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，&ldquo;U&quot;命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个&quot;U&quot;的操作。用&quot;u&quot;和CTRL-R你可以找回任何一个操作状态。
+6.追加 &ldquo;i&quot;命令可以在当前光标之前插入文本。 &ldquo;a&quot;命令可以在当前光标之后插入文本。 &ldquo;o&quot;命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。 &ldquo;O&quot;命令(注意是大写的字母O)将在当前行的上面另起一行。
+7.使用命令计数 假设你要向上移动9行。这可以用&quot;kkkkkkkkk&quot;或&quot;9k&quot;来完成。事实上，很多命令都可以接受一个数字作为重复执行同一命令的次数。比如刚才的例子，要在行尾追加三个感叹号，当时用的命令是&quot;a!!!&quot;。另一个办法是用&quot;3a!&ldquo;命令。3说明该命令将被重复执行3次。同样，删除3个字符可以用&quot;3x&rdquo;。指定的数字要紧挨在它所要修饰的命令前面。
+8.退出 要退出Vim，用命令&quot;ZZ&rdquo;。该命令保存当前文件并退出Vim。
+9.放弃编辑 丢弃所有的修改并退出，用命令&rdquo;:q!&quot;。用&rdquo;:e!&ldquo;命令放弃所有修改并重新载入该文件的原始内容。
+###10.以Word为单位的移动 使用&quot;w&quot;命令可以将光标向前移动一个word的首字符上；比如&quot;3w&quot;将光标向前移动3个words。&ldquo;b&quot;命令则将光标向后移动到前一个word的首字符上。 &ldquo;e&quot;命令会将光标移动到下一个word的最后一个字符。命令&quot;ge&rdquo;，它将光标移动到前一个word的最后一个字符上。、
+11.移动到行首或行尾 &ldquo;$&quot;命令将光标移动到当前行行尾。如果你的键盘上有一个键，它的作用也一样。&ldquo;^&quot;命令将光标移动到当前行的第一个非空白字符上。&ldquo;0&quot;命令则总是把光标移动到当前行的第一个字符上。键也是如此。&ldquo;$&quot;命令还可接受一个计数，如&quot;1$&quot;会将光标移动到当前行行尾，&ldquo;2$&quot;则会移动到下一行的行尾，如此类推。&ldquo;0&quot;命令却不能接受类似这样的计数，命令&quot;^&quot;前加上一个计数也没有任何效果。
+12.移动到指定字符上 命令&quot;fx&quot;在当前行上查找下一个字符x（向右方向），可以带一个命令计数&quot;F&quot;命令向左方向搜索。&ldquo;tx&quot;命令形同&quot;fx&quot;命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：&ldquo;t&quot;意为&quot;To&rdquo;。该命令的反方向版是&quot;Tx&rdquo;。这4个命令都可以用&rdquo;;&ldquo;来重复。以&rdquo;,&ldquo;也是重复同样的命令，但是方向与原命令的方向相反。
+13.以匹配一个括号为目的移动 用命令&rdquo;%&ldquo;跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在&rdquo;(&ldquo;上，它就向前跳转到与它匹配的&rdquo;)&ldquo;上，如果当前在&rdquo;)&ldquo;上，它就向后自动跳转到匹配的&rdquo;(&ldquo;上去.
+14.移动到指定行 用&quot;G&quot;命令指定一个命令计数，这个命令就会把光标定位到由命令计数指定的行上。比如&quot;33G&quot;就会把光标置于第33行上。没有指定命令计数作为参数的话, &ldquo;G&quot;会把光标定位到最后一行上。&ldquo;gg&quot;命令是跳转到第一行的快捷的方法。 另一个移动到某行的方法是在命令&rdquo;%&ldquo;之前指定一个命令计数比如&quot;50%&ldquo;将会把光标定位在文件的中间. &ldquo;90%&ldquo;跳到接近文件尾的地方。 命令&quot;H&rdquo;,&ldquo;M&rdquo;,&ldquo;L&rdquo;,分别将光标跳转到第一行，中间行，结尾行部分。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.markhoo.com/archives/vimml/" />
+<meta property="article:published_time" content="2016-09-11T10:29:23+08:00" />
+<meta property="article:modified_time" content="2016-09-11T10:29:23+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="vim常用命令总结"/>
+<meta name="twitter:description" content="在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版。 vim 选择文本，删除，复制，粘贴 文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v 从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。 V 从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。 Ctrl &#43; v 从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl &#43; v结束。 ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾 选中后就可以用编辑命令对其进行编辑，如 d 删除 y 复制 （默认是复制到&quot;寄存器） p 粘贴 （默认从&quot;寄存器取出内容粘贴） &ldquo;&#43;y 复制到系统剪贴板(也就是vim的&#43;寄存器） &ldquo;&#43;p 从系统剪贴板粘贴
+=============================================================
+vim命令总结 1.删除字符 要删除一个字符，只需要将光标移到该字符上按下&quot;x&rdquo;。
+2.删除一行 删除一整行内容使用&quot;dd&quot;命令。删除后下面的行会移上来填补空缺。
+3.删除换行符 在Vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了：命令是&quot;J&rdquo;。
+4.撤销 如果你误删了过多的内容。显然你可以再输入一遍，但是命令&quot;u&rdquo; 更简便，它可以撤消上一次的操作。
+5.重做 如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，&ldquo;U&quot;命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个&quot;U&quot;的操作。用&quot;u&quot;和CTRL-R你可以找回任何一个操作状态。
+6.追加 &ldquo;i&quot;命令可以在当前光标之前插入文本。 &ldquo;a&quot;命令可以在当前光标之后插入文本。 &ldquo;o&quot;命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。 &ldquo;O&quot;命令(注意是大写的字母O)将在当前行的上面另起一行。
+7.使用命令计数 假设你要向上移动9行。这可以用&quot;kkkkkkkkk&quot;或&quot;9k&quot;来完成。事实上，很多命令都可以接受一个数字作为重复执行同一命令的次数。比如刚才的例子，要在行尾追加三个感叹号，当时用的命令是&quot;a!!!&quot;。另一个办法是用&quot;3a!&ldquo;命令。3说明该命令将被重复执行3次。同样，删除3个字符可以用&quot;3x&rdquo;。指定的数字要紧挨在它所要修饰的命令前面。
+8.退出 要退出Vim，用命令&quot;ZZ&rdquo;。该命令保存当前文件并退出Vim。
+9.放弃编辑 丢弃所有的修改并退出，用命令&rdquo;:q!&quot;。用&rdquo;:e!&ldquo;命令放弃所有修改并重新载入该文件的原始内容。
+###10.以Word为单位的移动 使用&quot;w&quot;命令可以将光标向前移动一个word的首字符上；比如&quot;3w&quot;将光标向前移动3个words。&ldquo;b&quot;命令则将光标向后移动到前一个word的首字符上。 &ldquo;e&quot;命令会将光标移动到下一个word的最后一个字符。命令&quot;ge&rdquo;，它将光标移动到前一个word的最后一个字符上。、
+11.移动到行首或行尾 &ldquo;$&quot;命令将光标移动到当前行行尾。如果你的键盘上有一个键，它的作用也一样。&ldquo;^&quot;命令将光标移动到当前行的第一个非空白字符上。&ldquo;0&quot;命令则总是把光标移动到当前行的第一个字符上。键也是如此。&ldquo;$&quot;命令还可接受一个计数，如&quot;1$&quot;会将光标移动到当前行行尾，&ldquo;2$&quot;则会移动到下一行的行尾，如此类推。&ldquo;0&quot;命令却不能接受类似这样的计数，命令&quot;^&quot;前加上一个计数也没有任何效果。
+12.移动到指定字符上 命令&quot;fx&quot;在当前行上查找下一个字符x（向右方向），可以带一个命令计数&quot;F&quot;命令向左方向搜索。&ldquo;tx&quot;命令形同&quot;fx&quot;命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：&ldquo;t&quot;意为&quot;To&rdquo;。该命令的反方向版是&quot;Tx&rdquo;。这4个命令都可以用&rdquo;;&ldquo;来重复。以&rdquo;,&ldquo;也是重复同样的命令，但是方向与原命令的方向相反。
+13.以匹配一个括号为目的移动 用命令&rdquo;%&ldquo;跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在&rdquo;(&ldquo;上，它就向前跳转到与它匹配的&rdquo;)&ldquo;上，如果当前在&rdquo;)&ldquo;上，它就向后自动跳转到匹配的&rdquo;(&ldquo;上去.
+14.移动到指定行 用&quot;G&quot;命令指定一个命令计数，这个命令就会把光标定位到由命令计数指定的行上。比如&quot;33G&quot;就会把光标置于第33行上。没有指定命令计数作为参数的话, &ldquo;G&quot;会把光标定位到最后一行上。&ldquo;gg&quot;命令是跳转到第一行的快捷的方法。 另一个移动到某行的方法是在命令&rdquo;%&ldquo;之前指定一个命令计数比如&quot;50%&ldquo;将会把光标定位在文件的中间. &ldquo;90%&ldquo;跳到接近文件尾的地方。 命令&quot;H&rdquo;,&ldquo;M&rdquo;,&ldquo;L&rdquo;,分别将光标跳转到第一行，中间行，结尾行部分。"/>
+
+
+
+
+
+
+
+<script src="/vendor/js/jquery.min.js" ></script>
+<script src="/vendor/js/popper.min.js" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<script src="/vendor/js/smooth-scroll.polyfills.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<script src="/vendor/js/vue.min.js" ></script>
+
+
+
+
+<link rel="icon" href="https://media.markhoo.com/favicon.ico">
+
+
+
+
+<link rel="stylesheet" href="https://www.markhoo.com/scss/journal.min.c116bc90d171283f099f173854157ec8f183f9073b93443b2c8ad82899ee9025.css" integrity="sha256-wRa8kNFxKD8Jnxc4VBV&#43;yPGD&#43;Qc7k0Q7LIrYKJnukCU=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://www.markhoo.com/scss/dark-mode.min.552aae4638a84aa57cf0b195750a49ea9131d3bb621d1ed3ebc9b14b18166536.css" integrity="sha256-VSquRjioSqV88LGVdQpJ6pEx07tiHR7T68mxSxgWZTY=" media="screen">
+
+
+<script src="https://www.markhoo.com/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+
+
+
+  
+    <script src="https://www.markhoo.com/js/toc.js"></script>
+  
+
+
+
+
+
+
+
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div ref="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://www.markhoo.com">
+    
+        <div class="nav-title">
+            南有嘉鱼
+        </div>
+        
+        <div class="nav-subtitle">
+            MarkHoo&#39;s Blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/archives">
+                歸檔
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分類
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/resources">
+                學習資源
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/video">
+                混剪視頻
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/links">
+                左鄰右舍
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/messages">
+                留言板
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                關於
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼
+	
+
+    </div>
+    
+</div><div ref="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#vim%e5%91%bd%e4%bb%a4%e6%80%bb%e7%bb%93" onclick="onNavClick(`#vim命令总结-nav`)" id="vim命令总结-nav">
+									vim命令总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#1%e5%88%a0%e9%99%a4%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#1删除字符-nav`)" id="1删除字符-nav">
+									1.删除字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2%e5%88%a0%e9%99%a4%e4%b8%80%e8%a1%8c" onclick="onNavClick(`#2删除一行-nav`)" id="2删除一行-nav">
+									2.删除一行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#3%e5%88%a0%e9%99%a4%e6%8d%a2%e8%a1%8c%e7%ac%a6" onclick="onNavClick(`#3删除换行符-nav`)" id="3删除换行符-nav">
+									3.删除换行符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#4%e6%92%a4%e9%94%80" onclick="onNavClick(`#4撤销-nav`)" id="4撤销-nav">
+									4.撤销
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#5%e9%87%8d%e5%81%9a" onclick="onNavClick(`#5重做-nav`)" id="5重做-nav">
+									5.重做
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#6%e8%bf%bd%e5%8a%a0" onclick="onNavClick(`#6追加-nav`)" id="6追加-nav">
+									6.追加
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#7%e4%bd%bf%e7%94%a8%e5%91%bd%e4%bb%a4%e8%ae%a1%e6%95%b0" onclick="onNavClick(`#7使用命令计数-nav`)" id="7使用命令计数-nav">
+									7.使用命令计数
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#8%e9%80%80%e5%87%ba" onclick="onNavClick(`#8退出-nav`)" id="8退出-nav">
+									8.退出
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#9%e6%94%be%e5%bc%83%e7%bc%96%e8%be%91" onclick="onNavClick(`#9放弃编辑-nav`)" id="9放弃编辑-nav">
+									9.放弃编辑
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#11%e7%a7%bb%e5%8a%a8%e5%88%b0%e8%a1%8c%e9%a6%96%e6%88%96%e8%a1%8c%e5%b0%be" onclick="onNavClick(`#11移动到行首或行尾-nav`)" id="11移动到行首或行尾-nav">
+									11.移动到行首或行尾
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#12%e7%a7%bb%e5%8a%a8%e5%88%b0%e6%8c%87%e5%ae%9a%e5%ad%97%e7%ac%a6%e4%b8%8a" onclick="onNavClick(`#12移动到指定字符上-nav`)" id="12移动到指定字符上-nav">
+									12.移动到指定字符上
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#13%e4%bb%a5%e5%8c%b9%e9%85%8d%e4%b8%80%e4%b8%aa%e6%8b%ac%e5%8f%b7%e4%b8%ba%e7%9b%ae%e7%9a%84%e7%a7%bb%e5%8a%a8" onclick="onNavClick(`#13以匹配一个括号为目的移动-nav`)" id="13以匹配一个括号为目的移动-nav">
+									13.以匹配一个括号为目的移动
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#14%e7%a7%bb%e5%8a%a8%e5%88%b0%e6%8c%87%e5%ae%9a%e8%a1%8c" onclick="onNavClick(`#14移动到指定行-nav`)" id="14移动到指定行-nav">
+									14.移动到指定行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#15%e5%91%8a%e8%af%89%e4%bd%a0%e5%bd%93%e5%89%8d%e7%9a%84%e4%bd%8d%e7%bd%ae" onclick="onNavClick(`#15告诉你当前的位置-nav`)" id="15告诉你当前的位置-nav">
+									15.告诉你当前的位置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#16%e6%bb%9a%e5%b1%8f" onclick="onNavClick(`#16滚屏-nav`)" id="16滚屏-nav">
+									16.滚屏
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#17%e7%ae%80%e5%8d%95%e6%90%9c%e7%b4%a2" onclick="onNavClick(`#17简单搜索-nav`)" id="17简单搜索-nav">
+									17.简单搜索
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#18%e5%9c%a8%e6%96%87%e6%9c%ac%e4%b8%ad%e6%9f%a5%e6%89%be%e4%b8%8b%e4%b8%80%e4%b8%aaword" onclick="onNavClick(`#18在文本中查找下一个word-nav`)" id="18在文本中查找下一个word-nav">
+									18.在文本中查找下一个word
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#19%e6%9f%a5%e6%89%be%e6%95%b4%e4%b8%aaword" onclick="onNavClick(`#19查找整个word-nav`)" id="19查找整个word-nav">
+									19.查找整个word
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#20%e9%ab%98%e4%ba%ae%e6%98%be%e7%a4%ba%e6%90%9c%e7%b4%a2%e7%bb%93%e6%9e%9c" onclick="onNavClick(`#20高亮显示搜索结果-nav`)" id="20高亮显示搜索结果-nav">
+									20.高亮显示搜索结果
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#21%e5%8c%b9%e9%85%8d%e4%b8%80%e8%a1%8c%e7%9a%84%e5%bc%80%e5%a4%b4%e4%b8%8e%e7%bb%93%e5%b0%be" onclick="onNavClick(`#21匹配一行的开头与结尾-nav`)" id="21匹配一行的开头与结尾-nav">
+									21.匹配一行的开头与结尾
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22%e5%8c%b9%e9%85%8d%e4%bb%bb%e4%bd%95%e7%9a%84%e5%8d%95%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#22匹配任何的单字符-nav`)" id="22匹配任何的单字符-nav">
+									22.匹配任何的单字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#23%e5%8c%b9%e9%85%8d%e7%89%b9%e6%ae%8a%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#23匹配特殊字符-nav`)" id="23匹配特殊字符-nav">
+									23.匹配特殊字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#24%e4%bd%bf%e7%94%a8%e6%a0%87%e8%ae%b0" onclick="onNavClick(`#24使用标记-nav`)" id="24使用标记-nav">
+									24.使用标记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#25%e5%85%b7%e5%90%8d%e6%a0%87%e8%ae%b0" onclick="onNavClick(`#25具名标记-nav`)" id="25具名标记-nav">
+									25.具名标记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#26%e6%93%8d%e4%bd%9c%e7%ac%a6%e5%91%bd%e4%bb%a4%e5%92%8c%e4%bd%8d%e7%a7%bb" onclick="onNavClick(`#26操作符命令和位移-nav`)" id="26操作符命令和位移-nav">
+									26.操作符命令和位移
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#27%e6%94%b9%e5%8f%98%e6%96%87%e6%9c%ac" onclick="onNavClick(`#27改变文本-nav`)" id="27改变文本-nav">
+									27.改变文本
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#28%e6%9b%bf%e6%8d%a2%e5%8d%95%e4%b8%aa%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#28替换单个字符-nav`)" id="28替换单个字符-nav">
+									28.替换单个字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#29%e9%87%8d%e5%a4%8d%e6%94%b9%e5%8a%a8" onclick="onNavClick(`#29重复改动-nav`)" id="29重复改动-nav">
+									29.重复改动
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#30visual%e6%a8%a1%e5%bc%8f" onclick="onNavClick(`#30visual模式-nav`)" id="30visual模式-nav">
+									30.Visual模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#31%e7%a7%bb%e5%8a%a8%e6%96%87%e6%9c%ac" onclick="onNavClick(`#31移动文本-nav`)" id="31移动文本-nav">
+									31.移动文本
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#32%e5%a4%8d%e5%88%b6%e6%96%87%e6%9c%acvim%e7%bc%96%e8%be%91%e5%99%a8%e5%86%85%e5%a4%8d%e5%88%b6" onclick="onNavClick(`#32复制文本vim编辑器内复制-nav`)" id="32复制文本vim编辑器内复制-nav">
+									32.复制文本（VIM编辑器内复制）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#33%e6%96%87%e6%9c%ac%e5%af%b9%e8%b1%a1" onclick="onNavClick(`#33文本对象-nav`)" id="33文本对象-nav">
+									33.文本对象
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#34%e5%bf%ab%e6%8d%b7%e5%91%bd%e4%bb%a4" onclick="onNavClick(`#34快捷命令-nav`)" id="34快捷命令-nav">
+									34.快捷命令
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#35%e7%bc%96%e8%be%91%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6" onclick="onNavClick(`#35编辑另一个文件-nav`)" id="35编辑另一个文件-nav">
+									35.编辑另一个文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#36%e6%96%87%e4%bb%b6%e5%88%97%e8%a1%a8" onclick="onNavClick(`#36文件列表-nav`)" id="36文件列表-nav">
+									36.文件列表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#37%e6%98%be%e7%a4%ba%e5%bd%93%e5%89%8d%e6%ad%a3%e5%9c%a8%e7%bc%96%e8%be%91%e7%9a%84%e6%96%87%e4%bb%b6" onclick="onNavClick(`#37显示当前正在编辑的文件-nav`)" id="37显示当前正在编辑的文件-nav">
+									37.显示当前正在编辑的文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#38%e7%a7%bb%e5%8a%a8%e5%88%b0%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6" onclick="onNavClick(`#38移动到另一个文件-nav`)" id="38移动到另一个文件-nav">
+									38.移动到另一个文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#39%e7%bc%96%e8%be%91%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e5%88%97%e8%a1%a8" onclick="onNavClick(`#39编辑另一个文件列表-nav`)" id="39编辑另一个文件列表-nav">
+									39.编辑另一个文件列表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#39%e8%87%aa%e5%8a%a8%e5%ad%98%e7%9b%98" onclick="onNavClick(`#39自动存盘-nav`)" id="39自动存盘-nav">
+									39.自动存盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#40%e5%88%87%e6%8d%a2%e5%88%b0%e5%8f%a6%e4%b8%80%e6%96%87%e4%bb%b6" onclick="onNavClick(`#40切换到另一文件-nav`)" id="40切换到另一文件-nav">
+									40.切换到另一文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#41%e6%96%87%e4%bb%b6%e6%a0%87%e8%ae%b0" onclick="onNavClick(`#41文件标记-nav`)" id="41文件标记-nav">
+									41.文件标记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42%e6%9f%a5%e7%9c%8b%e6%96%87%e4%bb%b6" onclick="onNavClick(`#42查看文件-nav`)" id="42查看文件-nav">
+									42.查看文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#43%e6%9b%b4%e6%94%b9%e6%96%87%e4%bb%b6%e5%90%8d" onclick="onNavClick(`#43更改文件名-nav`)" id="43更改文件名-nav">
+									43.更改文件名
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#44%e5%88%86%e5%89%b2%e4%b8%80%e4%b8%aa%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#44分割一个窗口-nav`)" id="44分割一个窗口-nav">
+									44.分割一个窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#45%e5%85%b3%e9%97%ad%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#45关闭窗口-nav`)" id="45关闭窗口-nav">
+									45.关闭窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#46%e5%85%b3%e9%97%ad%e9%99%a4%e5%bd%93%e5%89%8d%e7%aa%97%e5%8f%a3%e5%a4%96%e7%9a%84%e6%89%80%e6%9c%89%e5%85%b6%e4%bb%96%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#46关闭除当前窗口外的所有其他窗口-nav`)" id="46关闭除当前窗口外的所有其他窗口-nav">
+									46.关闭除当前窗口外的所有其他窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#47%e4%b8%ba%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e5%88%86%e9%9a%94%e5%87%ba%e4%b8%80%e4%b8%aa%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#47为另一个文件分隔出一个窗口-nav`)" id="47为另一个文件分隔出一个窗口-nav">
+									47.为另一个文件分隔出一个窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#48%e5%9e%82%e7%9b%b4%e5%88%86%e5%89%b2" onclick="onNavClick(`#48垂直分割-nav`)" id="48垂直分割-nav">
+									48.垂直分割
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#49%e5%88%87%e6%8d%a2%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#49切换窗口-nav`)" id="49切换窗口-nav">
+									49.切换窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#50%e9%92%88%e5%af%b9%e6%89%80%e6%9c%89%e7%aa%97%e5%8f%a3%e6%93%8d%e4%bd%9c%e7%9a%84%e5%91%bd%e4%bb%a4" onclick="onNavClick(`#50针对所有窗口操作的命令-nav`)" id="50针对所有窗口操作的命令-nav">
+									50.针对所有窗口操作的命令
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#51%e4%b8%ba%e6%af%8f%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e6%89%93%e5%bc%80%e4%b8%80%e4%b8%aa%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#51为每一个文件打开一个窗口-nav`)" id="51为每一个文件打开一个窗口-nav">
+									51.为每一个文件打开一个窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#52%e4%bd%bf%e7%94%a8vimdiff%e6%9f%a5%e7%9c%8b%e4%b8%8d%e5%90%8c" onclick="onNavClick(`#52使用vimdiff查看不同-nav`)" id="52使用vimdiff查看不同-nav">
+									52.使用vimdiff查看不同
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#53%e9%a1%b5%e7%ad%be" onclick="onNavClick(`#53页签-nav`)" id="53页签-nav">
+									53.页签
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e7%a7%8d%e7%8a%b6%e6%80%81" onclick="onNavClick(`#三种状态-nav`)" id="三种状态-nav">
+									三种状态
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%a6%bb%e5%bc%80vi" onclick="onNavClick(`#离开vi-nav`)" id="离开vi-nav">
+									离开vi
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a class="pagination-action" v-on:click="toggleDarkMode">
+            <i class="material-icons pagination-action-icon" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons pagination-action-icon" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/archives">
+                    歸檔
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分類
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/resources">
+                    學習資源
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/video">
+                    混剪視頻
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/links">
+                    左鄰右舍
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/messages">
+                    留言板
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    關於
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#vim%e5%91%bd%e4%bb%a4%e6%80%bb%e7%bb%93" onclick="onNavClick(`#vim命令总结-nav`)" id="vim命令总结-nav">
+									vim命令总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#1%e5%88%a0%e9%99%a4%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#1删除字符-nav`)" id="1删除字符-nav">
+									1.删除字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2%e5%88%a0%e9%99%a4%e4%b8%80%e8%a1%8c" onclick="onNavClick(`#2删除一行-nav`)" id="2删除一行-nav">
+									2.删除一行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#3%e5%88%a0%e9%99%a4%e6%8d%a2%e8%a1%8c%e7%ac%a6" onclick="onNavClick(`#3删除换行符-nav`)" id="3删除换行符-nav">
+									3.删除换行符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#4%e6%92%a4%e9%94%80" onclick="onNavClick(`#4撤销-nav`)" id="4撤销-nav">
+									4.撤销
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#5%e9%87%8d%e5%81%9a" onclick="onNavClick(`#5重做-nav`)" id="5重做-nav">
+									5.重做
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#6%e8%bf%bd%e5%8a%a0" onclick="onNavClick(`#6追加-nav`)" id="6追加-nav">
+									6.追加
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#7%e4%bd%bf%e7%94%a8%e5%91%bd%e4%bb%a4%e8%ae%a1%e6%95%b0" onclick="onNavClick(`#7使用命令计数-nav`)" id="7使用命令计数-nav">
+									7.使用命令计数
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#8%e9%80%80%e5%87%ba" onclick="onNavClick(`#8退出-nav`)" id="8退出-nav">
+									8.退出
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#9%e6%94%be%e5%bc%83%e7%bc%96%e8%be%91" onclick="onNavClick(`#9放弃编辑-nav`)" id="9放弃编辑-nav">
+									9.放弃编辑
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#11%e7%a7%bb%e5%8a%a8%e5%88%b0%e8%a1%8c%e9%a6%96%e6%88%96%e8%a1%8c%e5%b0%be" onclick="onNavClick(`#11移动到行首或行尾-nav`)" id="11移动到行首或行尾-nav">
+									11.移动到行首或行尾
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#12%e7%a7%bb%e5%8a%a8%e5%88%b0%e6%8c%87%e5%ae%9a%e5%ad%97%e7%ac%a6%e4%b8%8a" onclick="onNavClick(`#12移动到指定字符上-nav`)" id="12移动到指定字符上-nav">
+									12.移动到指定字符上
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#13%e4%bb%a5%e5%8c%b9%e9%85%8d%e4%b8%80%e4%b8%aa%e6%8b%ac%e5%8f%b7%e4%b8%ba%e7%9b%ae%e7%9a%84%e7%a7%bb%e5%8a%a8" onclick="onNavClick(`#13以匹配一个括号为目的移动-nav`)" id="13以匹配一个括号为目的移动-nav">
+									13.以匹配一个括号为目的移动
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#14%e7%a7%bb%e5%8a%a8%e5%88%b0%e6%8c%87%e5%ae%9a%e8%a1%8c" onclick="onNavClick(`#14移动到指定行-nav`)" id="14移动到指定行-nav">
+									14.移动到指定行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#15%e5%91%8a%e8%af%89%e4%bd%a0%e5%bd%93%e5%89%8d%e7%9a%84%e4%bd%8d%e7%bd%ae" onclick="onNavClick(`#15告诉你当前的位置-nav`)" id="15告诉你当前的位置-nav">
+									15.告诉你当前的位置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#16%e6%bb%9a%e5%b1%8f" onclick="onNavClick(`#16滚屏-nav`)" id="16滚屏-nav">
+									16.滚屏
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#17%e7%ae%80%e5%8d%95%e6%90%9c%e7%b4%a2" onclick="onNavClick(`#17简单搜索-nav`)" id="17简单搜索-nav">
+									17.简单搜索
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#18%e5%9c%a8%e6%96%87%e6%9c%ac%e4%b8%ad%e6%9f%a5%e6%89%be%e4%b8%8b%e4%b8%80%e4%b8%aaword" onclick="onNavClick(`#18在文本中查找下一个word-nav`)" id="18在文本中查找下一个word-nav">
+									18.在文本中查找下一个word
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#19%e6%9f%a5%e6%89%be%e6%95%b4%e4%b8%aaword" onclick="onNavClick(`#19查找整个word-nav`)" id="19查找整个word-nav">
+									19.查找整个word
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#20%e9%ab%98%e4%ba%ae%e6%98%be%e7%a4%ba%e6%90%9c%e7%b4%a2%e7%bb%93%e6%9e%9c" onclick="onNavClick(`#20高亮显示搜索结果-nav`)" id="20高亮显示搜索结果-nav">
+									20.高亮显示搜索结果
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#21%e5%8c%b9%e9%85%8d%e4%b8%80%e8%a1%8c%e7%9a%84%e5%bc%80%e5%a4%b4%e4%b8%8e%e7%bb%93%e5%b0%be" onclick="onNavClick(`#21匹配一行的开头与结尾-nav`)" id="21匹配一行的开头与结尾-nav">
+									21.匹配一行的开头与结尾
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22%e5%8c%b9%e9%85%8d%e4%bb%bb%e4%bd%95%e7%9a%84%e5%8d%95%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#22匹配任何的单字符-nav`)" id="22匹配任何的单字符-nav">
+									22.匹配任何的单字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#23%e5%8c%b9%e9%85%8d%e7%89%b9%e6%ae%8a%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#23匹配特殊字符-nav`)" id="23匹配特殊字符-nav">
+									23.匹配特殊字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#24%e4%bd%bf%e7%94%a8%e6%a0%87%e8%ae%b0" onclick="onNavClick(`#24使用标记-nav`)" id="24使用标记-nav">
+									24.使用标记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#25%e5%85%b7%e5%90%8d%e6%a0%87%e8%ae%b0" onclick="onNavClick(`#25具名标记-nav`)" id="25具名标记-nav">
+									25.具名标记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#26%e6%93%8d%e4%bd%9c%e7%ac%a6%e5%91%bd%e4%bb%a4%e5%92%8c%e4%bd%8d%e7%a7%bb" onclick="onNavClick(`#26操作符命令和位移-nav`)" id="26操作符命令和位移-nav">
+									26.操作符命令和位移
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#27%e6%94%b9%e5%8f%98%e6%96%87%e6%9c%ac" onclick="onNavClick(`#27改变文本-nav`)" id="27改变文本-nav">
+									27.改变文本
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#28%e6%9b%bf%e6%8d%a2%e5%8d%95%e4%b8%aa%e5%ad%97%e7%ac%a6" onclick="onNavClick(`#28替换单个字符-nav`)" id="28替换单个字符-nav">
+									28.替换单个字符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#29%e9%87%8d%e5%a4%8d%e6%94%b9%e5%8a%a8" onclick="onNavClick(`#29重复改动-nav`)" id="29重复改动-nav">
+									29.重复改动
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#30visual%e6%a8%a1%e5%bc%8f" onclick="onNavClick(`#30visual模式-nav`)" id="30visual模式-nav">
+									30.Visual模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#31%e7%a7%bb%e5%8a%a8%e6%96%87%e6%9c%ac" onclick="onNavClick(`#31移动文本-nav`)" id="31移动文本-nav">
+									31.移动文本
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#32%e5%a4%8d%e5%88%b6%e6%96%87%e6%9c%acvim%e7%bc%96%e8%be%91%e5%99%a8%e5%86%85%e5%a4%8d%e5%88%b6" onclick="onNavClick(`#32复制文本vim编辑器内复制-nav`)" id="32复制文本vim编辑器内复制-nav">
+									32.复制文本（VIM编辑器内复制）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#33%e6%96%87%e6%9c%ac%e5%af%b9%e8%b1%a1" onclick="onNavClick(`#33文本对象-nav`)" id="33文本对象-nav">
+									33.文本对象
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#34%e5%bf%ab%e6%8d%b7%e5%91%bd%e4%bb%a4" onclick="onNavClick(`#34快捷命令-nav`)" id="34快捷命令-nav">
+									34.快捷命令
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#35%e7%bc%96%e8%be%91%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6" onclick="onNavClick(`#35编辑另一个文件-nav`)" id="35编辑另一个文件-nav">
+									35.编辑另一个文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#36%e6%96%87%e4%bb%b6%e5%88%97%e8%a1%a8" onclick="onNavClick(`#36文件列表-nav`)" id="36文件列表-nav">
+									36.文件列表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#37%e6%98%be%e7%a4%ba%e5%bd%93%e5%89%8d%e6%ad%a3%e5%9c%a8%e7%bc%96%e8%be%91%e7%9a%84%e6%96%87%e4%bb%b6" onclick="onNavClick(`#37显示当前正在编辑的文件-nav`)" id="37显示当前正在编辑的文件-nav">
+									37.显示当前正在编辑的文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#38%e7%a7%bb%e5%8a%a8%e5%88%b0%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6" onclick="onNavClick(`#38移动到另一个文件-nav`)" id="38移动到另一个文件-nav">
+									38.移动到另一个文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#39%e7%bc%96%e8%be%91%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e5%88%97%e8%a1%a8" onclick="onNavClick(`#39编辑另一个文件列表-nav`)" id="39编辑另一个文件列表-nav">
+									39.编辑另一个文件列表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#39%e8%87%aa%e5%8a%a8%e5%ad%98%e7%9b%98" onclick="onNavClick(`#39自动存盘-nav`)" id="39自动存盘-nav">
+									39.自动存盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#40%e5%88%87%e6%8d%a2%e5%88%b0%e5%8f%a6%e4%b8%80%e6%96%87%e4%bb%b6" onclick="onNavClick(`#40切换到另一文件-nav`)" id="40切换到另一文件-nav">
+									40.切换到另一文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#41%e6%96%87%e4%bb%b6%e6%a0%87%e8%ae%b0" onclick="onNavClick(`#41文件标记-nav`)" id="41文件标记-nav">
+									41.文件标记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42%e6%9f%a5%e7%9c%8b%e6%96%87%e4%bb%b6" onclick="onNavClick(`#42查看文件-nav`)" id="42查看文件-nav">
+									42.查看文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#43%e6%9b%b4%e6%94%b9%e6%96%87%e4%bb%b6%e5%90%8d" onclick="onNavClick(`#43更改文件名-nav`)" id="43更改文件名-nav">
+									43.更改文件名
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#44%e5%88%86%e5%89%b2%e4%b8%80%e4%b8%aa%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#44分割一个窗口-nav`)" id="44分割一个窗口-nav">
+									44.分割一个窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#45%e5%85%b3%e9%97%ad%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#45关闭窗口-nav`)" id="45关闭窗口-nav">
+									45.关闭窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#46%e5%85%b3%e9%97%ad%e9%99%a4%e5%bd%93%e5%89%8d%e7%aa%97%e5%8f%a3%e5%a4%96%e7%9a%84%e6%89%80%e6%9c%89%e5%85%b6%e4%bb%96%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#46关闭除当前窗口外的所有其他窗口-nav`)" id="46关闭除当前窗口外的所有其他窗口-nav">
+									46.关闭除当前窗口外的所有其他窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#47%e4%b8%ba%e5%8f%a6%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e5%88%86%e9%9a%94%e5%87%ba%e4%b8%80%e4%b8%aa%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#47为另一个文件分隔出一个窗口-nav`)" id="47为另一个文件分隔出一个窗口-nav">
+									47.为另一个文件分隔出一个窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#48%e5%9e%82%e7%9b%b4%e5%88%86%e5%89%b2" onclick="onNavClick(`#48垂直分割-nav`)" id="48垂直分割-nav">
+									48.垂直分割
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#49%e5%88%87%e6%8d%a2%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#49切换窗口-nav`)" id="49切换窗口-nav">
+									49.切换窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#50%e9%92%88%e5%af%b9%e6%89%80%e6%9c%89%e7%aa%97%e5%8f%a3%e6%93%8d%e4%bd%9c%e7%9a%84%e5%91%bd%e4%bb%a4" onclick="onNavClick(`#50针对所有窗口操作的命令-nav`)" id="50针对所有窗口操作的命令-nav">
+									50.针对所有窗口操作的命令
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#51%e4%b8%ba%e6%af%8f%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e6%89%93%e5%bc%80%e4%b8%80%e4%b8%aa%e7%aa%97%e5%8f%a3" onclick="onNavClick(`#51为每一个文件打开一个窗口-nav`)" id="51为每一个文件打开一个窗口-nav">
+									51.为每一个文件打开一个窗口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#52%e4%bd%bf%e7%94%a8vimdiff%e6%9f%a5%e7%9c%8b%e4%b8%8d%e5%90%8c" onclick="onNavClick(`#52使用vimdiff查看不同-nav`)" id="52使用vimdiff查看不同-nav">
+									52.使用vimdiff查看不同
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#53%e9%a1%b5%e7%ad%be" onclick="onNavClick(`#53页签-nav`)" id="53页签-nav">
+									53.页签
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e7%a7%8d%e7%8a%b6%e6%80%81" onclick="onNavClick(`#三种状态-nav`)" id="三种状态-nav">
+									三种状态
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%a6%bb%e5%bc%80vi" onclick="onNavClick(`#离开vi-nav`)" id="离开vi-nav">
+									离开vi
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="https://www.markhoo.com">
+            南有嘉鱼
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" v-on:click="toggleDarkMode">
+            <i class="material-icons" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://www.markhoo.com">
+        <div class="single-column-header-title">南有嘉鱼</div>
+        
+        <div class="single-column-header-subtitle">MarkHoo&#39;s Blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                
+                    
+                    
+                    style="background-image: url('https://api.ixiaowai.cn/gqapi/gqapi.php')"
+                    
+                
+            >
+                <div class="post-title">
+                    vim常用命令总结
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2016-09-11 10:29
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB">默认分类</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/vim">Vim</a>
+                                &nbsp;
+                            
+                        
+                        
+                            <i class="material-icons" style="">schedule</i>
+                            
+
+                            
+                            
+
+                            
+                            42 min
+                            
+                            49 s.
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版。
+vim 选择文本，删除，复制，粘贴
+文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下：
+v 从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。
+V 从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。
+Ctrl + v 从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。
+ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾
+选中后就可以用编辑命令对其进行编辑，如 
+d 删除
+y 复制 （默认是复制到&quot;寄存器）
+p 粘贴 （默认从&quot;寄存器取出内容粘贴）
+&ldquo;+y 复制到系统剪贴板(也就是vim的+寄存器）
+&ldquo;+p 从系统剪贴板粘贴</p>
+<p>=============================================================</p>
+<h2 id="vim命令总结">vim命令总结</h2>
+<h3 id="1删除字符">1.删除字符</h3>
+<p>要删除一个字符，只需要将光标移到该字符上按下&quot;x&rdquo;。</p>
+<h3 id="2删除一行">2.删除一行</h3>
+<p>删除一整行内容使用&quot;dd&quot;命令。删除后下面的行会移上来填补空缺。</p>
+<h3 id="3删除换行符">3.删除换行符</h3>
+<p>在Vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了：命令是&quot;J&rdquo;。</p>
+<h3 id="4撤销">4.撤销</h3>
+<p>如果你误删了过多的内容。显然你可以再输入一遍，但是命令&quot;u&rdquo; 更简便，它可以撤消上一次的操作。</p>
+<h3 id="5重做">5.重做</h3>
+<p>如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，&ldquo;U&quot;命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个&quot;U&quot;的操作。用&quot;u&quot;和CTRL-R你可以找回任何一个操作状态。</p>
+<h3 id="6追加">6.追加</h3>
+<p>&ldquo;i&quot;命令可以在当前光标之前插入文本。
+&ldquo;a&quot;命令可以在当前光标之后插入文本。
+&ldquo;o&quot;命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。
+&ldquo;O&quot;命令(注意是大写的字母O)将在当前行的上面另起一行。</p>
+<h3 id="7使用命令计数">7.使用命令计数</h3>
+<p>假设你要向上移动9行。这可以用&quot;kkkkkkkkk&quot;或&quot;9k&quot;来完成。事实上，很多命令都可以接受一个数字作为重复执行同一命令的次数。比如刚才的例子，要在行尾追加三个感叹号，当时用的命令是&quot;a!!!&quot;。另一个办法是用&quot;3a!&ldquo;命令。3说明该命令将被重复执行3次。同样，删除3个字符可以用&quot;3x&rdquo;。指定的数字要紧挨在它所要修饰的命令前面。</p>
+<h3 id="8退出">8.退出</h3>
+<p>要退出Vim，用命令&quot;ZZ&rdquo;。该命令保存当前文件并退出Vim。</p>
+<h3 id="9放弃编辑">9.放弃编辑</h3>
+<p>丢弃所有的修改并退出，用命令&rdquo;:q!&quot;。用&rdquo;:e!&ldquo;命令放弃所有修改并重新载入该文件的原始内容。</p>
+<p>###10.以Word为单位的移动
+使用&quot;w&quot;命令可以将光标向前移动一个word的首字符上；比如&quot;3w&quot;将光标向前移动3个words。&ldquo;b&quot;命令则将光标向后移动到前一个word的首字符上。
+&ldquo;e&quot;命令会将光标移动到下一个word的最后一个字符。命令&quot;ge&rdquo;，它将光标移动到前一个word的最后一个字符上。、</p>
+<h3 id="11移动到行首或行尾">11.移动到行首或行尾</h3>
+<p>&ldquo;$&quot;命令将光标移动到当前行行尾。如果你的键盘上有一个键，它的作用也一样。&ldquo;^&quot;命令将光标移动到当前行的第一个非空白字符上。&ldquo;0&quot;命令则总是把光标移动到当前行的第一个字符上。键也是如此。&ldquo;$&quot;命令还可接受一个计数，如&quot;1$&quot;会将光标移动到当前行行尾，&ldquo;2$&quot;则会移动到下一行的行尾，如此类推。&ldquo;0&quot;命令却不能接受类似这样的计数，命令&quot;^&quot;前加上一个计数也没有任何效果。</p>
+<h3 id="12移动到指定字符上">12.移动到指定字符上</h3>
+<p>命令&quot;fx&quot;在当前行上查找下一个字符x（向右方向），可以带一个命令计数&quot;F&quot;命令向左方向搜索。&ldquo;tx&quot;命令形同&quot;fx&quot;命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：&ldquo;t&quot;意为&quot;To&rdquo;。该命令的反方向版是&quot;Tx&rdquo;。这4个命令都可以用&rdquo;;&ldquo;来重复。以&rdquo;,&ldquo;也是重复同样的命令，但是方向与原命令的方向相反。</p>
+<h3 id="13以匹配一个括号为目的移动">13.以匹配一个括号为目的移动</h3>
+<p>用命令&rdquo;%&ldquo;跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在&rdquo;(&ldquo;上，它就向前跳转到与它匹配的&rdquo;)&ldquo;上，如果当前在&rdquo;)&ldquo;上，它就向后自动跳转到匹配的&rdquo;(&ldquo;上去.</p>
+<h3 id="14移动到指定行">14.移动到指定行</h3>
+<p>用&quot;G&quot;命令指定一个命令计数，这个命令就会把光标定位到由命令计数指定的行上。比如&quot;33G&quot;就会把光标置于第33行上。没有指定命令计数作为参数的话, &ldquo;G&quot;会把光标定位到最后一行上。&ldquo;gg&quot;命令是跳转到第一行的快捷的方法。
+另一个移动到某行的方法是在命令&rdquo;%&ldquo;之前指定一个命令计数比如&quot;50%&ldquo;将会把光标定位在文件的中间. &ldquo;90%&ldquo;跳到接近文件尾的地方。
+命令&quot;H&rdquo;,&ldquo;M&rdquo;,&ldquo;L&rdquo;,分别将光标跳转到第一行，中间行，结尾行部分。</p>
+<h3 id="15告诉你当前的位置">15.告诉你当前的位置</h3>
+<p>使用CTRL-G命令。&ldquo;set number&quot;在每行的前面显示一个行号。相反关闭行号用命令&rdquo;:set nonumber&rdquo;。&quot;:set ruler&quot;在Vim窗口的右下角显示当前光标位置。</p>
+<h3 id="16滚屏">16.滚屏</h3>
+<p>CTRL-U显示文本的窗口向上滚动了半屏。CTRL-D命令将窗口向下移动半屏。一次滚动一行可以使用CTRL-E(向上滚动)和CTRL-Y(向下滚动)。要向前滚动一整屏使用命令CTRL-F。另外CTRL-B是它的反向版。&ldquo;zz&quot;命令会把当前行置为屏幕正中央，&ldquo;zt&quot;命令会把当前行置于屏幕顶端，&ldquo;zb&quot;则把当前行置于屏幕底端.</p>
+<h3 id="17简单搜索">17.简单搜索</h3>
+<p>&ldquo;/string&quot;命令可用于搜索一个字符串。要查找上次查找的字符串的下一个位置,使用&quot;n&quot;命令。如果你知道你要找的确切位置是目标字符串的第几次出现，还可以在&quot;n&quot;之前放置一个命令计数。&ldquo;3n&quot;会去查找目标字符串的第3次出现。
+&ldquo;?&ldquo;命令与&rdquo;/&ldquo;的工作相同，只是搜索方向相反.&ldquo;N&quot;命令会重复前一次查找，但是与最初用&rdquo;/&ldquo;或&rdquo;?&ldquo;指定的搜索方向相反。
+如果查找内容忽略大小写，则用命令&quot;set ignorecase&rdquo;, 返回精确匹配用命令&quot;set noignorecase&rdquo; 。</p>
+<h3 id="18在文本中查找下一个word">18.在文本中查找下一个word</h3>
+<p>把光标定位于这个word上然后按下&quot;&ldquo;键。Vim将会取当前光标所在的word并将它作用目标字符串进行搜索。&quot;#&ldquo;命令是&quot;&ldquo;的反向版。还可以在这两个命令前加一个命令计数:&ldquo;3*&ldquo;查找当前光标下的word的第三次出现。</p>
+<h3 id="19查找整个word">19.查找整个word</h3>
+<p>如果你用&rdquo;/the&quot;来查找Vim也会匹配到&quot;there&rdquo;。要查找作为独立单词的&quot;the&quot;使用如下命令：&quot;/the&gt;&rdquo;。&ldquo;&gt;&quot;是一个特殊的记法，它只匹配一个word的结束处。近似地，&ldquo;&lt;&quot;匹配到一个word的开始处。这样查找作为一个word的&quot;the&quot;就可以用:&quot;/&quot;。</p>
+<h3 id="20高亮显示搜索结果">20.高亮显示搜索结果</h3>
+<p>开启这一功能用&rdquo;:set hlsearch&rdquo;，关闭这一功能：&quot;:set nohlsearch&rdquo;。如果只是想去掉当前的高亮显示，可以使用下面的命令：&quot;:nohlsearch&rdquo;(可以简写为noh)。</p>
+<h3 id="21匹配一行的开头与结尾">21.匹配一行的开头与结尾</h3>
+<p>^ 字符匹配一行的开头。$字符匹配一行的末尾。
+所以&rdquo;/was$&quot;只匹配位于一行末尾的单词was，所以&rdquo;/^was&quot;只匹配位于一行开始的单词was。</p>
+<h3 id="22匹配任何的单字符">22.匹配任何的单字符</h3>
+<p>.这个字符可以匹配到任何字符。比如&quot;c.m&quot;可以匹配任何前一个字符是c，后一个字符是m的情况，不管中间的字符是什么。</p>
+<h3 id="23匹配特殊字符">23.匹配特殊字符</h3>
+<p>放一个反斜杠在特殊字符前面。如果你查找&quot;ter。&quot;，用命令&rdquo;/ter。&rdquo;</p>
+<h3 id="24使用标记">24.使用标记</h3>
+<p>当你用&quot;G&quot;命令从一个地方跳转到另一个地方时，Vim会记得你起跳的位置。这个位置在Vim中是一个标记。使用命令&rdquo; <code> &quot;可以使你跳回到刚才的出发点。</code>命令可以在两点之间来回跳转。CTRL-O命令是跳转到你更早些时间停置光标的位置(提示:O意为older). CTRL-I则是跳回到后来停置光标的更新的位置(提示：I在键盘上位于O前面)。
+注:使用CTRL-I 与按下键一样。</p>
+<h3 id="25具名标记">25.具名标记</h3>
+<p>命令&quot;ma&quot;将当前光标下的位置名之为标记&quot;a&rdquo;。从a到z一共可以使用26个自定义的标记。要跳转到一个你定义过的标记，使用命令&rdquo; marks &ldquo;marks就是定义的标记的名字。命令&rdquo; &lsquo;a &ldquo;使你跳转到a所在行的行首，&rdquo; a &ldquo;会精确定位a所在的位置。命令：&quot;:marks&quot;用来查看标记的列表。
+命令delm！删除所有标记。</p>
+<h3 id="26操作符命令和位移">26.操作符命令和位移</h3>
+<p>&ldquo;dw&quot;命令可以删除一个word，&ldquo;d4w&quot;命令是删除4个word，依此类推。类似有&quot;d2e&rdquo;、&ldquo;d$&rdquo;。此类命令有一个固定的模式：操作符命令+位移命令。首先键入一个操作符命令。比如&quot;d&quot;是一个删除操作符。接下来是一个位移命。比如&quot;w&rdquo;。这样任何移动光标命令所及之处，都是命令的作用范围。</p>
+<h3 id="27改变文本">27.改变文本</h3>
+<p>操作符命令是&quot;c&rdquo;，改变命令。它的行为与&quot;d&quot;命令类似，不过在命令执行后会进入Insert模式。比如&quot;cw&quot;改变一个word。或者，更准确地说，它删除一个word并让你置身于Insert模式。
+&ldquo;cc&quot;命令可以改变整行。不过仍保持原来的缩进。
+&ldquo;c$&quot;改变当前光标到行尾的内容。
+快捷命令：x 代表dl(删除当前光标下的字符)
+X 代表dh(删除当前光标左边的字符)
+D 代表d$(删除到行尾的内容)
+C 代表c$(修改到行尾的内容)
+s 代表cl(修改一个字符)
+S 代表cc(修改一整行)
+命令&quot;3dw&quot;和&quot;d3w&quot;都是删除3个word。第一个命令&quot;3dw&quot;可以看作是删除一个word的操作执行3次；第二个命令&quot;d3w&quot;是一次删除3个word。这是其中不明显的差异。事实上你可以在两处都放上命令记数，比如，&ldquo;3d2w&quot;是删除两个word，重复执行3次，总共是6个word。</p>
+<h3 id="28替换单个字符">28.替换单个字符</h3>
+<p>&ldquo;r&quot;命令不是一个操作符命令。它等待你键入下一个字符用以替换当前光标下的那个字符。&ldquo;r&quot;命令前辍以一个命令记数是将多个字符都替换为即将输入的那个字符。要把一个字符替换为一个换行符使用&quot;r&rdquo;。它会删除一个字符并插入一个换行符。在此处使用命令记数只会删除指定个数的字符：&ldquo;4r&quot;将把4个字符替换为一个换行符。</p>
+<h3 id="29重复改动">29.重复改动</h3>
+<p>&ldquo;.&ldquo;命令会重复上一次做出的改动。&quot;.&ldquo;命令会重复你做出的所有修改，除了&quot;u&quot;命令CTRL-R和以冒号开头的命令。&quot;.&ldquo;需要在Normal模式下执行，它重复的是命令，而不是被改动的内容，</p>
+<h3 id="30visual模式">30.Visual模式</h3>
+<p>按&quot;v&quot;可以进入Visual模式。移动光标以覆盖你想操纵的文本范围。同时被选中的文本会以高亮显示。最后键入操作符命令。</p>
+<h3 id="31移动文本">31.移动文本</h3>
+<p>以&quot;d&quot;或&quot;x&quot;这样的命令删除文本时，被删除的内容还是被保存了起来。你还可以用p命令把它取回来。&ldquo;P&quot;命令是把被去回的内容放在光标之前，&ldquo;p&quot;则是放在光标之后。对于以&quot;dd&quot;删除的整行内容，&ldquo;P&quot;会把它置于当前行的上一行。&ldquo;p&quot;则是至于当前行的后一行。也可以对命令&quot;p&quot;和&quot;P&quot;命令使用命令记数。它的效果是同样的内容被取回指定的次数。这样一来&quot;dd&quot;之后的&quot;3p&quot;就可以把被删除行的3 份副本放到当前位置。
+命令&quot;xp&quot;将光标所在的字符与后一个字符交换。</p>
+<h3 id="32复制文本vim编辑器内复制">32.复制文本（VIM编辑器内复制）</h3>
+<p>&ldquo;y&quot;操作符命令会把文本复制到一个寄存器3中。然后可以用&quot;p&quot;命令把它取回。因为&quot;y&quot;是一个操作符命令，所以你可以用&quot;yw&quot;来复制一个word. 同样可以使用命令记数。如下例中用&quot;y2w&quot;命令复制两个word，&ldquo;yy&quot;命令复制一整行，&ldquo;Y&quot;也是复制整行的内容，复制当前光标至行尾的命令是&quot;y$&rdquo;。</p>
+<h3 id="33文本对象">33.文本对象</h3>
+<p>&ldquo;diw&rdquo; 删除当前光标所在的word(不包括空白字符) &ldquo;daw&rdquo; 删除当前光标所在的word(包括空白字符)</p>
+<h3 id="34快捷命令">34.快捷命令</h3>
+<p>x 删除当前光标下的字符(&ldquo;dl&quot;的快捷命令)
+X 删除当前光标之前的字符(&ldquo;dh&quot;的快捷命令)
+D 删除自当前光标至行尾的内容(&ldquo;d$&quot;的快捷命令)
+dw 删除自当前光标至下一个word的开头
+db 删除自当前光标至前一个word的开始
+diw 删除当前光标所在的word(不包括空白字符)
+daw 删除当前光标所在的word(包括空白字符)
+dG 删除当前行至文件尾的内容
+dgg 删除当前行至文件头的内容
+如果你用&quot;c&quot;命令代替&quot;d&quot;这些命令就都变成更改命令。使用&quot;y&quot;就是yank命令，如此类推。</p>
+<h3 id="35编辑另一个文件">35.编辑另一个文件</h3>
+<p>用命令&rdquo;:edit foo.txt&rdquo;，也可简写为&rdquo;:e foo.txt&rdquo;。</p>
+<h3 id="36文件列表">36.文件列表</h3>
+<p>可以在启动Vim时就指定要编辑多个文件，用命令&quot;vim one.c two.c three.c&rdquo;。Vim将在启动后只显示第一个文件，完成该文件的编辑后，可以用令：&quot;:next&quot;或&rdquo;:n&quot;要保存工作成果并继续下一个文件的编辑，命令：&quot;:wnext&quot;或&rdquo;:wn&quot;可以合并这一过程。</p>
+<h3 id="37显示当前正在编辑的文件">37.显示当前正在编辑的文件</h3>
+<p>用命令&rdquo;:args&rdquo;。</p>
+<h3 id="38移动到另一个文件">38.移动到另一个文件</h3>
+<p>用命令&rdquo;:previous&rdquo; &ldquo;:prev&quot;回到上一个文件,合并保存步骤则是&rdquo;:wprevious&rdquo; &ldquo;:wprev&rdquo;。要移到最后一个文件&rdquo;:last&rdquo;,到第一个&rdquo;:first&rdquo;.不过没有&rdquo;:wlast&quot;或者&rdquo;:wfirst&quot;这样的命令。可以在&rdquo;:next&quot;和&rdquo;:previous&quot;命令前面使用一个命令计数。</p>
+<h3 id="39编辑另一个文件列表">39.编辑另一个文件列表</h3>
+<p>不用重新启动Vim，就可以重新定义一个文件列表。命令&rdquo;:args five.c six.c seven.h&quot;定义了要编辑的三个文件。</p>
+<h3 id="39自动存盘">39.自动存盘</h3>
+<p>命令&rdquo;:set autowrite&rdquo;,&ldquo;set aw&rdquo;。自动把内容写回文件: 如果文件被修改过，在每个:next、:rewind、:last、:first、:previous、:stop、:suspend、:tag、:!、:make、CTRL-] 和 CTRL-^命令时进行。
+命令&rdquo;:set autowriteall&rdquo;,&ldquo;set awa&rdquo;。和 &lsquo;autowrite&rsquo; 类似，但也适用于&rdquo;:edit&rdquo;、&quot;:enew&rdquo;、&quot;:quit&rdquo;、&quot;:qall&rdquo;、&quot;:exit&rdquo;、&quot;:xit&rdquo;、&quot;:recover&rdquo; 和关闭 Vim 窗口。置位本选项也意味着 Vim 的行为就像打开 &lsquo;autowrite&rsquo; 一样。</p>
+<h3 id="40切换到另一文件">40.切换到另一文件</h3>
+<p>要在两个文件间快速切换，使用CTRL-^。</p>
+<h3 id="41文件标记">41.文件标记</h3>
+<p>以大写字母命名的标记。它们是全局标记，它们可以用在任何文件中。比如，正在编辑&quot;fab1.Java&rdquo;,用命令&quot;50%mF&quot;在文件的中间设置一个名为F的标记。然后在&quot;fab2.java&quot;文件中，用命令&quot;GnB&quot;在最后一行设置名为B的标记。在可以用&quot;F&quot;命令跳转到文件&quot;fab1.java&quot;的半中间。或者编辑另一个文件，&quot;&lsquo;B&quot;命令会再把你带回文件&quot;fab2.java&quot;的最后一行。
+要知道某个标记所代表的位置是什么，可以将该标记的名字作为&quot;marks&quot;命令的参数&rdquo;:marks M&quot;或者连续跟上几个参数&rdquo;:marks MJK&rdquo;
+可以用CTRL-O和CTRL-I可以跳转到较早的位置和靠后的某位置。</p>
+<h3 id="42查看文件">42.查看文件</h3>
+<p>仅是查看文件，不向文件写入内容，可以用只读形式编辑文件。用命令：
+vim -R file。如果是想强制性地避免对文件进行修改，可以用命令：
+vim -M file。</p>
+<h3 id="43更改文件名">43.更改文件名</h3>
+<p>将现有文件存成新的文件，用命令&rdquo;:sav(eas) move.c&rdquo;。如果想改变当前正在编辑的文件名，但不想保存该文件，就可以用命令：&quot;:f(ile) move.c&rdquo;。</p>
+<h3 id="44分割一个窗口">44.分割一个窗口</h3>
+<p>打开一个新窗口最简单的办法就是使用命令：&quot;:split&rdquo;。CTRL-W 命令可以切换当前活动窗口。</p>
+<h3 id="45关闭窗口">45.关闭窗口</h3>
+<p>用命令：&ldquo;close&rdquo;.可以关闭当前窗口。实际上,任何退出文件编辑的命令&rdquo;:quit&quot;和&quot;ZZ&quot;都会关闭窗口，但是用&rdquo;:close&quot;可以阻止你关闭最后一个Vim，以免以意外地整个关闭了Vim。</p>
+<h3 id="46关闭除当前窗口外的所有其他窗口">46.关闭除当前窗口外的所有其他窗口</h3>
+<p>用命令：&quot;:only&rdquo;,关闭除当前窗口外的所有其它窗口。如果这些窗口中有被修改过的，你会得到一个错误信息，同时那个窗口会被留下来。</p>
+<h3 id="47为另一个文件分隔出一个窗口">47.为另一个文件分隔出一个窗口</h3>
+<p>命令&rdquo;:split two.c&quot;可以打开第二个窗口同时在新打开的窗口中开始编辑作为
+参数的文件。如果要打开一个新窗口并开始编辑一个空的缓冲区，使用命令:&quot;:new&rdquo;。</p>
+<h3 id="48垂直分割">48.垂直分割</h3>
+<p>用命令&rdquo;:vsplit或：:vsplit two.c&rdquo;。同样有一个对应的&rdquo;:vnew&quot;命令，用于垂直分隔窗口并在其中打开一个新的空缓冲区。</p>
+<h3 id="49切换窗口">49.切换窗口</h3>
+<p>CTRL-W h 到左边的窗口
+CTRL-W j 到下面的窗口
+CTRL-W k 到上面的窗口
+CTRL-W l 到右边的窗口
+CTRL-W t 到顶部窗口
+CTRL-W b 到底部窗口</p>
+<h3 id="50针对所有窗口操作的命令">50.针对所有窗口操作的命令</h3>
+<p>&ldquo;:qall&quot;放弃所有操作并退出，&quot;:wall&quot;保存所有，&quot;:wqall&quot;保存所有并退出。</p>
+<h3 id="51为每一个文件打开一个窗口">51.为每一个文件打开一个窗口</h3>
+<p>使用&rdquo;-o&quot;选项可以让Vim为每一个文件打开一个窗口：
+&ldquo;vim -o one.txt two.txt three.txt&rdquo;。</p>
+<h3 id="52使用vimdiff查看不同">52.使用vimdiff查看不同</h3>
+<p>&ldquo;vimdiff main.c~ main.c&rdquo;,另一种进入diff模式的办法可以在Vim运行中操作。编辑文件&quot;main.c&rdquo;，然后打开另一个分隔窗口显示其不同:
+&ldquo;:edit main.c&rdquo;
+&ldquo;:vertical diffpatch main.c.diff&rdquo;。</p>
+<h3 id="53页签">53.页签</h3>
+<p>命令&rdquo;:tabe(dit) thatfile&quot;在一个窗口中打开&quot;thatfile&rdquo;，该窗口占据着整个的Vim显示区域。命令&rdquo;:tab split/new&quot;结果是新建了一个拥有一个窗口的页签。以用&quot;gt&quot;命令在不同的页签间切换。
+这是我总结的一些基本用法,可能对初用者会有帮助,独乐乐不如众乐乐,是吧!
+说明：以下黑色为vi和vim均有的一般功能，而红色为Vim（Vi Improved）所特有功能。Vim一般的Unix和Linux下均有安装。</p>
+<h2 id="三种状态">三种状态</h2>
+<p>Command： 任何输入都会作为编辑命令，而不会出现在屏幕上，任何输入都引起立即反映
+Insert： 任何输入的数据都置于编辑寄存器，按ESC，可跳回command方式
+Escape： 以“：”或者“/”为前导的指令，出现在屏幕的最下一行，任何输入都被当成特别指令。</p>
+<h2 id="离开vi">离开vi</h2>
+<p>:q! 离开vi，并放弃刚在缓冲区内编辑的内容。
+:wq 将缓冲区内的资料写入磁盘中，并离开vi。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">上次修改於 2016-09-11</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://www.markhoo.com/archives/pyziliao/">
+			下回<br>Python学习资料
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://www.markhoo.com/about/">
+			上回<br>
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+<div id="vcomments"></div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼
+	
+</div>
+            </div>
+    <script>
+let app;
+
+app = new Vue({
+    el: '#app',
+    data: {
+        scrollY: 0,
+        navOpacity: 0,
+        isDrawerOpen: false,
+        mounted: false,
+        isDarkMode: false
+    },
+    methods: {
+            sgn(t, x) {
+                let k = 1. / (1. - 2 * t);
+                if (x <= t) return 0;
+                else if (x >= 1 - t) return 1;
+                else {
+                    return k * (x - t);
+                }
+            },
+            handleScroll() {
+                this.scrollY = window.scrollY;
+                this.navOpacity = this.sgn(.0, Math.min(1, Math.max(0, window.scrollY / (this.pageHeadHeight() - this.navBarHeight() * 0.8))));
+                const {navBar, navBackground, navTitle, extraContainer, streamContainer} = this.$refs;
+
+                if (this.navOpacity >= 1) {
+                    navBackground.style.opacity = 1;
+                    navTitle.style.opacity = 1;
+                } else {
+                    navBackground.style.opacity = 0;
+                    navTitle.style.opacity = 0;
+                }
+            },
+            handleResize() {
+                const {navBar, navBackground, navTitle, extraContainer, streamContainer} = this.$refs;
+                extraContainer.style.left = (streamContainer.offsetWidth - extraContainer.offsetWidth) + 'px';
+            },
+            navBarHeight() {
+                return this.$refs.navBar.offsetHeight;
+            },
+            pageHeadHeight() {
+                return this.$refs.pageHead.offsetHeight;
+            },
+            toggleDrawer() {
+                this.isDrawerOpen = !this.isDrawerOpen;
+                document.getElementsByTagName('html')[0].style.overflow = this.isDrawerOpen ? 'hidden' : 'unset';
+            },
+            closeDrawer() {
+                this.isDrawerOpen = false;
+                document.getElementsByTagName('html')[0].style.overflow = this.isDrawerOpen ? 'hidden' : 'unset';
+            },
+            toggleDarkMode() {
+                this.isDarkMode = !this.isDarkMode;
+                if (this.isDarkMode==true){
+                    document.cookie = "night=1;path=/";
+                    document.body.classList.add("night");
+                } else {
+                    document.cookie = "night=0;path=/";
+                    document.body.classList.remove("night");
+                }
+            }
+    },
+    created() {
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
+        window._nonDesktop = function () {
+            let check = false;
+            (function (a) {
+                if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+            })(navigator.userAgent || navigator.vendor || window.opera);
+            return check;
+        };
+        
+        var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        if (night==""){
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                
+                this.toggleDarkMode();
+                
+            }
+        }else{
+            
+            if (night=="1") {
+                this.toggleDarkMode();
+            }
+        }
+    },
+    mounted() {
+        this.handleScroll();
+        this.handleResize();
+        this.mounted = true;
+
+        
+            new Valine({
+                el: '#vcomments',
+                appId: "GcGwcIQtBTnxuIqPqgKMetAj-gzGzoHsz",
+                appKey: "3ncva6Vn8OidA80nvzdwtP0B",
+                requiredFields: ['nick','mail'],
+                enableQQ: true,
+                recordIP: true,
+            })
+        
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
+    }
+});
+</script>
+
+<script src="https://www.markhoo.com/js/journal.js"></script>
+    </body>
+</html>

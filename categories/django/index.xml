@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Django on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/categories/django/</link>
+    <description>Recent content in Django on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sat, 15 Sep 2018 21:59:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/categories/django/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《High Performance Django》阅读笔记</title>
+      <link>https://www.markhoo.com/archives/highdjango/</link>
+      <pubDate>Sat, 15 Sep 2018 21:59:32 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/highdjango/</guid>
+      <description>第一章：The Big Picture 作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。
+ Django’s scaling success stories are almost too numerous to list at this point. It backs Disqus, Instagram, and Pinterest. Want some more proof? Instagram was able to sustain over 30 million users on Django with only 3 engineers (2 of which had no back-end development experience). Disqus serves over 8 billion page views per month. Those are some huge numbers. These teams have proven Django most certainly does scale.</description>
+    </item>
+    
+    <item>
+      <title>使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目</title>
+      <link>https://www.markhoo.com/archives/blogbushu/</link>
+      <pubDate>Tue, 14 Aug 2018 18:46:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/blogbushu/</guid>
+      <description>使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunicorn
+blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部署的笔记由于内容较多，没时间整理。今天抽空整理了一下午，发布出来供需要的同学借鉴参考。文中如有错误请多多指正
+部署前的准备
+服务器 要部署项目就要先购买服务器，如腾讯云，阿里云等等
+注意：服务器在国内的话，必须要备案！不然无法使用。
+阿里云优惠券：点击前往领取 腾讯云代金券：点击前往领取 腾讯云首页:点击直达 腾讯云西南区云产品促销链接：点击直达 腾讯云服务器购买链接：点击直达
+域名 域名购买选择，可以到百度云，腾讯云，阿里云，GoDaddy，namecheap等等
+购买域名后就是解析域名，打开域名解析面板，添加解析记录 记录类型：A 主机记录：test.markhoo.com，这个markhoo.com是你的一级域名，二级域名你可以设置为www.markhoo.com 解析线路：可以默认也可以选别的 记录值：填写你的服务器IP地址 TTL：域名生效时间，也就是多久生效 设置好以上内容，点击确定。解析完成
+主机记录中这个markhoo.com是你的一级域名，二级域名你也可以设置为 www.markhoo.com 或者别的 xxx.markhoo.com 也可以。 注意：域名是否在国内购买不重要，只要服务器不在大陆购买，即使未备案照样可以使用。要是要解析的服务器是大陆服务商则必须要备案。备案后一个域名可以同时接入多个服务商。
+域名解析记录类型说明：
+ A：将域名指向一个IPv4地址 AAAA：将域名指向一个IPv6地址 CNAME：将域名指向另外一个域名 NS：将子域名指定其他DNS服务器解析 MX：将域名指向邮件服务器地址 SRV：记录提供特定的服务的服务器 TXT：文本长度限制512，通常做SPF记录(反垃圾邮件) CAA：CA证书颁发机构授权校验 显性URL：将域名302重定向到另外一个地址 隐性URL：与显性URL类似，但是会隐藏真实目标地址  xshell下载与安装 主要用于远程登录服务器进行相关操作。在官网注册后发送下载链接到你的注册邮箱，或者到搜索引擎搜索下载。 个人版免费，企业版收费。 下载后一路点击下一步，完成。
+登录服务器步骤： 点击左上角&#39;文件&amp;rsquo;&amp;ndash;&amp;lsquo;新建&amp;rsquo; 然后弹出对话框 常规：名称，这个你可以随便取什么名字 协议：SSH，一般默认 主机：空，填上你的服务器IP地址 端口号：22，默认的就行 填好以上选项内容，点击左侧的&#39;用户身份验证&amp;rsquo;，然后看右侧，方法选择&amp;rsquo;Password&amp;rsquo;，在下面输入你的服务器登录用户名和密码，最后点击下面的&#39;连接&amp;rsquo;。 登录成功！进入界面。
+百度网盘官网软件下载链接： 链接: https://pan.baidu.com/s/19K5q1JkmD9qnYaGRTALyLg 密码: r6hx
+安装Nginx 首先用xshell登录服务器 通过 yum 安装 Nginx
+ yum install nginx
+ 启动 Nginx 服务</description>
+    </item>
+    
+    <item>
+      <title>xadmin 插件制作</title>
+      <link>https://www.markhoo.com/archives/xadmin/</link>
+      <pubDate>Fri, 03 Aug 2018 16:12:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/xadmin/</guid>
+      <description>官网太慢甚至打不开，所以干脆转载过来，方便学习。
+======================
+插件原理 xadmin 的插件系统架构设计一定程度上借鉴了 wordpress 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| AdminView 的概念。 简单来说，就是 |xadmin| 系统中每一个页面都是一个 AdminView 对象返回的 HttpResponse 结果。|xadmin| 的插件系统做的事情其实就是在 AdminView 运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。
+首先需要创建自己的插件类， 插件类继承 :class:~xadmin.views.BaseAdminPlugin ::
+class HelloWorldPlugin(BaseAdminPlugin):... 开发好的插件首先要注册到 |xadmin| 中， 示例代码如下::
+# ListAdminView 是 Model 列表页面xadmin.site.register_plugin(HelloWorldPlugin, ListAdminView) 其中插件的注册和使用可以参看 :meth:xadmin.sites.AdminSite.register_plugin
+当将插件注册到 |xadmin| 后， |xadmin| 在创建 AdminView 实例的时候会将该插件放入实例的 :attr:plugins 属性。当 AdminView 在处理请求 时，会首先逐个调用 :attr:plugins 中插件的 :meth:~xadmin.views.BaseAdminPlugin.init_request 方法，插件在该方法中一般进行初始化的操作并且返回一个 Boolean 值告诉 AdminView 是否需要加载该插件。当 :meth:~xadmin.views.BaseAdminPlugin.init_request 方法返回值为 False 时， AdminView 不会加载该插件。实例如下::</description>
+    </item>
+    
+    <item>
+      <title>安装Django时提示pip版本问题解决方法</title>
+      <link>https://www.markhoo.com/archives/djangopip/</link>
+      <pubDate>Wed, 11 Apr 2018 12:19:31 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/djangopip/</guid>
+      <description>解决问题： You are using pip version 9.0.1, however version 10.0.1 is available. You should consider upgrading via the &amp;#39;pip install --upgrade pip&amp;#39; command. 解决方法 直接运行命令：python -m pip install &amp;ndash;upgrade pip 就可以了 如果你电脑上安装了两个版本的python，比如Mac上本来自带python2版本，但是你想安装在python3目录内，请把解决方法的运行命令的python改成python3</description>
+    </item>
+    
+    <item>
+      <title>nginx django 的配置步骤</title>
+      <link>https://www.markhoo.com/archives/nginxdjango/</link>
+      <pubDate>Mon, 25 Dec 2017 10:22:33 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/nginxdjango/</guid>
+      <description>升级并安装 pip  sudo apt-get update
+  sudo apt-get install python-pip
+ 安装虚拟环境  sudo pip install virtualenv virtualenvwrapper
+ 加入到环境变量中 当前用户目录下的 Env为虚拟环境存放的目录
+ echo &amp;ldquo;export WORKON_HOME=~/Env&amp;rdquo; &amp;raquo; ~/.bashrc
+  echo &amp;ldquo;source /usr/local/bin/virtualenvwrapper.sh&amp;rdquo; &amp;raquo; ~/.bashrc
+ 激活配置  source ~/.bashrc
+ 创建虚拟环境 环境名为:firstsite
+在用户当前目录下创建 Django工程
+ cd ~
+  django-admin.py startproject firstsite
+ django 的初始化  cd ~/firstsite
+  ./manage.py migrate
+  ./manage.py createsuperuser
+ Django静态文件配置  nano firstsite/settings.</description>
+    </item>
+    
+    <item>
+      <title>Django使用基础常用命令</title>
+      <link>https://www.markhoo.com/archives/djangoml/</link>
+      <pubDate>Mon, 20 Nov 2017 10:35:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/djangoml/</guid>
+      <description>查看django命令：django-admin 即可显示django的可用命令 创建项目命令：django-admin startproject [项目名称] 若没有报错则创建项目成功 查看manage.py常用命令：python manage.py 即可显示manage中的可用命令 启动项目服务器命令：python manage.py runserver 启动服务器 启动项目服务器并修改端口：python manage.py runserver 9999 使用9999端口来启动服务器 创建django应用需要进入与manage.py的同级目录进行创建 创建命令为：python manage.py startapp [项目名称] 创建完成后将应用名称添加到settings.py中的INSTALLED_APPS中完成应用的创建 models模型创建完毕后使用manage.py来生成数据表，models模型创建需要在应用目录中的models.py中进行创建 创建数据迁移命令：python manage.py makemigrations [应用名称] 进行数据迁移的准备步骤，输入以下命令完成数据迁移操作 开始数据迁移命令：python manage.py migrate 注：如果不输入应用名称则默认对django中的所有应用进行数据迁移操作 数据迁移完成后使用以下命令进行SQL语句查询 命令为：python manage.py sqlmigrate [应用名称] [文件id] 给django创建一个超级用户 命令为：python manage.py createsuperuser 浏览器中访问：localhost:8000/admin 进行访问admin页面 在应用下admin.py中引入自身的models模块，使用 编辑admin.py添加代码：admin.site.register(models.Article) 将admin管理后台进行配置升级 创建admin配置类 class ArticleAdmin(admin.ModelAdmin)
+注册：admin.site.register(Article,ArticleAdmin )</description>
+    </item>
+    
+  </channel>
+</rss>

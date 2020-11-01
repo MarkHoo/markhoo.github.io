@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>默认分类 on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/</link>
+    <description>Recent content in 默认分类 on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 01 Nov 2020 15:46:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>博客迁移测试文章</title>
+      <link>https://www.markhoo.com/archives/test/</link>
+      <pubDate>Sun, 01 Nov 2020 15:46:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/test/</guid>
+      <description>博客已迁移到 Hugo ，至于为啥不是 Hexo ，因为它生成速度实在是太慢了！尽管它的主题很丰富。
+以下是测试内容：
+这是一级标题 代码 use std::io;use rand::Rng;use std::cmp::Ordering;fn main() {println!(&amp;#34;Guess the number!&amp;#34;);let secret_number = rand::thread_rng().gen_range(1, 101);println!(&amp;#34;The secret number is: {}&amp;#34;, secret_number);loop {println!(&amp;#34;Please input your guess:&amp;#34;);let mut guess = String::new();io::stdin().read_line(&amp;amp;mut guess).expect(&amp;#34;Failed to read line&amp;#34;);let guess: u32 = match guess.trim().parse(){Ok(num) =&amp;gt; num,Err(_) =&amp;gt; continue,};println!(&amp;#34;You guessed: {}&amp;#34;,guess);match guess.cmp(&amp;amp;secret_number) {Ordering::Less =&amp;gt; println!(&amp;#34;Too small!&amp;#34;),Ordering::Greater =&amp;gt; println!</description>
+    </item>
+    
+    <item>
+      <title>五一</title>
+      <link>https://www.markhoo.com/archives/20200501/</link>
+      <pubDate>Fri, 01 May 2020 16:04:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/20200501/</guid>
+      <description>转眼都五一了，时间过的真快，很久没更新了。发条动态表示我还在。
+对了，前几天还给我这个域名一次性续费到了2025年，目前在腾讯云，用了优惠券，每年40￥（本来续费60￥，优惠券20￥），还不错，但是每个人名下可以有三个账号领券，可以把域名进行账号间转移，一秒就转过去了。链接分享出来有需要的自取：优惠券
+祝大家五一快乐</description>
+    </item>
+    
+    <item>
+      <title>JWT简介</title>
+      <link>https://www.markhoo.com/archives/jwt/</link>
+      <pubDate>Mon, 06 May 2019 23:15:35 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/jwt/</guid>
+      <description>本文翻译自JWT官方网站对JWT是什么以及能做什么的简介。
+JWT是一种用于双方之间传递安全信息的简洁的、URL安全的表述性声明规范。JWT作为一个开放的标准（RFC 7519），定义了一种简洁的，自包含的方法用于通信双方之间以Json对象的形式安全的传递信息。因为数字签名的存在，这些信息是可信的，JWT可以使用HMAC算法或者是RSA的公私秘钥对进行签名。
+  简洁(Compact): 可以通过URL，POST参数或者在HTTP header发送，因为数据量小，传输速度也很快
+  自包含(Self-contained)：负载中包含了所有用户所需要的信息，避免了多次查询数据库
+  JWT的主要应用场景   身份认证 在这种场景下，一旦用户完成了登陆，在接下来的每个请求中包含JWT，可以用来验证用户身份以及对路由，服务和资源的访问权限进行验证。由于它的开销非常小，可以轻松的在不同域名的系统中传递，所有目前在单点登录（SSO）中比较广泛的使用了该技术。
+  信息交换 在通信的双方之间使用JWT对数据进行编码是一种非常安全的方式，由于它的信息是经过签名的，可以确保发送者发送的信息是没有经过伪造的。
+  JWT的结构 JWT包含了使用.分隔的三部分：
+  Header 头部
+  Payload 负载
+  Signature 签名
+  其结构看起来是这样的
+xxxxx.yyyyy.zzzzzHeader 在header中通常包含了两部分：token类型和采用的加密算法。
+{&amp;#34;alg&amp;#34;: &amp;#34;HS256&amp;#34;,&amp;#34;typ&amp;#34;: &amp;#34;JWT&amp;#34;} 接下来对这部分内容使用 Base64Url 编码组成了JWT结构的第一部分。
+Payload Token的第二部分是负载，它包含了claim， Claim是一些实体（通常指的用户）的状态和额外的元数据，有三种类型的claim： reserved, public 和 private.
+  Reserved claims: 这些claim是JWT预先定义的，在JWT中并不会强制使用它们，而是推荐使用，常用的有 iss（签发者）, exp（过期时间戳）, sub（面向的用户）, aud（接收方）, iat（签发时间）。</description>
+    </item>
+    
+    <item>
+      <title>为什么编程语言以及数据库要从1970年1月1日开始计算时间</title>
+      <link>https://www.markhoo.com/archives/time1970/</link>
+      <pubDate>Sun, 18 Nov 2018 20:31:02 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/time1970/</guid>
+      <description>话不多说直接上答案，看完这篇文章你应该就懂了。 注：这个答案也是某博主不断产生疑问层层挖掘出来的。 https://en.wikipedia.org/wiki/Unix_time</description>
+    </item>
+    
+    <item>
+      <title>Git基本常用命令</title>
+      <link>https://www.markhoo.com/archives/git/</link>
+      <pubDate>Sun, 15 Jul 2018 20:25:21 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/git/</guid>
+      <description>Git基本常用命令： mkdir： XX (创建一个空目录 XX指目录名) pwd： 显示当前目录的路径。 git init ： 把当前的目录变成可以管理的git仓库，生成隐藏.git文件。 git add XX ： 把xx文件添加到暂存区去。 git commit -m “XX” ： 提交文件 –m 后面的是注释。 git status： 查看仓库状态 git diff XX ： 查看XX文件修改了那些内容 git log ： 查看历史记录 git reset &amp;ndash;hard HEAD^ ：或者 git reset &amp;ndash;hard HEAD~ 回退到上一个版本 (如果想回退到100个版本，使用git reset &amp;ndash;hard HEAD~100 ) cat XX ： 查看XX文件内容 git reflog ： 查看历史记录的版本号id git checkout &amp;ndash; XX ： 把XX文件在工作区的修改全部撤销。 git rm XX ： 删除XX文件 git remote add origin https://github.</description>
+    </item>
+    
+    <item>
+      <title>用 Python 3.6.2 &#43; Django 1.11.13 重新开发 blog</title>
+      <link>https://www.markhoo.com/archives/kaifablog/</link>
+      <pubDate>Wed, 20 Jun 2018 11:59:11 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/kaifablog/</guid>
+      <description>由于最近事儿比较多，计划最晚在12月前用 Python3.6.2 + Django1.11.13 重写一套blog系统并部署。 先定个小目标，特此记录一下</description>
+    </item>
+    
+    <item>
+      <title>域名 youmei.io 的由来</title>
+      <link>https://www.markhoo.com/archives/youmei/</link>
+      <pubDate>Mon, 14 May 2018 10:41:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/youmei/</guid>
+      <description>对于入手【youmei.io】域名的原因，我是根据以下规则来的，当然最初不是这么想的，只是想要的域名都已经被注册了。。。
+30字口诀： 小宝淘乐趣，大多优美妙。一五点微友，好天通万家。金易贝米人，快闪超聚帮。 小（小红书、小站教育） 宝（余额宝、驾考宝典） 淘（淘世界、蜜淘、淘汽档口） 乐（分期乐、乐流、乐动力） 趣（趣分期、我趣旅行） 大（大姨吗、大众点评、大智慧） 多（房多多、多盟、多看阅读） 优（优信拍、优酷土豆） 美（美团、美拍、美丽说、美图秀秀） 妙（奇妙清单、妙计旅行） 一（一个、一刻、一条、一席） 五（58到家、51talk） 点（养车点点、点名时间） 微（微信、微博、微在、微会） 友（友盟、友秘） 好（平安好房、好屋中国、好奇心日报） 天（天猫、天天果园、天天用车） 通（百度股市通、人脉通） 万（WIFI万能钥匙、十万个冷笑话） 家（汽车之家、河狸家） 金（金斧子、金数据） 易（网易、易车） 贝（贝贝、贝米） 米（小米、米聊） 人（人人、人人车） 快（快手、快的） 闪（闪电购、闪银） 超（超级课程表、超好玩） 聚（聚划算、聚美） 帮（阿姨帮、作业帮） 取名字总结有：10大“门派” 植物学派：蘑菇街、荔枝FM、土豆、IT桔子 动物学派：猿题库、功夫熊、小猪短租、小马购车、土巴兔、考拉FM、蜻蜓FM、企鹅吃喝指南、搜狗、搜狐 数字学派：51信用卡、58同城，59store 叠字学派：陌陌、探探、抱抱、人人、脉脉 字母学派：YY，QQ，JJ棋牌、KK唱响 拟声学派：滴滴、么么搜、嘟嘟美甲 实物学派：豆瓣、穿衣助手、饭本、觅食、团车、爱屋吉屋、药给力 创意学派：拉勾网、3W咖啡、托福Easy姐、喜马拉雅、黄油相机、面包旅行、雪球、斗鱼 国学学派：凤凰网、知乎、金箍棒、榫卯 洋气学派：UCloud，OneAPM，Keep，Fork，MONO，EMIE、NICE、IN、Face++
+其他： 衍生学派：找钢网、找塑料、找叉叉 同业学派：易果生鲜、一米鲜、每日优鲜、爱鲜蜂 游戏学派：三国叉叉、萌叉叉、全民叉叉 取名字的关键有：3点friendly需要注意： 1.大脑记忆friendly：简而言之，容易记住。 2.输入法friendly：按音一次就能打出来，不会有生僻字。 3.搜索引擎friendly：搜索结果不会和一些常用或者热门词汇竞争。 案例：今日头条、周末去哪儿、学霸君 很好奇其他国家的互联网公司起名有什么规律~</description>
+    </item>
+    
+    <item>
+      <title>两种网易云音乐播放器调用代码 网站可直接调用</title>
+      <link>https://www.markhoo.com/archives/wangyi/</link>
+      <pubDate>Sat, 18 Nov 2017 11:59:59 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/wangyi/</guid>
+      <description>第一种： 效果： &amp;lt;span data-mce-type=&#34;bookmark&#34; style=&#34;display: inline-block; width: 0px; overflow: hidden; line-height: 0;&#34; class=&#34;mce_SELRES_start&#34;&amp;gt;&amp;lt;/span&amp;gt; 代码： &amp;lt;iframe src=&amp;quot;//music.163.com/outchain/player?type=2&amp;amp;amp;id=4341314&amp;amp;amp;auto=1&amp;amp;amp;height=66&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;86&amp;quot; frameborder=&amp;quot;no&amp;quot; marginwidth=&amp;quot;0&amp;quot; marginheight=&amp;quot;0&amp;quot;&amp;gt;&amp;amp;lt;span data-mce-type=&amp;quot;bookmark&amp;quot; style=&amp;quot;display: inline-block; width: 0px; overflow: hidden; line-height: 0;&amp;quot; class=&amp;quot;mce_SELRES_start&amp;quot;&amp;amp;gt;&amp;amp;lt;/span&amp;amp;gt;&amp;lt;/iframe&amp;gt; 参数说明： 播放器可修改参数：
+width=100% #自适应宽度 height=86 #根据自己喜好修改 id=4341314 #为歌曲的ID http://music.163.com/#/song?id=4341314 auto=0 #0为不自动播放，1为自动播放
+第二种： 效果：  代码： &amp;lt;iframe frameborder=&amp;quot;no&amp;quot; border=&amp;quot;0&amp;quot; marginwidth=&amp;quot;0&amp;quot; marginheight=&amp;quot;0&amp;quot; width=100% height=450 src=&amp;quot;//music.163.com/outchain/player?type=0&amp;amp;id=967047669&amp;amp;auto=0&amp;amp;height=430&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>vim常用命令总结</title>
+      <link>https://www.markhoo.com/archives/vimml/</link>
+      <pubDate>Sun, 11 Sep 2016 10:29:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/vimml/</guid>
+      <description>在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版。 vim 选择文本，删除，复制，粘贴 文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v 从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。 V 从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。 Ctrl + v 从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。 ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾 选中后就可以用编辑命令对其进行编辑，如 d 删除 y 复制 （默认是复制到&amp;quot;寄存器） p 粘贴 （默认从&amp;quot;寄存器取出内容粘贴） &amp;ldquo;+y 复制到系统剪贴板(也就是vim的+寄存器） &amp;ldquo;+p 从系统剪贴板粘贴
+=============================================================
+vim命令总结 1.删除字符 要删除一个字符，只需要将光标移到该字符上按下&amp;quot;x&amp;rdquo;。
+2.删除一行 删除一整行内容使用&amp;quot;dd&amp;quot;命令。删除后下面的行会移上来填补空缺。
+3.删除换行符 在Vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了：命令是&amp;quot;J&amp;rdquo;。
+4.撤销 如果你误删了过多的内容。显然你可以再输入一遍，但是命令&amp;quot;u&amp;rdquo; 更简便，它可以撤消上一次的操作。
+5.重做 如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，&amp;ldquo;U&amp;quot;命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个&amp;quot;U&amp;quot;的操作。用&amp;quot;u&amp;quot;和CTRL-R你可以找回任何一个操作状态。
+6.追加 &amp;ldquo;i&amp;quot;命令可以在当前光标之前插入文本。 &amp;ldquo;a&amp;quot;命令可以在当前光标之后插入文本。 &amp;ldquo;o&amp;quot;命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。 &amp;ldquo;O&amp;quot;命令(注意是大写的字母O)将在当前行的上面另起一行。
+7.使用命令计数 假设你要向上移动9行。这可以用&amp;quot;kkkkkkkkk&amp;quot;或&amp;quot;9k&amp;quot;来完成。事实上，很多命令都可以接受一个数字作为重复执行同一命令的次数。比如刚才的例子，要在行尾追加三个感叹号，当时用的命令是&amp;quot;a!!!&amp;quot;。另一个办法是用&amp;quot;3a!&amp;ldquo;命令。3说明该命令将被重复执行3次。同样，删除3个字符可以用&amp;quot;3x&amp;rdquo;。指定的数字要紧挨在它所要修饰的命令前面。
+8.退出 要退出Vim，用命令&amp;quot;ZZ&amp;rdquo;。该命令保存当前文件并退出Vim。
+9.放弃编辑 丢弃所有的修改并退出，用命令&amp;rdquo;:q!&amp;quot;。用&amp;rdquo;:e!&amp;ldquo;命令放弃所有修改并重新载入该文件的原始内容。
+###10.以Word为单位的移动 使用&amp;quot;w&amp;quot;命令可以将光标向前移动一个word的首字符上；比如&amp;quot;3w&amp;quot;将光标向前移动3个words。&amp;ldquo;b&amp;quot;命令则将光标向后移动到前一个word的首字符上。 &amp;ldquo;e&amp;quot;命令会将光标移动到下一个word的最后一个字符。命令&amp;quot;ge&amp;rdquo;，它将光标移动到前一个word的最后一个字符上。、
+11.移动到行首或行尾 &amp;ldquo;$&amp;quot;命令将光标移动到当前行行尾。如果你的键盘上有一个键，它的作用也一样。&amp;ldquo;^&amp;quot;命令将光标移动到当前行的第一个非空白字符上。&amp;ldquo;0&amp;quot;命令则总是把光标移动到当前行的第一个字符上。键也是如此。&amp;ldquo;$&amp;quot;命令还可接受一个计数，如&amp;quot;1$&amp;quot;会将光标移动到当前行行尾，&amp;ldquo;2$&amp;quot;则会移动到下一行的行尾，如此类推。&amp;ldquo;0&amp;quot;命令却不能接受类似这样的计数，命令&amp;quot;^&amp;quot;前加上一个计数也没有任何效果。
+12.移动到指定字符上 命令&amp;quot;fx&amp;quot;在当前行上查找下一个字符x（向右方向），可以带一个命令计数&amp;quot;F&amp;quot;命令向左方向搜索。&amp;ldquo;tx&amp;quot;命令形同&amp;quot;fx&amp;quot;命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：&amp;ldquo;t&amp;quot;意为&amp;quot;To&amp;rdquo;。该命令的反方向版是&amp;quot;Tx&amp;rdquo;。这4个命令都可以用&amp;rdquo;;&amp;ldquo;来重复。以&amp;rdquo;,&amp;ldquo;也是重复同样的命令，但是方向与原命令的方向相反。
+13.以匹配一个括号为目的移动 用命令&amp;rdquo;%&amp;ldquo;跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在&amp;rdquo;(&amp;ldquo;上，它就向前跳转到与它匹配的&amp;rdquo;)&amp;ldquo;上，如果当前在&amp;rdquo;)&amp;ldquo;上，它就向后自动跳转到匹配的&amp;rdquo;(&amp;ldquo;上去.
+14.移动到指定行 用&amp;quot;G&amp;quot;命令指定一个命令计数，这个命令就会把光标定位到由命令计数指定的行上。比如&amp;quot;33G&amp;quot;就会把光标置于第33行上。没有指定命令计数作为参数的话, &amp;ldquo;G&amp;quot;会把光标定位到最后一行上。&amp;ldquo;gg&amp;quot;命令是跳转到第一行的快捷的方法。 另一个移动到某行的方法是在命令&amp;rdquo;%&amp;ldquo;之前指定一个命令计数比如&amp;quot;50%&amp;ldquo;将会把光标定位在文件的中间. &amp;ldquo;90%&amp;ldquo;跳到接近文件尾的地方。 命令&amp;quot;H&amp;rdquo;,&amp;ldquo;M&amp;rdquo;,&amp;ldquo;L&amp;rdquo;,分别将光标跳转到第一行，中间行，结尾行部分。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,3441 @@
+<!DOCTYPE html>
+<html><head>
+<title>《High Performance Django》阅读笔记</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="《High Performance Django》阅读笔记" />
+<meta property="og:description" content="第一章：The Big Picture 作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。
+ Django’s scaling success stories are almost too numerous to list at this point. It backs Disqus, Instagram, and Pinterest. Want some more proof? Instagram was able to sustain over 30 million users on Django with only 3 engineers (2 of which had no back-end development experience). Disqus serves over 8 billion page views per month. Those are some huge numbers. These teams have proven Django most certainly does scale." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.markhoo.com/archives/highdjango/" />
+<meta property="article:published_time" content="2018-09-15T21:59:32+08:00" />
+<meta property="article:modified_time" content="2018-09-15T21:59:32+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《High Performance Django》阅读笔记"/>
+<meta name="twitter:description" content="第一章：The Big Picture 作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。
+ Django’s scaling success stories are almost too numerous to list at this point. It backs Disqus, Instagram, and Pinterest. Want some more proof? Instagram was able to sustain over 30 million users on Django with only 3 engineers (2 of which had no back-end development experience). Disqus serves over 8 billion page views per month. Those are some huge numbers. These teams have proven Django most certainly does scale."/>
+
+
+
+
+
+
+
+<script src="/vendor/js/jquery.min.js" ></script>
+<script src="/vendor/js/popper.min.js" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<script src="/vendor/js/smooth-scroll.polyfills.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<script src="/vendor/js/vue.min.js" ></script>
+
+
+
+
+<link rel="icon" href="https://media.markhoo.com/favicon.ico">
+
+
+
+
+<link rel="stylesheet" href="https://www.markhoo.com/scss/journal.min.c116bc90d171283f099f173854157ec8f183f9073b93443b2c8ad82899ee9025.css" integrity="sha256-wRa8kNFxKD8Jnxc4VBV&#43;yPGD&#43;Qc7k0Q7LIrYKJnukCU=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://www.markhoo.com/scss/dark-mode.min.552aae4638a84aa57cf0b195750a49ea9131d3bb621d1ed3ebc9b14b18166536.css" integrity="sha256-VSquRjioSqV88LGVdQpJ6pEx07tiHR7T68mxSxgWZTY=" media="screen">
+
+
+<script src="https://www.markhoo.com/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+
+
+
+  
+    <script src="https://www.markhoo.com/js/toc.js"></script>
+  
+
+
+
+
+
+
+
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div ref="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://www.markhoo.com">
+    
+        <div class="nav-title">
+            南有嘉鱼
+        </div>
+        
+        <div class="nav-subtitle">
+            MarkHoo&#39;s Blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/archives">
+                歸檔
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分類
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/resources">
+                學習資源
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/video">
+                混剪視頻
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/links">
+                左鄰右舍
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/messages">
+                留言板
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                關於
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼
+	
+
+    </div>
+    
+</div><div ref="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%80%e7%ab%a0the-big-picture" onclick="onNavClick(`#第一章the-big-picture-nav`)" id="第一章the-big-picture-nav">
+									第一章：The Big Picture
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e4%ba%8c%e7%ab%a0-the-build" onclick="onNavClick(`#第二章-the-build-nav`)" id="第二章-the-build-nav">
+									第二章 The Build
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%b0%8f%e6%8a%80%e5%b7%a7" onclick="onNavClick(`#小技巧-nav`)" id="小技巧-nav">
+									小技巧
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%b0%8f%e5%bf%83%e7%ac%ac%e4%b8%89%e6%96%b9-app" onclick="onNavClick(`#小心第三方-app-nav`)" id="小心第三方-app-nav">
+									小心第三方 APP
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%89%be%e5%87%ba%e6%80%a7%e8%83%bd%e9%97%ae%e9%a2%98" onclick="onNavClick(`#找出性能问题-nav`)" id="找出性能问题-nav">
+									找出性能问题
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%93%aa%e9%87%8c%e9%9c%80%e8%a6%81%e4%bc%98%e5%8c%96" onclick="onNavClick(`#哪里需要优化-nav`)" id="哪里需要优化-nav">
+									哪里需要优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e4%bc%98%e5%8c%96" onclick="onNavClick(`#数据库优化-nav`)" id="数据库优化-nav">
+									数据库优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e6%9d%bf%e4%bc%98%e5%8c%96" onclick="onNavClick(`#模板优化-nav`)" id="模板优化-nav">
+									模板优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%9a%8f%e5%90%8e%e5%a4%84%e7%90%86%e8%80%97%e6%97%b6%e7%9a%84%e4%bb%bb%e5%8a%a1" onclick="onNavClick(`#随后处理耗时的任务-nav`)" id="随后处理耗时的任务-nav">
+									随后处理耗时的任务
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e6%ae%b5%e4%bc%98%e5%8c%96" onclick="onNavClick(`#前段优化-nav`)" id="前段优化-nav">
+									前段优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0" onclick="onNavClick(`#文件上传-nav`)" id="文件上传-nav">
+									文件上传
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%b5%8b%e8%af%95" onclick="onNavClick(`#测试-nav`)" id="测试-nav">
+									测试
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e4%bb%a5%e5%8f%8a%e6%8c%81%e7%bb%ad%e9%9b%86%e6%88%90" onclick="onNavClick(`#自动化测试以及持续集成-nav`)" id="自动化测试以及持续集成-nav">
+									自动化测试以及持续集成
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%89%e7%ab%a0the-deployment" onclick="onNavClick(`#第三章the-deployment-nav`)" id="第三章the-deployment-nav">
+									第三章：The Deployment
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6" onclick="onNavClick(`#先决条件-nav`)" id="先决条件-nav">
+									先决条件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f" onclick="onNavClick(`#操作系统-nav`)" id="操作系统-nav">
+									操作系统
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" onclick="onNavClick(`#配置管理-nav`)" id="配置管理-nav">
+									配置管理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86" onclick="onNavClick(`#进程管理-nav`)" id="进程管理-nav">
+									进程管理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9b%b4%e6%96%b0%e4%bb%a3%e7%a0%81" onclick="onNavClick(`#更新代码-nav`)" id="更新代码-nav">
+									更新代码
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a4%9a%e4%b8%aa%e8%bf%9c%e7%a8%8b%e7%8e%af%e5%a2%83" onclick="onNavClick(`#多个远程环境-nav`)" id="多个远程环境-nav">
+									多个远程环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%81%bf%e5%85%8d%e5%8d%95%e7%82%b9%e6%95%85%e9%9a%9c" onclick="onNavClick(`#避免单点故障-nav`)" id="避免单点故障-nav">
+									避免单点故障
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%b8%83%e5%b1%80" onclick="onNavClick(`#服务器布局-nav`)" id="服务器布局-nav">
+									服务器布局
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96%e6%8a%80%e6%9c%af%e6%a0%88" onclick="onNavClick(`#优化技术栈-nav`)" id="优化技术栈-nav">
+									优化技术栈
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96%e6%95%b0%e6%8d%ae%e5%ba%93" onclick="onNavClick(`#优化数据库-nav`)" id="优化数据库-nav">
+									优化数据库
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96-uwsgi" onclick="onNavClick(`#优化-uwsgi-nav`)" id="优化-uwsgi-nav">
+									优化 uWSGI
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96-django" onclick="onNavClick(`#优化-django-nav`)" id="优化-django-nav">
+									优化 Django
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae%e4%bd%a0%e7%9a%84%e6%9c%8d%e5%8a%a1%e5%99%a8" onclick="onNavClick(`#配置你的服务器-nav`)" id="配置你的服务器-nav">
+									配置你的服务器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e5%85%a8" onclick="onNavClick(`#安全-nav`)" id="安全-nav">
+									安全
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a4%87%e4%bb%bd" onclick="onNavClick(`#备份-nav`)" id="备份-nav">
+									备份
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%9b%91%e6%8e%a7" onclick="onNavClick(`#监控-nav`)" id="监控-nav">
+									监控
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#instrumentation" onclick="onNavClick(`#instrumentation-nav`)" id="instrumentation-nav">
+									instrumentation
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%b5%84%e6%ba%90" onclick="onNavClick(`#服务器资源-nav`)" id="服务器资源-nav">
+									服务器资源
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%91%8a%e8%ad%a6" onclick="onNavClick(`#告警-nav`)" id="告警-nav">
+									告警
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%97%a5%e5%bf%97" onclick="onNavClick(`#日志-nav`)" id="日志-nav">
+									日志
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%94%99%e8%af%af%e6%b1%87%e6%8a%a5" onclick="onNavClick(`#错误汇报-nav`)" id="错误汇报-nav">
+									错误汇报
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e5%9b%9b%e7%ab%a0%e9%a2%84%e5%a4%87" onclick="onNavClick(`#第四章预备-nav`)" id="第四章预备-nav">
+									第四章：预备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8-jmeter-%e8%bf%9b%e8%a1%8c%e8%b4%9f%e8%bd%bd%e6%b5%8b%e8%af%95" onclick="onNavClick(`#使用-jmeter-进行负载测试-nav`)" id="使用-jmeter-进行负载测试-nav">
+									使用 Jmeter 进行负载测试
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%90%af%e5%8a%a8%e8%ae%a1%e5%88%92" onclick="onNavClick(`#启动计划-nav`)" id="启动计划-nav">
+									启动计划
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%90%af%e5%8a%a8%e5%89%8d%e7%9a%84%e6%a3%80%e6%9f%a5%e4%ba%8b%e9%a1%b9" onclick="onNavClick(`#启动前的检查事项-nav`)" id="启动前的检查事项-nav">
+									启动前的检查事项
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#django-%e9%85%8d%e7%bd%ae%e9%a1%b9" onclick="onNavClick(`#django-配置项-nav`)" id="django-配置项-nav">
+									Django 配置项
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2" onclick="onNavClick(`#部署-nav`)" id="部署-nav">
+									部署
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9f%ba%e7%a1%80%e8%ae%be%e6%96%bd" onclick="onNavClick(`#基础设施-nav`)" id="基础设施-nav">
+									基础设施
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%9b%91%e6%8e%a7%e6%95%b4%e4%b8%aa-launch" onclick="onNavClick(`#监控整个-launch-nav`)" id="监控整个-launch-nav">
+									监控整个 Launch
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%b5%84%e6%ba%90-1" onclick="onNavClick(`#服务器资源-1-nav`)" id="服务器资源-1-nav">
+									服务器资源
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%bd%93%e7%81%be%e9%9a%be%e6%9d%a5%e4%b8%b4%e7%9a%84%e6%97%b6%e5%80%99" onclick="onNavClick(`#当灾难来临的时候-nav`)" id="当灾难来临的时候-nav">
+									当灾难来临的时候
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%ba%94%e7%94%a8%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%bf%87%e8%bd%bd" onclick="onNavClick(`#应用服务器过载-nav`)" id="应用服务器过载-nav">
+									应用服务器过载
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%bf%87%e8%bd%bd" onclick="onNavClick(`#数据库服务器过载-nav`)" id="数据库服务器过载-nav">
+									数据库服务器过载
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ba%94%e7%94%a8%e5%92%8c%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%bf%87%e8%bd%bd" onclick="onNavClick(`#应用和数据库服务器过载-nav`)" id="应用和数据库服务器过载-nav">
+									应用和数据库服务器过载
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e6%96%b9%e7%9a%84%e8%b7%af" onclick="onNavClick(`#前方的路-nav`)" id="前方的路-nav">
+									前方的路
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%b5%81%e9%87%8f%e5%a2%9e%e9%95%bf" onclick="onNavClick(`#流量增长-nav`)" id="流量增长-nav">
+									流量增长
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e7%82%b9%e7%82%b9%e8%85%90%e7%83%82" onclick="onNavClick(`#一点点腐烂-nav`)" id="一点点腐烂-nav">
+									一点点腐烂
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%94%99%e8%af%af%e7%9a%84%e5%86%b3%e5%ae%9a" onclick="onNavClick(`#错误的决定-nav`)" id="错误的决定-nav">
+									错误的决定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%84%8f%e5%a4%96%e7%9a%84%e5%88%b7%e6%96%b0%e4%ba%86%e7%bc%93%e5%ad%98" onclick="onNavClick(`#意外的刷新了缓存-nav`)" id="意外的刷新了缓存-nav">
+									意外的刷新了缓存
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e9%94%81%e8%a1%a8" onclick="onNavClick(`#数据库锁表-nav`)" id="数据库锁表-nav">
+									数据库锁表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a4%a7%e9%87%8f%e7%9a%84%e7%bc%93%e5%ad%98%e8%bf%87%e6%9c%9f" onclick="onNavClick(`#大量的缓存过期-nav`)" id="大量的缓存过期-nav">
+									大量的缓存过期
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%98%82%e8%b4%b5%e7%9a%84-admin-%e8%a7%86%e5%9b%be" onclick="onNavClick(`#昂贵的-admin-视图-nav`)" id="昂贵的-admin-视图-nav">
+									昂贵的 admin 视图
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%98%82%e8%b4%b5%e7%9a%84%e5%90%8e%e5%8f%b0%e4%bb%bb%e5%8a%a1" onclick="onNavClick(`#昂贵的后台任务-nav`)" id="昂贵的后台任务-nav">
+									昂贵的后台任务
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%80%90%e6%b8%90%e6%81%b6%e5%8c%96" onclick="onNavClick(`#逐渐恶化-nav`)" id="逐渐恶化-nav">
+									逐渐恶化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#complexity-creep" onclick="onNavClick(`#complexity-creep-nav`)" id="complexity-creep-nav">
+									complexity creep
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%80%e5%90%8e%e7%9a%84%e6%83%b3%e6%b3%95" onclick="onNavClick(`#最后的想法-nav`)" id="最后的想法-nav">
+									最后的想法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a class="pagination-action" v-on:click="toggleDarkMode">
+            <i class="material-icons pagination-action-icon" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons pagination-action-icon" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/archives">
+                    歸檔
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分類
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/resources">
+                    學習資源
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/video">
+                    混剪視頻
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/links">
+                    左鄰右舍
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/messages">
+                    留言板
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    關於
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%80%e7%ab%a0the-big-picture" onclick="onNavClick(`#第一章the-big-picture-nav`)" id="第一章the-big-picture-nav">
+									第一章：The Big Picture
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e4%ba%8c%e7%ab%a0-the-build" onclick="onNavClick(`#第二章-the-build-nav`)" id="第二章-the-build-nav">
+									第二章 The Build
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%b0%8f%e6%8a%80%e5%b7%a7" onclick="onNavClick(`#小技巧-nav`)" id="小技巧-nav">
+									小技巧
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%b0%8f%e5%bf%83%e7%ac%ac%e4%b8%89%e6%96%b9-app" onclick="onNavClick(`#小心第三方-app-nav`)" id="小心第三方-app-nav">
+									小心第三方 APP
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%89%be%e5%87%ba%e6%80%a7%e8%83%bd%e9%97%ae%e9%a2%98" onclick="onNavClick(`#找出性能问题-nav`)" id="找出性能问题-nav">
+									找出性能问题
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%93%aa%e9%87%8c%e9%9c%80%e8%a6%81%e4%bc%98%e5%8c%96" onclick="onNavClick(`#哪里需要优化-nav`)" id="哪里需要优化-nav">
+									哪里需要优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e4%bc%98%e5%8c%96" onclick="onNavClick(`#数据库优化-nav`)" id="数据库优化-nav">
+									数据库优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e6%9d%bf%e4%bc%98%e5%8c%96" onclick="onNavClick(`#模板优化-nav`)" id="模板优化-nav">
+									模板优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%9a%8f%e5%90%8e%e5%a4%84%e7%90%86%e8%80%97%e6%97%b6%e7%9a%84%e4%bb%bb%e5%8a%a1" onclick="onNavClick(`#随后处理耗时的任务-nav`)" id="随后处理耗时的任务-nav">
+									随后处理耗时的任务
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e6%ae%b5%e4%bc%98%e5%8c%96" onclick="onNavClick(`#前段优化-nav`)" id="前段优化-nav">
+									前段优化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0" onclick="onNavClick(`#文件上传-nav`)" id="文件上传-nav">
+									文件上传
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%b5%8b%e8%af%95" onclick="onNavClick(`#测试-nav`)" id="测试-nav">
+									测试
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e4%bb%a5%e5%8f%8a%e6%8c%81%e7%bb%ad%e9%9b%86%e6%88%90" onclick="onNavClick(`#自动化测试以及持续集成-nav`)" id="自动化测试以及持续集成-nav">
+									自动化测试以及持续集成
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%89%e7%ab%a0the-deployment" onclick="onNavClick(`#第三章the-deployment-nav`)" id="第三章the-deployment-nav">
+									第三章：The Deployment
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6" onclick="onNavClick(`#先决条件-nav`)" id="先决条件-nav">
+									先决条件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f" onclick="onNavClick(`#操作系统-nav`)" id="操作系统-nav">
+									操作系统
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" onclick="onNavClick(`#配置管理-nav`)" id="配置管理-nav">
+									配置管理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86" onclick="onNavClick(`#进程管理-nav`)" id="进程管理-nav">
+									进程管理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9b%b4%e6%96%b0%e4%bb%a3%e7%a0%81" onclick="onNavClick(`#更新代码-nav`)" id="更新代码-nav">
+									更新代码
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a4%9a%e4%b8%aa%e8%bf%9c%e7%a8%8b%e7%8e%af%e5%a2%83" onclick="onNavClick(`#多个远程环境-nav`)" id="多个远程环境-nav">
+									多个远程环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%81%bf%e5%85%8d%e5%8d%95%e7%82%b9%e6%95%85%e9%9a%9c" onclick="onNavClick(`#避免单点故障-nav`)" id="避免单点故障-nav">
+									避免单点故障
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%b8%83%e5%b1%80" onclick="onNavClick(`#服务器布局-nav`)" id="服务器布局-nav">
+									服务器布局
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96%e6%8a%80%e6%9c%af%e6%a0%88" onclick="onNavClick(`#优化技术栈-nav`)" id="优化技术栈-nav">
+									优化技术栈
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96%e6%95%b0%e6%8d%ae%e5%ba%93" onclick="onNavClick(`#优化数据库-nav`)" id="优化数据库-nav">
+									优化数据库
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96-uwsgi" onclick="onNavClick(`#优化-uwsgi-nav`)" id="优化-uwsgi-nav">
+									优化 uWSGI
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96-django" onclick="onNavClick(`#优化-django-nav`)" id="优化-django-nav">
+									优化 Django
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae%e4%bd%a0%e7%9a%84%e6%9c%8d%e5%8a%a1%e5%99%a8" onclick="onNavClick(`#配置你的服务器-nav`)" id="配置你的服务器-nav">
+									配置你的服务器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e5%85%a8" onclick="onNavClick(`#安全-nav`)" id="安全-nav">
+									安全
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a4%87%e4%bb%bd" onclick="onNavClick(`#备份-nav`)" id="备份-nav">
+									备份
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%9b%91%e6%8e%a7" onclick="onNavClick(`#监控-nav`)" id="监控-nav">
+									监控
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#instrumentation" onclick="onNavClick(`#instrumentation-nav`)" id="instrumentation-nav">
+									instrumentation
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%b5%84%e6%ba%90" onclick="onNavClick(`#服务器资源-nav`)" id="服务器资源-nav">
+									服务器资源
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%91%8a%e8%ad%a6" onclick="onNavClick(`#告警-nav`)" id="告警-nav">
+									告警
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%97%a5%e5%bf%97" onclick="onNavClick(`#日志-nav`)" id="日志-nav">
+									日志
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%94%99%e8%af%af%e6%b1%87%e6%8a%a5" onclick="onNavClick(`#错误汇报-nav`)" id="错误汇报-nav">
+									错误汇报
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%ac%ac%e5%9b%9b%e7%ab%a0%e9%a2%84%e5%a4%87" onclick="onNavClick(`#第四章预备-nav`)" id="第四章预备-nav">
+									第四章：预备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8-jmeter-%e8%bf%9b%e8%a1%8c%e8%b4%9f%e8%bd%bd%e6%b5%8b%e8%af%95" onclick="onNavClick(`#使用-jmeter-进行负载测试-nav`)" id="使用-jmeter-进行负载测试-nav">
+									使用 Jmeter 进行负载测试
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%90%af%e5%8a%a8%e8%ae%a1%e5%88%92" onclick="onNavClick(`#启动计划-nav`)" id="启动计划-nav">
+									启动计划
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%90%af%e5%8a%a8%e5%89%8d%e7%9a%84%e6%a3%80%e6%9f%a5%e4%ba%8b%e9%a1%b9" onclick="onNavClick(`#启动前的检查事项-nav`)" id="启动前的检查事项-nav">
+									启动前的检查事项
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#django-%e9%85%8d%e7%bd%ae%e9%a1%b9" onclick="onNavClick(`#django-配置项-nav`)" id="django-配置项-nav">
+									Django 配置项
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2" onclick="onNavClick(`#部署-nav`)" id="部署-nav">
+									部署
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9f%ba%e7%a1%80%e8%ae%be%e6%96%bd" onclick="onNavClick(`#基础设施-nav`)" id="基础设施-nav">
+									基础设施
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%9b%91%e6%8e%a7%e6%95%b4%e4%b8%aa-launch" onclick="onNavClick(`#监控整个-launch-nav`)" id="监控整个-launch-nav">
+									监控整个 Launch
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%b5%84%e6%ba%90-1" onclick="onNavClick(`#服务器资源-1-nav`)" id="服务器资源-1-nav">
+									服务器资源
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%bd%93%e7%81%be%e9%9a%be%e6%9d%a5%e4%b8%b4%e7%9a%84%e6%97%b6%e5%80%99" onclick="onNavClick(`#当灾难来临的时候-nav`)" id="当灾难来临的时候-nav">
+									当灾难来临的时候
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e5%ba%94%e7%94%a8%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%bf%87%e8%bd%bd" onclick="onNavClick(`#应用服务器过载-nav`)" id="应用服务器过载-nav">
+									应用服务器过载
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%bf%87%e8%bd%bd" onclick="onNavClick(`#数据库服务器过载-nav`)" id="数据库服务器过载-nav">
+									数据库服务器过载
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ba%94%e7%94%a8%e5%92%8c%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%bf%87%e8%bd%bd" onclick="onNavClick(`#应用和数据库服务器过载-nav`)" id="应用和数据库服务器过载-nav">
+									应用和数据库服务器过载
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e6%96%b9%e7%9a%84%e8%b7%af" onclick="onNavClick(`#前方的路-nav`)" id="前方的路-nav">
+									前方的路
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%b5%81%e9%87%8f%e5%a2%9e%e9%95%bf" onclick="onNavClick(`#流量增长-nav`)" id="流量增长-nav">
+									流量增长
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e7%82%b9%e7%82%b9%e8%85%90%e7%83%82" onclick="onNavClick(`#一点点腐烂-nav`)" id="一点点腐烂-nav">
+									一点点腐烂
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%94%99%e8%af%af%e7%9a%84%e5%86%b3%e5%ae%9a" onclick="onNavClick(`#错误的决定-nav`)" id="错误的决定-nav">
+									错误的决定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								<ul class="collapse" data-toggle="collapse">
+							
+						
+						
+							<li>
+								<a href="#%e6%84%8f%e5%a4%96%e7%9a%84%e5%88%b7%e6%96%b0%e4%ba%86%e7%bc%93%e5%ad%98" onclick="onNavClick(`#意外的刷新了缓存-nav`)" id="意外的刷新了缓存-nav">
+									意外的刷新了缓存
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e9%94%81%e8%a1%a8" onclick="onNavClick(`#数据库锁表-nav`)" id="数据库锁表-nav">
+									数据库锁表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a4%a7%e9%87%8f%e7%9a%84%e7%bc%93%e5%ad%98%e8%bf%87%e6%9c%9f" onclick="onNavClick(`#大量的缓存过期-nav`)" id="大量的缓存过期-nav">
+									大量的缓存过期
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%98%82%e8%b4%b5%e7%9a%84-admin-%e8%a7%86%e5%9b%be" onclick="onNavClick(`#昂贵的-admin-视图-nav`)" id="昂贵的-admin-视图-nav">
+									昂贵的 admin 视图
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%98%82%e8%b4%b5%e7%9a%84%e5%90%8e%e5%8f%b0%e4%bb%bb%e5%8a%a1" onclick="onNavClick(`#昂贵的后台任务-nav`)" id="昂贵的后台任务-nav">
+									昂贵的后台任务
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%80%90%e6%b8%90%e6%81%b6%e5%8c%96" onclick="onNavClick(`#逐渐恶化-nav`)" id="逐渐恶化-nav">
+									逐渐恶化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#complexity-creep" onclick="onNavClick(`#complexity-creep-nav`)" id="complexity-creep-nav">
+									complexity creep
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%80%e5%90%8e%e7%9a%84%e6%83%b3%e6%b3%95" onclick="onNavClick(`#最后的想法-nav`)" id="最后的想法-nav">
+									最后的想法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="https://www.markhoo.com">
+            南有嘉鱼
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" v-on:click="toggleDarkMode">
+            <i class="material-icons" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://www.markhoo.com">
+        <div class="single-column-header-title">南有嘉鱼</div>
+        
+        <div class="single-column-header-subtitle">MarkHoo&#39;s Blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                
+                    
+                    
+                    style="background-image: url('https://api.ixiaowai.cn/gqapi/gqapi.php')"
+                    
+                
+            >
+                <div class="post-title">
+                    《High Performance Django》阅读笔记
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2018-09-15 21:59
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/django">Django</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/django">Django</a>
+                                &nbsp;
+                            
+                                <a href="/tags/python">Python</a>
+                                &nbsp;
+                            
+                                <a href="/tags/gunicorn">Gunicorn</a>
+                                &nbsp;
+                            
+                                <a href="/tags/nginx">Nginx</a>
+                                &nbsp;
+                            
+                        
+                        
+                            <i class="material-icons" style="">schedule</i>
+                            
+
+                            
+                            
+
+                            
+                            41 min
+                            
+                            49 s.
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h1 id="第一章the-big-picture">第一章：The Big Picture</h1>
+<p>作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。</p>
+<blockquote>
+<p>Django’s scaling success stories are almost too numerous to list at this point. It backs Disqus, Instagram, and Pinterest. Want some more proof? Instagram was able to sustain over 30 million users on Django with only 3 engineers (2 of which had no back-end development experience). Disqus serves over 8 billion page views per month. Those are some huge numbers. These teams have proven Django most certainly does scale. Our experience here at Lincoln Loop backs it up. We’ve built big Django sites capable of spending the day on the Reddit homepage without breaking a sweat.</p>
+</blockquote>
+<p>在作者的公司，他们开发高性能 Django 站点的准则就是 simplicity :</p>
+<ul>
+<li>Using as few moving parts as possible to make it all work. “Moving parts” may be servers, services or third-party software.</li>
+<li>Choosing proven and dependable moving parts instead of the new hotness.</li>
+<li>Using a proven and dependable architecture instead of blazing your own trail.</li>
+<li>Deflecting traffic away from complex parts and toward fast, scalable, and simple parts .</li>
+</ul>
+<blockquote>
+<p>Simple systems are easier to scale, easier to understand, and easier to develop.</p>
+</blockquote>
+<p>构建高性能 Web 应用通常需要关注一下几点：</p>
+<ul>
+<li>数据库。关系型数据库通常是整个技术栈中最慢最复杂的部分，一个办法是改用 NoSQL 数据库，不过 大多数情况下都可以通过缓存解决。</li>
+<li>模板。我们可以用一个更快的模板引擎替换 Django 自带的模板引擎，不过即便是这样模板仍旧是 整个技术栈中第二慢的部分。我们仍然可以通过缓存解决这个问题。</li>
+<li>Python。Python 在通常情况下已经足够快了。我们可以使用 Web 加速器（比如：Varnish）缓存服务器响应， 在请求进入到 Python 那一层之前就返回相应。</li>
+</ul>
+<p>这章作者一直在强调缓存，&ldquo;CACHE ALL THE THINGS&rdquo;。无论你怎么优化你的技术栈，没有比缓存更快的优化方案。 说到缓存可能大家可能会顾虑缓存过期的问题，作者说了现在先别关心这个问题，之后会给出解决方案。</p>
+<p>作者提到一般的网站都保护这几层：负载均衡器，Web 加速器，APP 服务器，缓存，数据库。</p>
+<p>顺便提了一个 HTTPS 的负载均衡配置方法：客户端与负载均衡器之间使用 HTTPS，负载均衡器与后端服务之间使用 HTTP。这样既保证了安全又可以减少 HTTPS 对性能的影响。</p>
+<h1 id="第二章-the-build">第二章 The Build</h1>
+<h2 id="小技巧">小技巧</h2>
+<ul>
+<li>本地开发环境应该尽可能的与线上环境一致：相同的数据库，相同的操作系统以及相同的软件版本。。。</li>
+<li>组织 settings 文件，创建一个基础的配置文件 settings/base.py ，然后再为开发，测试，部署分别创建一个配置文件，一些重要的配置信息可以通过环境变量获取
+<ul>
+<li>settings/base.py</li>
+<li>settings/dev.py</li>
+<li>settings/deploy.py</li>
+</ul>
+</li>
+</ul>
+<p>这里作者有提到一个小技巧，那就是环境变量的值都是字符串，那么如果将值转换为布尔值，元组甚至字典呢？答案就是可以使用 ast 模块:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">    &gt;&gt;&gt; ast.literal_eval<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;True&#39;</span><span style="color:#f92672">)</span>
+     True
+
+    &gt;&gt;&gt; ast.literal_eval<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;1, 2, 3&#39;</span><span style="color:#f92672">)</span>
+     <span style="color:#f92672">(</span>1, 2, 3<span style="color:#f92672">)</span>
+
+    &gt;&gt;&gt; ast.literal_eval<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;{&#34;foo&#34;: &#34;bar&#34;}&#39;</span><span style="color:#f92672">)</span>
+     <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;foo&#39;</span>: <span style="color:#e6db74">&#39;bar&#39;</span><span style="color:#f92672">}</span>
+</code></pre></div><h2 id="小心第三方-app">小心第三方 APP</h2>
+<p>在决定使用某个第三方 APP 之前，先回答下面几个问题：</p>
+<ul>
+<li>它真的符合你的需求吗？还是只是有点相近？</li>
+<li>它是个健康的项目吗？
+<ul>
+<li>维护者有一个好的追踪记录吗？</li>
+<li>文档写的好吗？</li>
+<li>测试覆盖率够吗？</li>
+<li>社区怎样（贡献者，pull requests 等等）？</li>
+<li>还在处于活跃开发吗？</li>
+<li>有很多旧的 issues 和 pull requests 吗？</li>
+</ul>
+</li>
+<li>性能咋样？
+<ul>
+<li>它会产生多少数据库查询？</li>
+<li>易于缓存吗？</li>
+</ul>
+</li>
+<li>跟你项目的其他部分有冲突吗？</li>
+<li>它的授权协议跟你的项目兼容吗？</li>
+</ul>
+<p>不再维护以及不稳定的第三方应用很快就会成为你的项目的负债。 可以尝试阅读源代码，然后从中找出你的项目需要的代码然后应用到项目中。</p>
+<h2 id="找出性能问题">找出性能问题</h2>
+<p>可以使用下面这些工具</p>
+<ul>
+<li>Django Debug Toolbar</li>
+<li>django-debug-panel</li>
+<li>django-devserver</li>
+</ul>
+<p>观察页面性能：</p>
+<p>执行了多少条 SQL 语句？
+有多少时间花费在数据库上？
+执行了什么特殊的查询操作，每次查询花费多长时间？
+这些查询是有什么代码生成的？
+渲染页面都用到了哪些模板？
+冷/热缓存是如果影响性能的？（提示：可以使用 settings 来切换缓存）</p>
+<h2 id="哪里需要优化">哪里需要优化</h2>
+<h3 id="数据库优化">数据库优化</h3>
+<ul>
+<li>减少查询次数
+<ul>
+<li>使用 <code>select_related</code>, <code>prefetch_related</code>, (提示：<code>prefetch_related</code> 要放在查询的最后，不然会没有效果。)</li>
+</ul>
+</li>
+<li>减少查询时间
+<ul>
+<li>不要忘记加索引（索引也是有代价的，每次对数据库进行写操作都需要更新索引）</li>
+<li>某些情况下 join 查询性能很差，在这种情况下两条查询语句比一条 join 耗时更少。</li>
+</ul>
+</li>
+<li>限制结果数
+<ul>
+<li>留意 <code>.all()</code> 只取需要的结果数, <code>queryset[:20]</code></li>
+</ul>
+</li>
+<li>count 查询很慢。可以的话，不要使用 count。比如使用 <code>.exists()</code> 代替 count 进行判断记录是否存在。</li>
+<li>generic 外键。generic 外键是个很 cool 的功能，但是它会生成一些特别复杂的查询，所以可能的话，不要使用它。如果你一定要用的话，记得这是个需要缓存的地方。</li>
+<li>优化 model 方法。如果某个 model 方法在一个请求内会多次被调用，可以使用 <code>cache_property</code> 缓存方法解决（缓存只在该请求内有效）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.utils.functional <span style="color:#f92672">import</span> cached_property
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TheModel</span>(models<span style="color:#f92672">.</span>Model):
+
+    <span style="color:#a6e22e">@cached_property</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expensive</span>(self):
+       <span style="color:#75715e"># ...</span>
+       <span style="color:#66d9ef">return</span> result
+</code></pre></div><ul>
+<li>结果太大了，包含了不需要的字段。使用 <code>defer</code>, <code>only</code>, <code>values</code>, <code>values_list</code> 限制结果大小:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">posts <span style="color:#f92672">=</span> Post<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()<span style="color:#f92672">.</span>defer(<span style="color:#e6db74">&#39;body&#39;</span>)
+posts <span style="color:#f92672">=</span> Post<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()<span style="color:#f92672">.</span>only(<span style="color:#e6db74">&#39;title&#39;</span>)
+posts <span style="color:#f92672">=</span> Post<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()<span style="color:#f92672">.</span>values(<span style="color:#e6db74">&#39;id&#39;</span>)
+posts <span style="color:#f92672">=</span> Post<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;id&#39;</span>)
+posts <span style="color:#f92672">=</span> Post<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;id&#39;</span>, flat<span style="color:#f92672">=</span>True)
+</code></pre></div><ul>
+<li>
+<p>缓存查询结果。这里提到两个库: Johnny Cache 和 Cache Machine 这两个库的原理都是在 ORM 和数据库中间加了一个缓存层，将 ORM 生成的 SQL 作为 key 来缓存查询结果。</p>
+</li>
+<li>
+<p>只读 replicas。对那些读远远大于写的站点，可以考虑从 只读 replicas 中读取数据，实现读写分离。减少主库的负担优化性能。</p>
+</li>
+<li>
+<p>raw 查询。如果感觉 ORM 有点慢话，可以考虑使用 <code>raw</code> 方法执行原生的 SQL 语句。</p>
+</li>
+<li>
+<p>反范式。这种方法有个问题就是每次更新的时候都需要同时更新其他表中相关的冗余字段。</p>
+</li>
+<li>
+<p>使用其他数据存储方式。比如： Postgres, redis, mongodb，使用 Elasticsearch 进行全文检索等。 需要注意的是，在生产环境下新增一个服务并无法没有代价的。作为开发者我们可以不太在意这个，但是系统需要 支持，配置，监控，备份等。新增服务的时候要考虑到这些代价以及你的系统管理员的意见。</p>
+</li>
+<li>
+<p>sharding。99.9% 的网站都不需要用到数据库的 sharding 功能，所以只有在你确信你遇到了那 0.1% 的时候 再使用 sharding 功能。</p>
+</li>
+</ul>
+<h2 id="模板优化">模板优化</h2>
+<p>应该缓存模板中一切可以缓存的东西。</p>
+<ul>
+<li>俄罗斯套娃式缓存。在一个模板里缓存嵌套缓存，就像俄罗斯套娃一样，一层套一层。比如:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{% cache MIDDLE_TTL &#34;post_list&#34; request.GET.page %}
+    {% include &#34;inc/post/header.html&#34; %}
+    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-list&#34;</span>&gt;
+    {% for post in post_list %}
+        {% cache LONG_TTL &#34;post_teaser_&#34; post.id post.last_modified %}
+            {% include &#34;inc/post/teaser.html&#34; %}
+        {% endcache %}
+    {% endfor %}
+    &lt;/<span style="color:#f92672">div</span>&gt;
+{% endcache %}
+</code></pre></div><ul>
+<li>自定义一个支持通过 url 参数刷新模板缓存的 cache 标签，这样就可以随时刷新缓存了</li>
+</ul>
+<h2 id="随后处理耗时的任务">随后处理耗时的任务</h2>
+<p>可以把耗时的，不需要同步知道结果的任务放到类似 celery 的任务队列中异步执行， 从而减少请求——响应的处理时间。下面这些任务可以考虑放到 celery 中：</p>
+<ul>
+<li>第三方 API 的调用</li>
+<li>发邮件</li>
+<li>非常复杂的计算（视频处理，大量的数字处理等）</li>
+</ul>
+<p>对于使用 celery 作者提到了一下小提示：</p>
+<ul>
+<li>不要将 model 实例作为任务的参数，可以改用传主键的方式。因为在这期间 model 的数据可能已经发生改变了， 还有就是那个 model 实例可能不支持序列化。</li>
+<li>保持任务小，不要再一个任务中执行太多的工作。把一个任务分割成多个任务，一方面可以使用多核或多 worker 的 方式加速任务执行，另一方面，单个任务可以很快的执行完方便安全快速的重启 worker，因为一个 worker 重启时 会等待正在执行的问题完成，保持任务小巧的话，可以加快部署时间。</li>
+<li>可以考虑使用 celery 的 beat 功能去自习定时任务。</li>
+</ul>
+<h2 id="前段优化">前段优化</h2>
+<ul>
+<li>压缩 css 和 javascript（min, gzip, 版本化静态文件）。（个人建议：版本化文件应该类似这样 foo-xxyy.js 而不是这样 foo.js?v=xxyy ，主要是方便使用 CDN，防止出现缓存未过期的情况。）</li>
+<li>压缩图片。</li>
+<li>使用 CDN 服务静态文件。</li>
+</ul>
+<h2 id="文件上传">文件上传</h2>
+<p>可以考虑使用分布式文件系统或者云存储来存储上传的文件。使用云存储的时候要考虑备用方案，万一服务不可用怎么办。</p>
+<h2 id="测试">测试</h2>
+<p>好的测试用例是健康代码的强有力的基石。测试应该覆盖到你代码中最复杂，最重要，最容易出问题的地方。</p>
+<h3 id="自动化测试以及持续集成">自动化测试以及持续集成</h3>
+<p>一个持续集成系统可以让开发者在开发进度的早期就发现问题，通过持续集成系统来执行 自动化测试以及检查你的代码的健康度。作者提到了他们的检查点：</p>
+<ul>
+<li>单元测试</li>
+<li>代码覆盖率</li>
+<li>PEP8/linting</li>
+<li>使用 Selenium 进行功能测试</li>
+<li>所以 Jmeter 进行性能测试</li>
+</ul>
+<h1 id="第三章the-deployment">第三章：The Deployment</h1>
+<h2 id="先决条件">先决条件</h2>
+<h3 id="操作系统">操作系统</h3>
+<p>作者推荐使用 Ubuntu。同时作者给出了选择其他操作系统时，需要考虑的事情：</p>
+<ul>
+<li>能够很容易的就使用 Python 2.7+ 。有些操作系统要安装 2.7+ 版本的 Python 非常的麻烦，如果是这样的话你就要慎重考虑了。</li>
+<li>有长久的安全更新支持。</li>
+</ul>
+<h3 id="配置管理">配置管理</h3>
+<ul>
+<li>Chef, Puppet, Ansible, Salt 都是比较好的配置管理工具</li>
+<li>Fabric 不是配置管理工具，如果你把它当作配置管理工具的话，会有你头疼的时候。你可以在 Fabric 的基础上 构建你自己的配置管理工具。</li>
+</ul>
+<h3 id="进程管理">进程管理</h3>
+<ul>
+<li>系统默认的工具：upstart, systemd</li>
+<li>第三方软件：deamontools, supervisord, circus</li>
+</ul>
+<h3 id="更新代码">更新代码</h3>
+<p>更新代码一般需要进行下面几步：</p>
+<ol>
+<li>从版本控制服务器上拉取最新的代码</li>
+<li>更新依赖</li>
+<li>合并数据库更改(migrate)</li>
+<li>收集，压缩，推送静态文件到 CDN</li>
+<li>reload WSGI 服务器</li>
+<li>重启后台 workers</li>
+</ol>
+<p>推荐写个脚本自动执行这些操作，这样不容易出错。如果要更新多台服务器的话，可以使用远程执行 框架来做这种事情，比如： Salt, Fabric。</p>
+<p>有一点特别要注意的是，一旦服务上线就应该尽可能的使用平滑 reload 的方式来代替重启进程的暴力方式。</p>
+<h3 id="多个远程环境">多个远程环境</h3>
+<p>至少要有两个环境吧：打包/开发环境，生产环境。 同时多个环境尽量保证一致性，尤其是多个生产环境之间（设置，软件，系统，等等）。 不过有些东西还行要区分的，比如：</p>
+<p>第三方服务配置。比如，你肯定不希望在开发环境下触发支付操作或发送文件到生产环境下的 CDN 上。
+获取数据的问题。经常看到某些人在开发环境下使用线上数据库的副本，但是这里有几个问题要考虑：
+你的开发环境更生产环境一样安全吗？监控松散的开发机器是黑帽黑客经常会攻击的目标。
+有可能会从你的应用中发送邮件或通知吗？从你的开发环境下向你的用户发送数千封邮件不仅是非常 尴尬的事情，同时也会影响你们的商业。</p>
+<h3 id="避免单点故障">避免单点故障</h3>
+<p>要经常备份，确保你知道所有存储的数据（数据库，用户上传的数据，等等）都有备份。这样出现故障的时候 其他其他机器的时候丢失的数据会少一点。</p>
+<p>高可用是一个可以考虑的方法，如果对你的商业来说他是非常重要的话。 HA 可以保证在出现服务挂掉 的情况下能够无缝自动切换到备用服务或者说不用手动切换。不过需要注意的是通常构建高可用 的花费比服务当掉的花费还高。</p>
+<p>在考虑架构的时候要考虑到如何解决单点故障的问题。举个例子，当使用第三方的 Amazon EC2 的时候， 你是否能够接受某些区域的设备宕机，整个地区呢？如果服务商 Amazone 当了怎么办？ 越早考虑这些问题就能在灾难实际发生的时候更好的应对。</p>
+<h2 id="服务器布局">服务器布局</h2>
+<ul>
+<li>负载均衡器： 可以使用云服务商提供的负载均衡服务或者使用 nginx, Haproxy。对于负载均衡器网络 带宽是个非常重要的注意点。</li>
+<li>Web 加速器：网络带宽和内存是值得关注的点</li>
+<li>应用：CPU 和内存值得关注。</li>
+<li>后台运行的 workers：后台运行的任务通常都是 CPU 密集型的任务并且运行在独立的服务器上。一个服务器上可以运行 多个 workers。</li>
+<li>缓存：你的缓存服务器需要更多的内存。另一个需要注意就是网络带宽，它可能会在内存之前成为瓶颈。如果网络开始 拥堵的时候， Django 可以配置多个缓存服务器。</li>
+<li>数据库：足够的内存非常重要，最用是足够把你的数据都装载在内存里。 如果你预期会有 64GB 的数据，那么至少要有 64GB 的内存。 磁盘速度也非常重要。购买你能够负担得起的最快的磁盘。 如果你用的是虚拟机的话，你需要留意你其实是在跟你的邻居共享一个物理磁盘，常规的实践是尽可能的买最大的虚拟机。</li>
+</ul>
+<h2 id="优化技术栈">优化技术栈</h2>
+<h3 id="优化数据库">优化数据库</h3>
+<h3 id="优化-uwsgi">优化 uWSGI</h3>
+<h3 id="优化-django">优化 Django</h3>
+<p><strong>CACHES</strong></p>
+<p>如果你使用 Memcached，使用 pylibmc 这个库会有更高的性能。 redis 的话可以使用 django-redis 。</p>
+<p>缓存过期是第一个需要面临的问题，一个缓存 key 过期或者被刷新都有可能摧毁你的数据库。 幸运的是有个简单包可以解决这个问题： django-newcache</p>
+<p>还有一个问题就是如果缓存服务器宕机了会到期用户收到 “500 Server Error”的响应。 将使用一个缓存服务器改为三个可以降低出错的几率。 你需要考虑当缓存服务器宕机的时候，你是需要你的网站也跟着宕机，还是希望你的应用继续 运行良好只是把它当作缓存未命中来处理？作者创建了一个 django-ft-cache 包用来 解决这个问题，它会将任何的 memcached 操作用 try/except 包裹，捕获这里的异常， 这样缓存服务器当掉时请求依然可以被正确处理。</p>
+<p><strong>SESSION_ENGINE</strong></p>
+<p>把 session 保存在数据库中非常影响性能，一个好的办法是保存在缓存中。如果用 redis 的话 可以使用 cache backend, 用 memcached 的话 cached_db backend 也还行。 另一个办法就是使用 signed_cookies backend, 让客户端存储 session 数据。</p>
+<p><strong>DATABASES</strong></p>
+<p>可以通过 <code>DATABASES</code> 设置增加 <code>CNN_MAX_AG</code> key 选项来定义重用数据库连接。 比如 300, 这将告诉 Django 保持打开和重用数据库连接 5 分钟。</p>
+<p><strong>LOGGING</strong></p>
+<p>不要定义 LOGGING 将日志保存到文件中，而是应该输出到 <code>STDERR</code> ，让进程管理器来处理日志。</p>
+<p><strong>MIDDLEWARE_CLASSES</strong></p>
+<p>不要轻易自定义中间件，因为中间件会在每个请求中执行。所以确保你知道每个中间件都做了什么， 以及尽可能的不要在中间件中执行数据库查询操作。</p>
+<p><strong>常规安全问题</strong></p>
+<p>需要注意 clickjacking 和 XSS(Cross Site Scripting)。最简单的方法是使用 django-secure 项目来检查安全问题。 另一个安全问题是，确保你的 admin 后台处于保护中，如果你把它开放出去了，确保使用了非常 复杂的管理员密码。最好是把它变成一个内网服务，让它不能从外部互联网访问。</p>
+<h2 id="配置你的服务器">配置你的服务器</h2>
+<h3 id="安全">安全</h3>
+<ul>
+<li>调整 SSH 配置：禁用 <code>root</code> 登录，禁用密码登录，更改默认端口。</li>
+<li>应用安全补丁：关注一下系统安全问题，及时更新 zer-day 补丁（比如，Hearbleed）</li>
+<li>使用私有网络：大多数云服务器都提供私有网络服务，只允许访问你帐号下的服务。在私有网络 中访问你的服务器可以加大被人攻击你的难度。</li>
+<li>保护内网服务：内网服务包括控制台，开发服务器，持续集成系统。它们会成为你安全网络的一道暗门。 将它们用 VPN 或认证代理锁起来，如果你没有使用 VPN 的话，确保传输数据以及登录时总是使用 SSL/HTTPS。 锁住你的开发环境可以确保 google 不会抓取它从而伤害你的 SEO）</li>
+<li>防火墙：只允许指定端口和 IP 访问你的服务器。硬件防火墙很棒，软件防火墙比如 iptables 也不错。</li>
+<li>不要在 root 下运行：不在 root 下运行可以防止某些人运用 RCE(remote code execution)获取你服务器的 root 访问权限。使用标准用户登录服务器，只在必要时使用 sudo。</li>
+<li>保护你的第三方服务的账户：使用强壮的密码，尽可能的开启两步验证。</li>
+</ul>
+<h3 id="备份">备份</h3>
+<p>对于数据库，有一个运行的 replica 可以很方便的执行全备份。推荐在半夜执行全备份。 进行备份的时候有几个问题需要问一下你自己：</p>
+<ul>
+<li>如果有人黑进了你的服务器，他们能够删掉或破坏你的备份吗？ 基于这个原因拉取到备份服务器比推送要更好。</li>
+<li>如果有人拿到了你的备份会有多糟糕？加密备份文件并且确保黑客没法在同一个服务器上找到解密的方法（注：比如可以使用公钥进行加密，同时服务器上不要存有私钥，这样就不会被黑客在服务器上找到解密的方法）。</li>
+<li>你有测试过备份是否可用吗？定期测试你的备份，验证它们是否真的有效。</li>
+</ul>
+<h2 id="监控">监控</h2>
+<p>没有监控的话，线上网站就会成为一个大黑盒。你没法知道实际情况是怎样的，也就没法进行性能优化了。</p>
+<h3 id="instrumentation">instrumentation</h3>
+<p>对于应用，你需要知道下面这个问题：</p>
+<ul>
+<li>我的系统中最慢的部分是什么？</li>
+<li>Django 处理响应的平均耗时是多少？</li>
+<li>哪个视图是最慢的？或者花费最多的时间？</li>
+<li>哪个数据库查询是最慢的？或者花费最多的时间？</li>
+<li>这些数据一段时间内是如何变化的？</li>
+</ul>
+<p>NewRelic 是个探测这些问题的比较好的服务，它可以很方便的安装。 然而， NewRelic 是闭源的，专有的系统，同时也非常的贵。有一些开源产品可以替代它。 比如：Graphite</p>
+<h3 id="服务器资源">服务器资源</h3>
+<p>关于服务器资源需要监控如下数据：</p>
+<ul>
+<li>平均负载</li>
+<li>CPU 负载</li>
+<li>物理内存使用情况</li>
+<li>磁盘相关数据</li>
+<li>网络 I/O</li>
+</ul>
+<h3 id="告警">告警</h3>
+<p>下列情况需要发送告警：</p>
+<p>超过 X% 的请求出现错误
+服务器宕机
+服务器资源占用过高：负载，虚拟内存，磁盘等等
+服务未响应</p>
+<h3 id="日志">日志</h3>
+<p>需要收集如下日志：</p>
+<ul>
+<li>从你的负载均衡器都应用的 Apache 风格的日志</li>
+<li>任何应用内的日志</li>
+<li>相关服务的 syslog 日志</li>
+<li>数据库慢查询日志，以及在不会导致数据库连接的 I/O 问题（尤其是磁盘或网络）的前提下收集所有数据库查询的日志。</li>
+</ul>
+<h3 id="错误汇报">错误汇报</h3>
+<p>在生成环境下 Django 默认会在出现异常时给网站管理员发送异常邮件。这个功能有时也会导致一些问题：</p>
+<ul>
+<li>Email 不利于追踪错误</li>
+<li>如果你的错误发生在一个高访问的页面的话，你实际上是在 DoS 你的邮件服务器， 可能导致被加入黑名单，或者你的邮件服务商会关掉你的服务（他们不想在几秒内发送超过 10K 的邮件）。</li>
+</ul>
+<p>幸运的是，更好的错误汇报方式已经存在了，开源的 Sentry 项目是个非常好的解决方案。 Sentry 并不会发送 10K 的邮件，它之后在第一次出现错误时邮件通知你，之后收集并在 Web 页面上 暂时其他时候的错误用于分析问题。</p>
+<p>还有一个关于错误的主题就是确保有一个漂亮的不引来应用服务的 500.html 文件，并且已经在服务器上配置好了出错是使用 这个页面。</p>
+<h1 id="第四章预备">第四章：预备</h1>
+<h2 id="使用-jmeter-进行负载测试">使用 Jmeter 进行负载测试</h2>
+<p>这一部分主要讲解了 Jmeter 的各种是否方法及配置。</p>
+<h2 id="启动计划">启动计划</h2>
+<p>启动的时候有些东西需要考虑</p>
+<ul>
+<li>使用负载均衡器在新的和旧的之间分流</li>
+<li>使用“dark launch”，这样用户就不会感觉到他们访问的是新的服务器</li>
+<li>使用代理功能分一部分流量到新的服务器</li>
+<li>使用特性标志来发布一个新的特性。</li>
+</ul>
+<p>发送流量到一个新的没有缓存的服务器可能会导致临时的高负载 从而在缓存热和起来前击垮你的服务器。预热你的缓存可以解决这个问题。一个比较简单的办法是使用一个脚本在有真实请求前去抓取你的网站上的热门 URLs。</p>
+<p>不要在一天的最后时间段或周五的时候升启动，除非你想让你的 整个团队在晚上或周末加班。 你应该在大家都在并且有几个小时或几天的时间来处理 启动过程中出现的问题时候启动，同时也要确保你的成员有时间休息。 如果你的网站访问量比较高的话，尝试在访问量比较低的时间段进行升级操作。</p>
+<h2 id="启动前的检查事项">启动前的检查事项</h2>
+<h3 id="django-配置项">Django 配置项</h3>
+<ul>
+<li><code>DEBUG</code> 和 <code>TEMPLATE_DEBUG</code> 都设为 <code>False</code></li>
+<li><code>SECRET_KEY</code> 是个非常大的随机字符串并且保密</li>
+<li><code>ALLOWED_HOSTS</code> 包含了访问者可能会使用的有效域名</li>
+<li><code>TEMPLATE_LOADERS</code>: Cached template loader 已启用</li>
+<li><code>SESSION_ENGINE</code> 比默认设置更快</li>
+<li><code>CACHES</code>: 使用 Memcached 或 Redis 后端</li>
+<li><code>MEDIA_ROOT</code> 和 <code>MEDIA_URL</code> 接受并显示文件上传</li>
+<li>管理员账户被限制并且有一个强壮的密码</li>
+</ul>
+<h3 id="部署">部署</h3>
+<ul>
+<li>通过点击各种页面和链接的方式来确认网站是否按预期的结果 工作（没有挂掉的图片和链接）</li>
+<li>Django 日志是否正常工作</li>
+<li>监控平台是否接收到数据。确保你能看到整个技术栈中各级 的错误信息。</li>
+<li>错误被汇报并且触发了通知</li>
+<li>第三方服务能够接收到数据（支付，分析等等）</li>
+<li>从你的应用服务和 Celery workers 中发出邮件的功能 能够正常运行</li>
+<li>自定义的错误页面（400，500）已经在各个级别中被设置（负载均衡器，web 加速器，Django）</li>
+<li>Django admin 没法通过 /admin/ 公开访问</li>
+<li>SSL 证书有效并且设置是安全的。</li>
+<li>Django-secure 的 <code>manage.py checksecure</code> 运行起来没有错误输出</li>
+</ul>
+<h3 id="基础设施">基础设施</h3>
+<ul>
+<li>服务器和服务是安全的，已经锁好了大门</li>
+<li>有个简单，正式的程序用来部署新的代码</li>
+<li>你有一个可以在需要的时候快速水平扩展服务的计划</li>
+<li>DNS TTL 可以被修改为 5 分钟或更短的时间在需要更改的时候</li>
+</ul>
+<p>#第五章 The Launch</p>
+<h2 id="监控整个-launch">监控整个 Launch</h2>
+<h3 id="服务器资源-1">服务器资源</h3>
+<p>可以使用如下工具参考服务器资源使用情况</p>
+<ul>
+<li>htop</li>
+<li>varnishstat</li>
+<li>varnishhist</li>
+<li>varnishtop</li>
+<li>varnishlop</li>
+<li>uwsgitop</li>
+<li>celery inspect</li>
+<li>celery events</li>
+<li>flower</li>
+<li>memcache-top</li>
+<li>pg_top</li>
+<li>pg_stat_statements</li>
+<li>pt-query-digest</li>
+<li>mytop</li>
+</ul>
+<h2 id="当灾难来临的时候">当灾难来临的时候</h2>
+<h3 id="应用服务器过载">应用服务器过载</h3>
+<p>最简单的办法就是通过增加服务器的方式进行水平扩展。 不过你需要注意这将导致你的数据库承受更大的压力， 可能会把数据库搞挂。</p>
+<p>当你通过增加服务器的方式把负载降低到可以接受的级别后， 你就需要使用你的低级别的工具来查看为什么会出现负载过高的 情况。你的 web 加速器端缓存命中率过低是一个需要考虑的因素。</p>
+<h3 id="数据库服务器过载">数据库服务器过载</h3>
+<p>如果你的网站是 读多写少的话，可以通过增加 replica 的方式来简单解决响应时间问题。 同时也看看是否在数据库优化时遗漏某些可以优化的项。</p>
+<h3 id="应用和数据库服务器过载">应用和数据库服务器过载</h3>
+<p>你可以从自底向上优化你的数据库，减轻数据库的压力可以让你的应用拥有更高的性能。 你也可以通过优化你的 web 加速器从而减轻应用服务器的压力，进而减轻数据库服务器的压力。</p>
+<h1 id="前方的路">前方的路</h1>
+<p>恭喜你的网站已经启动了！现在你需要确保它能够持续稳定的运行。在这个战争中你需要与下列事物做斗争：</p>
+<ul>
+<li>你的用户（流量增长）</li>
+<li>你的软件（一点点腐烂）</li>
+<li>你（错误的决定）</li>
+</ul>
+<p>第一个没啥好惊讶的，最后两个可能会让你惊讶同时也是让你网站宕机的一些因素。</p>
+<h2 id="流量增长">流量增长</h2>
+<p>正常情况下你的网站不应该在技术栈的任何层次占用 100% 的资源，一旦出现超过 70%（CPU,内存，磁盘等等） 的资源占用，那就说明某些地方需要优化了或者增加更多的资源。当流量突增的时候如果你有额外的资源的话就可以很好 的应对。</p>
+<p>有些时候的流量激增可能是商业上进行了某些吸引用户的活动，确保开发者知道这些商业活动，以便应对激增的流量。 一个好的主意是像刚启动时那样，大家在桌子上一起讨论分享这些商业信息。</p>
+<h2 id="一点点腐烂">一点点腐烂</h2>
+<p>由于高性能网站使用了很多不同的服务，所以需要保持这些服务打上了最新的安全补丁。 “如果没出现问题，就不要去修复它”是个非常危险的准则。</p>
+<p>跳过几个小版本是没什么问题的，但是不要落下太远，不然的话到时就会失去升级动力。 定期小步升级你的依赖（你的操作系统，主要的服务以及 Python 库）。</p>
+<p>作者的小贴士：</p>
+<p>当 review 升级的时候，我们通常不会使用最新的版本，一般最新版本也意味着有新的 bug ，我想 你不希望当小白鼠吧。给新版本几个月的成熟期。 升级到第一个稳定的版本或者你已经确保这个版本没什么大的问题了。</p>
+<h2 id="错误的决定">错误的决定</h2>
+<h3 id="意外的刷新了缓存">意外的刷新了缓存</h3>
+<p>在流量特别高的时候重启缓存或 web 加速器可能会击垮你的网站。这个问题叫做 dog-piling/cache stampede 所以尽量使用 reload 的方式来更新服务。对于使用 memcached/redis 的缓存可以通过给不同的缓存定义不同的 KEY_PREFIX 的方式来实现逐个清理缓存（通过 <code>VERSION</code>）而不是一下子删除所有缓存的功能。 如果一定要重启的话，进行选择在流量低的时候重启服务。</p>
+<h3 id="数据库锁表">数据库锁表</h3>
+<p>数据库锁会临时阻塞主写操作，如果这个操作特别长的话就会成为一个问题。两个比较常见的长时间锁表的场景是： schema migration 和备份。</p>
+<p>在开发的时候， South 和内置的 migration 可以很方便的应用 Model 更改， 但是在生成环境下， migrate 操作可能会导致长时间的锁表现象，这个对你的用户来说就是个糟糕的消息了。 对于 <code>ADD COLUMN</code> 操作，如果你使用的是 MySQL 数据库的话你需要留意一下这个，但是 PostgreSQL 很少会出现这个问题。</p>
+<p>无论你使用哪种数据库，migrations 都需要被 review 并且使用最近的线上数据的副本数据测试过后才能在生产环境使用。</p>
+<p>备份是另一个会导致长时间锁住数据库的操作。最好是在一个只读的 replica 上进行备份操作。</p>
+<h3 id="大量的缓存过期">大量的缓存过期</h3>
+<p>跟刷新缓存差不多糟糕的事情就是有大量的缓存过期，这将导致数据库压力倍增。 如果你不是很确定的话，应该选择在流量比较低的时候进行部署操作，避免击垮你的站点。</p>
+<h3 id="昂贵的-admin-视图">昂贵的 admin 视图</h3>
+<p>构建一个未优化的 admin 视图会导致上千的数据库查询。 如果你正在使用一个查询缓存比如 johnny-cache, 每一次在 admin 中保存都将 导致与所在表相关的缓存都将失效。所以 admin 视图也需要像普通视图那样进行优化。</p>
+<h3 id="昂贵的后台任务">昂贵的后台任务</h3>
+<p>未优化，数据库依赖的任务会导致非预期的负载负担。所有应该像优化视图一样优化你的后台任务。</p>
+<h3 id="逐渐恶化">逐渐恶化</h3>
+<p>随着新功能的增加，网站的性能也在接受不同的考验，你需要随时关注性能问题。</p>
+<p>每次发布新版本的时候都关注一下性能的变化，如果响应时间变长了或者负载变高了， 立马去解决它。这样就不会出现在几个月的提交过去后再去查找问题所在的情况。</p>
+<h3 id="complexity-creep">complexity creep</h3>
+<p>如果你按照前面所说的步骤做了的话，你已经做的非常好了。 随着你的网站的成长你可能会遇到各种各样的新问题，你可以很容易的就构建自己 独有的解决方法。 构建你自己的工具是件很有乐趣的事情，但是 not invented here 对于长时间运行 的站点是非常危险的。你最好去学习如何让 Varnish 更高效而不是丢弃它转而使用你自己的工具。 这个决定衍生的代价是非常巨大的：</p>
+<ul>
+<li>训练新的开发者需要更高的花费。你可以找到一名拥有使用一个比如 Varnish 这种服务经验的开发者， 但是如果使用你自定义的方案的话，你需要训练每一位在门外徘徊的开发者。</li>
+<li>开发低级别的基础设施工具将会导致开发时间远离了你的核心产品。使用一个支持良好的开源服务， 你的团队的开发者的效率会很高效。</li>
+<li>写你自己的软件代码不是一锤子买卖。所有的软件都需要不断的开发，测试，文档，等等。</li>
+</ul>
+<h1 id="最后的想法">最后的想法</h1>
+<p>现在你可以在看看那个老问题“Django doesn&rsquo;t scale”，你是怎么认为的呢？ 如果只用 <code>manage.py runserver</code>，使用 SQLite 在一个非常小的云服务器上跑 当然不会很快。</p>
+<p>让我们回到 2012 年，当 Instagram 只有3个的 Django 团队却支撑起了 1千4百多万的用户的时候， 他们在博客上是 这么说的 ：</p>
+<p>我们选择一个系统的核心宗旨是：</p>
+<ul>
+<li>保持非常简单</li>
+<li>不要重复造轮子</li>
+<li>可能的话，使用久经考验的成熟的技术</li>
+</ul>
+<p>我们非常同意。因此，在你继续你的 Django 旅程的时候，不要忘了你在这里学到的东西。 简单是指导原则。</p>
+<p>注：本文转自<a href="https://mozillazg.com">黄黄的博客</a>，并修改了文中大量错误。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">上次修改於 2018-09-15</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://www.markhoo.com/archives/cnpython/">
+			下回<br>Python 资源大全中文版
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://www.markhoo.com/archives/blogbushu/">
+			上回<br>使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+<div id="vcomments"></div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼
+	
+</div>
+            </div>
+    <script>
+let app;
+
+app = new Vue({
+    el: '#app',
+    data: {
+        scrollY: 0,
+        navOpacity: 0,
+        isDrawerOpen: false,
+        mounted: false,
+        isDarkMode: false
+    },
+    methods: {
+            sgn(t, x) {
+                let k = 1. / (1. - 2 * t);
+                if (x <= t) return 0;
+                else if (x >= 1 - t) return 1;
+                else {
+                    return k * (x - t);
+                }
+            },
+            handleScroll() {
+                this.scrollY = window.scrollY;
+                this.navOpacity = this.sgn(.0, Math.min(1, Math.max(0, window.scrollY / (this.pageHeadHeight() - this.navBarHeight() * 0.8))));
+                const {navBar, navBackground, navTitle, extraContainer, streamContainer} = this.$refs;
+
+                if (this.navOpacity >= 1) {
+                    navBackground.style.opacity = 1;
+                    navTitle.style.opacity = 1;
+                } else {
+                    navBackground.style.opacity = 0;
+                    navTitle.style.opacity = 0;
+                }
+            },
+            handleResize() {
+                const {navBar, navBackground, navTitle, extraContainer, streamContainer} = this.$refs;
+                extraContainer.style.left = (streamContainer.offsetWidth - extraContainer.offsetWidth) + 'px';
+            },
+            navBarHeight() {
+                return this.$refs.navBar.offsetHeight;
+            },
+            pageHeadHeight() {
+                return this.$refs.pageHead.offsetHeight;
+            },
+            toggleDrawer() {
+                this.isDrawerOpen = !this.isDrawerOpen;
+                document.getElementsByTagName('html')[0].style.overflow = this.isDrawerOpen ? 'hidden' : 'unset';
+            },
+            closeDrawer() {
+                this.isDrawerOpen = false;
+                document.getElementsByTagName('html')[0].style.overflow = this.isDrawerOpen ? 'hidden' : 'unset';
+            },
+            toggleDarkMode() {
+                this.isDarkMode = !this.isDarkMode;
+                if (this.isDarkMode==true){
+                    document.cookie = "night=1;path=/";
+                    document.body.classList.add("night");
+                } else {
+                    document.cookie = "night=0;path=/";
+                    document.body.classList.remove("night");
+                }
+            }
+    },
+    created() {
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
+        window._nonDesktop = function () {
+            let check = false;
+            (function (a) {
+                if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+            })(navigator.userAgent || navigator.vendor || window.opera);
+            return check;
+        };
+        
+        var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        if (night==""){
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                
+                this.toggleDarkMode();
+                
+            }
+        }else{
+            
+            if (night=="1") {
+                this.toggleDarkMode();
+            }
+        }
+    },
+    mounted() {
+        this.handleScroll();
+        this.handleResize();
+        this.mounted = true;
+
+        
+            new Valine({
+                el: '#vcomments',
+                appId: "GcGwcIQtBTnxuIqPqgKMetAj-gzGzoHsz",
+                appKey: "3ncva6Vn8OidA80nvzdwtP0B",
+                requiredFields: ['nick','mail'],
+                enableQQ: true,
+                recordIP: true,
+            })
+        
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
+    }
+});
+</script>
+
+<script src="https://www.markhoo.com/js/journal.js"></script>
+    </body>
+</html>

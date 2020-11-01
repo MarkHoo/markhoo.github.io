@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/api/</link>
+    <description>Recent content in API on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Thu, 12 Jul 2018 09:58:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Django学习视频</title>
+      <link>https://www.markhoo.com/archives/djangoshipin/</link>
+      <pubDate>Thu, 12 Jul 2018 09:58:04 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/djangoshipin/</guid>
+      <description>Django1.11 学习教程  使用Django REST Framework构建Rest API  </description>
+    </item>
+    
+  </channel>
+</rss>

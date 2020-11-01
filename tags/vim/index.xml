@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/vim/</link>
+    <description>Recent content in Vim on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 11 Sep 2016 10:29:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>vim常用命令总结</title>
+      <link>https://www.markhoo.com/archives/vimml/</link>
+      <pubDate>Sun, 11 Sep 2016 10:29:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/vimml/</guid>
+      <description>在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版。 vim 选择文本，删除，复制，粘贴 文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v 从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。 V 从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。 Ctrl + v 从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。 ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾 选中后就可以用编辑命令对其进行编辑，如 d 删除 y 复制 （默认是复制到&amp;quot;寄存器） p 粘贴 （默认从&amp;quot;寄存器取出内容粘贴） &amp;ldquo;+y 复制到系统剪贴板(也就是vim的+寄存器） &amp;ldquo;+p 从系统剪贴板粘贴
+=============================================================
+vim命令总结 1.删除字符 要删除一个字符，只需要将光标移到该字符上按下&amp;quot;x&amp;rdquo;。
+2.删除一行 删除一整行内容使用&amp;quot;dd&amp;quot;命令。删除后下面的行会移上来填补空缺。
+3.删除换行符 在Vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了：命令是&amp;quot;J&amp;rdquo;。
+4.撤销 如果你误删了过多的内容。显然你可以再输入一遍，但是命令&amp;quot;u&amp;rdquo; 更简便，它可以撤消上一次的操作。
+5.重做 如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，&amp;ldquo;U&amp;quot;命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个&amp;quot;U&amp;quot;的操作。用&amp;quot;u&amp;quot;和CTRL-R你可以找回任何一个操作状态。
+6.追加 &amp;ldquo;i&amp;quot;命令可以在当前光标之前插入文本。 &amp;ldquo;a&amp;quot;命令可以在当前光标之后插入文本。 &amp;ldquo;o&amp;quot;命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。 &amp;ldquo;O&amp;quot;命令(注意是大写的字母O)将在当前行的上面另起一行。
+7.使用命令计数 假设你要向上移动9行。这可以用&amp;quot;kkkkkkkkk&amp;quot;或&amp;quot;9k&amp;quot;来完成。事实上，很多命令都可以接受一个数字作为重复执行同一命令的次数。比如刚才的例子，要在行尾追加三个感叹号，当时用的命令是&amp;quot;a!!!&amp;quot;。另一个办法是用&amp;quot;3a!&amp;ldquo;命令。3说明该命令将被重复执行3次。同样，删除3个字符可以用&amp;quot;3x&amp;rdquo;。指定的数字要紧挨在它所要修饰的命令前面。
+8.退出 要退出Vim，用命令&amp;quot;ZZ&amp;rdquo;。该命令保存当前文件并退出Vim。
+9.放弃编辑 丢弃所有的修改并退出，用命令&amp;rdquo;:q!&amp;quot;。用&amp;rdquo;:e!&amp;ldquo;命令放弃所有修改并重新载入该文件的原始内容。
+###10.以Word为单位的移动 使用&amp;quot;w&amp;quot;命令可以将光标向前移动一个word的首字符上；比如&amp;quot;3w&amp;quot;将光标向前移动3个words。&amp;ldquo;b&amp;quot;命令则将光标向后移动到前一个word的首字符上。 &amp;ldquo;e&amp;quot;命令会将光标移动到下一个word的最后一个字符。命令&amp;quot;ge&amp;rdquo;，它将光标移动到前一个word的最后一个字符上。、
+11.移动到行首或行尾 &amp;ldquo;$&amp;quot;命令将光标移动到当前行行尾。如果你的键盘上有一个键，它的作用也一样。&amp;ldquo;^&amp;quot;命令将光标移动到当前行的第一个非空白字符上。&amp;ldquo;0&amp;quot;命令则总是把光标移动到当前行的第一个字符上。键也是如此。&amp;ldquo;$&amp;quot;命令还可接受一个计数，如&amp;quot;1$&amp;quot;会将光标移动到当前行行尾，&amp;ldquo;2$&amp;quot;则会移动到下一行的行尾，如此类推。&amp;ldquo;0&amp;quot;命令却不能接受类似这样的计数，命令&amp;quot;^&amp;quot;前加上一个计数也没有任何效果。
+12.移动到指定字符上 命令&amp;quot;fx&amp;quot;在当前行上查找下一个字符x（向右方向），可以带一个命令计数&amp;quot;F&amp;quot;命令向左方向搜索。&amp;ldquo;tx&amp;quot;命令形同&amp;quot;fx&amp;quot;命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：&amp;ldquo;t&amp;quot;意为&amp;quot;To&amp;rdquo;。该命令的反方向版是&amp;quot;Tx&amp;rdquo;。这4个命令都可以用&amp;rdquo;;&amp;ldquo;来重复。以&amp;rdquo;,&amp;ldquo;也是重复同样的命令，但是方向与原命令的方向相反。
+13.以匹配一个括号为目的移动 用命令&amp;rdquo;%&amp;ldquo;跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在&amp;rdquo;(&amp;ldquo;上，它就向前跳转到与它匹配的&amp;rdquo;)&amp;ldquo;上，如果当前在&amp;rdquo;)&amp;ldquo;上，它就向后自动跳转到匹配的&amp;rdquo;(&amp;ldquo;上去.
+14.移动到指定行 用&amp;quot;G&amp;quot;命令指定一个命令计数，这个命令就会把光标定位到由命令计数指定的行上。比如&amp;quot;33G&amp;quot;就会把光标置于第33行上。没有指定命令计数作为参数的话, &amp;ldquo;G&amp;quot;会把光标定位到最后一行上。&amp;ldquo;gg&amp;quot;命令是跳转到第一行的快捷的方法。 另一个移动到某行的方法是在命令&amp;rdquo;%&amp;ldquo;之前指定一个命令计数比如&amp;quot;50%&amp;ldquo;将会把光标定位在文件的中间. &amp;ldquo;90%&amp;ldquo;跳到接近文件尾的地方。 命令&amp;quot;H&amp;rdquo;,&amp;ldquo;M&amp;rdquo;,&amp;ldquo;L&amp;rdquo;,分别将光标跳转到第一行，中间行，结尾行部分。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/nginx/</link>
+    <description>Recent content in Nginx on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Tue, 27 Aug 2019 21:27:28 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nginx配置详解</title>
+      <link>https://www.markhoo.com/archives/nginx-config/</link>
+      <pubDate>Tue, 27 Aug 2019 21:27:28 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/nginx-config/</guid>
+      <description>#运行用户#user nobody;#启动进程，通常设置成和cpu的数量相等或者2倍于cpu的个数(具体结合cpu和内存)。默认为1worker_processes 1;#全局的错误日志和日志级别[ debug | info | notice | warn | error | crit ]#error_log logs/error.log;#error_log logs/error.log notice;#error_log logs/error.log info;#pid进程文件#pid logs/nginx.pid;#一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（系统的值ulimit -n）#与nginx进程数相除，但是nginx分配请求并不均匀，所以建议与ulimit -n的值保持一致。#默认不需设置#worker_rlimit_nofile 65535;#工作模式以及连接数上限events {#epoll是多路复用IO(I/O Multiplexing)中的一种方式，#仅用于linux2.6以上内核，可以大大的提高nginx的性能#参考事件模型，use [ kqueue | rtsig | epoll | /dev/poll | select | poll ];#在FreeBSD上面，就用kqueue模型#window下没有epoll#use epoll;#单个后台worker process进程的最大并发连接数。默认为1024#单个进程最大连接数（最大连接数=连接数*进程数）worker_connections 1024;#并发总数是worker_processes和worker_connections的乘积#即 max_clients=worker_processes * worker_connections#在设置了反向代理的情况下，max_clients=worker_processes * worker_connections / 4#worker_connections 值的设置跟物理内存大小有关#因为并发受IO约束，max_clients的值须小于系统可以打开的最大文件数#而系统可以打开的最大文件数和内存大小成正比，一般1GB内存的机器上可以打开的文件数大约是10万左右#我们来看看360M内存的VPS可以打开的文件句柄数是多少：#$ cat /proc/sys/fs/file-max#输出 34336#32000 &amp;lt; 34336，即并发连接总数小于系统可以打开的文件句柄总数，这样就在操作系统可以承受的范围之内#所以，worker_connections 的值需根据 worker_processes 进程数目和系统可以打开的最大文件总数进行适当地进行设置#使得并发总数小于操作系统可以打开的最大文件数目#其实质也就是根据主机的物理CPU和内存进行配置#当然，理论上的并发总数可能会和实际有所偏差，因为主机还有其他的工作进程需要消耗系统资源。#ulimit -SHn 65535}#设定http服务器http {#设定mime类型,类型由mime.</description>
+    </item>
+    
+    <item>
+      <title>Python 资源大全中文版</title>
+      <link>https://www.markhoo.com/archives/cnpython/</link>
+      <pubDate>Tue, 18 Sep 2018 21:00:39 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/cnpython/</guid>
+      <description>环境管理 管理 Python 版本和环境的工具
+  p：非常简单的交互式 python 版本管理工具。官网
+  pyenv：简单的 Python 版本管理工具。官网
+  Vex：可以在虚拟环境中执行命令。官网
+  virtualenv：创建独立 Python 环境的工具。官网
+  virtualenvwrapper：virtualenv 的一组扩展。官网
+  包管理 管理包和依赖的工具。
+  pip：Python 包和依赖关系管理工具。官网
+  pip-tools：保证 Python 包依赖关系更新的一组工具。官网
+  pipenv：Pyhton 官方推荐的新一代包管理工具。官网
+  conda：跨平台，Python 二进制包管理工具。官网
+  Curdling：管理 Python 包的命令行工具。官网
+  wheel：Python 分发的新标准，意在取代 eggs。官网
+  包仓库 本地 PyPI 仓库服务和代理。
+  warehouse：下一代 PyPI。官网
+  bandersnatch：PyPA 提供的 PyPI 镜像工具。官网</description>
+    </item>
+    
+    <item>
+      <title>《High Performance Django》阅读笔记</title>
+      <link>https://www.markhoo.com/archives/highdjango/</link>
+      <pubDate>Sat, 15 Sep 2018 21:59:32 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/highdjango/</guid>
+      <description>第一章：The Big Picture 作者开篇就提到大家总说 Django 性能不行，但是实际上 有很多高性能的站点是使用 Django 开发的。
+ Django’s scaling success stories are almost too numerous to list at this point. It backs Disqus, Instagram, and Pinterest. Want some more proof? Instagram was able to sustain over 30 million users on Django with only 3 engineers (2 of which had no back-end development experience). Disqus serves over 8 billion page views per month. Those are some huge numbers. These teams have proven Django most certainly does scale.</description>
+    </item>
+    
+    <item>
+      <title>使用Centos7.5&#43;Nginx&#43;Gunicorn&#43;Django&#43;Python3部署blog项目</title>
+      <link>https://www.markhoo.com/archives/blogbushu/</link>
+      <pubDate>Tue, 14 Aug 2018 18:46:15 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/blogbushu/</guid>
+      <description>使用Centos7.5+Nginx+Gunicorn+Django+Python3部署blog项目
+本项目开发环境是 Python3.5.2+Django1.10.6+Sqlite3+Centos7.5+Nginx1.12.2+Gunicorn
+blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部署的笔记由于内容较多，没时间整理。今天抽空整理了一下午，发布出来供需要的同学借鉴参考。文中如有错误请多多指正
+部署前的准备
+服务器 要部署项目就要先购买服务器，如腾讯云，阿里云等等
+注意：服务器在国内的话，必须要备案！不然无法使用。
+阿里云优惠券：点击前往领取 腾讯云代金券：点击前往领取 腾讯云首页:点击直达 腾讯云西南区云产品促销链接：点击直达 腾讯云服务器购买链接：点击直达
+域名 域名购买选择，可以到百度云，腾讯云，阿里云，GoDaddy，namecheap等等
+购买域名后就是解析域名，打开域名解析面板，添加解析记录 记录类型：A 主机记录：test.markhoo.com，这个markhoo.com是你的一级域名，二级域名你可以设置为www.markhoo.com 解析线路：可以默认也可以选别的 记录值：填写你的服务器IP地址 TTL：域名生效时间，也就是多久生效 设置好以上内容，点击确定。解析完成
+主机记录中这个markhoo.com是你的一级域名，二级域名你也可以设置为 www.markhoo.com 或者别的 xxx.markhoo.com 也可以。 注意：域名是否在国内购买不重要，只要服务器不在大陆购买，即使未备案照样可以使用。要是要解析的服务器是大陆服务商则必须要备案。备案后一个域名可以同时接入多个服务商。
+域名解析记录类型说明：
+ A：将域名指向一个IPv4地址 AAAA：将域名指向一个IPv6地址 CNAME：将域名指向另外一个域名 NS：将子域名指定其他DNS服务器解析 MX：将域名指向邮件服务器地址 SRV：记录提供特定的服务的服务器 TXT：文本长度限制512，通常做SPF记录(反垃圾邮件) CAA：CA证书颁发机构授权校验 显性URL：将域名302重定向到另外一个地址 隐性URL：与显性URL类似，但是会隐藏真实目标地址  xshell下载与安装 主要用于远程登录服务器进行相关操作。在官网注册后发送下载链接到你的注册邮箱，或者到搜索引擎搜索下载。 个人版免费，企业版收费。 下载后一路点击下一步，完成。
+登录服务器步骤： 点击左上角&#39;文件&amp;rsquo;&amp;ndash;&amp;lsquo;新建&amp;rsquo; 然后弹出对话框 常规：名称，这个你可以随便取什么名字 协议：SSH，一般默认 主机：空，填上你的服务器IP地址 端口号：22，默认的就行 填好以上选项内容，点击左侧的&#39;用户身份验证&amp;rsquo;，然后看右侧，方法选择&amp;rsquo;Password&amp;rsquo;，在下面输入你的服务器登录用户名和密码，最后点击下面的&#39;连接&amp;rsquo;。 登录成功！进入界面。
+百度网盘官网软件下载链接： 链接: https://pan.baidu.com/s/19K5q1JkmD9qnYaGRTALyLg 密码: r6hx
+安装Nginx 首先用xshell登录服务器 通过 yum 安装 Nginx
+ yum install nginx
+ 启动 Nginx 服务</description>
+    </item>
+    
+  </channel>
+</rss>

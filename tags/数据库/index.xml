@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sun, 30 Jul 2017 11:58:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python学习资料</title>
+      <link>https://www.markhoo.com/archives/pyziliao/</link>
+      <pubDate>Sun, 30 Jul 2017 11:58:23 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pyziliao/</guid>
+      <description>电子书下载： 简明Python教程2.7 简明Python教程3.5 笨办法学 Python （第三版） python标准库中文版PDF(带章节书签) 深入理解Python中文版高清PDF 【Python 2.7教程】廖雪峰 django_book中文版 简明Python教程 Python编程指南 以上电子书著作版权归原作者所有！链接后期有空会重新补充
+编辑器下载： Python官网下载 https://www.python.org/downloads/ sublimetext官网下载 http://www.sublimetext.com/ Visual Studio Code官网下载 （中文官网） https://code.visualstudio.com/Download Vim官网下载 https://www.vim.org/download.php Atom官网下载 https://atom.io/ PyCharm官网下载 https://www.jetbrains.com/pycharm/ Eclipse官网下载 https://www.eclipse.org/downloads/ Emacs官网下载 http://www.gnu.org/software/emacs/
+Linux下载： Redhat官网下载 https://access.redhat.com/downloads CentOS官网下载 https://www.centos.org/download/ Ubuntu官网下载 https://cn.ubuntu.com/download/ Mint官网下载 https://www.linuxmint.com/download.php Debian官网下载 https://www.debian.org/distrib/ Arch官网下载 https://www.archlinux.org/download/ Fedora官网下载 https://getfedora.org/zh_CN/ deepin官网下载 https://www.deepin.org/download/
+数据库下载： MYSQL官网下载 https://www.mysql.com/downloads/ MongoDB官网下载 https://www.mongodb.com/ Redis官网下载 https://redis.io/download
+内容有错误的或者有需要补充的，请在评论区留言</description>
+    </item>
+    
+  </channel>
+</rss>

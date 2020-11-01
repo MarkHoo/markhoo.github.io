@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网易云音乐 on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</link>
+    <description>Recent content in 网易云音乐 on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sat, 18 Nov 2017 11:59:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>两种网易云音乐播放器调用代码 网站可直接调用</title>
+      <link>https://www.markhoo.com/archives/wangyi/</link>
+      <pubDate>Sat, 18 Nov 2017 11:59:59 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/wangyi/</guid>
+      <description>第一种： 效果： &amp;lt;span data-mce-type=&#34;bookmark&#34; style=&#34;display: inline-block; width: 0px; overflow: hidden; line-height: 0;&#34; class=&#34;mce_SELRES_start&#34;&amp;gt;&amp;lt;/span&amp;gt; 代码： &amp;lt;iframe src=&amp;quot;//music.163.com/outchain/player?type=2&amp;amp;amp;id=4341314&amp;amp;amp;auto=1&amp;amp;amp;height=66&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;86&amp;quot; frameborder=&amp;quot;no&amp;quot; marginwidth=&amp;quot;0&amp;quot; marginheight=&amp;quot;0&amp;quot;&amp;gt;&amp;amp;lt;span data-mce-type=&amp;quot;bookmark&amp;quot; style=&amp;quot;display: inline-block; width: 0px; overflow: hidden; line-height: 0;&amp;quot; class=&amp;quot;mce_SELRES_start&amp;quot;&amp;amp;gt;&amp;amp;lt;/span&amp;amp;gt;&amp;lt;/iframe&amp;gt; 参数说明： 播放器可修改参数：
+width=100% #自适应宽度 height=86 #根据自己喜好修改 id=4341314 #为歌曲的ID http://music.163.com/#/song?id=4341314 auto=0 #0为不自动播放，1为自动播放
+第二种： 效果：  代码： &amp;lt;iframe frameborder=&amp;quot;no&amp;quot; border=&amp;quot;0&amp;quot; marginwidth=&amp;quot;0&amp;quot; marginheight=&amp;quot;0&amp;quot; width=100% height=450 src=&amp;quot;//music.163.com/outchain/player?type=0&amp;amp;id=967047669&amp;amp;auto=0&amp;amp;height=430&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt; </description>
+    </item>
+    
+  </channel>
+</rss>

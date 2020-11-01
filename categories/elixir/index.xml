@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elixir on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/categories/elixir/</link>
+    <description>Recent content in Elixir on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Wed, 11 Dec 2019 22:01:38 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/categories/elixir/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CentOS 7.7安装Erlang和Elixir</title>
+      <link>https://www.markhoo.com/archives/centos7installerlangandelixir/</link>
+      <pubDate>Wed, 11 Dec 2019 22:01:38 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/centos7installerlangandelixir/</guid>
+      <description>安装之前，先看一下它们的简要说明
+Erlang Erlang是一种开源编程语言，用于构建对高可用性有要求的大规模可扩展的软实时系统。它通常用于电信，银行，电子商务，计算机电话和即时消息中。Erlang的runtime系统具有对并发，分发和容错的内置支持。它是在爱立信计算机科学实验室设计的。
+Elixir Elixir是一种动态的功能语言，旨在用于构建可伸缩和可维护的应用程序。Elixir利用了以运行低延迟，分布式和容错系统而著称的Erlang VM，同时也成功地用于Web开发和嵌入式软件领域。
+现在开始在CentOS 7.7 64位服务器中安装Erlang和Elixir。
+安装前的准备 安装Erlang和Elixir之前，需要安装以下依赖。
+ yum update
+  yum install epel-release
+  yum install gcc gcc-c++ glibc-devel make ncurses-devel openssl-devel autoconf java-1.8.0-openjdk-devel git wget wxBase.x86_64
+ 安装Erlang 由于官方存储库中的Erlang版本可能比较旧，这里我将下载并安装最新的Erlang版本。
+添加Erlang官方存储库以安装最新的Erlang。
+首先到**Erlang存储库页面**，根据你使用的发行版下载存储库：
+由于现在在CentOS 7.7中安装Erlang，因此我将添加以下存储库。
+ wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+ 使用以下命令更新存储库列表：
+ yum update
+ 使用以下命令安装erlang
+ yum install erlang
+ 现在最新版本的Erlang已安装完成。
+验证Erlang 运行以下命令以验证是否已安装Erlang。
+ erl
+ 输出示例：
+Erlang/OTP 22 [erts-10.6] [source] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:1] [hipe]Eshell V10.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pip on 南有嘉鱼</title>
+    <link>https://www.markhoo.com/tags/pip/</link>
+    <description>Recent content in pip on 南有嘉鱼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hant</language>
+    <copyright>2007-2020 MarkHoo&#39;s Blog | 南有嘉鱼</copyright>
+    <lastBuildDate>Sat, 28 Jul 2018 10:55:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.markhoo.com/tags/pip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>更换pip源到国内镜像加速python pypi包的安装</title>
+      <link>https://www.markhoo.com/archives/pippypi/</link>
+      <pubDate>Sat, 28 Jul 2018 10:55:37 +0800</pubDate>
+      
+      <guid>https://www.markhoo.com/archives/pippypi/</guid>
+      <description>昨晚安装Django的时候总是安装到一半就报错，而且速度很慢，问题主要是国外的源连接不稳定会中断所致。后来就想到了切换到国内源。想到可能还会有同学碰到类似的问题，特此记录分享一下
+pip国内的一些镜像 公网：http://e.pypi.python.org/simple 教育网：http://pypi.tuna.tsinghua.edu.cn/simple 清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/ 豆瓣(douban) http://pypi.douban.com/simple/ 阿里云 http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 华中理工大学http://pypi.hustunique.com/simple 山东理工大学http://pypi.sdutlinux.org/simple
+修改源方法： 临时使用： 可以在使用pip的时候在后面加上-i参数，指定pip源
+ pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple
+ 指定需要安装的库requirements.txt
+ pip install -r &amp;ldquo;/home/admin/$APP_NAME/conf/requirements.txt&amp;rdquo; -i &amp;ldquo;http://mirrors.aliyun.com/pypi/simple&amp;quot; &amp;ndash;trusted-host &amp;ldquo;mirrors.aliyun.com&amp;rdquo; &amp;amp;&amp;amp; \ #通过阿里云镜像安装三方库
+ 永久修改： Linux: 修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simpleWindows: 直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下
+[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple参考：https://pip.pypa.io/en/latest/configuration/</description>
+    </item>
+    
+  </channel>
+</rss>
