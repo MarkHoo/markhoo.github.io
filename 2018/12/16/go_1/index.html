@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>Go学习指南(一) - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://media.markhoo.com/avatar.jpg" type="image/x-icon" />
+    <meta name="description" content="Go学习指南官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。 第一部分介绍基本的语法和数据结构;第二部分讨论方法和接口;第三部分介绍Go的并发原语。可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快： 请先在本地安装 Go 然后使用 go get 命令安装 gotour-zh: go get github.com&#x2F;Go-zh&#x2F;tour&#x2F;go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go学习指南(一)">
+<meta property="og:url" content="https://markhoo.com/2018/12/16/go_1/index.html">
+<meta property="og:site_name" content="和光同尘|南有嘉鱼|markhoo|沉默是金">
+<meta property="og:description" content="Go学习指南官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。 第一部分介绍基本的语法和数据结构;第二部分讨论方法和接口;第三部分介绍Go的并发原语。可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快： 请先在本地安装 Go 然后使用 go get 命令安装 gotour-zh: go get github.com&#x2F;Go-zh&#x2F;tour&#x2F;go">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markhoo.com/static/img/syntax/newton.png">
+<meta property="article:published_time" content="2018-12-15T16:09:04.000Z">
+<meta property="article:modified_time" content="2022-01-10T14:23:43.676Z">
+<meta property="article:author" content="Mark Hoo">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://markhoo.com/static/img/syntax/newton.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1650015363932">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650015363932">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Mark Hoo" class="mdui-btn mdui-btn-icon"><img src="https://media.markhoo.com/avatar.jpg" alt="Mark Hoo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Mark Hoo">
+            <img src="https://media.markhoo.com/avatar.jpg" alt="Mark Hoo" alt="Mark Hoo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>40</div>
+        <div><span>标签</span>32</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/books.html" title="书架">
+            <i class="mdui-list-item-icon nexmoefont icon-battlenet"></i>
+            <div class="mdui-list-item-content">
+                书架
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/photos.html" title="相册">
+            <i class="mdui-list-item-icon nexmoefont icon-tuchong"></i>
+            <div class="mdui-list-item-content">
+                相册
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/messages.html" title="留言板">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                留言板
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/links.html" title="邻居">
+            <i class="mdui-list-item-icon nexmoefont icon-dribbble"></i>
+            <div class="mdui-list-item-content">
+                邻居
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://kh.markhoo.com" title="口红">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                口红
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:markhoo.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/182687081" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/markhoo/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/C-C/">C/C++</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Django/">Django</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Elixir/">Elixir</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Go/">Go</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Linux/">Linux</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Nginx/">Nginx</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Python/">Python</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/默认分类/">默认分类</a>
+          <span class="category-list-count">10</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/CentOS7/" style="font-size: 15.71px;">CentOS7</a> <a href="/tags/Django/" style="font-size: 18.57px;">Django</a> <a href="/tags/Elixir/" style="font-size: 11.43px;">Elixir</a> <a href="/tags/Erlang/" style="font-size: 10px;">Erlang</a> <a href="/tags/Gin/" style="font-size: 11.43px;">Gin</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/tags/Gunicorn/" style="font-size: 12.86px;">Gunicorn</a> <a href="/tags/Hugo/" style="font-size: 10px;">Hugo</a> <a href="/tags/IDE/" style="font-size: 11.43px;">IDE</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 12.86px;">Linux</a> <a href="/tags/Nginx/" style="font-size: 14.29px;">Nginx</a> <a href="/tags/Phoenix/" style="font-size: 10px;">Phoenix</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Todo/" style="font-size: 10px;">Todo</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/xadmin/" style="font-size: 10px;">xadmin</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">网易云音乐</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 11.43px;">面试题</a> <a href="/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">音乐播放器</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Mark Hoo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index">苏ICP备17044309号</a><br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go学习指南(一)" class="lazyload">
+              <h1>Go学习指南(一)</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月16日</a>
+    <a><i class="nexmoefont icon-areachart"></i>9.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 46 分钟</a>
+</div>
+
+      
+
+      <h2 id="Go学习指南"><a href="#Go学习指南" class="headerlink" title="Go学习指南"></a><a target="_blank" rel="noopener" href="https://tour.go-zh.org/welcome/1">Go学习指南</a></h2><p>官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。</p>
+<p>第一部分介绍基本的语法和数据结构;<br>第二部分讨论方法和接口;<br>第三部分介绍Go的并发原语。<br>可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快：</p>
+<p>请先在本地<a href="/install_simple">安装 Go</a> 然后使用 <a href="/gocmd">go get</a> 命令安装 gotour-zh:</p>
+<p>go get github.com/Go-zh/tour/gotour</p>
+<p>然后运行得到的 gotour 程序就可以了(./gotour是Mac系统或linux系统执行程序的方式，在windows系统下你可以在自己设置的<a href="/code#workspace">GOPATH工作目录</a>下的bin文件夹内找到它)：</p>
+<p>cd $GOPATH/bin<br>./gotour</p>
+<p>如果不想安装编辑器，可以前往<a target="_blank" rel="noopener" href="https://tour.go-zh.org/welcome/1">官方提供的在线编辑器</a>(自备梯子)</p>
+<h3 id="Hello-世界"><a href="#Hello-世界" class="headerlink" title="Hello, 世界"></a>Hello, 世界</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    fmt.Println(“Hello, 世界”)<br>}</p>
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math/rand”<br>)</p>
+<p>func main() {<br>    fmt.Println(“My favorite number is”, rand.Intn(10))<br>}</p>
+<p>每个 Go 程序都是由包组成的。</p>
+<p>程序运行的入口是包 main 。</p>
+<p>这个程序使用并导入了包 “fmt” 和 “math/rand” 。</p>
+<p>按照惯例，包名与导入路径的最后一个目录一致。例如，”math/rand” 包由 package rand 语句开始。</p>
+<p>注意：这个程序的运行环境是确定性的，因此 rand.Intn 每次都会返回相同的数字。 （为了得到不同的随机数，需要提供一个随机数种子，参阅 rand.Seed。）</p>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>func main() {<br>    fmt.Printf(“Now you have %g problems.”, math.Sqrt(7))<br>}</p>
+<p>这个代码用圆括号组合了导入，这是“打包”导入语句。</p>
+<p>同样可以编写多个导入语句，例如：</p>
+<p>import “fmt”<br>import “math”</p>
+<p>不过使用打包的导入语句是更好的形式。</p>
+<h3 id="导出名"><a href="#导出名" class="headerlink" title="导出名"></a>导出名</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>func main() {<br>    fmt.Println(math.pi)<br>}</p>
+<p>在 Go 中，首字母大写的名称是被导出的。</p>
+<p>在导入包之后，你只能访问包所导出的名字，任何未导出的名字是不能被包外的代码访问的。</p>
+<p>Foo 和 FOO 都是被导出的名称。名称 foo 是不会被导出的。</p>
+<p>执行代码，注意编译器报的错误。</p>
+<p>然后将 math.pi 改名为 math.Pi 再试着执行一下。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func add(x int, y int) int {<br>    return x + y<br>}</p>
+<p>func main() {<br>    fmt.Println(add(42, 13))<br>}</p>
+<p>函数可以没有参数或接受多个参数。</p>
+<p>在这个例子中， add 接受两个 int 类型的参数。</p>
+<p>注意类型在变量名 之后 。</p>
+<p>（参考 这篇关于 <a target="_blank" rel="noopener" href="https://blog.go-zh.org/gos-declaration-syntax">Go 语法定义</a>了解类型以这种形式出现的原因。）</p>
+<h3 id="函数（续）"><a href="#函数（续）" class="headerlink" title="函数（续）"></a>函数（续）</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func add(x, y int) int {<br>    return x + y<br>}</p>
+<p>func main() {<br>    fmt.Println(add(42, 13))<br>}</p>
+<p>当两个或多个连续的函数命名参数是同一类型，则除了最后一个类型之外，其他都可以省略。</p>
+<p>在这个例子中 ，</p>
+<p>x int, y int</p>
+<p>被缩写为</p>
+<p>x, y int</p>
+<h3 id="多值返回"><a href="#多值返回" class="headerlink" title="多值返回"></a>多值返回</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func swap(x, y string) (string, string) {<br>    return y, x<br>}</p>
+<p>func main() {<br>    a, b := swap(“hello”, “world”)<br>    fmt.Println(a, b)<br>}</p>
+<p>函数可以返回任意数量的返回值。</p>
+<p>swap 函数返回了两个字符串。</p>
+<h3 id="命名返回值"><a href="#命名返回值" class="headerlink" title="命名返回值"></a>命名返回值</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func split(sum int) (x, y int) {<br>    x = sum * 4 / 9<br>    y = sum - x<br>    return<br>}</p>
+<p>func main() {<br>    fmt.Println(split(17))<br>}</p>
+<p>Go 的返回值可以被命名，并且就像在函数体开头声明的变量那样使用。</p>
+<p>返回值的名称应当具有一定的意义，可以作为文档使用。</p>
+<p>没有参数的 return 语句返回各个返回变量的当前值。这种用法被称作“裸”返回。</p>
+<p>直接返回语句仅应当用在像下面这样的短函数中。在长的函数中它们会影响代码的可读性</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>var c, python, java bool</p>
+<p>func main() {<br>    var i int<br>    fmt.Println(i, c, python, java)<br>}</p>
+<p>var 语句定义了一个变量的列表；跟函数的参数列表一样，类型在后面。</p>
+<p>就像在这个例子中看到的一样， var 语句可以定义在包或函数级别</p>
+<h3 id="初始化变量"><a href="#初始化变量" class="headerlink" title="初始化变量"></a>初始化变量</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>var i, j int = 1, 2</p>
+<p>func main() {<br>    var c, python, java = true, false, “no!”<br>    fmt.Println(i, j, c, python, java)<br>}</p>
+<p>变量定义可以包含初始值，每个变量对应一个。</p>
+<p>如果初始化是使用表达式，则可以省略类型；变量从初始值中获得类型。</p>
+<h3 id="短声明变量"><a href="#短声明变量" class="headerlink" title="短声明变量"></a>短声明变量</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    var i, j int = 1, 2<br>    k := 3<br>    c, python, java := true, false, “no!”</p>
+<pre><code>fmt.Println(i, j, k, c, python, java)
+</code></pre>
+<p>}</p>
+<p>在函数中， := 简洁赋值语句在明确类型的地方，可以用于替代 var 定义。</p>
+<p>函数外的每个语句都必须以关键字开始（ var 、 func 、等等）， := 结构不能使用在函数外。</p>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math/cmplx”<br>)</p>
+<p>var (<br>    ToBe   bool       = false<br>    MaxInt uint64     = 1&lt;&lt;64 - 1<br>    z      complex128 = cmplx.Sqrt(-5 + 12i)<br>)</p>
+<p>func main() {<br>    const f = “%T(%v)\n”<br>    fmt.Printf(f, ToBe, ToBe)<br>    fmt.Printf(f, MaxInt, MaxInt)<br>    fmt.Printf(f, z, z)<br>}</p>
+<p>Go 有以下几种基本类型 Basic types</p>
+<p>bool</p>
+<p>string</p>
+<p>int  int8  int16  int32  int64<br>uint uint8 uint16 uint32 uint64 uintptr</p>
+<p>byte // uint8 的别名</p>
+<p>rune // int32 的别名<br>     // 代表一个Unicode码</p>
+<p>float32 float64</p>
+<p>complex64 complex128</p>
+<p>这个例子演示了具有不同类型的变量。 同时与导入语句一样，变量的定义“打包”在一个语法块中。</p>
+<p>int，uint 和 uintptr 类型在32位的系统上一般是32位，而在64位系统上是64位。当你需要使用一个整数类型时，你应该首选 int，仅当有特别的理由才使用定长整数类型或者无符号整数类型。</p>
+<h3 id="零值"><a href="#零值" class="headerlink" title="零值"></a>零值</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    var i int<br>    var f float64<br>    var b bool<br>    var s string<br>    fmt.Printf(“%v %v %v %q\n”, i, f, b, s)<br>}</p>
+<p>变量在定义时没有明确的初始化时会赋值为 零值 。</p>
+<p>零值是：</p>
+<ul>
+<li>  数值类型为 0 ，</li>
+<li>  布尔类型为 false ，</li>
+<li>  字符串为 “” （空字符串）。</li>
+</ul>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>func main() {<br>    var x, y int = 3, 4<br>    var f float64 = math.Sqrt(float64(x*x + y*y))<br>    var z uint = uint(f)<br>    fmt.Println(x, y, z)<br>}</p>
+<p>表达式 T(v) 将值 v 转换为类型 T 。</p>
+<p>一些关于数值的转换：</p>
+<p>var i int = 42<br>var f float64 = float64(i)<br>var u uint = uint(f)</p>
+<p>或者，更加简单的形式：</p>
+<p>i := 42<br>f := float64(i)<br>u := uint(f)</p>
+<p>与 C 不同的是 Go 的在不同类型之间的项目赋值时需要显式转换。 试着移除例子中 float64 或 int 的转换看看会发生什么。</p>
+<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    v := 42 // change me!<br>    fmt.Printf(“v is of type %T\n”, v)<br>}</p>
+<p>在定义一个变量却并不显式指定其类型时（使用 := 语法或者 var = 表达式语法）， 变量的类型由（等号）右侧的值推导得出。</p>
+<p>当右值定义了类型时，新变量的类型与其相同：</p>
+<p>var i int<br>j := i // j 也是一个 int</p>
+<p>但是当右边包含了未指名类型的数字常量时，新的变量就可能是 int 、 float64 或 complex128 。 这取决于常量的精度：</p>
+<p>i := 42           // int<br>f := 3.142        // float64<br>g := 0.867 + 0.5i // complex128</p>
+<p>尝试修改演示代码中 v 的初始值，并观察这是如何影响其类型的。</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>const Pi = 3.14</p>
+<p>func main() {<br>    const World = “世界”<br>    fmt.Println(“Hello”, World)<br>    fmt.Println(“Happy”, Pi, “Day”)</p>
+<pre><code>const Truth = true
+fmt.Println(&quot;Go rules?&quot;, Truth)
+</code></pre>
+<p>}</p>
+<p>常量的定义与变量类似，只不过使用 const 关键字。</p>
+<p>常量可以是字符、字符串、布尔或数字类型的值。</p>
+<p>常量不能使用 := 语法定义。</p>
+<h3 id="数值常量"><a href="#数值常量" class="headerlink" title="数值常量"></a>数值常量</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>const (<br>    Big   = 1 &lt;&lt; 100<br>    Small = Big &gt;&gt; 99<br>)</p>
+<p>func needInt(x int) int { return x*10 + 1 }<br>func needFloat(x float64) float64 {<br>    return x * 0.1<br>}</p>
+<p>func main() {<br>    fmt.Println(needInt(Small))<br>    fmt.Println(needFloat(Small))<br>    fmt.Println(needFloat(Big))<br>}</p>
+<p>数值常量是高精度的 值 。</p>
+<p>一个未指定类型的常量由上下文来决定其类型。</p>
+<p>也尝试一下输出 needInt(Big) 吧。</p>
+<p>（int 可以存放最大64位的整数，根据平台不同有时会更少。）</p>
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    sum := 0<br>    for i := 0; i &lt; 10; i++ {<br>        sum += i<br>    }<br>    fmt.Println(sum)<br>}</p>
+<p>Go 只有一种循环结构—— for 循环。</p>
+<p>基本的 for 循环包含三个由分号分开的组成部分：</p>
+<ul>
+<li>  初始化语句：在第一次循环执行前被执行</li>
+<li>  循环条件表达式：每轮迭代开始前被求值</li>
+<li>  后置语句：每轮迭代后被执行</li>
+</ul>
+<p>初始化语句一般是一个短变量声明，这里声明的变量仅在整个 for 循环语句可见。</p>
+<p>如果条件表达式的值变为 false，那么迭代将终止。</p>
+<p>_注意_：不像 C，Java，或者 Javascript 等其他语言，for 语句的三个组成部分 并不需要用括号括起来，但循环体必须用 { } 括起来。</p>
+<h3 id="for（续）"><a href="#for（续）" class="headerlink" title="for（续）"></a>for（续）</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    sum := 1<br>    for ; sum &lt; 1000; {<br>        sum += sum<br>    }<br>    fmt.Println(sum)<br>}</p>
+<p>循环初始化语句和后置语句都是可选的。</p>
+<h3 id="for-是-Go-的-“while”"><a href="#for-是-Go-的-“while”" class="headerlink" title="for 是 Go 的 “while”"></a>for 是 Go 的 “while”</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    sum := 1<br>    for sum &lt; 1000 {<br>        sum += sum<br>    }<br>    fmt.Println(sum)<br>}</p>
+<p>C 的 while 在 Go 中叫做 for 。</p>
+<h3 id="死循环"><a href="#死循环" class="headerlink" title="死循环"></a>死循环</h3><p>package main</p>
+<p>func main() {<br>    for {<br>    }<br>}</p>
+<p>如果省略了循环条件，循环就不会结束，因此可以用更简洁地形式表达死循环。</p>
+<h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>func sqrt(x float64) string {<br>    if x &lt; 0 {<br>        return sqrt(-x) + “i”<br>    }<br>    return fmt.Sprint(math.Sqrt(x))<br>}</p>
+<p>func main() {<br>    fmt.Println(sqrt(2), sqrt(-4))<br>}</p>
+<p>就像 for 循环一样，Go 的 if 语句也不要求用 ( ) 将条件括起来，同时， { } 还是必须有的。</p>
+<h3 id="if-的便捷语句"><a href="#if-的便捷语句" class="headerlink" title="if 的便捷语句"></a>if 的便捷语句</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>func pow(x, n, lim float64) float64 {<br>    if v := math.Pow(x, n); v &lt; lim {<br>        return v<br>    }<br>    return lim<br>}</p>
+<p>func main() {<br>    fmt.Println(<br>        pow(3, 2, 10),<br>        pow(3, 3, 20),<br>    )<br>}</p>
+<p>跟 for 一样， if 语句可以在条件之前执行一个简单语句。</p>
+<p>由这个语句定义的变量的作用域仅在 if 范围之内。</p>
+<p>（在最后的 return 语句处使用 v 看看。）</p>
+<h3 id="if-和-else"><a href="#if-和-else" class="headerlink" title="if 和 else"></a>if 和 else</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>func pow(x, n, lim float64) float64 {<br>    if v := math.Pow(x, n); v &lt; lim {<br>        return v<br>    } else {<br>        fmt.Printf(“%g &gt;= %g\n”, v, lim)<br>    }<br>    // 这里开始就不能使用 v 了<br>    return lim<br>}</p>
+<p>func main() {<br>    fmt.Println(<br>        pow(3, 2, 10),<br>        pow(3, 3, 20),<br>    )<br>}</p>
+<p>在 if 的便捷语句定义的变量同样可以在任何对应的 else 块中使用。</p>
+<p>（提示：两个 pow 调用都在 main 调用 fmt.Println 前执行完毕了。）</p>
+<h3 id="练习：循环和函数"><a href="#练习：循环和函数" class="headerlink" title="练习：循环和函数"></a>练习：循环和函数</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>)</p>
+<p>func Sqrt(x float64) float64 {<br>}</p>
+<p>func main() {<br>    fmt.Println(Sqrt(2))<br>}</p>
+<p>作为练习函数和循环的简单途径，用牛顿法实现开方函数。</p>
+<p>在这个例子中，牛顿法是通过选择一个初始点 z 然后重复这一过程求 Sqrt(x) 的近似值：</p>
+<p><img src="/static/img/syntax/newton.png"></p>
+<p>为了做到这个，只需要重复计算 10 次，并且观察不同的值（1，2，3，……）是如何逐步逼近结果的。 然后，修改循环条件，使得当值停止改变（或改变非常小）的时候退出循环。观察迭代次数是否变化。结果与 math.Sqrt 接近吗？</p>
+<p>提示：定义并初始化一个浮点值，向其提供一个浮点语法或使用转换：</p>
+<p>z := float64(1)<br>z := 1.0</p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “runtime”<br>)</p>
+<p>func main() {<br>    fmt.Print(“Go runs on “)<br>    switch os := runtime.GOOS; os {<br>    case “darwin”:<br>        fmt.Println(“OS X.”)<br>    case “linux”:<br>        fmt.Println(“Linux.”)<br>    default:<br>        // freebsd, openbsd,<br>        // plan9, windows…<br>        fmt.Printf(“%s.”, os)<br>    }<br>}</p>
+<p>你可能已经知道 switch 语句会长什么样了。</p>
+<p>除非以 fallthrough 语句结束，否则分支会自动终止。</p>
+<h3 id="switch-的执行顺序"><a href="#switch-的执行顺序" class="headerlink" title="switch 的执行顺序"></a>switch 的执行顺序</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “time”<br>)</p>
+<p>func main() {<br>    fmt.Println(“When’s Saturday?”)<br>    today := time.Now().Weekday()<br>    switch time.Saturday {<br>    case today + 0:<br>        fmt.Println(“Today.”)<br>    case today + 1:<br>        fmt.Println(“Tomorrow.”)<br>    case today + 2:<br>        fmt.Println(“In two days.”)<br>    default:<br>        fmt.Println(“Too far away.”)<br>    }<br>}</p>
+<p>switch 的条件从上到下的执行，当匹配成功的时候停止。</p>
+<p>（例如，</p>
+<p>switch i {<br>case 0:<br>case f():<br>}</p>
+<p>当 i==0 时不会调用 f 。）</p>
+<h3 id="没有条件的-switch"><a href="#没有条件的-switch" class="headerlink" title="没有条件的 switch"></a>没有条件的 switch</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “time”<br>)</p>
+<p>func main() {<br>    t := time.Now()<br>    switch {<br>    case t.Hour() &lt; 12:<br>        fmt.Println(“Good morning!”)<br>    case t.Hour() &lt; 17:<br>        fmt.Println(“Good afternoon.”)<br>    default:<br>        fmt.Println(“Good evening.”)<br>    }<br>}</p>
+<p>没有条件的 switch 同 switch true 一样。</p>
+<p>这一构造使得可以用更清晰的形式来编写长的 if-then-else 链。</p>
+<h3 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    defer fmt.Println(“world”)</p>
+<pre><code>fmt.Println(&quot;hello&quot;)
+</code></pre>
+<p>}</p>
+<p>defer 语句会延迟函数的执行直到上层函数返回。</p>
+<p>延迟调用的参数会立刻生成，但是在上层函数返回前函数都不会被调用。</p>
+<h3 id="defer-栈"><a href="#defer-栈" class="headerlink" title="defer 栈"></a>defer 栈</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    fmt.Println(“counting”)</p>
+<pre><code>for i := 0; i &lt; 10; i++ &#123;
+    defer fmt.Println(i)
+&#125;
+
+fmt.Println(&quot;done&quot;)
+</code></pre>
+<p>}</p>
+<p>延迟的函数调用被压入一个栈中。当函数返回时， 会按照后进先出的顺序调用被延迟的函数调用。</p>
+<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    i, j := 42, 2701</p>
+<pre><code>p := &amp;i         // point to i
+fmt.Println(*p) // read i through the pointer
+*p = 21         // set i through the pointer
+fmt.Println(i)  // see the new value of i
+
+p = &amp;j         // point to j
+\*p = \*p / 37   // divide j through the pointer
+fmt.Println(j) // see the new value of j
+</code></pre>
+<p>}</p>
+<p>Go 具有指针。 指针保存了变量的内存地址。</p>
+<p>类型 *T 是指向类型 T 的值的指针。其零值是 nil 。</p>
+<p>var p *int</p>
+<p>&amp; 符号会生成一个指向其作用对象的指针。</p>
+<p>i := 42<br>p = &amp;i</p>
+<p>* 符号表示指针指向的底层的值。</p>
+<p>fmt.Println(*p) // 通过指针 p 读取 i<br>*p = 21         // 通过指针 p 设置 i</p>
+<p>这也就是通常所说的“间接引用”或“非直接引用”。</p>
+<p>与 C 不同，Go 没有指针运算。</p>
+<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Vertex struct {<br>    X int<br>    Y int<br>}</p>
+<p>func main() {<br>    fmt.Println(Vertex{1, 2})<br>}</p>
+<p>一个结构体（ struct ）就是一个字段的集合。</p>
+<p>（而 type 的含义跟其字面意思相符。）</p>
+<h3 id="结构体字段"><a href="#结构体字段" class="headerlink" title="结构体字段"></a>结构体字段</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Vertex struct {<br>    X int<br>    Y int<br>}</p>
+<p>func main() {<br>    v := Vertex{1, 2}<br>    v.X = 4<br>    fmt.Println(v.X)<br>}</p>
+<p>结构体字段使用点号来访问。</p>
+<h3 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Vertex struct {<br>    X int<br>    Y int<br>}</p>
+<p>func main() {<br>    v := Vertex{1, 2}<br>    p := &amp;v<br>    p.X = 1e9<br>    fmt.Println(v)<br>}</p>
+<p>结构体字段可以通过结构体指针来访问。</p>
+<p>通过指针间接的访问是透明的。</p>
+<h3 id="结构体文法"><a href="#结构体文法" class="headerlink" title="结构体文法"></a>结构体文法</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Vertex struct {<br>    X, Y int<br>}</p>
+<p>var (<br>    v1 = Vertex{1, 2}  // 类型为 Vertex<br>    v2 = Vertex{X: 1}  // Y:0 被省略<br>    v3 = Vertex{}      // X:0 和 Y:0<br>    p  = &amp;Vertex{1, 2} // 类型为 *Vertex<br>)</p>
+<p>func main() {<br>    fmt.Println(v1, p, v2, v3)<br>}</p>
+<p>结构体文法表示通过结构体字段的值作为列表来新分配一个结构体。</p>
+<p>使用 Name: 语法可以仅列出部分字段。（字段名的顺序无关。）</p>
+<p>特殊的前缀 &amp; 返回一个指向结构体的指针</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    var a [2]string<br>    a[0] = “Hello”<br>    a[1] = “World”<br>    fmt.Println(a[0], a[1])<br>    fmt.Println(a)<br>}</p>
+<p>类型 [n]T 是一个有 n 个类型为 T 的值的数组。</p>
+<p>表达式</p>
+<p>var a [10]int</p>
+<p>定义变量 a 是一个有十个整数的数组。</p>
+<p>数组的长度是其类型的一部分，因此数组不能改变大小。 这看起来是一个制约，但是请不要担心； Go 提供了更加便利的方式来使用数组。</p>
+<h3 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    s := []int{2, 3, 5, 7, 11, 13}<br>    fmt.Println(“s ==”, s)</p>
+<pre><code>for i := 0; i &lt; len(s); i++ &#123;
+    fmt.Printf(&quot;s\[%d\] == %d\\n&quot;, i, s\[i\])
+&#125;
+</code></pre>
+<p>}</p>
+<p>一个 slice 会指向一个序列的值，并且包含了长度信息。</p>
+<p>[]T 是一个元素类型为 T 的 slice。</p>
+<p>len(s) 返回 slice s 的长度。</p>
+<h3 id="slice-的-slice"><a href="#slice-的-slice" class="headerlink" title="slice 的 slice"></a>slice 的 slice</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “strings”<br>)</p>
+<p>func main() {<br>    // Create a tic-tac-toe board.<br>    game := [][]string{<br>        []string{“<em>“, “</em>“, “<em>“},<br>        []string{“</em>“, “<em>“, “</em>“},<br>        []string{“<em>“, “</em>“, “_”},<br>    }</p>
+<pre><code>// The players take turns.
+game\[0\]\[0\] = &quot;X&quot;
+game\[2\]\[2\] = &quot;O&quot;
+game\[2\]\[0\] = &quot;X&quot;
+game\[1\]\[0\] = &quot;O&quot;
+game\[0\]\[2\] = &quot;X&quot;
+
+printBoard(game)
+</code></pre>
+<p>}</p>
+<p>slice 可以包含任意的类型，包括另一个 slice。</p>
+<h3 id="对-slice-切片"><a href="#对-slice-切片" class="headerlink" title="对 slice 切片"></a>对 slice 切片</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    s := []int{2, 3, 5, 7, 11, 13}<br>    fmt.Println(“s ==”, s)<br>    fmt.Println(“s[1:4] ==”, s[1:4])</p>
+<pre><code>// 省略下标代表从 0 开始
+fmt.Println(&quot;s\[:3\] ==&quot;, s\[:3\])
+
+// 省略上标代表到 len(s) 结束
+fmt.Println(&quot;s\[4:\] ==&quot;, s\[4:\])
+</code></pre>
+<p>}</p>
+<p>slice 可以重新切片，创建一个新的 slice 值指向相同的数组。</p>
+<p>表达式</p>
+<p>s[lo:hi]</p>
+<p>表示从 lo 到 hi-1 的 slice 元素，含前端，不包含后端。因此</p>
+<p>s[lo:lo]</p>
+<p>是空的，而</p>
+<p>s[lo:lo+1]</p>
+<p>有一个元素。</p>
+<h3 id="构造-slice"><a href="#构造-slice" class="headerlink" title="构造 slice"></a>构造 slice</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    a := make([]int, 5)<br>    printSlice(“a”, a)<br>    b := make([]int, 0, 5)<br>    printSlice(“b”, b)<br>    c := b[:2]<br>    printSlice(“c”, c)<br>    d := c[2:5]<br>    printSlice(“d”, d)<br>}</p>
+<p>func printSlice(s string, x []int) {<br>    fmt.Printf(“%s len=%d cap=%d %v\n”,<br>        s, len(x), cap(x), x)<br>}</p>
+<p>slice 由函数 make 创建。这会分配一个全是零值的数组并且返回一个 slice 指向这个数组：</p>
+<p>a := make([]int, 5)  // len(a)=5</p>
+<p>为了指定容量，可传递第三个参数到 make：</p>
+<p>b := make([]int, 0, 5) // len(b)=0, cap(b)=5</p>
+<p>b = b[:cap(b)] // len(b)=5, cap(b)=5<br>b = b[1:]      // len(b)=4, cap(b)=4</p>
+<h3 id="nil-slice"><a href="#nil-slice" class="headerlink" title="nil slice"></a>nil slice</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    var z []int<br>    fmt.Println(z, len(z), cap(z))<br>    if z == nil {<br>        fmt.Println(“nil!”)<br>    }<br>}</p>
+<p>slice 的零值是 nil 。</p>
+<p>一个 nil 的 slice 的长度和容量是 0。</p>
+<h3 id="向-slice-添加元素"><a href="#向-slice-添加元素" class="headerlink" title="向 slice 添加元素"></a>向 slice 添加元素</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    var a []int<br>    printSlice(“a”, a)</p>
+<pre><code>// append works on nil slices.
+a = append(a, 0)
+printSlice(&quot;a&quot;, a)
+
+// the slice grows as needed.
+a = append(a, 1)
+printSlice(&quot;a&quot;, a)
+
+// we can add more than one element at a time.
+a = append(a, 2, 3, 4)
+printSlice(&quot;a&quot;, a)
+</code></pre>
+<p>}</p>
+<p>func printSlice(s string, x []int) {<br>    fmt.Printf(“%s len=%d cap=%d %v\n”,<br>        s, len(x), cap(x), x)<br>}</p>
+<p>向 slice 的末尾添加元素是一种常见的操作，因此 Go 提供了一个内建函数 append 。 内建函数的文档对 append 有详细介绍。</p>
+<p>func append(s []T, vs …T) []T</p>
+<p>append 的第一个参数 s 是一个元素类型为 T 的 slice ，其余类型为 T 的值将会附加到该 slice 的末尾。</p>
+<p>append 的结果是一个包含原 slice 所有元素加上新添加的元素的 slice。</p>
+<p>如果 s 的底层数组太小，而不能容纳所有值时，会分配一个更大的数组。 返回的 slice 会指向这个新分配的数组。</p>
+<p>（了解更多关于 slice 的内容，参阅文章<a target="_blank" rel="noopener" href="https://blog.go-zh.org/go-slices-usage-and-internals">Go 切片：用法和本质</a>。）</p>
+<h3 id="range"><a href="#range" class="headerlink" title="range"></a>range</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}</p>
+<p>func main() {<br>    for i, v := range pow {<br>        fmt.Printf(“2**%d = %d\n”, i, v)<br>    }<br>}</p>
+<p>for 循环的 range 格式可以对 slice 或者 map 进行迭代循环。</p>
+<p>当使用 for 循环遍历一个 slice 时，每次迭代 range 将返回两个值。 第一个是当前下标（序号），第二个是该下标所对应元素的一个拷贝。</p>
+<h3 id="range（续）"><a href="#range（续）" class="headerlink" title="range（续）"></a>range（续）</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    pow := make([]int, 10)<br>    for i := range pow {<br>        pow[i] = 1 &lt;&lt; uint(i)<br>    }<br>    for _, value := range pow {<br>        fmt.Printf(“%d\n”, value)<br>    }<br>}</p>
+<p>可以通过赋值给 _ 来忽略序号和值。</p>
+<p>如果只需要索引值，去掉 “ , value ” 的部分即可。</p>
+<h3 id="练习：slice"><a href="#练习：slice" class="headerlink" title="练习：slice"></a>练习：slice</h3><p>package main</p>
+<p>import “golang.org/x/tour/pic”</p>
+<p>func Pic(dx, dy int) [][]uint8 {<br>}</p>
+<p>func main() {<br>    pic.Show(Pic)<br>}</p>
+<p>实现 Pic 。它返回一个长度为 dy 的 slice，其中每个元素是一个长度为 dx 且元素类型为8位无符号整数的 slice。当你运行这个程序时， 它会将每个整数作为对应像素的灰度值（好吧，其实是蓝度）并显示这个 slice 所对应的图像。</p>
+<p>计算每个像素的灰度值的方法由你决定；几个有意思的选择包括 (x+y)/2、x*y 和 x^y 。</p>
+<p>（需要使用循环来分配 [][]uint8 中的每个 []uint8 。）</p>
+<p>（使用 uint8(intValue) 来在类型之间进行转换。）</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Vertex struct {<br>    Lat, Long float64<br>}</p>
+<p>var m map[string]Vertex</p>
+<p>func main() {<br>    m = make(map[string]Vertex)<br>    m[“Bell Labs”] = Vertex{<br>        40.68433, -74.39967,<br>    }<br>    fmt.Println(m[“Bell Labs”])<br>}</p>
+<p>map 映射键到值。</p>
+<p>map 在使用之前必须用 make 来创建；值为 nil 的 map 是空的，并且不能对其赋值。</p>
+<h3 id="map-的文法"><a href="#map-的文法" class="headerlink" title="map 的文法"></a>map 的文法</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Vertex struct {<br>    Lat, Long float64<br>}</p>
+<p>var m = map[string]Vertex{<br>    “Bell Labs”: Vertex{<br>        40.68433, -74.39967,<br>    },<br>    “Google”: Vertex{<br>        37.42202, -122.08408,<br>    },<br>}</p>
+<p>func main() {<br>    fmt.Println(m)<br>}</p>
+<p>map 的文法跟结构体文法相似，不过必须有键名。</p>
+<h3 id="map-的文法（续）"><a href="#map-的文法（续）" class="headerlink" title="map 的文法（续）"></a>map 的文法（续）</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Vertex struct {<br>    Lat, Long float64<br>}</p>
+<p>var m = map[string]Vertex{<br>    “Bell Labs”: {40.68433, -74.39967},<br>    “Google”:    {37.42202, -122.08408},<br>}</p>
+<p>func main() {<br>    fmt.Println(m)<br>}</p>
+<p>若顶级类型只是一个类型名，你可以在文法的元素中省略它。</p>
+<h3 id="修改-map"><a href="#修改-map" class="headerlink" title="修改 map"></a>修改 map</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    m := make(map[string]int)</p>
+<pre><code>m\[&quot;Answer&quot;\] = 42
+fmt.Println(&quot;The value:&quot;, m\[&quot;Answer&quot;\])
+
+m\[&quot;Answer&quot;\] = 48
+fmt.Println(&quot;The value:&quot;, m\[&quot;Answer&quot;\])
+
+delete(m, &quot;Answer&quot;)
+fmt.Println(&quot;The value:&quot;, m\[&quot;Answer&quot;\])
+
+v, ok := m\[&quot;Answer&quot;\]
+fmt.Println(&quot;The value:&quot;, v, &quot;Present?&quot;, ok)
+</code></pre>
+<p>}</p>
+<p>在 map m 中插入或修改一个元素：</p>
+<p>m[key] = elem</p>
+<p>获得元素：</p>
+<p>elem = m[key]</p>
+<p>删除元素：</p>
+<p>delete(m, key)</p>
+<p>通过双赋值检测某个键存在：</p>
+<p>elem, ok = m[key]</p>
+<p>如果 key 在 m 中， ok 为 true。否则， ok 为 false，并且 elem 是 map 的元素类型的零值。</p>
+<p>同样的，当从 map 中读取某个不存在的键时，结果是 map 的元素类型的零值。</p>
+<h3 id="练习：map"><a href="#练习：map" class="headerlink" title="练习：map"></a>练习：map</h3><p>package main</p>
+<p>import (<br>    “golang.org/x/tour/wc”<br>)</p>
+<p>func WordCount(s string) map[string]int {<br>    return map[string]int{“x”: 1}<br>}</p>
+<p>func main() {<br>    wc.Test(WordCount)<br>}</p>
+<p>实现 WordCount。它应当返回一个含有 s 中每个 “词” 个数的 map。函数 wc.Test 针对这个函数执行一个测试用例，并输出成功还是失败。</p>
+<h3 id="函数值"><a href="#函数值" class="headerlink" title="函数值"></a>函数值</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>func compute(fn func(float64, float64) float64) float64 {<br>    return fn(3, 4)<br>}</p>
+<p>func main() {<br>    hypot := func(x, y float64) float64 {<br>        return math.Sqrt(x*x + y*y)<br>    }<br>    fmt.Println(hypot(5, 12))</p>
+<pre><code>fmt.Println(compute(hypot))
+fmt.Println(compute(math.Pow))
+</code></pre>
+<p>}</p>
+<p>函数也是值。他们可以像其他值一样传递，比如，函数值可以作为函数的参数或者返回值。</p>
+<h3 id="函数的闭包"><a href="#函数的闭包" class="headerlink" title="函数的闭包"></a>函数的闭包</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func adder() func(int) int {<br>    sum := 0<br>    return func(x int) int {<br>        sum += x<br>        return sum<br>    }<br>}</p>
+<p>func main() {<br>    pos, neg := adder(), adder()<br>    for i := 0; i &lt; 10; i++ {<br>        fmt.Println(<br>            pos(i),<br>            neg(-2*i),<br>        )<br>    }<br>}</p>
+<p>Go 函数可以是一个闭包。闭包是一个函数值，它引用了函数体之外的变量。 这个函数可以对这个引用的变量进行访问和赋值；换句话说这个函数被“绑定”在这个变量上。</p>
+<p>例如，函数 adder 返回一个闭包。每个返回的闭包都被绑定到其各自的 sum 变量上。</p>
+<h3 id="练习：斐波纳契闭包"><a href="#练习：斐波纳契闭包" class="headerlink" title="练习：斐波纳契闭包"></a>练习：斐波纳契闭包</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>// fibonacci 函数会返回一个返回 int 的函数。<br>func fibonacci() func() int {<br>}</p>
+<p>func main() {<br>    f := fibonacci()<br>    for i := 0; i &lt; 10; i++ {<br>        fmt.Println(f())<br>    }<br>}</p>
+<p>现在来通过函数做些有趣的事情。</p>
+<p>实现一个 fibonacci 函数，返回一个函数（一个闭包）可以返回连续的斐波纳契数。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>type Vertex struct {<br>    X, Y float64<br>}</p>
+<p>func (v *Vertex) Abs() float64 {<br>    return math.Sqrt(v.X*v.X + v.Y*v.Y)<br>}</p>
+<p>func main() {<br>    v := &amp;Vertex{3, 4}<br>    fmt.Println(v.Abs())<br>}</p>
+<p>Go 没有类。然而，仍然可以在结构体类型上定义方法。</p>
+<p>方法接收者 出现在 func 关键字和方法名之间的参数中。</p>
+<h3 id="方法（续）"><a href="#方法（续）" class="headerlink" title="方法（续）"></a>方法（续）</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>type MyFloat float64</p>
+<p>func (f MyFloat) Abs() float64 {<br>    if f &lt; 0 {<br>        return float64(-f)<br>    }<br>    return float64(f)<br>}</p>
+<p>func main() {<br>    f := MyFloat(-math.Sqrt2)<br>    fmt.Println(f.Abs())<br>}</p>
+<p>你可以对包中的 任意 类型定义任意方法，而不仅仅是针对结构体。</p>
+<p>但是，不能对来自其他包的类型或基础类型定义方法。</p>
+<h3 id="接收者为指针的方法"><a href="#接收者为指针的方法" class="headerlink" title="接收者为指针的方法"></a>接收者为指针的方法</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>type Vertex struct {<br>    X, Y float64<br>}</p>
+<p>func (v *Vertex) Scale(f float64) {<br>    v.X = v.X * f<br>    v.Y = v.Y * f<br>}</p>
+<p>func (v *Vertex) Abs() float64 {<br>    return math.Sqrt(v.X*v.X + v.Y*v.Y)<br>}</p>
+<p>func main() {<br>    v := &amp;Vertex{3, 4}<br>    fmt.Printf(“Before scaling: %+v, Abs: %v\n”, v, v.Abs())<br>    v.Scale(5)<br>    fmt.Printf(“After scaling: %+v, Abs: %v\n”, v, v.Abs())<br>}</p>
+<p>方法可以与命名类型或命名类型的指针关联。</p>
+<p>刚刚看到的两个 Abs 方法。一个是在 *Vertex 指针类型上，而另一个在 MyFloat 值类型上。 有两个原因需要使用指针接收者。首先避免在每个方法调用中拷贝值（如果值类型是大的结构体的话会更有效率）。其次，方法可以修改接收者指向的值。</p>
+<p>尝试修改 Abs 的定义，同时 Scale 方法使用 Vertex 代替 *Vertex 作为接收者。</p>
+<p>当 v 是 Vertex 的时候 Scale 方法没有任何作用。Scale 修改 v。当 v 是一个值（非指针），方法看到的是 Vertex 的副本，并且无法修改原始值。</p>
+<p>Abs 的工作方式是一样的。只不过，仅仅读取 v。所以读取的是原始值（通过指针）还是那个值的副本并没有关系。</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “math”<br>)</p>
+<p>type Abser interface {<br>    Abs() float64<br>}</p>
+<p>func main() {<br>    var a Abser<br>    f := MyFloat(-math.Sqrt2)<br>    v := Vertex{3, 4}</p>
+<pre><code>a = f  // a MyFloat 实现了 Abser
+a = &amp;v // a *Vertex 实现了 Abser
+
+// 下面一行，v 是一个 Vertex（而不是 *Vertex）
+// 所以没有实现 Abser。
+a = v
+
+fmt.Println(a.Abs())
+</code></pre>
+<p>}</p>
+<p>type MyFloat float64</p>
+<p>func (f MyFloat) Abs() float64 {<br>    if f &lt; 0 {<br>        return float64(-f)<br>    }<br>    return float64(f)<br>}</p>
+<p>type Vertex struct {<br>    X, Y float64<br>}</p>
+<p>func (v *Vertex) Abs() float64 {<br>    return math.Sqrt(v.X*v.X + v.Y*v.Y)<br>}</p>
+<p>接口类型是由一组方法定义的集合。</p>
+<p>接口类型的值可以存放实现这些方法的任何值。</p>
+<p>注意： 示例代码的 22 行存在一个错误。 由于 Abs 只定义在 *Vertex（指针类型）上， 所以 Vertex（值类型）不满足 Abser。</p>
+<h3 id="隐式接口"><a href="#隐式接口" class="headerlink" title="隐式接口"></a>隐式接口</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “os”<br>)</p>
+<p>type Reader interface {<br>    Read(b []byte) (n int, err error)<br>}</p>
+<p>type Writer interface {<br>    Write(b []byte) (n int, err error)<br>}</p>
+<p>type ReadWriter interface {<br>    Reader<br>    Writer<br>}</p>
+<p>func main() {<br>    var w Writer</p>
+<pre><code>// os.Stdout 实现了 Writer
+w = os.Stdout
+
+fmt.Fprintf(w, &quot;hello, writer\\n&quot;)
+</code></pre>
+<p>}</p>
+<p>类型通过实现那些方法来实现接口。 没有显式声明的必要；所以也就没有关键字“implements“。</p>
+<p>隐式接口解藕了实现接口的包和定义接口的包：互不依赖。</p>
+<p>因此，也就无需在每一个实现上增加新的接口名称，这样同时也鼓励了明确的接口定义。</p>
+<p>包 io 定义了 Reader 和 Writer；其实不一定要这么做。</p>
+<h3 id="Stringers"><a href="#Stringers" class="headerlink" title="Stringers"></a>Stringers</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type Person struct {<br>    Name string<br>    Age  int<br>}</p>
+<p>func (p Person) String() string {<br>    return fmt.Sprintf(“%v (%v years)”, p.Name, p.Age)<br>}</p>
+<p>func main() {<br>    a := Person{“Arthur Dent”, 42}<br>    z := Person{“Zaphod Beeblebrox”, 9001}<br>    fmt.Println(a, z)<br>}</p>
+<p>一个普遍存在的接口是 fmt 包中定义的 Stringer。</p>
+<p>type Stringer interface {<br>    String() string<br>}</p>
+<p>Stringer 是一个可以用字符串描述自己的类型。`fmt`包 （还有许多其他包）使用这个来进行输出。</p>
+<h3 id="练习：Stringers"><a href="#练习：Stringers" class="headerlink" title="练习：Stringers"></a>练习：Stringers</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>type IPAddr [4]byte</p>
+<p>// TODO: Add a “String() string” method to IPAddr.</p>
+<p>func main() {<br>    addrs := map[string]IPAddr{<br>        “loopback”:  {127, 0, 0, 1},<br>        “googleDNS”: {8, 8, 8, 8},<br>    }<br>    for n, a := range addrs {<br>        fmt.Printf(“%v: %v\n”, n, a)<br>    }<br>}</p>
+<p>让 IPAddr 类型实现 fmt.Stringer 以便用点分格式输出地址。</p>
+<p>例如，IPAddr{1, 2, 3, 4} 应当输出 “1.2.3.4”。</p>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “time”<br>)</p>
+<p>type MyError struct {<br>    When time.Time<br>    What string<br>}</p>
+<p>func (e *MyError) Error() string {<br>    return fmt.Sprintf(“at %v, %s”,<br>        e.When, e.What)<br>}</p>
+<p>func run() error {<br>    return &amp;MyError{<br>        time.Now(),<br>        “it didn’t work”,<br>    }<br>}</p>
+<p>func main() {<br>    if err := run(); err != nil {<br>        fmt.Println(err)<br>    }<br>}</p>
+<p>Go 程序使用 error 值来表示错误状态。</p>
+<p>与 fmt.Stringer 类似， error 类型是一个内建接口：</p>
+<p>type error interface {<br>            Error() string<br>            }</p>
+<p>（与 fmt.Stringer 类似，fmt 包在输出时也会试图匹配 error。）</p>
+<p>通常函数会返回一个 error 值，调用的它的代码应当判断这个错误是否等于 nil， 来进行错误处理。</p>
+<p>i, err := strconv.Atoi(“42”)<br>if err != nil {<br>    fmt.Printf(“couldn’t convert number: %v\n”, err)<br>    return<br>}<br>fmt.Println(“Converted integer:”, i)</p>
+<p>error 为 nil 时表示成功；非 nil 的 error 表示错误。</p>
+<h3 id="练习：错误"><a href="#练习：错误" class="headerlink" title="练习：错误"></a>练习：错误</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>)</p>
+<p>func Sqrt(x float64) (float64, error) {<br>    return 0, nil<br>}</p>
+<p>func main() {<br>    fmt.Println(Sqrt(2))<br>    fmt.Println(Sqrt(-2))<br>}</p>
+<p>从先前的练习中复制 Sqrt 函数，并修改使其返回 error 值。</p>
+<p>由于不支持复数，当 Sqrt 接收到一个负数时，应当返回一个非 nil 的错误值。</p>
+<p>创建一个新类型</p>
+<p>type ErrNegativeSqrt float64</p>
+<p>为其实现</p>
+<p>func (e ErrNegativeSqrt) Error() string</p>
+<p>使其成为一个 error， 该方法就可以让 ErrNegativeSqrt(-2).Error() 返回 <code>&quot;cannot Sqrt negative number: -2&quot;</code>。</p>
+<p>*注意：* 在 Error 方法内调用 fmt.Sprint(e) 将会让程序陷入死循环。可以通过先转换 e 来避免这个问题：fmt.Sprint(float64(e))。请思考这是为什么呢？</p>
+<p>修改 Sqrt 函数，使其接受一个负数时，返回 ErrNegativeSqrt 值。</p>
+<h3 id="Readers"><a href="#Readers" class="headerlink" title="Readers"></a>Readers</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “io”<br>    “strings”<br>)</p>
+<p>func main() {<br>    r := strings.NewReader(“Hello, Reader!”)</p>
+<pre><code>b := make(\[\]byte, 8)
+for &#123;
+    n, err := r.Read(b)
+    fmt.Printf(&quot;n = %v err = %v b = %v\\n&quot;, n, err, b)
+    fmt.Printf(&quot;b\[:n\] = %q\\n&quot;, b\[:n\])
+    if err == io.EOF &#123;
+        break
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>io 包指定了 io.Reader 接口， 它表示从数据流结尾读取。</p>
+<p>Go 标准库包含了这个接口的许多实现， 包括文件、网络连接、压缩、加密等等。</p>
+<p>io.Reader 接口有一个 Read 方法：</p>
+<p>func (T) Read(b []byte) (n int, err error)</p>
+<p>Read 用数据填充指定的字节 slice，并且返回填充的字节数和错误信息。 在遇到数据流结尾时，返回 io.EOF 错误。</p>
+<p>例子代码创建了一个 strings.Reader。 并且以每次 8 字节的速度读取它的输出。</p>
+<h3 id="练习：Reader"><a href="#练习：Reader" class="headerlink" title="练习：Reader"></a>练习：Reader</h3><p>package main</p>
+<p>import “golang.org/x/tour/reader”</p>
+<p>type MyReader struct{}</p>
+<p>// TODO: Add a Read([]byte) (int, error) method to MyReader.</p>
+<p>func main() {<br>    reader.Validate(MyReader{})<br>}</p>
+<p>实现一个 Reader 类型，它不断生成 ASCII 字符 ‘A’ 的流。</p>
+<h3 id="练习：rot13Reader"><a href="#练习：rot13Reader" class="headerlink" title="练习：rot13Reader"></a>练习：rot13Reader</h3><p>package main</p>
+<p>import (<br>    “io”<br>    “os”<br>    “strings”<br>)</p>
+<p>type rot13Reader struct {<br>    r io.Reader<br>}</p>
+<p>func main() {<br>    s := strings.NewReader(“Lbh penpxrq gur pbqr!”)<br>    r := rot13Reader{s}<br>    io.Copy(os.Stdout, &amp;r)<br>}</p>
+<p>一个常见模式是 io.Reader 包裹另一个 io.Reader，然后通过某种形式修改数据流。</p>
+<p>例如，gzip.NewReader 函数接受 io.Reader（压缩的数据流）并且返回同样实现了 io.Reader 的 *gzip.Reader（解压缩后的数据流）。</p>
+<p>编写一个实现了 io.Reader 的 rot13Reader， 并从一个 io.Reader 读取， 利用 rot13 代换密码对数据流进行修改。</p>
+<p>已经帮你构造了 rot13Reader 类型。 通过实现 Read 方法使其匹配 io.Reader。</p>
+<h3 id="Web-服务器"><a href="#Web-服务器" class="headerlink" title="Web 服务器"></a>Web 服务器</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “log”<br>    “net/http”<br>)</p>
+<p>type Hello struct{}</p>
+<p>func (h Hello) ServeHTTP(<br>    w http.ResponseWriter,<br>    r *http.Request) {<br>    fmt.Fprint(w, “Hello!”)<br>}</p>
+<p>func main() {<br>    var h Hello<br>    err := http.ListenAndServe(“localhost:4000”, h)<br>    if err != nil {<br>        log.Fatal(err)<br>    }<br>}</p>
+<p>包 http 通过任何实现了 http.Handler 的值来响应 HTTP 请求：</p>
+<p>package http</p>
+<p>type Handler interface {<br>    ServeHTTP(w ResponseWriter, r *Request)<br>}</p>
+<p>在这个例子中，类型 Hello 实现了 http.Handler。</p>
+<p>访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 会看到来自程序的问候。</p>
+<h3 id="练习：HTTP-处理"><a href="#练习：HTTP-处理" class="headerlink" title="练习：HTTP 处理"></a>练习：HTTP 处理</h3><p>package main</p>
+<p>import (<br>    “log”<br>    “net/http”<br>)</p>
+<p>func main() {<br>    // your http.Handle calls here<br>    log.Fatal(http.ListenAndServe(“localhost:4000”, nil))<br>}</p>
+<p>实现下面的类型，并在其上定义 ServeHTTP 方法。在 web 服务器中注册它们来处理指定的路径。</p>
+<p>type String string</p>
+<p>type Struct struct {<br>    Greeting string<br>    Punct    string<br>    Who      string<br>}</p>
+<p>例如，可以使用如下方式注册处理方法：</p>
+<p>http.Handle(“/string”, String(“I’m a frayed knot.”))<br>http.Handle(“/struct”, &amp;Struct{“Hello”, “:”, “Gophers!”})</p>
+<p>在启动你的 http 服务器后，你将能够访问： <a target="_blank" rel="noopener" href="http://localhost:4000/string">http://localhost:4000/string</a> 和 <a target="_blank" rel="noopener" href="http://localhost:4000/struct">http://localhost:4000/struct</a>.</p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “image”<br>)</p>
+<p>func main() {<br>    m := image.NewRGBA(image.Rect(0, 0, 100, 100))<br>    fmt.Println(m.Bounds())<br>    fmt.Println(m.At(0, 0).RGBA())<br>}</p>
+<p>Package image 定义了 Image 接口：</p>
+<p>package image type Image interface { ColorModel() color.Model Bounds() Rectangle At(x, y int) color.Color }</p>
+<p>注意：Bounds 方法的 Rectangle 返回值实际上是一个 image.Rectangle， 其定义在 image 包中。</p>
+<p>color.Color 和 color.Model 也是接口，但是通常因为直接使用预定义的实现 image.RGBA 和 image.RGBAModel 而被忽视了。这些接口和类型由image/color 包定义。</p>
+<h3 id="练习：图片"><a href="#练习：图片" class="headerlink" title="练习：图片"></a>练习：图片</h3><p>package main</p>
+<p>import “golang.org/x/tour/pic”</p>
+<p>type Image struct{}</p>
+<p>func main() {<br>    m := Image{}<br>    pic.ShowImage(m)<br>}</p>
+<p>还记得之前编写的图片生成器吗？现在来另外编写一个，不过这次将会返回 image.Image 来代替 slice 的数据。</p>
+<p>自定义的 Image 类型，要实现必要的方法，并且调用 pic.ShowImage。</p>
+<p>Bounds 应当返回一个 image.Rectangle，例如 `image.Rect(0, 0, w, h)`。</p>
+<p>ColorModel 应当返回 color.RGBAModel。</p>
+<p>At 应当返回一个颜色；在这个例子里，在最后一个图片生成器的值 v 匹配 `color.RGBA{v, v, 255, 255}`</p>
+<h3 id="goroutine"><a href="#goroutine" class="headerlink" title="goroutine"></a>goroutine</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “time”<br>)</p>
+<p>func say(s string) {<br>    for i := 0; i &lt; 5; i++ {<br>        time.Sleep(100 * time.Millisecond)<br>        fmt.Println(s)<br>    }<br>}</p>
+<p>func main() {<br>    go say(“world”)<br>    say(“hello”)<br>}</p>
+<p>goroutine 是由 Go 运行时环境管理的轻量级线程。</p>
+<p>go f(x, y, z)</p>
+<p>开启一个新的 goroutine 执行</p>
+<p>f(x, y, z)</p>
+<p>f，x，y 和 z 是当前 goroutine 中定义的，但是在新的 goroutine 中运行 f。</p>
+<p>goroutine 在相同的地址空间中运行，因此访问共享内存必须进行同步。sync 提供了这种可能，不过在 Go 中并不经常用到，因为有其他的办法。（在接下来的内容中会涉及到。）</p>
+<h3 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func sum(a []int, c chan int) {<br>    sum := 0<br>    for _, v := range a {<br>        sum += v<br>    }<br>    c &lt;- sum // 将和送入 c<br>}</p>
+<p>func main() {<br>    a := []int{7, 2, 8, -9, 4, 0}</p>
+<pre><code>c := make(chan int)
+go sum(a\[:len(a)/2\], c)
+go sum(a\[len(a)/2:\], c)
+x, y := &lt;-c, &lt;-c // 从 c 中获取
+
+fmt.Println(x, y, x+y)
+</code></pre>
+<p>}</p>
+<p>channel 是有类型的管道，可以用 channel 操作符 &lt;- 对其发送或者接收值。</p>
+<p>ch &lt;- v    // 将 v 送入 channel ch。<br>v := &lt;-ch  // 从 ch 接收，并且赋值给 v。</p>
+<p>（“箭头”就是数据流的方向。）</p>
+<p>和 map 与 slice 一样，channel 使用前必须创建：</p>
+<p>ch := make(chan int)</p>
+<p>默认情况下，在另一端准备好之前，发送和接收都会阻塞。这使得 goroutine 可以在没有明确的锁或竞态变量的情况下进行同步。</p>
+<h3 id="缓冲-channel"><a href="#缓冲-channel" class="headerlink" title="缓冲 channel"></a>缓冲 channel</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    ch := make(chan int, 2)<br>    ch &lt;- 1<br>    ch &lt;- 2<br>    fmt.Println(&lt;-ch)<br>    fmt.Println(&lt;-ch)<br>}</p>
+<p>ch := make(chan int, 100)</p>
+<p>向带缓冲的 channel 发送数据的时候，只有在缓冲区满的时候才会阻塞。 而当缓冲区为空的时候接收操作会阻塞。</p>
+<p>修改例子使得缓冲区被填满，然后看看会发生什么。</p>
+<h3 id="range-和-close"><a href="#range-和-close" class="headerlink" title="range 和 close"></a>range 和 close</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>)</p>
+<p>func fibonacci(n int, c chan int) {<br>    x, y := 0, 1<br>    for i := 0; i &lt; n; i++ {<br>        c &lt;- x<br>        x, y = y, x+y<br>    }<br>    close(c)<br>}</p>
+<p>func main() {<br>    c := make(chan int, 10)<br>    go fibonacci(cap(c), c)<br>    for i := range c {<br>        fmt.Println(i)<br>    }<br>}</p>
+<p>range 和 close 发送者可以 close 一个 channel 来表示再没有值会被发送了。接收者可以通过赋值语句的第二参数来测试 channel 是否被关闭：当没有值可以接收并且 channel 已经被关闭，那么经过</p>
+<p>v, ok := &lt;-ch</p>
+<p>之后 ok 会被设置为 false。</p>
+<p>循环 `for i := range c` 会不断从 channel 接收值，直到它被关闭。</p>
+<p>*注意：* 只有发送者才能关闭 channel，而不是接收者。向一个已经关闭的 channel 发送数据会引起 panic。 <em>还要注意：</em> channel 与文件不同；通常情况下无需关闭它们。只有在需要告诉接收者没有更多的数据的时候才有必要进行关闭，例如中断一个 range。</p>
+<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><p>package main</p>
+<p>import “fmt”</p>
+<p>func fibonacci(c, quit chan int) {<br>    x, y := 0, 1<br>    for {<br>        select {<br>        case c &lt;- x:<br>            x, y = y, x+y<br>        case &lt;-quit:<br>            fmt.Println(“quit”)<br>            return<br>        }<br>    }<br>}</p>
+<p>func main() {<br>    c := make(chan int)<br>    quit := make(chan int)<br>    go func() {<br>        for i := 0; i &lt; 10; i++ {<br>            fmt.Println(&lt;-c)<br>        }<br>        quit &lt;- 0<br>    }()<br>    fibonacci(c, quit)<br>}</p>
+<p>select 语句使得一个 goroutine 在多个通讯操作上等待。</p>
+<p>select 会阻塞，直到条件分支中的某个可以继续执行，这时就会执行那个条件分支。当多个都准备好的时候，会随机选择一个。</p>
+<h3 id="默认选择"><a href="#默认选择" class="headerlink" title="默认选择"></a>默认选择</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “time”<br>)</p>
+<p>func main() {<br>    tick := time.Tick(100 * time.Millisecond)<br>    boom := time.After(500 * time.Millisecond)<br>    for {<br>        select {<br>        case &lt;-tick:<br>            fmt.Println(“tick.”)<br>        case &lt;-boom:<br>            fmt.Println(“BOOM!”)<br>            return<br>        default:<br>            fmt.Println(“    .”)<br>            time.Sleep(50 * time.Millisecond)<br>        }<br>    }<br>}</p>
+<p>当 select 中的其他条件分支都没有准备好的时候，default 分支会被执行。</p>
+<p>为了非阻塞的发送或者接收，可使用 default 分支：</p>
+<p>select {<br>case i := &lt;-c:<br>    // 使用 i<br>default:<br>    // 从 c 读取会阻塞<br>}</p>
+<h3 id="sync-Mutex"><a href="#sync-Mutex" class="headerlink" title="sync.Mutex"></a>sync.Mutex</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>    “sync”<br>    “time”<br>)</p>
+<p>// SafeCounter 的并发使用是安全的。<br>type SafeCounter struct {<br>    v   map[string]int<br>    mux sync.Mutex<br>}</p>
+<p>// Inc 增加给定 key 的计数器的值。<br>func (c *SafeCounter) Inc(key string) {<br>    c.mux.Lock()<br>    // Lock 之后同一时刻只有一个 goroutine 能访问 c.v<br>    c.v[key]++<br>    c.mux.Unlock()<br>}</p>
+<p>// Value 返回给定 key 的计数器的当前值。<br>func (c *SafeCounter) Value(key string) int {<br>    c.mux.Lock()<br>    // Lock 之后同一时刻只有一个 goroutine 能访问 c.v<br>    defer c.mux.Unlock()<br>    return c.v[key]<br>}</p>
+<p>func main() {<br>    c := SafeCounter{v: make(map[string]int)}<br>    for i := 0; i &lt; 1000; i++ {<br>        go c.Inc(“somekey”)<br>    }</p>
+<pre><code>time.Sleep(time.Second)
+fmt.Println(c.Value(&quot;somekey&quot;))
+</code></pre>
+<p>}</p>
+<p>我们已经看到 channel 用来在各个 goroutine 间进行通信是非常合适的了。</p>
+<p>但是如果我们并不需要通信呢？比如说，如果我们只是想保证在每个时刻，只有一个 goroutine 能访问一个共享的变量从而避免冲突？</p>
+<p>这里涉及的概念叫做 互斥，通常使用 <em>互斥锁</em>(mutex)_来提供这个限制。</p>
+<p>Go 标准库中提供了 sync.Mutex 类型及其两个方法：Lock Unlock</p>
+<p>我们可以通过在代码前调用 Lock 方法，在代码后调用 Unlock 方法来保证一段代码的互斥执行。 参见 Inc 方法。</p>
+<p>我们也可以用 defer 语句来保证互斥锁一定会被解锁。参见 Value 方法。</p>
+<h3 id="练习：Web-爬虫"><a href="#练习：Web-爬虫" class="headerlink" title="练习：Web 爬虫"></a>练习：Web 爬虫</h3><p>package main</p>
+<p>import (<br>    “fmt”<br>)</p>
+<p>type Fetcher interface {<br>    // Fetch 返回 URL 的 body 内容，并且将在这个页面上找到的 URL 放到一个 slice 中。<br>    Fetch(url string) (body string, urls []string, err error)<br>}</p>
+<p>// Crawl 使用 fetcher 从某个 URL 开始递归的爬取页面，直到达到最大深度。<br>func Crawl(url string, depth int, fetcher Fetcher) {<br>    // TODO: 并行的抓取 URL。<br>    // TODO: 不重复抓取页面。<br>        // 下面并没有实现上面两种情况：<br>    if depth &lt;= 0 {<br>        return<br>    }<br>    body, urls, err := fetcher.Fetch(url)<br>    if err != nil {<br>        fmt.Println(err)<br>        return<br>    }<br>    fmt.Printf(“found: %s %q\n”, url, body)<br>    for _, u := range urls {<br>        Crawl(u, depth-1, fetcher)<br>    }<br>    return<br>}</p>
+<p>func main() {<br>    Crawl(“<a target="_blank" rel="noopener" href="http://golang.org/&quot;">http://golang.org/&quot;</a>, 4, fetcher)<br>}</p>
+<p>// fakeFetcher 是返回若干结果的 Fetcher。<br>type fakeFetcher map[string]*fakeResult</p>
+<p>type fakeResult struct {<br>    body string<br>    urls []string<br>}</p>
+<p>func (f fakeFetcher) Fetch(url string) (string, []string, error) {<br>    if res, ok := f[url]; ok {<br>        return res.body, res.urls, nil<br>    }<br>    return “”, nil, fmt.Errorf(“not found: %s”, url)<br>}</p>
+<p>// fetcher 是填充后的 fakeFetcher。<br>var fetcher = fakeFetcher{<br>    “<a target="_blank" rel="noopener" href="http://golang.org/&quot;">http://golang.org/&quot;</a>: &amp;fakeResult{<br>        “The Go Programming Language”,<br>        []string{<br>            “<a target="_blank" rel="noopener" href="http://golang.org/pkg/&quot;">http://golang.org/pkg/&quot;</a>,<br>            “<a target="_blank" rel="noopener" href="http://golang.org/cmd/&quot;">http://golang.org/cmd/&quot;</a>,<br>        },<br>    },<br>    “<a target="_blank" rel="noopener" href="http://golang.org/pkg/&quot;">http://golang.org/pkg/&quot;</a>: &amp;fakeResult{<br>        “Packages”,<br>        []string{<br>            “<a target="_blank" rel="noopener" href="http://golang.org/&quot;">http://golang.org/&quot;</a>,<br>            “<a target="_blank" rel="noopener" href="http://golang.org/cmd/&quot;">http://golang.org/cmd/&quot;</a>,<br>            “<a target="_blank" rel="noopener" href="http://golang.org/pkg/fmt/&quot;">http://golang.org/pkg/fmt/&quot;</a>,<br>            “<a target="_blank" rel="noopener" href="http://golang.org/pkg/os/&quot;">http://golang.org/pkg/os/&quot;</a>,<br>        },<br>    },<br>    “<a target="_blank" rel="noopener" href="http://golang.org/pkg/fmt/&quot;">http://golang.org/pkg/fmt/&quot;</a>: &amp;fakeResult{<br>        “Package fmt”,<br>        []string{<br>            “<a target="_blank" rel="noopener" href="http://golang.org/&quot;">http://golang.org/&quot;</a>,<br>            “<a target="_blank" rel="noopener" href="http://golang.org/pkg/&quot;">http://golang.org/pkg/&quot;</a>,<br>        },<br>    },<br>    “<a target="_blank" rel="noopener" href="http://golang.org/pkg/os/&quot;">http://golang.org/pkg/os/&quot;</a>: &amp;fakeResult{<br>        “Package os”,<br>        []string{<br>            “<a target="_blank" rel="noopener" href="http://golang.org/&quot;">http://golang.org/&quot;</a>,<br>            “<a target="_blank" rel="noopener" href="http://golang.org/pkg/&quot;">http://golang.org/pkg/&quot;</a>,<br>        },<br>    },<br>}</p>
+<p>在这个练习中，将会使用 Go 的并发特性来并行执行 web 爬虫。</p>
+<p>修改 Crawl 函数来并行的抓取 URLs，并且保证不重复。</p>
+<p>提示：你可以用一个 map 来缓存已经获取的 URL，但是需要注意 map 本身并不是并发安全的！</p>
+<p>祝贺你，官方教程已经全部学完了。</p>
+<p><a href="/effective">骚年，深呼吸，然后走出新手村吧。</a></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Mark Hoo<br>
+        <strong>本文链接：</strong><a href="https://markhoo.com/2018/12/16/go_1/" title="https:&#x2F;&#x2F;markhoo.com&#x2F;2018&#x2F;12&#x2F;16&#x2F;go_1&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;markhoo.com&#x2F;2018&#x2F;12&#x2F;16&#x2F;go_1&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Go/">Go</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Go/" rel="tag">Go</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://cdn.jsdelivr.net/npm/valine'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'm4swDl6Cqyi5Sa2Yy9iI55Ua-gzGzoHsz',
+        appKey: 'B87aHCj28LivcwqIQNvh5uCb'
+    })
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1650015363933"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>

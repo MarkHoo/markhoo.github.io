@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>CentOS7 常用命令集合 - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://media.markhoo.com/avatar.jpg" type="image/x-icon" />
+    <meta name="description" content="CentOS7 常用命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7 常用命令集合">
+<meta property="og:url" content="https://markhoo.com/2017/09/22/CentOS7ml/index.html">
+<meta property="og:site_name" content="和光同尘|南有嘉鱼|markhoo|沉默是金">
+<meta property="og:description" content="CentOS7 常用命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-09-22T03:11:11.000Z">
+<meta property="article:modified_time" content="2021-10-08T12:26:48.373Z">
+<meta property="article:author" content="Mark Hoo">
+<meta property="article:tag" content="CentOS7">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1650015363968">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650015363968">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Mark Hoo" class="mdui-btn mdui-btn-icon"><img src="https://media.markhoo.com/avatar.jpg" alt="Mark Hoo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Mark Hoo">
+            <img src="https://media.markhoo.com/avatar.jpg" alt="Mark Hoo" alt="Mark Hoo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>40</div>
+        <div><span>标签</span>32</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/books.html" title="书架">
+            <i class="mdui-list-item-icon nexmoefont icon-battlenet"></i>
+            <div class="mdui-list-item-content">
+                书架
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/photos.html" title="相册">
+            <i class="mdui-list-item-icon nexmoefont icon-tuchong"></i>
+            <div class="mdui-list-item-content">
+                相册
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/messages.html" title="留言板">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                留言板
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/links.html" title="邻居">
+            <i class="mdui-list-item-icon nexmoefont icon-dribbble"></i>
+            <div class="mdui-list-item-content">
+                邻居
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://kh.markhoo.com" title="口红">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                口红
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:markhoo.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/182687081" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/markhoo/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/C-C/">C/C++</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Django/">Django</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Elixir/">Elixir</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Go/">Go</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Linux/">Linux</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Nginx/">Nginx</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Python/">Python</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/默认分类/">默认分类</a>
+          <span class="category-list-count">10</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/CentOS7/" style="font-size: 15.71px;">CentOS7</a> <a href="/tags/Django/" style="font-size: 18.57px;">Django</a> <a href="/tags/Elixir/" style="font-size: 11.43px;">Elixir</a> <a href="/tags/Erlang/" style="font-size: 10px;">Erlang</a> <a href="/tags/Gin/" style="font-size: 11.43px;">Gin</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/tags/Gunicorn/" style="font-size: 12.86px;">Gunicorn</a> <a href="/tags/Hugo/" style="font-size: 10px;">Hugo</a> <a href="/tags/IDE/" style="font-size: 11.43px;">IDE</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 12.86px;">Linux</a> <a href="/tags/Nginx/" style="font-size: 14.29px;">Nginx</a> <a href="/tags/Phoenix/" style="font-size: 10px;">Phoenix</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Todo/" style="font-size: 10px;">Todo</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/xadmin/" style="font-size: 10px;">xadmin</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">网易云音乐</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 11.43px;">面试题</a> <a href="/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">音乐播放器</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Mark Hoo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index">苏ICP备17044309号</a><br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="CentOS7 常用命令集合" class="lazyload">
+              <h1>CentOS7 常用命令集合</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2017年09月22日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.9k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+</div>
+
+      
+
+      <p>CentOS7 常用命令</p>
+<span id="more"></span>
+
+
+<h1 id="文件与目录操作"><a href="#文件与目录操作" class="headerlink" title="文件与目录操作"></a>文件与目录操作</h1><p>命令 解析<br>cd /home 进入 ‘/home’ 目录<br>cd .. 返回上一级目录<br>cd ../.. 返回上两级目录<br>cd - 返回上次所在目录<br>cp file1 file2 将file1复制为file2<br>cp -a dir1 dir2 复制一个目录<br>cp -a /tmp/dir1 . 复制一个目录到当前工作目录（.代表当前目录）<br>ls 查看目录中的文件<br>ls -a 显示隐藏文件<br>ls -l 显示详细信息<br>ls -lrt 按时间显示文件（l表示详细列表，r表示反向排序，t表示按时间排序）<br>pwd 显示工作路径<br>mkdir dir1 创建 ‘dir1’ 目录<br>mkdir dir1 dir2 同时创建两个目录<br>mkdir -p /tmp/dir1/dir2 创建一个目录树<br>mv dir1 dir2 移动/重命名一个目录<br>rm -f file1 删除 ‘file1’<br>rm -rf dir1 删除 ‘dir1’ 目录及其子目录内容</p>
+<h1 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h1><p>命令 解析<br>cat file1 从第一个字节开始正向查看文件的内容<br>head -2 file1 查看一个文件的前两行<br>more file1 查看一个长文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>tail -3 file1 查看一个文件的最后三行<br>vi file 打开并浏览文件</p>
+<h1 id="文本内容处理"><a href="#文本内容处理" class="headerlink" title="文本内容处理"></a>文本内容处理</h1><p>命令 解析<br>grep str /tmp/test 在文件 ‘/tmp/test’ 中查找 “str”<br>grep ^str /tmp/test 在文件 ‘/tmp/test’ 中查找以 “str” 开始的行<br>grep [0-9] /tmp/test 查找 ‘/tmp/test’ 文件中所有包含数字的行<br>grep str -r /tmp/* 在目录 ‘/tmp’ 及其子目录中查找 “str”<br>diff file1 file2 找出两个文件的不同处<br>sdiff file1 file2 以对比的方式显示两个文件的不同</p>
+<h1 id="vi-file"><a href="#vi-file" class="headerlink" title="vi file"></a>vi file</h1><p>操作 解析<br>i 进入编辑文本模式<br>Esc 退出编辑文本模式<br>:w 保存当前修改<br>:q 不保存退出vi<br>:wq 保存当前修改并退出vi</p>
+<h1 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h1><p>命令 解析<br>find / -name file1 从 ‘/’ 开始进入根文件系统查找文件和目录<br>find / -user user1 查找属于用户 ‘user1’ 的文件和目录<br>find /home/user1 -name *.bin 在目录 ‘/ home/user1’ 中查找以 ‘.bin’ 结尾的文件<br>find /usr/bin -type f -atime +100 查找在过去100天内未被使用过的执行文件<br>find /usr/bin -type f -mtime -10 查找在10天内被创建或者修改过的文件<br>locate <em>.ps 寻找以 ‘.ps’ 结尾的文件，先运行 ‘updatedb’ 命令<br>find -name ‘</em>.[ch]’ | xargs grep -E ‘expr’ 在当前目录及其子目录所有.c和.h文件中查找 ‘expr’<br>find -type f -print0 | xargs -r0 grep -F ‘expr’ 在当前目录及其子目录的常规文件中查找 ‘expr’<br>find -maxdepth 1 -type f | xargs grep -F ‘expr’ 在当前目录中查找 ‘expr’</p>
+<h1 id="压缩、解压"><a href="#压缩、解压" class="headerlink" title="压缩、解压"></a>压缩、解压</h1><p>命令 解析<br>bzip2 file1 压缩 file1<br>bunzip2 file1.bz2 解压 file1.bz2<br>gzip file1 压缩 file1<br>gzip -9 file1 最大程度压缩 file1<br>gunzip file1.gz 解压 file1.gz<br>tar -cvf archive.tar file1 把file1打包成 archive.tar（-c: 建立压缩档案；-v: 显示所有过程；-f: 使用档案名字，是必须的，是最后一个参数）<br>tar -cvf archive.tar file1 dir1 把 file1，dir1 打包成 archive.tar<br>tar -tf archive.tar 显示一个包中的内容<br>tar -xvf archive.tar 释放一个包<br>tar -xvf archive.tar -C /tmp 把压缩包释放到 /tmp目录下<br>zip file1.zip file1 创建一个zip格式的压缩包<br>zip -r file1.zip file1 dir1 把文件和目录压缩成一个zip格式的压缩包<br>unzip file1.zip 解压一个zip格式的压缩包到当前目录<br>unzip test.zip -d /tmp/ 解压一个zip格式的压缩包到 /tmp 目录</p>
+<h1 id="yum安装器"><a href="#yum安装器" class="headerlink" title="yum安装器"></a>yum安装器</h1><p>命令 解析<br>yum -y install [package] 下载并安装一个rpm包<br>yum localinstall [package.rpm] 安装一个rpm包，使用你自己的软件仓库解决所有依赖关系<br>yum -y update 更新当前系统中安装的所有rpm包<br>yum update [package] 更新一个rpm包<br>yum remove [package] 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search [package] 在rpm仓库中搜寻软件包<br>yum clean [package] 清除缓存目录（/var/cache/yum）下的软件包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件</p>
+<h1 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h1><p>命令 解析<br>ifconfig eth0 显示一个以太网卡的配置<br>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 配置网卡的IP地址<br>ifdown eth0 禁用 ‘eth0’ 网络设备<br>ifup eth0 启用 ‘eth0’ 网络设备<br>iwconfig eth1 显示一个无线网卡的配置<br>iwlist scan 显示无线网络<br>ip addr show 显示网卡的IP地址</p>
+<h1 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h1><p>命令 解析<br>su - 切换到root权限（与su有区别）<br>shutdown -h now 关机<br>shutdown -r now 重启<br>top 罗列使用CPU资源最多的linux任务 （输入q退出）<br>pstree 以树状图显示程序<br>man ping 查看参考手册（例如ping 命令）<br>passwd 修改密码<br>df -h 显示磁盘的使用情况<br>cal -3 显示前一个月，当前月以及下一个月的月历<br>cal 10 1988 显示指定月，年的月历<br>date –date ‘1970-01-01 UTC 1427888888 seconds’ 把一相对于1970-01-01 00:00的秒数转换成时间<br>XSheel 5相关操作</p>
+<h1 id="窗体快捷键"><a href="#窗体快捷键" class="headerlink" title="窗体快捷键"></a>窗体快捷键</h1><p>命令 解析<br>Ctrl + u 删除光标之前到行首的字符<br>Ctrl + k 删除光标之前到行尾的字符<br>Ctrl + c 取消当前行输入的命令，相当于Ctrl + Break<br>Ctrl + a 光标移动到行首（ahead of line），相当于通常的Home键<br>Ctrl + e 光标移动到行尾（end of line）<br>Ctrl + f 光标向前（forward）移动一个字符位置<br>Ctrl + b 光标往回（backward）移动一个字符位置<br>Ctrl + l 清屏，相当于执行clear命令<br>Ctrl + r 显示:号提示，根据用户输入查找相关历史命令（reverse-i-search）<br>Ctrl + w 删除从光标位置前到当前所处单词（word）的开头<br>Ctrl + t 交换光标位置前的两个字符<br>Ctrl + y 粘贴最后一次被删除的单词<br>Ctrl + Alt + d 显示桌面<br>Alt + b 光标往回（backward）移动到前一个单词<br>Alt + d 删除从光标位置到当前所处单词的末尾<br>Alt + F2 运行<br>Alt + F4 关闭当前窗口<br>Alt + F9 最小化当前窗口<br>Alt + F10 最大化当前窗口<br>Alt + Tab 切换窗口<br>Alt + 左键 移动窗口（或在最下面的任务栏滚动鼠标滑轮）</p>
+<h1 id="操作小技巧"><a href="#操作小技巧" class="headerlink" title="操作小技巧"></a>操作小技巧</h1><p>鼠标中间键：粘贴突出显示的文本。(使用鼠标左键来选择文本。把光标指向想粘贴文本的地方。点击鼠标中间键来粘贴。)</p>
+<p>Tab：命令行自动补全。使用 shell 提示时可使用这一方式。键入命令或文件名的前几个字符，然后按 [Tab] 键，它会自动补全命令或显示匹配键入字符的所有命令。</p>
+<p>在滚动条的空白处点击鼠标中键：屏幕即滚动到那个地方。</p>
+<p>在桌面或文件管理器中直接按 / 就可以输入位置，打开文件管理器。</p>
+<p>在 vi 或 Firefox 中直接按 / 即可进入快速搜索状态。</p>
+<p>网站链接和图片可直接拖放到桌面或者目录，可以马上下载。</p>
+<p>直接将文件管理器中的文件拖到终端中就可以在终端中得到完整的路径名。</p>
+<p>结束语</p>
+<p>其实要学好Linux的操作并不是很困难的事情，在平常的使用过程中，碰到问题，学会去网上寻找答案不失为一个非常好的手段！谢谢大家！</p>
+<p>转自：<a target="_blank" rel="noopener" href="http://blog.csdn.net/o0darknessyy0o/article/details/52072054">http://blog.csdn.net/o0darknessyy0o/article/details/52072054</a></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Mark Hoo<br>
+        <strong>本文链接：</strong><a href="https://markhoo.com/2017/09/22/CentOS7ml/" title="https:&#x2F;&#x2F;markhoo.com&#x2F;2017&#x2F;09&#x2F;22&#x2F;CentOS7ml&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;markhoo.com&#x2F;2017&#x2F;09&#x2F;22&#x2F;CentOS7ml&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Linux/">Linux</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/CentOS7/" rel="tag">CentOS7</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Linux/" rel="tag">Linux</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://cdn.jsdelivr.net/npm/valine'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'm4swDl6Cqyi5Sa2Yy9iI55Ua-gzGzoHsz',
+        appKey: 'B87aHCj28LivcwqIQNvh5uCb'
+    })
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1650015363968"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
