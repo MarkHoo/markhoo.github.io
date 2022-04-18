@@ -21,16 +21,16 @@
 <meta property="og:description" content="nginx django 的配置步骤">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-12-25T02:22:33.000Z">
-<meta property="article:modified_time" content="2021-10-08T12:25:26.237Z">
+<meta property="article:modified_time" content="2022-04-18T08:01:02.248Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Django">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650015363962">
+    <link rel="stylesheet" href="/css/style.css?v=1650269521663">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650015363962">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521663">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -270,12 +270,16 @@
 <h2 id="升级并安装-pip"><a href="#升级并安装-pip" class="headerlink" title="升级并安装 pip"></a>升级并安装 pip</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo apt-get update<br>$ sudo apt-get install python-pip<br></code></pre></td></tr></table></figure>
 
 <h2 id="安装虚拟环境"><a href="#安装虚拟环境" class="headerlink" title="安装虚拟环境"></a>安装虚拟环境</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo pip install virtualenv virtualenvwrapper<br></code></pre></td></tr></table></figure>
+
 <p>加入到环境变量中<br>当前用户目录下的 Env为虚拟环境存放的目录</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;export WORKON_HOME=~/Env&quot;</span> &gt;&gt; ~/.bashrc<br>$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;source /usr/local/bin/virtualenvwrapper.sh&quot;</span> &gt;&gt; \~/.bashrc<br></code></pre></td></tr></table></figure>
+
 <h2 id="激活配置"><a href="#激活配置" class="headerlink" title="激活配置"></a>激活配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">source</span> \~/.bashrc</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><p>环境名为:firstsite</p>
 <p>在用户当前目录下创建 Django工程</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> ~<br><span class="hljs-variable">$</span> django<span class="hljs-literal">-admin</span>.py startproject firstsite<br></code></pre></td></tr></table></figure>
+
 <h2 id="django-的初始化"><a href="#django-的初始化" class="headerlink" title="django 的初始化"></a>django 的初始化</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">$ <span class="hljs-keyword">cd</span> \~<span class="hljs-string">/firstsite</span><br>$ <span class="hljs-string">./manage.py</span> migrate<br>$ <span class="hljs-string">./manage.py</span> createsuperuser<br></code></pre></td></tr></table></figure>
 
 <h2 id="Django静态文件配置"><a href="#Django静态文件配置" class="headerlink" title="Django静态文件配置"></a>Django静态文件配置</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ nano firstsite/settings.py<br></code></pre></td></tr></table></figure>
@@ -283,21 +287,18 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">STATIC_ROOT</span> = os.path.join(BASE_DIR, <span class="hljs-string">&quot;static/&quot;</span>)<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ ./manage.py collectstatic<br></code></pre></td></tr></table></figure>
+
 <h2 id="安装-uWSGI"><a href="#安装-uWSGI" class="headerlink" title="安装 uWSGI"></a>安装 uWSGI</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">$ sudo apt-get <span class="hljs-keyword">install</span> python-dev<br>$ sudo pip <span class="hljs-keyword">install</span> uwsgi<br></code></pre></td></tr></table></figure>
 
 <h2 id="测试是否能够正常访问-django-项目"><a href="#测试是否能够正常访问-django-项目" class="headerlink" title="测试是否能够正常访问 django 项目"></a>测试是否能够正常访问 django 项目</h2><p>http 指定进程端口8080<br>home指定虚拟环境目录<br>chdir指定 项目工程所在目录<br>uwsgi –http :8080 –home /home/pi/Env/firstsite –chdir /home/pi/firstsite -w firstsite.wsgi</p>
 <h2 id="创建-uwsgi-的配置文件"><a href="#创建-uwsgi-的配置文件" class="headerlink" title="创建 uwsgi 的配置文件"></a>创建 uwsgi 的配置文件</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">$ sudo mkdir -p <span class="hljs-regexp">/etc/u</span>wsgi/sites<br><br>$ cd <span class="hljs-regexp">/etc/u</span>wsgi/sites<br></code></pre></td></tr></table></figure>
-<h2 id="uwsgi-的配置相关内容-重点"><a href="#uwsgi-的配置相关内容-重点" class="headerlink" title="uwsgi 的配置相关内容(重点)"></a>uwsgi 的配置相关内容(重点)</h2><p>[uwsgi]<br>project = firstsite<br>base = /home/pi</p>
-<p>chdir = %(base)/%(project)<br>home = %(base)/Env/%(project)<br>module = %(project).wsgi:application</p>
-<p>master = true<br>processes = 5</p>
-<p>socket = %(base)/%(project)/%(project).sock<br>chmod-socket = 666<br>vacuum = true</p>
+<h2 id="uwsgi-的配置相关内容-重点"><a href="#uwsgi-的配置相关内容-重点" class="headerlink" title="uwsgi 的配置相关内容(重点)"></a>uwsgi 的配置相关内容(重点)</h2><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[uwsgi]</span><br><span class="hljs-attr">project</span> = firstsite<br><span class="hljs-attr">base</span> = /home/pi<br><br><span class="hljs-attr">chdir</span> = %(base)/%(project)<br><span class="hljs-attr">home</span> = %(base)/Env/%(project)<br><span class="hljs-attr">module</span> = %(project).wsgi:application<br><br><span class="hljs-attr">master</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">processes</span> = <span class="hljs-number">5</span><br><br><span class="hljs-attr">socket</span> = %(base)/%(project)/%(project).sock<br><span class="hljs-attr">chmod-socket</span> = <span class="hljs-number">666</span><br><span class="hljs-attr">vacuum</span> = <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
 <p>启动守护进程</p>
-<blockquote>
-<p>vim /etc/systemd/system/uwsgi.service</p>
-</blockquote>
-<p>[Unit]<br>Description=uWSGI Emperor service<br>After=syslog.target</p>
-<p>[Service]<br>ExecStart=/usr/local/bin/uwsgi –emperor /etc/uwsgi/sites<br>Restart=always<br>KillSignal=SIGQUIT<br>Type=notify<br>StandardError=syslog<br>NotifyAccess=all</p>
-<p>[Install]<br>WantedBy=multi-user.target</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ vim /etc/systemd/system/uwsgi.service<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=uWSGI Emperor service<br><span class="hljs-attr">After</span>=syslog.target<br><br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">ExecStart</span>=/usr/local/bin/uwsgi --emperor /etc/uwsgi/sites<br><span class="hljs-attr">Restart</span>=always<br><span class="hljs-attr">KillSignal</span>=SIGQUIT<br><span class="hljs-attr">Type</span>=notify<br><span class="hljs-attr">StandardError</span>=syslog<br><span class="hljs-attr">NotifyAccess</span>=all<br><br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+
 <p>重载守护进程的配置信息</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo systemctl daemon-reload<br></code></pre></td></tr></table></figure>
 
@@ -313,8 +314,10 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo nano /etc/nginx/sites-available/firstsite<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br><span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br><span class="hljs-attribute">server_name</span> firstsite.com www.firstsite.com;<br><br><span class="hljs-attribute">location</span> = /favicon.ico &#123; <span class="hljs-attribute">access_log</span> <span class="hljs-literal">off</span>; <span class="hljs-attribute">log_not_found</span> <span class="hljs-literal">off</span>; &#125;<br><span class="hljs-attribute">location</span> /static/ &#123;<br><span class="hljs-attribute">root</span> /home/pi/firstsite;<br>&#125;<br><br><span class="hljs-attribute">location</span> / &#123;<br><span class="hljs-attribute">include</span> uwsgi_params;<br><span class="hljs-attribute">uwsgi_pass</span> unix:/home/pi/firstsite/firstsite.sock;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>nginx配置生效</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">&gt; sudo ln -s /etc/nginx/sites-available/firstsite /etc/nginx/sites-enabled<br></code></pre></td></tr></table></figure>
+
 <p>检查配置</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo service nginx configtest<br></code></pre></td></tr></table></figure>
 
@@ -323,7 +326,6 @@
 
 <p>非 debug 模式<br>非 debug 模式需要重启uwsgi 服务</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo systemctl restart uwsgi<br></code></pre></td></tr></table></figure>
-
 
   </article>
 
@@ -397,7 +399,7 @@
 
  
 
-<script async src="/js/app.js?v=1650015363964"></script>
+<script async src="/js/app.js?v=1650269521665"></script>
 
 
 

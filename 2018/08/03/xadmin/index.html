@@ -21,17 +21,17 @@
 <meta property="og:description" content="xadmin 的插件系统架构设计一定程度上借鉴了 wordpress 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| AdminView 的概念。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-08-03T08:12:15.000Z">
-<meta property="article:modified_time" content="2021-10-08T12:27:04.513Z">
+<meta property="article:modified_time" content="2022-04-18T07:57:37.961Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Django">
 <meta property="article:tag" content="xadmin">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650015363951">
+    <link rel="stylesheet" href="/css/style.css?v=1650269521650">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650015363951">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521650">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -271,7 +271,8 @@
 
 <p>官网太慢甚至打不开，所以干脆转载过来，方便学习。</p>
 <p>======================</p>
-<h2 id="插件原理"><a href="#插件原理" class="headerlink" title="插件原理"></a>插件原理</h2><p>xadmin 的插件系统架构设计一定程度上借鉴了 <code>wordpress</code> 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| <code>AdminView</code> 的概念。<br>简单来说，就是 |xadmin| 系统中每一个页面都是一个 <code>AdminView</code> 对象返回的 <code>HttpResponse</code> 结果。|xadmin| 的插件系统做的事情其实就是在 <code>AdminView</code><br>运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。</p>
+<h2 id="插件原理"><a href="#插件原理" class="headerlink" title="插件原理"></a>插件原理</h2><p>xadmin 的插件系统架构设计一定程度上借鉴了 <code>wordpress</code> 的设计。 想要了解 |xadmin| 的插件系统架构首先需要了解 |xadmin| <code>AdminView</code> 的概念。</p>
+<p>简单来说，就是 |xadmin| 系统中每一个页面都是一个 <code>AdminView</code> 对象返回的 <code>HttpResponse</code> 结果。|xadmin| 的插件系统做的事情其实就是在 <code>AdminView</code><br>运行过程中改变其执行的逻辑， 或是改变其返回的结果，起到修改或增强原有功能的效果。下面让我们看看整个插件从制作完成到实际运行的整个过程。</p>
 <p>首先需要创建自己的插件类， 插件类继承 :class:<code>~xadmin.views.BaseAdminPlugin</code> ::</p>
 <pre><code>class HelloWorldPlugin(BaseAdminPlugin):
     ...
@@ -534,7 +535,7 @@ API
 
  
 
-<script async src="/js/app.js?v=1650015363952"></script>
+<script async src="/js/app.js?v=1650269521651"></script>
 
 
 

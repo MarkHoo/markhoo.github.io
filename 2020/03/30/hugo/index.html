@@ -21,15 +21,15 @@
 <meta property="og:description" content="安装Hugo 首先安装Git在底部附近找到Windows文件（它们是按字母顺序排列，因此Windows是最后一个）–根据您使用的是32位还是64位Windows，下载32位或64位文件。（如果您不知道，请参见此处。）将ZIP文件移动到您的C:\Hugo\bin文件夹中。双击ZIP文件并提取其内容。确保将内容提取到同一C:\Hugo\bin文件夹中-Windows会默认执行此操作，除非您告诉它要提取">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-30T15:06:05.000Z">
-<meta property="article:modified_time" content="2022-01-10T14:08:59.051Z">
+<meta property="article:modified_time" content="2022-04-18T04:47:14.100Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Hugo">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650015363908">
+    <link rel="stylesheet" href="/css/style.css?v=1650269521608">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650015363908">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521608">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -256,28 +256,31 @@
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2020年03月30日</a>
-    <a><i class="nexmoefont icon-areachart"></i>327 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>338 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
 </div>
 
       
 
       <h2 id="安装Hugo"><a href="#安装Hugo" class="headerlink" title="安装Hugo"></a>安装Hugo</h2><hr>
-<h4 id="首先安装Git"><a href="#首先安装Git" class="headerlink" title="首先安装Git"></a>首先安装Git</h4><p>在底部附近找到Windows文件（它们是按字母顺序排列，因此Windows是最后一个）–根据您使用的是32位还是64位Windows，下载32位或64位文件。（如果您不知道，请参见此处。）<br>将ZIP文件移动到您的C:\Hugo\bin文件夹中。<br>双击ZIP文件并提取其内容。确保将内容提取到同一C:\Hugo\bin文件夹中-Windows会默认执行此操作，除非您告诉它要提取其他位置。<br>现在，您应该有了三个新文件：hugo可执行文件（hugo.exe）LICENSE，和README.md。<br>现在，您需要将Hugo添加到Windows PATH设置中：</p>
+<h4 id="首先安装Git"><a href="#首先安装Git" class="headerlink" title="首先安装Git"></a>首先安装Git</h4><p>在底部附近找到Windows文件（它们是按字母顺序排列，因此Windows是最后一个）–根据您使用的是32位还是64位Windows，下载32位或64位文件。（如果您不知道，请参见此处。）<br>将ZIP文件移动到您的<code>C:\Hugo\bin</code>文件夹中。<br>双击ZIP文件并提取其内容。确保将内容提取到同一<code>C:\Hugo\bin</code>文件夹中-Windows会默认执行此操作，除非您告诉它要提取其他位置。<br>现在，您应该有了三个新文件：hugo可执行文件（hugo.exe）LICENSE，和README.md。<br>现在，您需要将Hugo添加到Windows PATH设置中：</p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ brew install hugo<br></code></pre></td></tr></table></figure>
 
 
 <h4 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hugo version<br>$ hugo <span class="hljs-built_in">help</span><br></code></pre></td></tr></table></figure>
-<h4 id="新建网站："><a href="#新建网站：" class="headerlink" title="新建网站："></a>新建网站：</h4><p>$ hugo new site quickstart</p>
-<h4 id="添加内容"><a href="#添加内容" class="headerlink" title="添加内容"></a>添加内容</h4><p>$ content/<CATEGORY>/<FILE>.<FORMAT><br>$ hugo new posts/my-first-post.md</p>
-<h4 id="Hugo命令"><a href="#Hugo命令" class="headerlink" title="Hugo命令"></a>Hugo命令</h4><p>命令hugo将您的站点渲染到public/dir中，并准备将其部署到Web服务器：</p>
-<h4 id="启动Hugo服务器"><a href="#启动Hugo服务器" class="headerlink" title="启动Hugo服务器"></a>启动Hugo服务器</h4><p>$ hugo server -D</p>
+<h4 id="新建网站："><a href="#新建网站：" class="headerlink" title="新建网站："></a>新建网站：</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hugo new site quickstart<br></code></pre></td></tr></table></figure>
+
+<h4 id="添加内容"><a href="#添加内容" class="headerlink" title="添加内容"></a>添加内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ content/&lt;CATEGORY&gt;/&lt;FILE&gt;.&lt;FORMAT&gt;<br>$ hugo new posts/my-first-post.md<br></code></pre></td></tr></table></figure>
+
+<h4 id="Hugo命令"><a href="#Hugo命令" class="headerlink" title="Hugo命令"></a>Hugo命令</h4><p>命令<code>hugo</code>将您的站点渲染到<code>public/dir</code>中，并准备将其部署到Web服务器：</p>
+<h4 id="启动Hugo服务器"><a href="#启动Hugo服务器" class="headerlink" title="启动Hugo服务器"></a>启动Hugo服务器</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hugo server -D<br></code></pre></td></tr></table></figure>
+
 <p><code>http://localhost:1313</code></p>
 <h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><p>config.toml</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">baseURL</span> <span class="hljs-string">=</span> <span class="hljs-string">&quot;https://example.org/&quot;</span><br><span class="hljs-string">languageCode</span> <span class="hljs-string">=</span> <span class="hljs-string">&quot;en-us&quot;</span><br><span class="hljs-string">title</span> <span class="hljs-string">=</span> <span class="hljs-string">&quot;My New Hugo Site&quot;</span><br><span class="hljs-string">theme</span> <span class="hljs-string">=</span> <span class="hljs-string">&quot;ananke&quot;</span>        <br></code></pre></td></tr></table></figure>
 
 <h4 id="建立静态页面"><a href="#建立静态页面" class="headerlink" title="建立静态页面"></a>建立静态页面</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hugo -D<br></code></pre></td></tr></table></figure>
-<p>./public/默认情况下，输出将位于目录中（-d/ –destination标志进行更改，或publishdir在配置文件中设置）。</p>
+<p><code>./public/</code>默认情况下，输出将位于目录中（-d/ –destination标志进行更改，或publishdir在配置文件中设置）。</p>
 <h4 id="运行调试"><a href="#运行调试" class="headerlink" title="运行调试"></a>运行调试</h4><h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><h4 id="上线到GitHub-Gitee-Coding-Gitlab"><a href="#上线到GitHub-Gitee-Coding-Gitlab" class="headerlink" title="上线到GitHub, Gitee, Coding, Gitlab"></a>上线到GitHub, Gitee, Coding, Gitlab</h4>
   </article>
 
@@ -351,7 +354,7 @@
 
  
 
-<script async src="/js/app.js?v=1650015363909"></script>
+<script async src="/js/app.js?v=1650269521609"></script>
 
 
 

@@ -21,15 +21,15 @@
 <meta property="og:description" content="Java安装和环境配置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-11-30T15:38:47.000Z">
-<meta property="article:modified_time" content="2021-10-08T12:25:33.067Z">
+<meta property="article:modified_time" content="2022-04-18T04:48:41.934Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650015363934">
+    <link rel="stylesheet" href="/css/style.css?v=1650269521633">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650015363934">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521633">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -282,9 +282,9 @@
 <p>如果显示了 Java 的版本，那么表示 JDK 安装成功了。<br>注意：最好不要安装在C盘</p>
 <h3 id="第二步：配置环境变量"><a href="#第二步：配置环境变量" class="headerlink" title="第二步：配置环境变量"></a>第二步：配置环境变量</h3><p>当我们安装好JDK后，就要配置环境变量了。一般来说，我们会配置这三个环境变量：</p>
 <ul>
-<li>JAVA_HOME 配置 JDK 安装路径</li>
-<li>PATH 配置 JDK 命令文件的位置</li>
-<li>CLASSPATH 配置类库文件的位置</li>
+<li><code>JAVA_HOME</code> 配置 JDK 安装路径</li>
+<li><code>PATH</code> 配置 JDK 命令文件的位置</li>
+<li><code>CLASSPATH</code> 配置类库文件的位置</li>
 </ul>
 <h4 id="注意：安装完只要正确配置JAVA-HOME变量值，后面的PATH和CLASSPATH的配置是固定的，不管你的JDK装在什么地方"><a href="#注意：安装完只要正确配置JAVA-HOME变量值，后面的PATH和CLASSPATH的配置是固定的，不管你的JDK装在什么地方" class="headerlink" title="注意：安装完只要正确配置JAVA_HOME变量值，后面的PATH和CLASSPATH的配置是固定的，不管你的JDK装在什么地方"></a>注意：安装完只要正确配置JAVA_HOME变量值，后面的PATH和CLASSPATH的配置是固定的，不管你的JDK装在什么地方</h4><p>步骤一：右击<code>计算机</code>，选择<code>属性</code></p>
 <p>步骤二：打开<code>高级系统设置</code></p>
@@ -303,6 +303,7 @@
 </ol>
 <p>最终效果：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ 变量名:JAVA_HOME<br>$ 变量值：C:\Program Files\Java\jdk1.8.0_192<br></code></pre></td></tr></table></figure>
+
 <p>步骤六：在<code>系统变量</code>里配置PATH变量</p>
 <ol>
 <li><p><code>系统变量</code>默认里有Path变量，找到它，点击 <code>编辑</code></p>
@@ -314,6 +315,7 @@
 </ol>
 <p>最终效果：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ 变量名：PATH<br>$ 变量值：%JAVA_HOME%\bin<br></code></pre></td></tr></table></figure>
+
 <p>步骤七:配置CLASSPATH变量</p>
 <ol>
 <li><p>点击<code>系统变量</code>下的<code>新建</code></p>
@@ -327,6 +329,7 @@
 </ol>
 <p>最终效果：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ 变量名： CLASSPATH<br>$ 变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\bin\tools.jar<br></code></pre></td></tr></table></figure>
+
 <h3 id="第三步：验证环境配置是否正确"><a href="#第三步：验证环境配置是否正确" class="headerlink" title="第三步：验证环境配置是否正确"></a>第三步：验证环境配置是否正确</h3><ol>
 <li><p>点击<code>开始</code></p>
 </li>
@@ -414,7 +417,7 @@
 
  
 
-<script async src="/js/app.js?v=1650015363935"></script>
+<script async src="/js/app.js?v=1650269521633"></script>
 
 
 

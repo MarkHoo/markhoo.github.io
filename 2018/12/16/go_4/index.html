@@ -22,16 +22,16 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://markhoo.com/static/img/go2.jpg">
 <meta property="article:published_time" content="2018-12-15T16:12:12.000Z">
-<meta property="article:modified_time" content="2022-01-10T14:25:05.785Z">
+<meta property="article:modified_time" content="2022-04-18T07:37:57.627Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://markhoo.com/static/img/go2.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650015363922">
+    <link rel="stylesheet" href="/css/style.css?v=1650269521620">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650015363922">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521620">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -258,7 +258,7 @@
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月16日</a>
-    <a><i class="nexmoefont icon-areachart"></i>17k 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>17.1k 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 73 分钟</a>
 </div>
 
@@ -426,35 +426,44 @@
 <p>没有运算符重载的世界很美好。</p>
 <h3 id="Go为什么没有”implements”关键字？"><a href="#Go为什么没有”implements”关键字？" class="headerlink" title="Go为什么没有”implements”关键字？"></a>Go为什么没有”implements”关键字？</h3><p>Go通过实现接口的方法来满足接口。这允许定义和使用接口而不必修改现有的代码。 它提供了一种结构化的类型，可以促进解耦，并提高代码重用性，能让你在产品的压迫下活的更舒坦。接口的语义是Go灵活轻便的主要原因之一。</p>
 <h3 id="怎样才能保证我的类型满足了接口？"><a href="#怎样才能保证我的类型满足了接口？" class="headerlink" title="怎样才能保证我的类型满足了接口？"></a>怎样才能保证我的类型满足了接口？</h3><p>可以要求编译器检查T类型能够通过尝试使用T的零值或指向T的指针来实现接口I（视情况而定）：</p>
-<p>type T struct{}<br>var _ I = T{}       // Verify that T implements I.<br>var _ I = (*T)(nil) // Verify that *T implements I.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> T <span class="hljs-keyword">struct</span>&#123;&#125;<br><span class="hljs-keyword">var</span> _ I = T&#123;&#125;       <span class="hljs-comment">// Verify that T implements I.</span><br><span class="hljs-keyword">var</span> _ I = (*T)(<span class="hljs-literal">nil</span>) <span class="hljs-comment">// Verify that *T implements I.</span><br></code></pre></td></tr></table></figure>
+
 <p>如果T(或者*T)并没有实现I接口，错误将在编译时被捕获。</p>
 <p>如果希望接口的用户明确声明他们实现它，则可以向接口的方法集添加一个具有描述性名称的方法。例如：</p>
-<p>type Fooer interface {<br>    Foo()<br>    ImplementsFooer()<br>}</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Fooer <span class="hljs-keyword">interface</span> &#123;<br>    Foo()<br>    ImplementsFooer()<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>一个类型必须实现ImplementsFooer方法成为一个Fooer，godoc产生的输出会很清楚地记录该类型实现了它。</p>
-<p>type Bar struct{}<br>func (b Bar) ImplementsFooer() {}<br>func (b Bar) Foo() {}</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Bar <span class="hljs-keyword">struct</span>&#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b Bar)</span> <span class="hljs-title">ImplementsFooer</span><span class="hljs-params">()</span></span> &#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b Bar)</span> <span class="hljs-title">Foo</span><span class="hljs-params">()</span></span> &#123;&#125;<br></code></pre></td></tr></table></figure>
+
 <p>大多数代码没有使用这样的约束，因为它们限制了接口思想的实用性。有时候，有必要解决类似接口之间的歧义。</p>
 <h3 id="为什么类型T不能满足Equal接口？"><a href="#为什么类型T不能满足Equal接口？" class="headerlink" title="为什么类型T不能满足Equal接口？"></a>为什么类型T不能满足Equal接口？</h3><p>考虑这个简单的接口，表示可以执行与另一个值比较的操作：</p>
-<p>type Equaler interface {<br>    Equal(Equaler) bool<br>}</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Equaler <span class="hljs-keyword">interface</span> &#123;<br>    Equal(Equaler) <span class="hljs-keyword">bool</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>还有类型T</p>
-<p>type T int<br>func (t T) Equal(u T) bool { return t == u } // does not satisfy Equaler</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> T <span class="hljs-keyword">int</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t T)</span> <span class="hljs-title">Equal</span><span class="hljs-params">(u T)</span> <span class="hljs-title">bool</span></span> &#123; <span class="hljs-keyword">return</span> t == u &#125; <span class="hljs-comment">// does not satisfy Equaler</span><br></code></pre></td></tr></table></figure>
+
 <p>与一些多态类型系统中的类似情况不同，T不执行Equaler。 T.Equal的参数类型是T，而不是字面上所需的类型Equaler。</p>
 <p>在Go中，类型系统不支持Equal的愿意在于——这是开发者的责任，正如类型T2所说明的那样，它实现了Equaler：</p>
-<p>type T2 int<br>func (t T2) Equal(u Equaler) bool { return t == u.(T2) }  // satisfies Equaler</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> T2 <span class="hljs-keyword">int</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t T2)</span> <span class="hljs-title">Equal</span><span class="hljs-params">(u Equaler)</span> <span class="hljs-title">bool</span></span> &#123; <span class="hljs-keyword">return</span> t == u.(T2) &#125;  <span class="hljs-comment">// satisfies Equaler</span><br></code></pre></td></tr></table></figure>
+
 <p>在Go中，任何满足Equaler的类型都可以作为参数传递给T2.Equal，并且在运行时我们必须检查参数是T2类型。有些语言会在编译时做出保证。</p>
 <p>这里还有个例子</p>
-<p>type Opener interface {<br>   Open() Reader<br>}</p>
-<p>func (t T3) Open() *os.File</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Opener <span class="hljs-keyword">interface</span> &#123;<br>   Open() Reader<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t T3)</span> <span class="hljs-title">Open</span><span class="hljs-params">()</span> *<span class="hljs-title">os</span>.<span class="hljs-title">File</span></span><br></code></pre></td></tr></table></figure>
+
 <p>在Go中，T3并不能满足Opener，尽管它在其他语言中可行。</p>
 <p>虽然在这种情况下，Go的类型系统对于开发者来说确实少了一些，但缺乏子类型使得是否满足接口的规则很容易描述——函数的名称和签名是否与接口的名称和签名完全相符。Go的这一规则很容易实现。 我们觉得好处大于使用上的其他不足。如果有一天我们会采用某种形式的多态输入，我们希望能够有一种方法来表达这些例子的思想，并且对它们进行静态检查。</p>
-<h3 id="我能把-T转换成-interface-吗？"><a href="#我能把-T转换成-interface-吗？" class="headerlink" title="我能把[]T转换成[]interface{}吗？"></a>我能把[]T转换成[]interface{}吗？</h3><p>不能直接这么做。因为它们在内存中没有相同的表现。必须逐个的将元素拷贝到目标切片中去。下面这个例子就是这样的：</p>
-<p>t := []int{1, 2, 3, 4}<br>s := make([]interface{}, len(t))<br>for i, v := range t {<br>    s[i] = v<br>}</p>
-<h3 id="如果T1和T2具有相同的基础类型，是否可以将-T1转换为-T2？"><a href="#如果T1和T2具有相同的基础类型，是否可以将-T1转换为-T2？" class="headerlink" title="如果T1和T2具有相同的基础类型，是否可以将[]T1转换为[]T2？"></a>如果T1和T2具有相同的基础类型，是否可以将[]T1转换为[]T2？</h3><p>最后一行无法通过编译：</p>
-<p>type T1 int<br>type T2 int<br>var t1 T1<br>var x = T2(t1) // OK<br>var st1 []T1<br>var sx = ([]T2)(st1) // NOT OK</p>
+<h3 id="我能把-T转换成-interface-吗？"><a href="#我能把-T转换成-interface-吗？" class="headerlink" title="我能把[]T转换成[]interface{}吗？"></a>我能把<code>[]T</code>转换成<code>[]interface&#123;&#125;</code>吗？</h3><p>不能直接这么做。因为它们在内存中没有相同的表现。必须逐个的将元素拷贝到目标切片中去。下面这个例子就是这样的：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go">t := []<span class="hljs-keyword">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br>s := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">interface</span>&#123;&#125;, <span class="hljs-built_in">len</span>(t))<br><span class="hljs-keyword">for</span> i, v := <span class="hljs-keyword">range</span> t &#123;<br>    s[i] = v<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="如果T1和T2具有相同的基础类型，是否可以将-T1转换为-T2？"><a href="#如果T1和T2具有相同的基础类型，是否可以将-T1转换为-T2？" class="headerlink" title="如果T1和T2具有相同的基础类型，是否可以将[]T1转换为[]T2？"></a>如果T1和T2具有相同的基础类型，是否可以将<code>[]T1</code>转换为<code>[]T2</code>？</h3><p>最后一行无法通过编译：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> T1 <span class="hljs-keyword">int</span><br><span class="hljs-keyword">type</span> T2 <span class="hljs-keyword">int</span><br><span class="hljs-keyword">var</span> t1 T1<br><span class="hljs-keyword">var</span> x = T2(t1) <span class="hljs-comment">// OK</span><br><span class="hljs-keyword">var</span> st1 []T1<br><span class="hljs-keyword">var</span> sx = ([]T2)(st1) <span class="hljs-comment">// NOT OK</span><br></code></pre></td></tr></table></figure>
+
 <p>在Go中，类型与方法紧密相关，因为每个命名类型都有一个（可能是空的）方法集。一般的规则是你可以改变被转换类型的名称（因此可能改变它的方法集），但你不能改变组合类型元素的名字（和方法集合）。Go要求你明确地表达类型转换。</p>
 <h3 id="为什么我的nil错误值不等于nil？"><a href="#为什么我的nil错误值不等于nil？" class="headerlink" title="为什么我的nil错误值不等于nil？"></a>为什么我的nil错误值不等于nil？</h3><p>在底层实现中，接口被实现为两个元素，一个类型和一个值。被称为接口的动态值的值是一个任意的具体值，类型是值的类型。对于int值3，可以认为接口实现为（int，3）。</p>
 <p>只有在内部值和类型都未设置时（nil，nil），接口值才为nil。一个nil接口总是持有nil类型。如果我们在一个接口值中存储一个类型为*int的零指针，那么无论指针的值是什么（*int，nil），内部类型都将是*int。因此即使里面的指针是nil，这样一个接口值也是非nil的。</p>
 <p>这种情况可能会引起混淆，并且在一个接口值（如错误返回值）中存储一个零值时会出现这种情况：</p>
-<p>func returnsError() error {<br>    var p *MyError = nil<br>    if bad() {<br>        p = ErrBad<br>    }<br>    return p // Will always return a non-nil error.<br>}</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">returnsError</span><span class="hljs-params">()</span> <span class="hljs-title">error</span></span> &#123;<br>	<span class="hljs-keyword">var</span> p *MyError = <span class="hljs-literal">nil</span><br>	<span class="hljs-keyword">if</span> bad() &#123;<br>		p = ErrBad<br>	&#125;<br>	<span class="hljs-keyword">return</span> p <span class="hljs-comment">// Will always return a non-nil error.</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>这个函数返回一个nil的p，所以返回值是一个错误的接口值（*MyError，nil）。</p>
 <p>对于返回错误的函数来说，总是在签名中使用错误类型（如上所述）而不是像MyError这样的具体类型，以帮助保证正确创建错误。例如，<code>os.Open</code>返回一个错误，如果不是nil时，返回具体类型*os.PathError。</p>
 <p>无论何时使用接口，都会出现类似于这里描述的情况。请记住，如果接口中存储了具体的值，接口将不会为nil。更多信息请查看<a target="_blank" rel="noopener" href="https://golang.google.cn/doc/articles/laws_of_reflection.html">反射的原则</a>。</p>
@@ -467,9 +476,11 @@
 <p><em>We considered adding variant types to Go, but after discussion decided to leave them out because they overlap in confusing ways with interfaces. What would happen if the elements of a variant type were themselves interfaces?</em></p>
 <p><em>Also, some of what variant types address is already covered by the language. The error example is easy to express using an interface value to hold the error and a type switch to discriminate cases. The syntax tree example is also doable, although not as elegantly.</em></p>
 <h3 id="为什么Go没有协变类型？"><a href="#为什么Go没有协变类型？" class="headerlink" title="为什么Go没有协变类型？"></a>为什么Go没有协变类型？</h3><p>协变类型意味着像这样一个接口</p>
-<p>type Copyable interface {<br>    Copy() interface{}<br>}</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Copyable <span class="hljs-keyword">interface</span> &#123;<br>	Copy() <span class="hljs-keyword">interface</span>&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>会被这个方法所满足</p>
-<p>func (v Value) Copy() Value</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(v Value)</span> <span class="hljs-title">Copy</span><span class="hljs-params">()</span> <span class="hljs-title">Value</span></span><br></code></pre></td></tr></table></figure>
+
 <p>因为 Value 实现了空的接口。但同时，在Go中，实现接口要求方法类型必须完全匹配，所以Value不会实现Copyable——是不是很矛盾。Go从类型的实现中分离出类型的概念。如果两个方法返回不同的类型，他们不会做同样的事情。希望使用协变类型的开发者经常试图通过接口表达类型层次结构。在Go中，接口和实现之间存在清晰的分离无疑是更加自然的。</p>
 <h2 id="值"><a href="#值" class="headerlink" title="值"></a>值</h2><h3 id="为什么Go不提供隐式数字转换"><a href="#为什么Go不提供隐式数字转换" class="headerlink" title="为什么Go不提供隐式数字转换"></a>为什么Go不提供隐式数字转换</h3><p>C中的数字类型自动转换的方便性超小于它引发的问题。什么时候表达式是无符号的？ 值有多大？它溢出吗？结果是否可传递？与执行的机器有无关联？这使编译器复杂化。“通常的算术转换”在不同的架构上不易实现。 出于可移植性的原因，我们决定让转换的代价简单明了。</p>
 <h3 id="为什么map是系统内置的？"><a href="#为什么map是系统内置的？" class="headerlink" title="为什么map是系统内置的？"></a>为什么map是系统内置的？</h3><p>和内置字符串类型一样：它们是如此强大和重要的数据结构，为语法支持提供了一个优秀的实现，使编程更愉快。我们认为Go的map足够强大，可以满足绝大多数用途。如果一个特定的应用程序可以从一个自定义的实现中受益，那么可以编写一个，但是从语法上讲它不是那么方便。这似乎是一个合理的折衷办法。</p>
@@ -486,30 +497,20 @@
 <h3 id="为什么”go-get”克隆仓库的时候使用HTTPS？"><a href="#为什么”go-get”克隆仓库的时候使用HTTPS？" class="headerlink" title="为什么”go get”克隆仓库的时候使用HTTPS？"></a>为什么”go get”克隆仓库的时候使用HTTPS？</h3><p>大部分公司通常只允许在开放标准TCP端口80（HTTP）和443（HTTPS），阻止其他端口（包括TCP端口9418（git）和TCP端口22（SSH））。当使用HTTPS代替HTTP时，git默认强制执行证书验证，提供针对中间人，窃听和篡改攻击的保护。因此，get get命令使用HTTPS来确保安全。</p>
 <p>如果你使用git，并且喜欢用你现有的密钥通过SSH推送更改，那很容易解决这个问题。对于GitHub，请尝试以下解决方案：</p>
 <ul>
-<li>在软件包目录中手动克隆存储库：  $ cd src/github.com/username<br>  $ git clone <a href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;">&#103;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;</a>:username/package.git</li>
-<li>通过添加以下两行代码至 ~/.gitconfig 强制 git push 使用SSH协议  [url “<a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;">&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:”]<pre><code>  pushInsteadOf = https://github.com/
-</code></pre>
-</li>
+<li>  在软件包目录中手动克隆存储库：</li>
 </ul>
-<h3 id="如何使用”go-get”管理包版本？"><a href="#如何使用”go-get”管理包版本？" class="headerlink" title="如何使用”go get”管理包版本？"></a>如何使用”go get”管理包版本？</h3><p>“go get”没有任何明确的包版本的概念。版本控制是非常复杂的，特别是在大型代码库中，我们并不知道在多种情况下广泛适用于所有Go用户的大规模运行的方法。”go get”和更大的Go工具链提供的方案是，隔离具有不同导入路径的包来做区分。 例如，标准库的html/template和text/template共存，即使它们都是“包模板”。这可以作为包作者及相关使用者的参考。</p>
-<p>供公众使用的软件包应该尽量保持向后兼容性。<a target="_blank" rel="noopener" href="https://golang.google.cn/doc/go1compat.html">Go 1 兼容性标准导读</a> 是一个很好的参考：不要删除导出的名称，鼓励标记的复合文字等等。如果需要不同的功能，请添加一个新名称，而不是更改旧名称。 如果有重大的修改调整，请使用新的导入路径创建新的包。</p>
-<p>如果你使用的是外部提供的软件包，并担心提供者可能会以意想不到的方式进行更改，最简单的解决方案是将其复制到本地——这是Google在内部采取的方法——国内的各种SDK你懂的。 将拷贝存储在新的导入路径下并标识其为本地副本。例如，你可能会将“original.com/pkg”复制到“you.com/external/original.com/pkg”。<a target="_blank" rel="noopener" href="https://godoc.org/golang.org/x/tools/cmd/gomvpkg">gomvpkg工具</a>能帮你自动执行此过程。</p>
-<p>Go 1.5版本为go命令添加了一个工具，通过将其“vendoring”到靠近依赖于它们的包的特定目录中，可以更容易地管理外部依赖关系。查看<a target="_blank" rel="noopener" href="https://golang.org/s/go15vendor">govendor介绍</a>以了解更多细节。</p>
-<p>我们正在进行关于<a target="_blank" rel="noopener" href="https://github.com/golang/dep">dep</a>的工作——它是一个go的包管理工具。查看<a target="_blank" rel="noopener" href="https://github.com/golang/dep">dep FAQ</a>以了解更多。</p>
-<h2 id="指针和内存分配"><a href="#指针和内存分配" class="headerlink" title="指针和内存分配"></a>指针和内存分配</h2><h3 id="函数参数何时通过值传递？"><a href="#函数参数何时通过值传递？" class="headerlink" title="函数参数何时通过值传递？"></a>函数参数何时通过值传递？</h3><p>和C系中的所有语言一样，Go中的一切都是通过值传递的。也就是说，函数总是获得被传递的值的副本，就像一个赋值语句赋值给参数一样。 例如，将一个int值传递给一个函数会生成一个int的副本，传递一个指针值会创建指针的副本，但不会复制它所指向的数据(<em>原文是：passing a pointer value makes a copy of the pointer, but not the data it points to</em>)。</p>
-<p>map和切片类似与指针：它们是指向底层map或切片数据的描述符。复制地图或切片值不会复制指向的数据。复制一个接口值会复制存储在接口值中的东西：如果接口值包含一个结构体，则复制该接口值将生成该结构体的一个副本。如果接口值包含指针，则复制接口值会生成指针的副本，但不会复制指向的数据。</p>
-<p>请注意，这里讨论的是关于操作的语义。实际的实现可以应用优化来避免复制，只要优化不会改变语义。</p>
-<h3 id="应该在什么时候使用接口的指针？"><a href="#应该在什么时候使用接口的指针？" class="headerlink" title="应该在什么时候使用接口的指针？"></a>应该在什么时候使用接口的指针？</h3><p>几乎从不。使用指向接口值的指针只出现在罕见的，棘手的情况下。</p>
-<p>将一个指针传递给一个接口值的函数是一个常见的错误。编译器会报错，而这种情况很令人困惑，因为有时 需要一个指针来满足接口。尽管指向具体类型的指针可以满足接口，但是，指向接口的指针永远不能满足接口。<em>这段跟绕口令一样，实在是不通，原文：It is however a common mistake to pass a pointer to an interface value to a function expecting an interface. The compiler will complain about this error but the situation can still be confusing, because sometimes a pointer is necessary to satisfy an interface. The insight is that although a pointer to a concrete type can satisfy an interface, with one exception a pointer to an interface can never satisfy an interface.</em></p>
-<p>考虑如下声明</p>
-<p>var w io.Writer</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs sh">    $ <span class="hljs-built_in">cd</span> src/github.com/username<br>    $ git <span class="hljs-built_in">clone</span> git@github.com:username/package.git<br>```  <br><br>*   通过添加以下两行代码至 \~/.gitconfig 强制 git push 使用SSH协议<br><br>```    <br>    [url <span class="hljs-string">&quot;git@github.com:&quot;</span>]<br>    	pushInsteadOf = https://github.com/<br>```    <br><br><span class="hljs-comment">### 如何使用&quot;go get&quot;管理包版本？</span><br><br><span class="hljs-string">&quot;go get&quot;</span>没有任何明确的包版本的概念。版本控制是非常复杂的，特别是在大型代码库中，我们并不知道在多种情况下广泛适用于所有Go用户的大规模运行的方法。<span class="hljs-string">&quot;go get&quot;</span>和更大的Go工具链提供的方案是，隔离具有不同导入路径的包来做区分。 例如，标准库的html/template和text/template共存，即使它们都是“包模板”。这可以作为包作者及相关使用者的参考。<br><br>供公众使用的软件包应该尽量保持向后兼容性。[Go 1 兼容性标准导读](https://golang.google.cn/doc/go1compat.html) 是一个很好的参考：不要删除导出的名称，鼓励标记的复合文字等等。如果需要不同的功能，请添加一个新名称，而不是更改旧名称。 如果有重大的修改调整，请使用新的导入路径创建新的包。<br><br>如果你使用的是外部提供的软件包，并担心提供者可能会以意想不到的方式进行更改，最简单的解决方案是将其复制到本地——这是Google在内部采取的方法——国内的各种SDK你懂的。 将拷贝存储在新的导入路径下并标识其为本地副本。例如，你可能会将“original.com/pkg”复制到“you.com/external/original.com/pkg”。[gomvpkg工具](https://godoc.org/golang.org/x/tools/cmd/gomvpkg)能帮你自动执行此过程。<br><br>Go 1.5版本为go命令添加了一个工具，通过将其“vendoring”到靠近依赖于它们的包的特定目录中，可以更容易地管理外部依赖关系。查看[govendor介绍](https://golang.org/s/go15vendor)以了解更多细节。<br><br>我们正在进行关于[dep](https://github.com/golang/dep)的工作——它是一个go的包管理工具。查看[dep FAQ](https://github.com/golang/dep)以了解更多。<br><br>指针和内存分配<br>-------<br><br><span class="hljs-comment">### 函数参数何时通过值传递？</span><br><br>和C系中的所有语言一样，Go中的一切都是通过值传递的。也就是说，函数总是获得被传递的值的副本，就像一个赋值语句赋值给参数一样。 例如，将一个int值传递给一个函数会生成一个int的副本，传递一个指针值会创建指针的副本，但不会复制它所指向的数据(_原文是：passing a pointer value makes a copy of the pointer, but not the data it points to_)。<br><br>map和切片类似与指针：它们是指向底层map或切片数据的描述符。复制地图或切片值不会复制指向的数据。复制一个接口值会复制存储在接口值中的东西：如果接口值包含一个结构体，则复制该接口值将生成该结构体的一个副本。如果接口值包含指针，则复制接口值会生成指针的副本，但不会复制指向的数据。<br><br>请注意，这里讨论的是关于操作的语义。实际的实现可以应用优化来避免复制，只要优化不会改变语义。<br><br><span class="hljs-comment">### 应该在什么时候使用接口的指针？</span><br><br>几乎从不。使用指向接口值的指针只出现在罕见的，棘手的情况下。<br><br>将一个指针传递给一个接口值的函数是一个常见的错误。编译器会报错，而这种情况很令人困惑，因为有时 需要一个指针来满足接口。尽管指向具体类型的指针可以满足接口，但是，指向接口的指针永远不能满足接口。_这段跟绕口令一样，实在是不通，原文：It is however a common mistake to pass a pointer to an interface value to a <span class="hljs-keyword">function</span> expecting an interface. The compiler will complain about this error but the situation can still be confusing, because sometimes a pointer is necessary to satisfy an interface. The insight is that although a pointer to a concrete <span class="hljs-built_in">type</span> can satisfy an interface, with one exception a pointer to an interface can never satisfy an interface._<br><br>考虑如下声明<br><br>```go<br>var w io.Writer<br></code></pre></td></tr></table></figure>
+
 <p>打印函数<code>fmt.Fprintf</code>将第一个参数作为满足io.Wirter类型的值——只要这个值实现了规范的Writer方法。所以可以这样：</p>
-<p>fmt.Fprintf(w, “hello, world\n”)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">fmt.Fprintf(w, <span class="hljs-string">&quot;hello, world\n&quot;</span>)<br></code></pre></td></tr></table></figure>
+
 <p>如果我们传递 w 的指针，程序无法编译：</p>
-<p>fmt.Fprintf(&amp;w, “hello, world\n”) // Compile-time error.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">fmt.Fprintf(&amp;w, <span class="hljs-string">&quot;hello, world\n&quot;</span>) <span class="hljs-comment">// Compile-time error.</span><br></code></pre></td></tr></table></figure>
+
 <p>任何值，甚至指向接口的指针，都可以分配给一个空接口类型的变量（interface{}）。即便如此，如果这个值是一个指向接口的指针，那几乎肯定是一个错误。结果可能会令人困惑。<em>原文：The one exception is that any value, even a pointer to an interface, can be assigned to a variable of empty interface type (interface{}). Even so, it’s almost certainly a mistake if the value is a pointer to an interface; the result can be confusing.</em></p>
 <h3 id="应该把函数的接收者设置为值还是指针？"><a href="#应该把函数的接收者设置为值还是指针？" class="headerlink" title="应该把函数的接收者设置为值还是指针？"></a>应该把函数的接收者设置为值还是指针？</h3><p><em>原标题 Should I define methods on values or pointers</em></p>
-<p>func (s *MyStruct) pointerMethod() { } // method on pointer<br>func (s MyStruct)  valueMethod()   { } // method on value</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *MyStruct)</span> <span class="hljs-title">pointerMethod</span><span class="hljs-params">()</span></span> &#123; &#125; <span class="hljs-comment">// method on pointer</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s MyStruct)</span>  <span class="hljs-title">valueMethod</span><span class="hljs-params">()</span></span>   &#123; &#125; <span class="hljs-comment">// method on value</span><br></code></pre></td></tr></table></figure>
+
 <p>对于不熟悉指针的开发者来说，这两个例子之间的区别可能会令人困惑，但区别其实非常简单。<strong>当在一个类型上定义一个方法时，接收者（在上面的例子中的s）的行为就像它是方法的参数一样</strong>。无论是将接收者定义为值还是指针，都是同一个问题，那么函数参数是一个值还是一个指针。有下面几个因素需要考虑。</p>
 <p>首先，最重要的是，该函数是否需要修改接收者的属性。如果需要的话，接收者必须是个指针。(切片和map 有类似与指针的表现，所以他们的使用情况有点微妙。但是如果需要改变一个方法中作为接收者的切片的长度，那么仍然需要是个指针。) 在上面的例子里，如果 pointerMethod 修改了 s 的属性，调用者在调用该函数后会看到这些改变，但是 valueMethod 被 s 的副本调用(值传递)，所以调用后 s 的属性不会发生改变。</p>
 <p>顺便提一句，指针接收器和Java的情况是一样的，尽管在Java中指针是隐藏在底层。</p>
@@ -521,7 +522,8 @@
 <h3 id="一个int类型在64位机器上是多少位？"><a href="#一个int类型在64位机器上是多少位？" class="headerlink" title="一个int类型在64位机器上是多少位？"></a>一个int类型在64位机器上是多少位？</h3><p><em>原标题 What is the size of an int on a 64 bit machine</em></p>
 <p>int和uint的大小特定于实现的平台，但在给定平台上彼此相同。依赖于特定大小的值的代码应该使用明确大小的类型，如int64。在Go 1.1之前，64位Go编译器（包括gc和gccgo）都使用了32位的int表示。从Go 1.1开始，他们使用64位表示。</p>
 <p>另一方面，浮点标量和complex类型的大小始终不变（因为没有浮点或complex 的基本类型），开发者在使用浮点数时应该注意精度。用于（无类型）浮点常量的默认类型是float64。因此，foo:= 3.0声明了一个float64类型的变量foo。 对于由（无类型）常量初始化的float32变量，必须在变量声明中明确指定变量类型：</p>
-<p>var foo float32 = 3.0</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> foo <span class="hljs-keyword">float32</span> = <span class="hljs-number">3.0</span><br></code></pre></td></tr></table></figure>
+
 <p>或者，常量必须被赋予一个具有转换的类型，如foo:= float32（3.0）。</p>
 <h3 id="如果判断一个变量分配在堆上还是栈上？"><a href="#如果判断一个变量分配在堆上还是栈上？" class="headerlink" title="如果判断一个变量分配在堆上还是栈上？"></a>如果判断一个变量分配在堆上还是栈上？</h3><p>从某种角度上来说，你不需要考虑这个问题。在Go中只要变量还被引用着，它就会存在。实现存储位置与语言的语义无关。</p>
 <p>但了解存储位置确实对编写高效的程序有益。在可能的情况下，Go编译器将为该函数的堆(function’s stack frame)中的函数分配本地变量。但是，如果编译器不能在函数返回后证明变量未被引用，那么编译器必须在垃圾回收堆上分配变量，以避免错过指针错误。另外，如果局部变量非常大，将其存储在堆而不是栈可能更有意义。(<em>原文：The storage location does have an effect on writing efficient programs. When possible, the Go compilers will allocate variables that are local to a function in that function’s stack frame. However, if the compiler cannot prove that the variable is not referenced after the function returns, then the compiler must allocate the variable on the garbage-collected heap to avoid dangling pointer errors. Also, if a local variable is very large, it might make more sense to store it on the heap rather than the stack.</em>)。</p>
@@ -541,34 +543,25 @@
 <p>任何其他命名类型T的方法集合由所有具有接收器类型T的方法组成。 相应的指针类型*T的方法集是所有具有接收者*T或T（也包含T的方法集合）的方法的集合。</p>
 <p>如果一个接口值包含一个指针*T，则方法调用可以通过解引用指针来获得一个值，但是如果一个接口值包含一个值T，那么方法调用就没有用于获取指针的有用方法。</p>
 <p>即使在编译器可以将一个值的地址传递给方法的情况下，如果该方法修改了值，这些更改也将丢失。 例如，如果bytes.Buffer的Write方法使用了一个值接收器而不是一个指针，那么：</p>
-<p>var buf bytes.Buffer<br>io.Copy(buf, os.Stdin)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> buf bytes.Buffer<br>io.Copy(buf, os.Stdin)<br></code></pre></td></tr></table></figure>
+
 <p>会将标准输入复制到buf的副本中，而不是复制到buf本身。</p>
 <h3 id="如果闭包并发运行会发生什么？"><a href="#如果闭包并发运行会发生什么？" class="headerlink" title="如果闭包并发运行会发生什么？"></a>如果闭包并发运行会发生什么？</h3><p>使用并发的闭包时可能会出现一些混淆。考虑下面的程序：</p>
-<p>func main() {<br>    done := make(chan bool)</p>
-<pre><code>values := \[\]string&#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;
-for _, v := range values &#123;
-    go func() &#123;
-        fmt.Println(v)
-        done &lt;- true
-    &#125;()
-&#125;
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    done := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">bool</span>)<br><br>    values := []<span class="hljs-keyword">string</span>&#123;<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>&#125;<br>    <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> values &#123;<br>        <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>            fmt.Println(v)<br>            done &lt;- <span class="hljs-literal">true</span><br>        &#125;()<br>    &#125;<br><br>    <span class="hljs-comment">// wait for all goroutines to complete before exiting</span><br>    <span class="hljs-keyword">for</span> _ = <span class="hljs-keyword">range</span> values &#123;<br>        &lt;-done<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-// wait for all goroutines to complete before exiting
-for _ = range values &#123;
-    &lt;-done
-&#125;
-</code></pre>
-<p>}</p>
 <p>你可能期望看到输出 a，b，c。但你很可能看到输出 c，c，c。这是因为循环的每个迭代使用变量v的同一个实例，所以每个闭包共享单个变量。 当闭包运行时，它会在执行fmt.Println时打印v的值，但是当goroutine启动v可能已被修改。 为了在这些问题发生之前检测到这些问题，请运行<a target="_blank" rel="noopener" href="https://golang.google.cn/cmd/go/#hdr-Run_go_tool_vet_on_packages">go vet</a>。</p>
 <p>要将v的当前值绑定到每个闭包，必须修改内部循环以便在每次迭代中创建一个新变量。一种方法是将变量作为参数传递给闭包：</p>
-<p>for _, v := range values {<br>        go func(u string) {<br>            fmt.Println(u)<br>            done &lt;- true<br>        }(v)<br>    }</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> values &#123;<br>        <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(u <span class="hljs-keyword">string</span>)</span></span> &#123;<br>            fmt.Println(u)<br>            done &lt;- <span class="hljs-literal">true</span><br>        &#125;(v)<br>    &#125;<br></code></pre></td></tr></table></figure>
+
 <p>可以看到v的值以参数的形式传递给匿名函数。这个值可以在函数里作为变量u访问。</p>
 <p>有更简单的办法，虽然看起来有点奇怪，但在Go中是允许的：</p>
-<p>for _, v := range values {<br>        v := v // create a new ‘v’.<br>        go func() {<br>            fmt.Println(v)<br>            done &lt;- true<br>        }()<br>    }</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> values &#123;<br>        v := v <span class="hljs-comment">// create a new &#x27;v&#x27;.</span><br>        <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>            fmt.Println(v)<br>            done &lt;- <span class="hljs-literal">true</span><br>        &#125;()<br>    &#125;<br></code></pre></td></tr></table></figure>
+
 <h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="Go有三元运算符-吗？"><a href="#Go有三元运算符-吗？" class="headerlink" title="Go有三元运算符?:吗？"></a>Go有三元运算符?:吗？</h3><p>没有。</p>
 <h2 id="包和测试"><a href="#包和测试" class="headerlink" title="包和测试"></a>包和测试</h2><h3 id="如何创建一个多文件包？"><a href="#如何创建一个多文件包？" class="headerlink" title="如何创建一个多文件包？"></a>如何创建一个多文件包？</h3><p>将包的所有源文件放在一个目录中。源文件可以随意引用来自不同文件的项目;不需要前向声明或头文件。除了被分割成多个文件之外，软件包将像单个文件包一样进行编译和测试。</p>
-<h3 id="如何写联合测试？"><a href="#如何写联合测试？" class="headerlink" title="如何写联合测试？"></a>如何写联合测试？</h3><p>在与源码相同的目录中创建一个以_test.go结尾的新文件。在文件里导入<code>testing</code>包，然后这样写</p>
-<p>func TestFoo(t *testing.T) {<br>    …<br>}</p>
+<h3 id="如何写联合测试？"><a href="#如何写联合测试？" class="headerlink" title="如何写联合测试？"></a>如何写联合测试？</h3><p>在与源码相同的目录中创建一个以<code>_test.go</code>结尾的新文件。在文件里导入<code>testing</code>包，然后这样写</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestFoo</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>打开命令行，在该文件夹目录下运行<code>go test</code>。这个命令会找到测试函数，编译并执行它。</p>
 <p>更多内容，查看<a href="/code#test">如何编写Go代码</a></p>
 <h3 id="Where-is-my-favorite-helper-function-for-testing？"><a href="#Where-is-my-favorite-helper-function-for-testing？" class="headerlink" title="Where is my favorite helper function for testing？"></a>Where is my favorite helper function for testing？</h3><p>Go的标准库<code>testing</code>使得编写测试很容易，但缺少其他语言测试框架（如断言）提供的功能。 在上面的章节我们说明了为什么没有断言的存在。正确的错误处理方式意味着调试失败的人可以得到完整的错误信息快速定位，而这一点会在时间和精力上给予你回报。</p>
@@ -591,9 +584,8 @@ for _ = range values &#123;
 <p>一些人已经要求编译器选项关闭这些检查，或至少减少这些警告。但是，这样的选项还没有被添加，因为编译器选项不应该影响语言的语义——Go编译器不会报告警告，只会报告阻止编译的错误。</p>
 <p>Go编译器不会报告警告有两个原因。首先，我们不想改代码，其次，让编译器生成警告，可能会导致噪音从而掩盖真正的错误。</p>
 <p>解决这个问题很容易。使用空白标识符就能让在开发过程中不用的东西持续存在。</p>
-<p>import “unused”</p>
-<p>// This declaration marks the import as used by referencing an<br>// item from the package.<br>var _ = unused.Item  // TODO: Delete before committing!</p>
-<p>func main() {<br>    debugData := debug.Profile()<br>    _ = debugData // Used only during debugging.<br>    ….<br>}</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;unused&quot;</span><br><br><span class="hljs-comment">// This declaration marks the import as used by referencing an</span><br><span class="hljs-comment">// item from the package.</span><br><span class="hljs-keyword">var</span> _ = unused.Item  <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Delete before committing!</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    debugData := debug.Profile()<br>    _ = debugData <span class="hljs-comment">// Used only during debugging.</span><br>    ....<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>现在，大多数Go开发者使用一个命令行工具<a target="_blank" rel="noopener" href="http://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a>，它会自动重写一个Go源文件以获得正确的导入，并消除未使用的导入问题。 这个程序很容易连接到大多数编辑器，在源文件被写入时自动运行。</p>
 <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="为什么Go在benchmark上性能不佳？"><a href="#为什么Go在benchmark上性能不佳？" class="headerlink" title="为什么Go在benchmark上性能不佳？"></a>为什么Go在benchmark上性能不佳？</h3><p><em>原文将benchmark比赛称为Benchmark games。</em></p>
 <p>Go的设计目标之一是为可比较的程序提供C的性能，但在一些基准测试中表现不佳，其中包括<a target="_blank" rel="noopener" href="https://go.googlesource.com/exp/+/master/shootout/">golang.org/x/exp/shootout</a>中的一些。 例如，pidigits.go 采用了多精度数学包，而C版本与Go不同，使用GMP（它是用优化的汇编器编写的）。基于正则表达式的基准测试（例如regex-dna.go）将Go的regexp软件包与PCRE等成熟，高度优化的正则表达式库进行了比较。</p>
@@ -602,13 +594,17 @@ for _ = range values &#123;
 <p>无论如何，Go非常有竞争力。随着语言和工具的发展，许多关键点的性能有了显着的提高。查看<a target="_blank" rel="noopener" href="https://blog.golang.org/2011/06/profiling-go-programs.html">剖析Go程序</a>以了解更多的内容</p>
 <h2 id="与C的不同"><a href="#与C的不同" class="headerlink" title="与C的不同"></a>与C的不同</h2><h3 id="为什么语法上与C差别这么大？"><a href="#为什么语法上与C差别这么大？" class="headerlink" title="为什么语法上与C差别这么大？"></a>为什么语法上与C差别这么大？</h3><p>除了声明语法外，差异并不是非常大，这是出于两个诉求。首先， 语法应该感觉轻松，没有太多的强制性关键字，重复或难以理解。其次，这个语言被设计为易于分析， 并且可以在没有符号表的情况下被解析。这使得构建诸如调试器，依赖关系分析器，自动文档提取器， IDE插件等工具变得更加容易。C和它的后代在这方面实现起来非常困难。</p>
 <h3 id="为什么将类型声明后置？"><a href="#为什么将类型声明后置？" class="headerlink" title="为什么将类型声明后置？"></a>为什么将类型声明后置？</h3><p>在C中，这个概念是变量被声明为表示它的类型的表达式， 这是一个好主意，但是类型和表达式语法不能很好地混合， 结果可能会令人困惑。Go主要分离表达式和类型语法，并进行了简化。 在C，声明</p>
-<p>int* a, b;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span>* a, b;<br></code></pre></td></tr></table></figure>
+
 <p>声明了 a 是个指针而 b 不是，在Go中</p>
-<p>var a, b *int</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> a, b *<span class="hljs-keyword">int</span><br></code></pre></td></tr></table></figure>
+
 <p>声明了两者都是指针。这看起来更清晰。同样，:= 短声明表达式认为，完整的变量声明应该按照如下顺序</p>
-<p>var a uint64 = 1</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> a <span class="hljs-keyword">uint64</span> = <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
 <p>和这种写法是一样的</p>
-<p>a := uint64(1)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">a := <span class="hljs-keyword">uint64</span>(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
 <p>语法分析也被简化为具有不仅仅是表达式语法的类型的独特语法; func和chan等关键字采用这样的方法保持含义清晰。</p>
 <p>查看<a target="_blank" rel="noopener" href="https://golang.google.cn/doc/articles/gos_declaration_syntax.html">Go声明语法</a>了解更多。</p>
 <h3 id="为什么没有指针运算？"><a href="#为什么没有指针运算？" class="headerlink" title="为什么没有指针运算？"></a>为什么没有指针运算？</h3><p>为了安全。如果没有指针运算，可能会创建一个永远不会导致错误地成功的非法地址。编译器和硬件技术已经发展到使用数组索引的循环与使用指针运算的循环一样有效。另外，抛弃指针运算可以简化垃圾收集器的实现。</p>
@@ -693,7 +689,7 @@ for _ = range values &#123;
 
  
 
-<script async src="/js/app.js?v=1650015363923"></script>
+<script async src="/js/app.js?v=1650269521621"></script>
 
 
 
