@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>Go学习指南(四) - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
+    <title>Go常见问题及解答 - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -13,25 +13,25 @@
     
 
     <link rel="shortcut icon" href="https://media.markhoo.com/avatar.jpg" type="image/x-icon" />
-    <meta name="description" content="Go常见问题及解答起源 [Go语言项目的目标是什么?](#What is the purpose of the project) [Go语言项目现在处于什么状态?](#What is the status of the project) [为什么把Go语言的徽标定为地鼠?](#What’s the origin of the mascot) [Go语言项目历史](#What is the hist">
+    <meta name="description" content="起源Go语言项目的目标是什么？近十年来程序开发语言没有重大进展，但环境已经发生了巨大的变化。有以下几个趋势：    软件开发速度并未跟上计算机硬件的发展速度。   依赖管理是当今软件开发的重要组成部分，但C语言中的语言“头文件”与清除依赖关系分析和快速编译背道而驰。   对Java和C++等繁琐的开发语言反思越来越多，人们逐渐靠向动态类型的语言，如Python和JavaScript。   垃圾回收">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go学习指南(四)">
+<meta property="og:title" content="Go常见问题及解答">
 <meta property="og:url" content="https://markhoo.com/2018/12/16/go_4/index.html">
 <meta property="og:site_name" content="和光同尘|南有嘉鱼|markhoo|沉默是金">
-<meta property="og:description" content="Go常见问题及解答起源 [Go语言项目的目标是什么?](#What is the purpose of the project) [Go语言项目现在处于什么状态?](#What is the status of the project) [为什么把Go语言的徽标定为地鼠?](#What’s the origin of the mascot) [Go语言项目历史](#What is the hist">
+<meta property="og:description" content="起源Go语言项目的目标是什么？近十年来程序开发语言没有重大进展，但环境已经发生了巨大的变化。有以下几个趋势：    软件开发速度并未跟上计算机硬件的发展速度。   依赖管理是当今软件开发的重要组成部分，但C语言中的语言“头文件”与清除依赖关系分析和快速编译背道而驰。   对Java和C++等繁琐的开发语言反思越来越多，人们逐渐靠向动态类型的语言，如Python和JavaScript。   垃圾回收">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://markhoo.com/static/img/go2.jpg">
 <meta property="article:published_time" content="2018-12-15T16:12:12.000Z">
-<meta property="article:modified_time" content="2022-04-18T07:37:57.627Z">
+<meta property="article:modified_time" content="2022-04-18T09:34:02.760Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://markhoo.com/static/img/go2.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650269521620">
+    <link rel="stylesheet" href="/css/style.css?v=1650274684074">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521620">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650274684074">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -251,106 +251,20 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go学习指南(四)" class="lazyload">
-              <h1>Go学习指南(四)</h1>
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go常见问题及解答" class="lazyload">
+              <h1>Go常见问题及解答</h1>
           </div>
       
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月16日</a>
-    <a><i class="nexmoefont icon-areachart"></i>17.1k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 73 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>15.6k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 66 分钟</a>
 </div>
 
       
 
-      <h1 id="Go常见问题及解答"><a href="#Go常见问题及解答" class="headerlink" title="Go常见问题及解答"></a>Go常见问题及解答</h1><p><a href="#Origins">起源</a></p>
-<p>[Go语言项目的目标是什么?](#What is the purpose of the project)</p>
-<p>[Go语言项目现在处于什么状态?](#What is the status of the project)</p>
-<p>[为什么把Go语言的徽标定为地鼠?](#What’s the origin of the mascot)</p>
-<p>[Go语言项目历史](#What is the history of the project)</p>
-<p>[你们为什么要创造一门新的开发语言?](#Why are you creating a new language)</p>
-<p>[Go语言在设计时参考了哪些语言?](#What are Go’s ancestors)</p>
-<p>[Go语言在设计时的指导原则是什么?](#What are the guiding principles in the design)</p>
-<p><a href="#Usage">使用</a></p>
-<p>[Google内部在使用Go吗?](#Is Google using Go internally)</p>
-<p>[Go项目可以与C/C++项目连接吗?](#Do Go programs link with C/C++ programs)</p>
-<p>[Go语言支持Google的protocol buffers吗?](#Does Go support Google’s protocol buffers)</p>
-<p>[我能把Go语言官网页面转换为其他语言吗?](#Can I translate the Go home page into another language)</p>
-<p><a href="#Design">语言设计</a></p>
-<p>[Go有运行时吗?](#Does Go have a runtime)</p>
-<p>[关于Unicode编码](#What’s up with Unicode identifiers)</p>
-<p>[为什么Go没有某某某特性?](#Why does Go not have feature X)</p>
-<p>[为什么Go没有泛型?](#Why does Go not have generic types)</p>
-<p>[为什么Go没有异常?](#Why does Go not have exceptions)</p>
-<p>[为什么Go没有断言?](#Why does Go not have assertions)</p>
-<p>[为什么使用CSP的思想构建并发?](#Why build concurrency on the ideas of CSP)</p>
-<p>[为什么使用goroutine替代线程threads?](#Why goroutines instead of threads)</p>
-<p>[为什么map操作没有被定义为原子的?](#Why are map operations not defined to be atomic)</p>
-<p>[你们会接受我提的语言改进方案吗?](#Will you accept my language change)</p>
-<p><a href="#Types">类型</a></p>
-<p>[Go是一门面向对象的语言吗?](#Is Go an object-oriented language)</p>
-<p>[如何获得动态的方法调度?](#How do I get dynamic dispatch of methods)</p>
-<p>[为什么没有类型继承?](#Why is there no type inheritance)</p>
-<p>[为什么len是个方法而不是函数?](#Why is len a function and not a method)</p>
-<p>[为什么Go不支持函数和操作符重载?](#Why does Go not support overloading of methods and operators)</p>
-<p>[Go为什么没有”implements”关键字?](#Why doesn’t Go have implements declarations)</p>
-<p>[怎样才能保证我的类型满足了接口?](#How can I guarantee my type satisfies an interface)</p>
-<p>[为什么类型T不能满足Equal接口?](#Why doesn’t type T satisfy the Equal interface)</p>
-<p>[我能把[]T转换成[]interface{}吗?](#Can I convert a []T to an []interface{})</p>
-<p>[如果T1和T2具有相同的基础类型，是否可以将[]T1转换为[]T2?](#Can I convert []T1 to []T2 if T1 and T2 have the same underlying type)</p>
-<p>[为什么我的nil错误值不等于nil?](#Why is my nil error value not equal to nil)</p>
-<p>[为什么没有类似于C的untagged unions?](#Why are there no untagged unions)</p>
-<p>[为什么Go没有variant type?](#Why does Go not have variant types)</p>
-<p>[为什么Go没有协变类型?](#Why does Go not have covariant result types)</p>
-<p><a href="#Values">值</a></p>
-<p>[为什么Go不提供隐式数字转换?](#Why does Go not provide implicit numeric conversions)</p>
-<p>[为什么map是系统内置的?](#Why are maps built in)</p>
-<p>[为什么map不允许把切片作为键?](#Why don’t maps allow slices as keys)</p>
-<p>[为什么map，slice和channel是引用而array是值?](#Why are maps, slices, and channels references while arrays are values)</p>
-<p>[代码编写](#Writing Code)</p>
-<p>[库文档如何使用?](#How are libraries documented)</p>
-<p>[有没有Go编程风格指南?](#Is there a Go programming style guide)</p>
-<p>[如何为Go标准库提交补丁?](#How do I submit patches to the Go libraries)</p>
-<p>[为什么”go get”克隆仓库的时候使用HTTPS?](#Why does go get use HTTPS when cloning a repository)</p>
-<p>[如何使用”go get”管理包版本?](#How should I manage package versions using go get)</p>
-<p>[指针和内存分配](#Pointers and Allocation)</p>
-<p>[函数参数何时通过值传递?](#When are function parameters passed by value)</p>
-<p>[应该在什么时候使用接口的指针?](#When should I use a pointer to an interface)</p>
-<p>[应该把函数的接收者设置为值还是指针?](#Should I define methods on values or pointers)</p>
-<p>[new和make的区别是什么?](#What’s the difference between new and make)</p>
-<p>[一个int类型在64位机器上是多少位?](#What is the size of an int on a 64 bit machine)</p>
-<p>[如果判断一个变量分配在堆上还是栈上?](#How do I know whether a variable is allocated on the heap or the stack)</p>
-<p>[为什么我的Go进程使用这么多的虚拟内存?](#Why does my Go process use so much virtual memory)</p>
-<p><a href="#Concurrency">并发</a></p>
-<p>[什么操作是原子的？互斥体是吗?](#What operations are atomic)</p>
-<p>[为什么我的项目没有使用到多核CPU?](#Why doesn’t my multi-goroutine program use multiple CPUs)</p>
-<p>[为什么设置GOMAXPROCS&gt;1有时反而让程序变慢了?](#Why does using GOMAXPROCS &gt; 1 sometimes make my program slower)</p>
-<p>[方法和函数](#Functions and Methods)</p>
-<p>[为什么T和*T有不同的方法集?](#Why do T and *T have different method sets)</p>
-<p>[如果闭包作为goroutines运行会发生什么?](#What happens with closures running as goroutines)</p>
-<p>[流程控制](#Control flow)</p>
-<p>[Go有三元运算符?:吗?](#Does Go have the operator)</p>
-<p>[包和测试](#Packages and Testing)</p>
-<p>[如何创建一个多文件包?](#How do I create a multifile package)</p>
-<p>[如何写联合测试?](#How do I write a unit test)</p>
-<p>[Where is my favorite helper function for testing?](#Where is my favorite helper function for testing)</p>
-<p>[为什么标准库没有X?](#Why isn’t X in the standard library)</p>
-<p><a href="#Implementation">实现</a></p>
-<p>[编译器是如何构建的?](#What compiler technology is used to build the compilers)</p>
-<p>[运行时如何支持编译?](#How is the run-time support implemented)</p>
-<p>[为什么我的代码很少生成的可执行程序却这么大?](#Why is my trivial program such a large binary)</p>
-<p>[我能禁掉未使用变量及导包的编译错误吗?](#Can I stop these complaints about my unused variable/import)</p>
-<p><a href="#Performance">性能</a></p>
-<p>[为什么Go在benchmark上性能不佳?](#Why does Go perform badly on benchmark X)</p>
-<p>[与C的不同](#Changes from C)</p>
-<p>[为什么语法上与C差别这么大?](#Why is the syntax so different from C)</p>
-<p>[为什么将类型声明后置?](#Why are declarations backwards)</p>
-<p>[为什么没有指针运算?](#Why is there no pointer arithmetic)</p>
-<p>[为什么只有++和–后缀没有前缀？为什么它们是语句而不是表达式?](#Why are ++ and – statements and not expressions)</p>
-<p>[为什么没有分号？为什么不能把首个大括号放在下一行?](#Why are there braces but no semicolons)</p>
-<p>[为什么采用GC?](#Why do garbage collection)</p>
-<h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><h3 id="Go语言项目的目标是什么？"><a href="#Go语言项目的目标是什么？" class="headerlink" title="Go语言项目的目标是什么？"></a>Go语言项目的目标是什么？</h3><p>近十年来程序开发语言没有重大进展，但环境已经发生了巨大的变化。有以下几个趋势：</p>
+      <h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><h3 id="Go语言项目的目标是什么？"><a href="#Go语言项目的目标是什么？" class="headerlink" title="Go语言项目的目标是什么？"></a>Go语言项目的目标是什么？</h3><p>近十年来程序开发语言没有重大进展，但环境已经发生了巨大的变化。有以下几个趋势：</p>
 <ul>
 <li>  软件开发速度并未跟上计算机硬件的发展速度。</li>
 <li>  依赖管理是当今软件开发的重要组成部分，但C语言中的语言“头文件”与清除依赖关系分析和快速编译背道而驰。</li>
@@ -490,7 +404,7 @@
 <h2 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h2><h3 id="库文档如何使用？"><a href="#库文档如何使用？" class="headerlink" title="库文档如何使用？"></a>库文档如何使用？</h3><p>Go有一个用Go语言编写的内置工具 godoc，它从源码中提取包文档，可以在命令行或网络上使用。 一个现成的例子就是<a target="_blank" rel="noopener" href="https://golang.google.cn/pkg/">golang.org/pkg/</a>。 事实上，godoc 在golang.org上实现了完整的网站。</p>
 <p>godoc实例可以被配置为在其显示的程序中提供丰富的交互式静态符号分析;这里列出了<a target="_blank" rel="noopener" href="https://golang.org/lib/godoc/analysis/help.html">更多细节</a>。</p>
 <p>为了从命令行访问文档，go工具有一个doc子命令，它提供了相同信息的文本接口。</p>
-<h3 id="有没有Go编程风格指南？"><a href="#有没有Go编程风格指南？" class="headerlink" title="有没有Go编程风格指南？"></a>有没有Go编程风格指南？</h3><p>可能会有少量规则来指导命名，布局和文件组织等事情。在<a href="/effective">Go进阶</a>中包含了一些代码风格的建议。 gofmt自动为你提供更直接的帮助；它取代了通常的做法和不该做的解释。存储库中的所有Go代码都已经通过gofmt运行。</p>
+<h3 id="有没有Go编程风格指南？"><a href="#有没有Go编程风格指南？" class="headerlink" title="有没有Go编程风格指南？"></a>有没有Go编程风格指南？</h3><p>可能会有少量规则来指导命名，布局和文件组织等事情。在<a href="/2018/12/16/go_2/">Go进阶</a>中包含了一些代码风格的建议。 gofmt自动为你提供更直接的帮助；它取代了通常的做法和不该做的解释。存储库中的所有Go代码都已经通过gofmt运行。</p>
 <p><a target="_blank" rel="noopener" href="https://golang.org/s/comments">Go Code Review Comments</a>是关于Go的非常短的文章的集合，这些文章经常被开发者遗漏。对于Go项目的代码审查人员来说，这是一个方便的参考。</p>
 <h3 id="如何为Go标准库提交补丁？"><a href="#如何为Go标准库提交补丁？" class="headerlink" title="如何为Go标准库提交补丁？"></a>如何为Go标准库提交补丁？</h3><p>标准库源码在仓库 src 文件夹下。如果你想提交一个重大的修改，请在着手之前提交至邮件列表讨论。</p>
 <p>查看<a target="_blank" rel="noopener" href="https://golang.google.cn/doc/contribute.html">为Go项目做贡献</a>以了解更多细节。</p>
@@ -539,7 +453,7 @@
 <p>实际上，在操作系统中使用多个线程时，花费更多时间在channel上进行通信可能会降低程序性能。 这是因为在线程之间发送数据涉及切换上下文，成本很高，因此增加GOMAXPROCS更有可能使速度变慢。</p>
 <p>Go的goroutine调度程序并未达到我们预期的要求，尽管在最近的发行版中已经有所改进。 在接下来的版本中我们将持续优化。目前，如果存在性能问题，则应该根据每个应用程序来设置最佳的GOMAXPROCS数量。</p>
 <p>想了解更多细节，请查看<a target="_blank" rel="noopener" href="https://blog.golang.org/2013/01/concurrency-is-not-parallelism.html">Concurrency is not Parallelism.</a></p>
-<h2 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h2><h3 id="为什么T和-T有不同的方法集？"><a href="#为什么T和-T有不同的方法集？" class="headerlink" title="为什么T和*T有不同的方法集？"></a>为什么T和*T有不同的方法集？</h3><p>在<a href="/spec#Types">Go开发规范</a>中</p>
+<h2 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h2><h3 id="为什么T和-T有不同的方法集？"><a href="#为什么T和-T有不同的方法集？" class="headerlink" title="为什么T和*T有不同的方法集？"></a>为什么T和*T有不同的方法集？</h3><p>在<a target="_blank" rel="noopener" href="https://go.dev/ref/spec">Go开发规范</a>中</p>
 <p>任何其他命名类型T的方法集合由所有具有接收器类型T的方法组成。 相应的指针类型*T的方法集是所有具有接收者*T或T（也包含T的方法集合）的方法的集合。</p>
 <p>如果一个接口值包含一个指针*T，则方法调用可以通过解引用指针来获得一个值，但是如果一个接口值包含一个值T，那么方法调用就没有用于获取指针的有用方法。</p>
 <p>即使在编译器可以将一个值的地址传递给方法的情况下，如果该方法修改了值，这些更改也将丢失。 例如，如果bytes.Buffer的Write方法使用了一个值接收器而不是一个指针，那么：</p>
@@ -563,7 +477,7 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestFoo</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>打开命令行，在该文件夹目录下运行<code>go test</code>。这个命令会找到测试函数，编译并执行它。</p>
-<p>更多内容，查看<a href="/code#test">如何编写Go代码</a></p>
+<p>更多内容，查看<a href="/2018/12/16/go_3/">如何编写Go代码</a></p>
 <h3 id="Where-is-my-favorite-helper-function-for-testing？"><a href="#Where-is-my-favorite-helper-function-for-testing？" class="headerlink" title="Where is my favorite helper function for testing？"></a>Where is my favorite helper function for testing？</h3><p>Go的标准库<code>testing</code>使得编写测试很容易，但缺少其他语言测试框架（如断言）提供的功能。 在上面的章节我们说明了为什么没有断言的存在。正确的错误处理方式意味着调试失败的人可以得到完整的错误信息快速定位，而这一点会在时间和精力上给予你回报。</p>
 <p>值得一提的是，测试框架倾向于发展自己的迷你语言，具有自己的条件和控制以及打印机制， 但是Go已经具备了所有这些功能，为什么还要用它们？</p>
 <p>如果编写好的测试所需的额外代码量看起来十分让人难以忍受，那么如果表驱动测试可能会好点， 迭代在数据结构中定义的输入和输出列表（Go对此有很好的支持）。标准库有很多这样的例子，参见<a target="_blank" rel="noopener" href="https://golang.google.cn/src/fmt/fmt_test.go">fmt包测试源码</a></p>
@@ -689,7 +603,7 @@
 
  
 
-<script async src="/js/app.js?v=1650269521621"></script>
+<script async src="/js/app.js?v=1650274684075"></script>
 
 
 

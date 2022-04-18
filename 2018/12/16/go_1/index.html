@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>Go学习指南(一) - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
+    <title>Go学习指南 - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -13,25 +13,25 @@
     
 
     <link rel="shortcut icon" href="https://media.markhoo.com/avatar.jpg" type="image/x-icon" />
-    <meta name="description" content="Go学习指南官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。 第一部分介绍基本的语法和数据结构;第二部分讨论方法和接口;第三部分介绍Go的并发原语。可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快： 请先在本地安装 Go 然后使用 go get 命令安装 gotour-zh: 1go get github.com&#x2F;Go-zh&#x2F;tour&#x2F;g">
+    <meta name="description" content="Go学习指南 官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。 第一部分介绍基本的语法和数据结构;第二部分讨论方法和接口;第三部分介绍Go的并发原语。可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快： 请先在本地安装 Go 然后使用go get命令安装 gotour-zh: 1go get github.com&#x2F;Go-zh&#x2F;tour&#x2F;go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go学习指南(一)">
+<meta property="og:title" content="Go学习指南">
 <meta property="og:url" content="https://markhoo.com/2018/12/16/go_1/index.html">
 <meta property="og:site_name" content="和光同尘|南有嘉鱼|markhoo|沉默是金">
-<meta property="og:description" content="Go学习指南官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。 第一部分介绍基本的语法和数据结构;第二部分讨论方法和接口;第三部分介绍Go的并发原语。可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快： 请先在本地安装 Go 然后使用 go get 命令安装 gotour-zh: 1go get github.com&#x2F;Go-zh&#x2F;tour&#x2F;g">
+<meta property="og:description" content="Go学习指南 官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。 第一部分介绍基本的语法和数据结构;第二部分讨论方法和接口;第三部分介绍Go的并发原语。可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快： 请先在本地安装 Go 然后使用go get命令安装 gotour-zh: 1go get github.com&#x2F;Go-zh&#x2F;tour&#x2F;go">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://markhoo.com/static/img/syntax/newton.png">
 <meta property="article:published_time" content="2018-12-15T16:09:04.000Z">
-<meta property="article:modified_time" content="2022-04-18T06:04:11.499Z">
+<meta property="article:modified_time" content="2022-04-18T09:30:44.424Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://markhoo.com/static/img/syntax/newton.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650269521631">
+    <link rel="stylesheet" href="/css/style.css?v=1650274684085">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521631">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650274684085">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -251,8 +251,8 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go学习指南(一)" class="lazyload">
-              <h1>Go学习指南(一)</h1>
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go学习指南" class="lazyload">
+              <h1>Go学习指南</h1>
           </div>
       
       
@@ -264,12 +264,13 @@
 
       
 
-      <h2 id="Go学习指南"><a href="#Go学习指南" class="headerlink" title="Go学习指南"></a><a target="_blank" rel="noopener" href="https://tour.go-zh.org/welcome/1">Go学习指南</a></h2><p>官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。</p>
+      <p><a target="_blank" rel="noopener" href="https://tour.go-zh.org/welcome/1">Go学习指南</a></p>
+<p>官方提供了83个代码段，以介绍使用Go所需要用到的语法和概念。</p>
 <p>第一部分介绍基本的语法和数据结构;<br>第二部分讨论方法和接口;<br>第三部分介绍Go的并发原语。<br>可以通过以下方式在本地离线学习,离线使用时所有代码样例均在你的机器上编译和运行，所以速度会更快：</p>
-<p>请先在本地<a href="/install_simple">安装 Go</a> 然后使用 <a href="/gocmd">go get</a> 命令安装 gotour-zh:</p>
+<p>请先在本地<a target="_blank" rel="noopener" href="https://go.dev/doc/install">安装 Go</a> 然后使用<code>go get</code>命令安装 gotour-zh:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">go</span> get github.com/Go-zh/tour/gotour<br></code></pre></td></tr></table></figure>
 
-<p>然后运行得到的 gotour 程序就可以了(./gotour是Mac系统或linux系统执行程序的方式，在windows系统下你可以在自己设置的<a href="/code#workspace">GOPATH工作目录</a>下的bin文件夹内找到它)：</p>
+<p>然后运行得到的 gotour 程序就可以了(./gotour是Mac系统或linux系统执行程序的方式，在windows系统下你可以在自己设置的<a href="#">GOPATH工作目录</a>下的bin文件夹内找到它)：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go">cd $GOPATH/bin<br>./gotour<br></code></pre></td></tr></table></figure>
 
 <p>如果不想安装编辑器，可以前往<a target="_blank" rel="noopener" href="https://tour.go-zh.org/welcome/1">官方提供的在线编辑器</a>(自备梯子)</p>
@@ -739,7 +740,6 @@
 <p>修改 Crawl 函数来并行的抓取 URLs，并且保证不重复。</p>
 <p>提示：你可以用一个 map 来缓存已经获取的 URL，但是需要注意 map 本身并不是并发安全的！</p>
 <p>祝贺你，官方教程已经全部学完了。</p>
-<p><a href="/effective">骚年，深呼吸，然后走出新手村吧。</a></p>
 
   </article>
 
@@ -813,7 +813,7 @@
 
  
 
-<script async src="/js/app.js?v=1650269521632"></script>
+<script async src="/js/app.js?v=1650274684085"></script>
 
 
 

@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>Go学习指南(三) - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
+    <title>Go代码概览 - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -13,23 +13,23 @@
     
 
     <link rel="shortcut icon" href="https://media.markhoo.com/avatar.jpg" type="image/x-icon" />
-    <meta name="description" content="Go代码概览介绍这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。 Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。 你也可以查看位于youtube上的视频教学(请自备梯子)。 组织代码预览   Go开发者通常将所有的Go代码保存在一个工作区 workspace 中。   工作空间包含多种版本控制存">
+    <meta name="description" content="介绍这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。 Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。 你也可以查看位于youtube上的视频教学(请自备梯子)。 组织代码预览   Go开发者通常将所有的Go代码保存在一个工作区 workspace 中。   工作空间包含多种版本控制存储库（例如，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go学习指南(三)">
+<meta property="og:title" content="Go代码概览">
 <meta property="og:url" content="https://markhoo.com/2018/12/16/go_3/index.html">
 <meta property="og:site_name" content="和光同尘|南有嘉鱼|markhoo|沉默是金">
-<meta property="og:description" content="Go代码概览介绍这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。 Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。 你也可以查看位于youtube上的视频教学(请自备梯子)。 组织代码预览   Go开发者通常将所有的Go代码保存在一个工作区 workspace 中。   工作空间包含多种版本控制存">
+<meta property="og:description" content="介绍这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。 Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。 你也可以查看位于youtube上的视频教学(请自备梯子)。 组织代码预览   Go开发者通常将所有的Go代码保存在一个工作区 workspace 中。   工作空间包含多种版本控制存储库（例如，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-15T16:11:06.000Z">
-<meta property="article:modified_time" content="2022-04-18T07:16:51.312Z">
+<meta property="article:modified_time" content="2022-04-18T09:11:41.285Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650269521622">
+    <link rel="stylesheet" href="/css/style.css?v=1650274684075">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521622">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650274684075">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -249,8 +249,8 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go学习指南(三)" class="lazyload">
-              <h1>Go学习指南(三)</h1>
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go代码概览" class="lazyload">
+              <h1>Go代码概览</h1>
           </div>
       
       
@@ -262,7 +262,7 @@
 
       
 
-      <h1 id="Go代码概览"><a href="#Go代码概览" class="headerlink" title="Go代码概览"></a>Go代码概览</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。</p>
+      <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。</p>
 <p>Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。</p>
 <p>你也可以查看<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=XCsL89YtqCs">位于youtube上的视频教学</a>(请自备梯子)。</p>
 <h2 id="组织代码"><a href="#组织代码" class="headerlink" title="组织代码"></a>组织代码</h2><h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><ul>
@@ -289,7 +289,7 @@
 <p>典型的工作空间包含许多包含许多包和命令的源代码库。大多数Go程序员将所有的Go源代码和依赖关系保存在一个工作空间中。</p>
 <p>Commands 和 libraries 是由不同的源代码包构建的。我们稍后会讨论这个区别。</p>
 <h2 id="GOPATH-环境变量"><a href="#GOPATH-环境变量" class="headerlink" title="GOPATH 环境变量"></a>GOPATH 环境变量</h2><p>GOPATH 环境变量指明了你的工作空间 workspace。它默认为一个名为go的主目录，所以各操作系统就会找下面的这些目录：Unix的<code>$HOME/go</code>，Plan 9的 <code>$home/go</code>和<code>%USERPROFILE%\go</code>，Windows的<code>C:\Users\YourName\go</code>。</p>
-<p>如果你想换一个目录，必须<a href="/install_detail">把GOPATH设置为对应的目录</a>(另一个常见设置是GOPATH=$HOME)。注意GOPATH<strong>绝对不能</strong>与Go安装文件夹是同一个路径</p>
+<p>如果你想换一个目录，必须<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd/go#hdr-GOPATH_and_Modules">把GOPATH设置为对应的目录</a>(另一个常见设置是GOPATH=$HOME)。注意GOPATH<strong>绝对不能</strong>与Go安装文件夹是同一个路径</p>
 <p>在命令行输入 go env GOPATH 会显示出当前有效的GOPATH，如果环境变量未设置，它将打印默认位置。</p>
 <p>为方便起见，将工作空间的bin子目录添加到PATH中：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:$(go env GOPATH)/bin<br></code></pre></td></tr></table></figure>
@@ -297,8 +297,8 @@
 <p>为了简洁起见，本文剩余部分的脚本使用$ GOPATH而不是$（go env GOPATH）。如果你还没有设置GOPATH，为了使脚本正常运行，你可以用这些命令替换$ HOME / go，或者运行：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-built_in">export</span> GOPATH=$(go env GOPATH)<br><br></code></pre></td></tr></table></figure>
 
-<p>想了解更多关于GOPATH环境变量参数，可以查阅<a href="/gocmd">go命令行文档</a></p>
-<p>想自行设置工作空间workspace的所在位置，<a href="/install_detail">请查阅安装文档</a></p>
+<p>想了解更多关于GOPATH环境变量参数，可以查阅<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd">go命令行文档</a></p>
+<p>想自行设置工作空间workspace的所在位置，<a target="_blank" rel="noopener" href="https://go.dev/doc/install">请查阅安装文档</a></p>
 <h3 id="包导入路径"><a href="#包导入路径" class="headerlink" title="包导入路径"></a>包导入路径</h3><p>包路径是一个字符串，是一个包的唯一标识。包的导入路径对应于其在工作空间 workspace 内或远程存储库中的位置。</p>
 <p>标准库中的包被赋予了很短的导入路径名称，如 fmt 和 net/http。对于自己的软件包，你必须选择一个基本路径， 这个路径不能在将来添加到标准库或其他外部库时发生冲突(即必须是唯一的)。</p>
 <p>如果将代码保存在某个源代码库中，则应该使用该代码源的根作为基本路径。例如，如果在github.com/user上有GitHub帐户，那应该是你的基本路径。</p>
@@ -365,7 +365,7 @@
 <p>Go的惯例是包名称是导入路径的最后一个元素：导入为“crypto/rot13”的包应该被命名为rot13。</p>
 <p>入口文件必须总是使用package main。</p>
 <p>没有必要要求包名称在链接到一个二进制文件的所有软件包中是唯一的，只要导入路径（它们的完整文件名）是唯一的。</p>
-<p>查看<a href="/effective#package_name">Go进阶</a>以了解更多。</p>
+<p>查看<a href="/2018/12/16/go_2/">Go进阶</a>以了解更多。</p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>Go有一个由go test命令和测试包组成的轻量级测试框架。</p>
 <p>可以通过创建名称以_test.go结尾的文件来编写一个测试，该文件包含名为TestXXX并带有签名func（t * testing.T）的函数。测试框架运行每个这样的函数;如果函数调用失败函数，如t.Error或t.Fail，则认为测试失败。</p>
 <p>通过创建包含以下Go代码的$ GOPATH/src/github.com/user/stringutil/reverse_test.go文件，将测试添加到stringutil包中。</p>
@@ -377,7 +377,7 @@
 <p>与之前一样，如果你正在当前目录下执行此命令，则可以省略软件包路径：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go <span class="hljs-built_in">test</span><br>ok  	github.com/user/stringutil 0.165s<br></code></pre></td></tr></table></figure>
 
-<p>查看<a href="/cmd#test">测试帮助文档</a>以了解更多。</p>
+<p>查看<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd/go@go1.18.1#hdr-Test_packages">测试帮助文档</a>以了解更多。</p>
 <h2 id="远程包"><a href="#远程包" class="headerlink" title="远程包"></a>远程包</h2><p>包的路径可以描述如何使用Git或Mercurial等版本控制系统获取源代码。go会读取包的路径自动从远程存储库获取软件包。例如，上面的示例也保存在GitHub github.com/golang/example托管的Git存储库中。你可以使用go get命令获取，构建并安装它：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go get github.com/golang/example/hello<br>$ <span class="hljs-variable">$GOPATH</span>/bin/hello<br>Hello, Go examples!<br></code></pre></td></tr></table></figure>
 
@@ -388,8 +388,8 @@
 <p>托管在GitHub上的hello文件依赖于同一个仓库中的stringutil包。 hello.go文件中的导入使用相同的导入路径约定，所以go get命令也能够定位和安装依赖包。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/golang/example/stringutil&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p>这个约定是让你的Go软件包供其他人使用的最简单的方法。你可以通过<a target="_blank" rel="noopener" href="https://golang.org/wiki/Projects">Go Wiki</a> 和<a target="_blank" rel="noopener" href="https://godoc.org/">godoc.org</a> 查看可以引用的Go项目列表。</p>
-<p>你可以查看<a href="/gocmd">go命令行文档</a>以了解更多</p>
+<p>这个约定是让你的Go软件包供其他人使用的最简单的方法。你可以通过<a target="_blank" rel="noopener" href="https://go.dev/wiki/Projects">Go Wiki</a> 和<a target="_blank" rel="noopener" href="https://pkg.go.dev/">godoc.org</a> 查看可以引用的Go项目列表。</p>
+<p>你可以查看<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd">go命令行文档</a>以了解更多</p>
 
   </article>
 
@@ -463,7 +463,7 @@
 
  
 
-<script async src="/js/app.js?v=1650269521623"></script>
+<script async src="/js/app.js?v=1650274684076"></script>
 
 
 

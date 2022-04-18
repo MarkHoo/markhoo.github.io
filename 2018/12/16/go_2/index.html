@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>Go学习指南(二) - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
+    <title>Go进阶 - 和光同尘|南有嘉鱼|markhoo|沉默是金</title>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -13,23 +13,23 @@
     
 
     <link rel="shortcut icon" href="https://media.markhoo.com/avatar.jpg" type="image/x-icon" />
-    <meta name="description" content="Go进阶文档介绍 例子 格式化代码 命名 包名 [接口名](#Interface names) 驼峰命名 分号 [控制结构](#Control structures) If条件 [重新声明](#Redeclaration and reassignment) For循环 Switch判断 [类型判断](#Type switch) 函数 [多返回值](#Multiple return values)">
+    <meta name="description" content="文档介绍Go是一门年轻的语言。虽然它借鉴了现有语言的思想，但自身独有的特性使得与其他语系相近的语言在代码表现上有所不同。 将C++或Java程序直接转换为Go可能会产生令人不太满意的结果——这是思考方式上的不同。 从Go的角度思考问题可能产生一个运行正常但与C++、Java相比完全不同的程序。换句话说，为了写好Go程序， 重点在于理解Go的特性及惯用法，例如命名、格式化、项目结构搭建等，这样你的程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go学习指南(二)">
+<meta property="og:title" content="Go进阶">
 <meta property="og:url" content="https://markhoo.com/2018/12/16/go_2/index.html">
 <meta property="og:site_name" content="和光同尘|南有嘉鱼|markhoo|沉默是金">
-<meta property="og:description" content="Go进阶文档介绍 例子 格式化代码 命名 包名 [接口名](#Interface names) 驼峰命名 分号 [控制结构](#Control structures) If条件 [重新声明](#Redeclaration and reassignment) For循环 Switch判断 [类型判断](#Type switch) 函数 [多返回值](#Multiple return values)">
+<meta property="og:description" content="文档介绍Go是一门年轻的语言。虽然它借鉴了现有语言的思想，但自身独有的特性使得与其他语系相近的语言在代码表现上有所不同。 将C++或Java程序直接转换为Go可能会产生令人不太满意的结果——这是思考方式上的不同。 从Go的角度思考问题可能产生一个运行正常但与C++、Java相比完全不同的程序。换句话说，为了写好Go程序， 重点在于理解Go的特性及惯用法，例如命名、格式化、项目结构搭建等，这样你的程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-15T16:10:05.000Z">
-<meta property="article:modified_time" content="2022-04-18T07:05:43.578Z">
+<meta property="article:modified_time" content="2022-04-18T09:26:28.718Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1650269521626">
+    <link rel="stylesheet" href="/css/style.css?v=1650274684079">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650269521626">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650274684079">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -249,77 +249,21 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go学习指南(二)" class="lazyload">
-              <h1>Go学习指南(二)</h1>
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go进阶" class="lazyload">
+              <h1>Go进阶</h1>
           </div>
       
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月16日</a>
-    <a><i class="nexmoefont icon-areachart"></i>24.8k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 114 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>24.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 113 分钟</a>
 </div>
 
       
 
-      <h1 id="Go进阶"><a href="#Go进阶" class="headerlink" title="Go进阶"></a>Go进阶</h1><p><a href="#introduction">文档介绍</a></p>
-<p><a href="#examples">例子</a></p>
-<p><a href="#format">格式化代码</a></p>
-<p><a href="#Names">命名</a></p>
-<p><a href="#package_name">包名</a></p>
-<p>[接口名](#Interface names)</p>
-<p><a href="#MixedCaps">驼峰命名</a></p>
-<p><a href="#Semicolons">分号</a></p>
-<p>[控制结构](#Control structures)</p>
-<p><a href="#If">If条件</a></p>
-<p>[重新声明](#Redeclaration and reassignment)</p>
-<p><a href="#For">For循环</a></p>
-<p><a href="#Switch">Switch判断</a></p>
-<p>[类型判断](#Type switch)</p>
-<p><a href="#Functions">函数</a></p>
-<p>[多返回值](#Multiple return values)</p>
-<p>[为返回值命名](#Named result parameters)</p>
-<p><a href="#Defer">延迟函数</a></p>
-<p><a href="#Data">Data</a></p>
-<p>[new关键字](#Allocation with new)</p>
-<p>[Constructors and composite literals](#Constructors and composite literals)</p>
-<p>[make关键字](#Allocation with make)</p>
-<p><a href="#Arrays">数组</a></p>
-<p><a href="#Slices">切片</a></p>
-<p>[二维切片](#Two-dimensional slices)</p>
-<p><a href="#Maps">Maps</a></p>
-<p><a href="#Printing">自定义输出</a></p>
-<p><a href="#Append">Append</a></p>
-<p><a href="#Initialization">初始化</a></p>
-<p><a href="#Constants">常量</a></p>
-<p><a href="#Variables">变量</a></p>
-<p>[初始化函数](#The init function)</p>
-<p><a href="#Methods">Methods</a></p>
-<p>[值接收者与指针接收者](#Pointers vs. Values)</p>
-<p>[接口和其他类型](#Interfaces and other types)</p>
-<p><a href="#Interfaces">接口</a></p>
-<p><a href="#Conversions">转换</a></p>
-<p>[接口转换和类型断言](#Interface conversions and type assertions)</p>
-<p><a href="#Generality">Generality</a></p>
-<p>[接口和方法](#Interfaces and methods)</p>
-<p>[空标识符](#The blank identifier)</p>
-<p>[多返回值中使用空标识符](#The blank identifier in multiple assignment)</p>
-<p>[无用的变量和包](#Unused imports and variables)</p>
-<p>[使用空标识符导包](#Import for side effect)</p>
-<p>[类型检查](#Interface checks)</p>
-<p><a href="#Embedding">类型组合</a></p>
-<p><a href="#Concurrency">并发</a></p>
-<p>[使用通讯共享变量](#Share by communicating)</p>
-<p><a href="#Goroutines">Goroutines</a></p>
-<p><a href="#Channels">Channels</a></p>
-<p>[使用Channels生成channels](#Channels of channels)</p>
-<p><a href="#Parallelization">并发</a></p>
-<p>[A leaky buffer](#A leaky buffer)</p>
-<p><a href="#Errors">错误处理</a></p>
-<p><a href="#Panic">恐慌</a></p>
-<p><a href="#Recover">恐慌恢复</a></p>
-<h2 id="文档介绍"><a href="#文档介绍" class="headerlink" title="文档介绍"></a>文档介绍</h2><p>Go是一门年轻的语言。虽然它借鉴了现有语言的思想，但自身独有的特性使得与其他语系相近的语言在代码表现上有所不同。 将C++或Java程序直接转换为Go可能会产生令人不太满意的结果——这是思考方式上的不同。 从Go的角度思考问题可能产生一个运行正常但与C++、Java相比完全不同的程序。换句话说，为了写好Go程序， 重点在于理解Go的特性及惯用法，例如命名、格式化、项目结构搭建等，这样你的程序可读性就更强。</p>
-<p>这篇文档着重介绍了编写Go代码的要点。在此之前，强烈建议你了解并熟悉<a href="/syntax">Go学习指南</a>，<a href="/code">如何编写Go代码</a>和<a href="/spec">语言规范</a></p>
+      <h2 id="文档介绍"><a href="#文档介绍" class="headerlink" title="文档介绍"></a>文档介绍</h2><p>Go是一门年轻的语言。虽然它借鉴了现有语言的思想，但自身独有的特性使得与其他语系相近的语言在代码表现上有所不同。 将C++或Java程序直接转换为Go可能会产生令人不太满意的结果——这是思考方式上的不同。 从Go的角度思考问题可能产生一个运行正常但与C++、Java相比完全不同的程序。换句话说，为了写好Go程序， 重点在于理解Go的特性及惯用法，例如命名、格式化、项目结构搭建等，这样你的程序可读性就更强。</p>
+<p>这篇文档着重介绍了编写Go代码的要点。在此之前，强烈建议你了解并熟悉<a href="/2018/12/16/go_1/">Go学习指南</a>，<a href="/2018/12/16/go_3/">如何编写Go代码</a>和<a target="_blank" rel="noopener" href="https://go.dev/ref/spec">语言规范</a></p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><a target="_blank" rel="noopener" href="https://golang.google.cn/src/">Go 标准库源码</a> 不仅作为核心库，还作为如何使用Go语言的例子。 而且，许多包都含有可直接运行的可执行示例。如果你对如何解决某个问题可能存在疑问，标准库的文档，源码和示例也许可以给你提供灵感。</p>
 <h2 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h2><p>格式问题是最争议性但最不重要的。人们可以适应不同的代码格式，但是如果他们不需要这么做，如果每个人都遵守相同的风格， 那么浪费在这个话题的时间就会减少。</p>
 <p>为此，在Go中我们采取了与其他语言不同的方法——让机器来处理格式问题。gofmt 可以像fmt一样在包级而不是源文件级上运行、读取Go程序， 并以标准的缩进和垂直对齐样式改变源文件，并在必要时重新格式化注释。如果你想知道如何处理一些新的代码格式，运行gofmt； 如果答案看起来不对，重新安排你的程序（或者提交一个关于gofmt的错误），格式的问题别去管它——交给机器就好。</p>
@@ -345,7 +289,14 @@
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Go提供了C风格的 <code>/**/</code> 块级注释和C++风格的 <code>//</code> 行级注释。块注释大多作为包注释出现，同时也在表达式中或者禁用大量代码时用到。</p>
 <p>godoc 命令——可以调起一个服务器——能够处理Go源文件中注释以形成文档。写在代码段首行且没有插入换行符的注释，会被 godoc 视作该代码段的解释文本。 注释的内容和风格决定了 godoc 生成的文档质量。</p>
 <p>每个包都应该有个包注释，以块级注释的形式加在 package 代码之上。对于多文件组成的包，包注释只需要存在于一个文件中，任何一个都可以。<br>包注释应该提供包的整体介绍及相关信息，它将首先出现在 godoc 生成页面的顶端。下面是个例子：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment">Package regexp implements a simple library for regular expressions.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">The syntax of the regular expressions accepted is:</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">    regexp:</span><br><span class="hljs-comment">        concatenation &#123; &#x27;|&#x27; concatenation &#125;</span><br><span class="hljs-comment">    concatenation:</span><br><span class="hljs-comment">        &#123; closure &#125;</span><br><span class="hljs-comment">    closure:</span><br><span class="hljs-comment">        term \[ &#x27;*&#x27; | &#x27;+&#x27; | &#x27;?&#x27; \]</span><br><span class="hljs-comment">    term:</span><br><span class="hljs-comment">        &#x27;^&#x27;</span><br><span class="hljs-comment">        &#x27;$&#x27;</span><br><span class="hljs-comment">        &#x27;.&#x27;</span><br><span class="hljs-comment">        character</span><br><span class="hljs-comment">        &#x27;\[&#x27; \[ &#x27;^&#x27; \] character-ranges &#x27;\]&#x27;</span><br><span class="hljs-comment">        &#x27;(&#x27; regexp &#x27;)&#x27;</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">package</span> regexp<br><br>如果包内容比较简单，包注释也可以写成这样的格式：<br><br><span class="hljs-comment">// Package path implements utility routines for</span><br><span class="hljs-comment">// manipulating slash-separated filename paths.</span><br><br>注释**不需要**额外格式化，例如写成星状条幅。_注：有的程序员也许会这么写，但 godoc **不希望**这样：<br><br><span class="hljs-comment">//**********************************************************</span><br><span class="hljs-comment">//                       \_oo0oo\_                           *</span><br><span class="hljs-comment">//                      o8888888o                          *</span><br><span class="hljs-comment">//                      88&quot; . &quot;88                          *</span><br><span class="hljs-comment">//                      (| -_- |)                          *</span><br><span class="hljs-comment">//                      0\  =  /0                          *</span><br><span class="hljs-comment">//                    ___/`---&#x27;\\___                        *</span><br><span class="hljs-comment">//                  .&#x27; \\\|     |// &#x27;.                      *</span><br><span class="hljs-comment">//                 / \\\|||  :  |||// \                     *</span><br><span class="hljs-comment">//                / _||||| -:- |||||- \                    *</span><br><span class="hljs-comment">//               |   | \\\\  -  /// |   |                   *</span><br><span class="hljs-comment">//               | \\_|  &#x27;&#x27;\\---/&#x27;&#x27;  |_/ |                   *</span><br><span class="hljs-comment">//               \  .-\\__  &#x27;-&#x27;  ___/-. /                   *</span><br><span class="hljs-comment">//             ___&#x27;. .&#x27;  /--.--\  `. .&#x27;___                 *</span><br><span class="hljs-comment">//          .&quot;&quot; &#x27;&lt;  `.___\\_&lt;|&gt;_/___.&#x27; &gt;&#x27; &quot;&quot;.               *</span><br><span class="hljs-comment">//         | | :  `\- \\`.;`\ _ /`;.`/ - ` : | |             *</span><br><span class="hljs-comment">//         \  \ \`_.   \\_ __\ /__ _/   .-\` /  /             *</span><br><span class="hljs-comment">//     =====`-.____`.___ \\_____/___.-`___.-&#x27;=====          *</span><br><span class="hljs-comment">//                       `=---=&#x27;                           *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//               佛祖保佑        永无BUG                   *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//**********************************************************</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment">Package regexp implements a simple library for regular expressions.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">The syntax of the regular expressions accepted is:</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">    regexp:</span><br><span class="hljs-comment">        concatenation &#123; &#x27;|&#x27; concatenation &#125;</span><br><span class="hljs-comment">    concatenation:</span><br><span class="hljs-comment">        &#123; closure &#125;</span><br><span class="hljs-comment">    closure:</span><br><span class="hljs-comment">        term \[ &#x27;*&#x27; | &#x27;+&#x27; | &#x27;?&#x27; \]</span><br><span class="hljs-comment">    term:</span><br><span class="hljs-comment">        &#x27;^&#x27;</span><br><span class="hljs-comment">        &#x27;$&#x27;</span><br><span class="hljs-comment">        &#x27;.&#x27;</span><br><span class="hljs-comment">        character</span><br><span class="hljs-comment">        &#x27;\[&#x27; \[ &#x27;^&#x27; \] character-ranges &#x27;\]&#x27;</span><br><span class="hljs-comment">        &#x27;(&#x27; regexp &#x27;)&#x27;</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">package</span> regexp<br></code></pre></td></tr></table></figure>
+
+<p>如果包内容比较简单，包注释也可以写成这样的格式：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// Package path implements utility routines for</span><br><span class="hljs-comment">// manipulating slash-separated filename paths.</span><br></code></pre></td></tr></table></figure>
+
+<p>注释<strong>不需要</strong>额外格式化，例如写成星状条幅。_注：有的程序员也许会这么写，但 godoc <strong>不希望</strong>这样_：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//**********************************************************</span><br><span class="hljs-comment">//                       \_oo0oo\_                           *</span><br><span class="hljs-comment">//                      o8888888o                          *</span><br><span class="hljs-comment">//                      88&quot; . &quot;88                          *</span><br><span class="hljs-comment">//                      (| -_- |)                          *</span><br><span class="hljs-comment">//                      0\  =  /0                          *</span><br><span class="hljs-comment">//                    ___/`---&#x27;\\___                        *</span><br><span class="hljs-comment">//                  .&#x27; \\\|     |// &#x27;.                      *</span><br><span class="hljs-comment">//                 / \\\|||  :  |||// \                     *</span><br><span class="hljs-comment">//                / _||||| -:- |||||- \                    *</span><br><span class="hljs-comment">//               |   | \\\\  -  /// |   |                   *</span><br><span class="hljs-comment">//               | \\_|  &#x27;&#x27;\\---/&#x27;&#x27;  |_/ |                   *</span><br><span class="hljs-comment">//               \  .-\\__  &#x27;-&#x27;  ___/-. /                   *</span><br><span class="hljs-comment">//             ___&#x27;. .&#x27;  /--.--\  `. .&#x27;___                 *</span><br><span class="hljs-comment">//          .&quot;&quot; &#x27;&lt;  `.___\\_&lt;|&gt;_/___.&#x27; &gt;&#x27; &quot;&quot;.               *</span><br><span class="hljs-comment">//         | | :  `\- \\`.;`\ _ /`;.`/ - ` : | |             *</span><br><span class="hljs-comment">//         \  \ \`_.   \\_ __\ /__ _/   .-\` /  /             *</span><br><span class="hljs-comment">//     =====`-.____`.___ \\_____/___.-`___.-&#x27;=====          *</span><br><span class="hljs-comment">//                       `=---=&#x27;                           *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//               佛祖保佑        永无BUG                   *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//                                                         *</span><br><span class="hljs-comment">//**********************************************************</span><br></code></pre></td></tr></table></figure>
+
 <p>如果这么写，生成的输出结果可能无法呈现出固定的文字宽度，所以你在使用 godoc 生成文档或 gofmt 格式化代码的时候， <strong>坚决不要</strong>用空格做格式对齐。</p>
 <p>注释是纯文本，所以像 HTML 或 <em>this</em> 这样的注释会逐字复制，请不要这样用。</p>
 <p>godoc 已经调整为以固定宽度的字体显示，非常适合注释中包含代码段。你可以查看标准库中 fmt 包的注释显示效果，看起来挺不错的。</p>
@@ -911,30 +862,29 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">for</span> try := <span class="hljs-number">0</span>; try &lt; <span class="hljs-number">2</span>; try++ &#123;<br>    file, err = os.Create(filename)<br>    <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> e, ok := err.(*os.PathError); ok &amp;&amp; e.Err == syscall.ENOSPC &#123;<br>        deleteTempFiles()  <span class="hljs-comment">// Recover some space.</span><br>        <span class="hljs-keyword">continue</span><br>    &#125;<br>    <span class="hljs-keyword">return</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>第二个if使用了类型断言。如果断言失败，ok的值会是false，同时e会是nil。如果断言成功， ok的值是true，这意味着该错误就是<code>*os.PathError</code>类型。这样我们就可以使用e查看到有关错误的更多信息。</p>
-<h3 id="Panic"><a href="#Panic" class="headerlink" title="Panic"></a>Panic</h3><p><em>国内大部分书籍和文章将其直译为恐慌，这里也随大流，方便理解。</em></p>
-<p>向调用者报告错误的常用方法，是将错误作为额外的返回值返回。标准库中的<code>Read</code> 方法是一个众所周知的例子，它返回一个字节数和错误。但是如果错误非常严重导致程序无法继续下去呢？</p>
+<h3 id="Panic"><a href="#Panic" class="headerlink" title="Panic"></a>Panic</h3><p>向调用者报告错误的常用方法，是将错误作为额外的返回值返回。标准库中的<code>Read</code> 方法是一个众所周知的例子，它返回一个字节数和错误。但是如果错误非常严重导致程序无法继续下去呢？</p>
 <p>系统内置函数<code>panic</code>就是为了解决这个问题而存在的，该函数接受任意类型的单个参数(通常是字符串)， 它会产生一个运行时错误，并停止程序。这是为了表明一种不可能的情况发生了，例如发生了无限循环。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// A toy implementation of cube root using Newton&#x27;s method.</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">CubeRoot</span><span class="hljs-params">(x <span class="hljs-keyword">float64</span>)</span> <span class="hljs-title">float64</span></span> &#123;<br>    z := x/<span class="hljs-number">3</span>   <span class="hljs-comment">// Arbitrary initial value</span><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1e6</span>; i++ &#123;<br>        prevz := z<br>        z -= (z*z*z-x) / (<span class="hljs-number">3</span>*z*z)<br>        <span class="hljs-keyword">if</span> veryClose(z, prevz) &#123;<br>            <span class="hljs-keyword">return</span> z<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// A million iterations has not converged; something is wrong.</span><br>    <span class="hljs-built_in">panic</span>(fmt.Sprintf(<span class="hljs-string">&quot;CubeRoot(%g) did not converge&quot;</span>, x))<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>这只是个例子，真正提供给他人使用的库函数应该避免恐慌。如果问题可以被掩盖或者解决， 那么让事情继续运行而不是放弃整个程序总是更好的。一个可能的反例就是在初始化过程中： 如果库怎么都无法初始化起来，那真的可以说技术部恐怖业务部惊慌了。</p>
+<p>这只是个例子，真正提供给他人使用的库函数应该避免panic。如果问题可以被掩盖或者解决， 那么让事情继续运行而不是放弃整个程序总是更好的。一个可能的反例就是在初始化过程中： 如果库怎么都无法初始化起来，那真的可以说技术部恐慌业务部惊慌了。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> user = os.Getenv(<span class="hljs-string">&quot;USER&quot;</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">if</span> user == <span class="hljs-string">&quot;&quot;</span> &#123;<br>        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;no value for $USER&quot;</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="Recover"><a href="#Recover" class="headerlink" title="Recover"></a>Recover</h3><p>当手动调用恐慌或出现隐式运行时错误，例如索引切片超出范围或失败类型断言时， 它立即停止当前函数的执行，并开始展开goroutine的堆栈，运行被defer修饰的延迟函数， 如果到达goroutine堆栈的顶部，程序就会死亡。 但是，可以使用内置函数<code>recover</code>来重新获得goroutine的控制权并恢复正常运行。</p>
+<h3 id="Recover"><a href="#Recover" class="headerlink" title="Recover"></a>Recover</h3><p>当手动调用panic或出现隐式运行时错误，例如索引切片超出范围或失败类型断言时， 它立即停止当前函数的执行，并开始展开goroutine的堆栈，运行被defer修饰的延迟函数， 如果到达goroutine堆栈的顶部，程序就会死亡。 但是，可以使用内置函数<code>recover</code>来重新获得goroutine的控制权并恢复正常运行。</p>
 <p>调用<code>recover</code>后停止展开goroutine的堆栈，并把参数传递给<code>panic</code> 函数。由于在展开时运行的唯一代码位于延迟函数内部，因此<code>recover</code>仅在延迟函数中有用。</p>
 <p><code>recover</code>的一个常见用法是关闭服务器内的失败的goroutine， 而不杀死其他正在执行的正常goroutines</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">server</span><span class="hljs-params">(workChan &lt;-<span class="hljs-keyword">chan</span> *Work)</span></span> &#123;<br>    <span class="hljs-keyword">for</span> work := <span class="hljs-keyword">range</span> workChan &#123;<br>        <span class="hljs-keyword">go</span> safelyDo(work)<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">safelyDo</span><span class="hljs-params">(work *Work)</span></span> &#123;<br>    <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>        <span class="hljs-keyword">if</span> err := <span class="hljs-built_in">recover</span>(); err != <span class="hljs-literal">nil</span> &#123;<br>            log.Println(<span class="hljs-string">&quot;work failed:&quot;</span>, err)<br>        &#125;<br>    &#125;()<br>    do(work)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>在这个例子里，如果 do(work) 出现恐慌，结果会被 log 打印，该 goroutine 会干净的退出而 不干扰到其他的 goroutine 。你不需要做任何其他的事情，只需要考虑<code>recover</code> 接下来的处理逻辑。</p>
-<p>除非直接从延迟函数中调用，否则<code>recover</code>总返回nil。延迟代码可以调用自己使用恐慌的库例程，并在不失败的情况下恢复。 例如，safeDo中的延迟函数在调用recover之前可能会调用日志记录函数，并且日志代码将不受恐慌状态的影响。</p>
+<p>在这个例子里，如果 do(work) 出现panic，结果会被 log 打印，该 goroutine 会干净的退出而 不干扰到其他的 goroutine 。你不需要做任何其他的事情，只需要考虑<code>recover</code> 接下来的处理逻辑。</p>
+<p>除非直接从延迟函数中调用，否则<code>recover</code>总返回nil。延迟代码可以调用自己使用panic的库例程，并在不失败的情况下恢复。 例如，safeDo中的延迟函数在调用recover之前可能会调用日志记录函数，并且日志代码将不受panic状态的影响。</p>
 <p>do函数（以及任何它所调用的）都可以通过调用<code>panic</code>来干净地摆脱任何不好的情况。 我们可以使用这个想法来简化复杂软件中的错误处理。 让我们看看<code>regexp</code>包的理想版本，它通过调用本地错误类型<code>panic</code> 来报告解析错误。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// Error is the type of a parse error; it satisfies the error interface.</span><br><span class="hljs-keyword">type</span> Error <span class="hljs-keyword">string</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(e Error)</span> <span class="hljs-title">Error</span><span class="hljs-params">()</span> <span class="hljs-title">string</span></span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">string</span>(e)<br>&#125;<br><br><span class="hljs-comment">// error is a method of *Regexp that reports parsing errors by</span><br><span class="hljs-comment">// panicking with an Error.</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(regexp *Regexp)</span> <span class="hljs-title">error</span><span class="hljs-params">(err <span class="hljs-keyword">string</span>)</span></span> &#123;<br>    <span class="hljs-built_in">panic</span>(Error(err))<br>&#125;<br><br><span class="hljs-comment">// Compile returns a parsed representation of the regular expression.</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Compile</span><span class="hljs-params">(str <span class="hljs-keyword">string</span>)</span> <span class="hljs-params">(regexp *Regexp, err error)</span></span> &#123;<br>    regexp = <span class="hljs-built_in">new</span>(Regexp)<br>    <span class="hljs-comment">// doParse will panic if there is a parse error.</span><br>    <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>        <span class="hljs-keyword">if</span> e := <span class="hljs-built_in">recover</span>(); e != <span class="hljs-literal">nil</span> &#123;<br>            regexp = <span class="hljs-literal">nil</span>    <span class="hljs-comment">// Clear return value.</span><br>            err = e.(Error) <span class="hljs-comment">// Will re-panic if not a parse error.</span><br>        &#125;<br>    &#125;()<br>    <span class="hljs-keyword">return</span> regexp.doParse(str), <span class="hljs-literal">nil</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>如果doParse发生恐慌，恢复代码块块会将返回值设置为nil。 然后，它会检查，该问题是不是一个解析错误。 否则，断言类型将失败，导致运行时错误继续堆栈展开，就像没有任何中断它一样。 这种检查意味着出现了意想不到的情况，比如索引越界， 那么即使我们使用恐慌和恢复来处理分析错误，代码也会失败。</p>
+<p>如果doParse发生panic，恢复代码块块会将返回值设置为nil。 然后，它会检查，该问题是不是一个解析错误。 否则，断言类型将失败，导致运行时错误继续堆栈展开，就像没有任何中断它一样。 这种检查意味着出现了意想不到的情况，比如索引越界， 那么即使我们使用panic和恢复来处理分析错误，代码也会失败。</p>
 <p>在处理错误的位置，可以很容易地报告解析错误，而不必担心需要手动解析堆栈：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> pos == <span class="hljs-number">0</span> &#123;<br>    re.error(<span class="hljs-string">&quot;&#x27;*&#x27; illegal at start of expression&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>虽然这种模式很有用，但只能在一个同包中使用。 上面的处理将内部的恐慌调用转化为错误值而不是将恐慌暴露给使用者。 这是一个值得遵循的规则。</p>
-<p>顺便说一下，在实际应用中，这种操作方式会改变恐慌的价值。 但是，新旧故障都会在崩溃报告中展现，所以问题的根本原因仍然是可见的。 因此，这种简单的处理方法足够用了。 但如果你只想显示原始值，需要编写更多的代码来过滤意外情况，并处理原始错误。 这是留给你的一个练习。</p>
+<p>虽然这种模式很有用，但只能在一个同包中使用。 上面的处理将内部的panic调用转化为错误值而不是将panic暴露给使用者。 这是一个值得遵循的规则。</p>
+<p>顺便说一下，在实际应用中，这种操作方式会改变panic的价值。 但是，新旧故障都会在崩溃报告中展现，所以问题的根本原因仍然是可见的。 因此，这种简单的处理方法足够用了。 但如果你只想显示原始值，需要编写更多的代码来过滤意外情况，并处理原始错误。 这是留给你的一个练习。</p>
 
   </article>
 
@@ -1008,7 +958,7 @@
 
  
 
-<script async src="/js/app.js?v=1650269521627"></script>
+<script async src="/js/app.js?v=1650274684080"></script>
 
 
 
