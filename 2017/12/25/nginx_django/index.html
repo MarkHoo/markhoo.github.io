@@ -27,17 +27,19 @@
 <meta property="article:tag" content="Django">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1657952404426">
+    <link rel="stylesheet" href="/css/style.css?v=1657953396647">
+    
+        <link rel="stylesheet" href="/css/dark.css?v=1657953396647">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1657952404426">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1657953396647">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
     
     <div id="nexmoe-background">
-        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="nexmoe-bg" style="background-image: url(https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg)"></div>
         <div class="mdui-appbar mdui-shadow-0">
             <div class="mdui-toolbar">
                 <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
@@ -249,8 +251,8 @@
 
   <article>
       
-          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="nginx django 的配置步骤" class="lazyload">
+          <div class="nexmoe-post-cover" style="padding-bottom: 45.83333333333333%;"> 
+              <img data-src="https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg" data-sizes="auto" alt="nginx django 的配置步骤" class="lazyload">
               <h1>nginx django 的配置步骤</h1>
           </div>
       
@@ -373,6 +375,18 @@
                   <div class="nexmoe-tool"> 
                     
                       
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%B9%B6%E5%AE%89%E8%A3%85-pip"><span class="toc-number">1.</span> <span class="toc-text">升级并安装 pip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">安装虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">激活配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text">创建虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#django-%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">django 的初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">6.</span> <span class="toc-text">Django静态文件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-uWSGI"><span class="toc-number">7.</span> <span class="toc-text">安装 uWSGI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E8%83%BD%E5%A4%9F%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE-django-%E9%A1%B9%E7%9B%AE"><span class="toc-number">8.</span> <span class="toc-text">测试是否能够正常访问 django 项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-uwsgi-%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">9.</span> <span class="toc-text">创建 uwsgi 的配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uwsgi-%E7%9A%84%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9-%E9%87%8D%E7%82%B9"><span class="toc-number">10.</span> <span class="toc-text">uwsgi 的配置相关内容(重点)</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
                     
                       <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
                   </div>
@@ -399,7 +413,7 @@
 
  
 
-<script async src="/js/app.js?v=1657952404426"></script>
+<script async src="/js/app.js?v=1657953396648"></script>
 
 
 
