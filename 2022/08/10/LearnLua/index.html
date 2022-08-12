@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>Lua快速入门 - 和光同尘|MarkHoo</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="知者弗言，言者弗知。塞其兑，闭其门；挫其锐，解其纷；和其光，同其尘；是谓玄同。故不可得而亲，亦不可得而疏；不可得而利，亦不可得而害；不可得而贵，亦不可得而贱，故为天下贵。">
+    <meta name="keywords" content="和光同尘,MarkHoo,沉默是金,南有嘉鱼,Python,Elixir,Golang,">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://media.markhoo.com/image/favicon24.ico" type="image/x-icon" />
+    <meta name="description" content="Lua打印&#x2F;输出1print(&quot;Hello World&quot;)  输出1234--this is a commentprint(&quot;hello&quot;) --this is another comment-- the next line will not do anything because it is commented out--print(&quot;world">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua快速入门">
+<meta property="og:url" content="https://markhoo.com/2022/08/10/LearnLua/index.html">
+<meta property="og:site_name" content="和光同尘|MarkHoo">
+<meta property="og:description" content="Lua打印&#x2F;输出1print(&quot;Hello World&quot;)  输出1234--this is a commentprint(&quot;hello&quot;) --this is another comment-- the next line will not do anything because it is commented out--print(&quot;world">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-10T13:15:06.000Z">
+<meta property="article:modified_time" content="2022-08-12T06:34:11.998Z">
+<meta property="article:author" content="Mark Hoo">
+<meta property="article:tag" content="Lua">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1660290481692">
+    
+        <link rel="stylesheet" href="/css/dark.css?v=1660290481692">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1660290481692">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Mark Hoo" class="mdui-btn mdui-btn-icon"><img src="https://media.markhoo.com/avatar.jpg" alt="Mark Hoo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Mark Hoo">
+            <img src="https://media.markhoo.com/avatar.jpg" alt="Mark Hoo" alt="Mark Hoo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>42</div>
+        <div><span>标签</span>35</div>
+        <div><span>分类</span>11</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/books.html" title="书架">
+            <i class="mdui-list-item-icon nexmoefont icon-battlenet"></i>
+            <div class="mdui-list-item-content">
+                书架
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/photos.html" title="相册">
+            <i class="mdui-list-item-icon nexmoefont icon-tuchong"></i>
+            <div class="mdui-list-item-content">
+                相册
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/messages.html" title="留言板">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                留言板
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/links.html" title="邻居">
+            <i class="mdui-list-item-icon nexmoefont icon-dribbble"></i>
+            <div class="mdui-list-item-content">
+                邻居
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:markhoo.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/182687081" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/markhoo/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/C-C/">C/C++</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Django/">Django</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Elixir/">Elixir</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Go/">Go</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/IDE/">IDE</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Linux/">Linux</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Lua/">Lua</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Nginx/">Nginx</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Python/">Python</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/默认分类/">默认分类</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/CentOS7/" style="font-size: 15.71px;">CentOS7</a> <a href="/tags/Django/" style="font-size: 18.57px;">Django</a> <a href="/tags/Elixir/" style="font-size: 11.43px;">Elixir</a> <a href="/tags/EndeavourOS/" style="font-size: 10px;">EndeavourOS</a> <a href="/tags/Erlang/" style="font-size: 10px;">Erlang</a> <a href="/tags/Gin/" style="font-size: 11.43px;">Gin</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/tags/Gunicorn/" style="font-size: 12.86px;">Gunicorn</a> <a href="/tags/Hugo/" style="font-size: 10px;">Hugo</a> <a href="/tags/IDE/" style="font-size: 11.43px;">IDE</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/NeoVim/" style="font-size: 10px;">NeoVim</a> <a href="/tags/Nginx/" style="font-size: 14.29px;">Nginx</a> <a href="/tags/Phoenix/" style="font-size: 10px;">Phoenix</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Vim/" style="font-size: 11.43px;">Vim</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/xadmin/" style="font-size: 10px;">xadmin</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">网易云音乐</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 11.43px;">面试题</a> <a href="/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">音乐播放器</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Mark Hoo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn">苏ICP备17044309号</a><br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 38.88888888888889%;"> 
+              <img data-src="https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg" data-sizes="auto" alt="Lua快速入门" class="lazyload">
+              <h1>Lua快速入门</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年08月10日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.2k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+</div>
+
+      
+
+      <h1 id="Lua"><a href="#Lua" class="headerlink" title="Lua"></a>Lua</h1><h2 id="打印-输出"><a href="#打印-输出" class="headerlink" title="打印/输出"></a>打印/输出</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--this is a comment</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello&quot;</span>) <span class="hljs-comment">--this is another comment</span><br><span class="hljs-comment">-- the next line will not do anything because it is commented out</span><br><span class="hljs-comment">--print(&quot;world&quot;) </span><br></code></pre></td></tr></table></figure>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- Different types</span><br><span class="hljs-keyword">local</span> x = <span class="hljs-number">10</span> <span class="hljs-comment">--number</span><br><span class="hljs-keyword">local</span> name = <span class="hljs-string">&quot;john doe&quot;</span> <span class="hljs-comment">--string</span><br><span class="hljs-keyword">local</span> isAlive = <span class="hljs-literal">false</span> <span class="hljs-comment">-- boolean</span><br><span class="hljs-keyword">local</span> a = <span class="hljs-literal">nil</span> <span class="hljs-comment">--no value or invalid value</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>Numbers</strong></p>
+<p>operators</p>
+<ul>
+<li>+ addition</li>
+<li>- minus</li>
+<li>* multiply</li>
+<li>/ divide</li>
+<li>^ power</li>
+<li>% modulus</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- examples</span><br><span class="hljs-keyword">local</span> a = <span class="hljs-number">1</span><br><span class="hljs-keyword">local</span> b = <span class="hljs-number">2</span><br><span class="hljs-keyword">local</span> c = a + b<br><span class="hljs-built_in">print</span>(c) <span class="hljs-comment">-- 3</span><br><br><span class="hljs-keyword">local</span> d = b - a<br><span class="hljs-built_in">print</span>(d) <span class="hljs-comment">-- 1</span><br><br><span class="hljs-keyword">local</span> x =  <span class="hljs-number">1</span> * <span class="hljs-number">3</span> * <span class="hljs-number">4</span> <span class="hljs-comment">-- 12</span><br><span class="hljs-built_in">print</span>(x)<br><br><span class="hljs-keyword">local</span> y = (<span class="hljs-number">1</span>+<span class="hljs-number">3</span>) * <span class="hljs-number">2</span> <span class="hljs-comment">-- 8</span><br><span class="hljs-built_in">print</span>(y)<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-number">10</span>/<span class="hljs-number">2</span>) <span class="hljs-comment">-- 5</span><br><span class="hljs-built_in">print</span> (<span class="hljs-number">2</span>^<span class="hljs-number">2</span>) <span class="hljs-comment">-- 4</span><br><span class="hljs-built_in">print</span>(<span class="hljs-number">5</span>%<span class="hljs-number">2</span>) <span class="hljs-comment">-- 1</span><br><br><span class="hljs-built_in">print</span>(-b) <span class="hljs-comment">-- -2</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- increment</span><br><span class="hljs-keyword">local</span> level = <span class="hljs-number">1</span><br>level = level + <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(level) <span class="hljs-comment">-- 2</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>字符串</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- concatenate strings</span><br><span class="hljs-keyword">local</span> phrase = <span class="hljs-string">&quot;My name is &quot;</span><br><span class="hljs-keyword">local</span> name = <span class="hljs-string">&quot;John Doe&quot;</span><br><span class="hljs-built_in">print</span>(phase .. name) <span class="hljs-comment">--My name is John Doe</span><br><br><span class="hljs-comment">-- strings and numbers</span><br><span class="hljs-keyword">local</span> age = <span class="hljs-number">12</span><br><span class="hljs-keyword">local</span> name = <span class="hljs-string">&quot;Billy&quot;</span><br><span class="hljs-built_in">print</span>(name .. <span class="hljs-string">&quot; is &quot;</span> .. age .. <span class="hljs-string">&quot; years old&quot;</span>)<br>````<br><br>**布尔**<br>```lua<br><span class="hljs-keyword">local</span> isAlive = <span class="hljs-literal">true</span><br><span class="hljs-built_in">print</span>(isAlive) <span class="hljs-comment">--true</span><br>isAlive = <span class="hljs-literal">false</span><br><span class="hljs-built_in">print</span>(isAlive) <span class="hljs-comment">--false</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--number comparisions</span><br><span class="hljs-keyword">local</span> age = <span class="hljs-number">10</span><br><span class="hljs-keyword">if</span> age &lt; <span class="hljs-number">18</span> <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;over 18&quot;</span>) <span class="hljs-comment">--this will not be executed</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">--elseif and else</span><br>age = <span class="hljs-number">20</span><br><span class="hljs-keyword">if</span> age &gt; <span class="hljs-number">18</span> <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;dog&quot;</span>)<br><span class="hljs-keyword">elseif</span> age == <span class="hljs-number">18</span> <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;cat&quot;</span>)<br><span class="hljs-keyword">else</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;mouse&quot;</span>)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>比较运算符</strong></p>
+<ul>
+<li>== 相等</li>
+<li>&lt; 小于</li>
+<li>&gt; 大于</li>
+<li>&lt;= 小于等于</li>
+<li>&gt;= 大于等于</li>
+<li>~= 不等于</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--boolean comparision</span><br><span class="hljs-keyword">local</span> isAlive = <span class="hljs-literal">true</span><br><span class="hljs-keyword">if</span> isAlive <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;dog&quot;</span>)<br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">--string comparisions</span><br><span class="hljs-keyword">local</span> name = <span class="hljs-string">&quot;billy&quot;</span><br><span class="hljs-keyword">if</span> name == <span class="hljs-string">&quot;Billy&quot;</span> <span class="hljs-keyword">then</span> <span class="hljs-comment">--false</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Billy&quot;</span>)<br><span class="hljs-keyword">elseif</span> name == <span class="hljs-string">&quot;billy&quot;</span> <span class="hljs-keyword">then</span> <span class="hljs-comment">--true</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;billy&quot;</span>)<br><span class="hljs-keyword">end</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>组合语句</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> x = <span class="hljs-number">10</span><br><span class="hljs-keyword">if</span> x == <span class="hljs-number">10</span> <span class="hljs-keyword">and</span> x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">then</span> <span class="hljs-comment">--both are true</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;dog&quot;</span>)<br><span class="hljs-keyword">elseif</span> x == <span class="hljs-number">100</span> <span class="hljs-keyword">or</span> x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">then</span> <span class="hljs-comment">--1 or more are true</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;cat&quot;</span>)<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">--result: cat</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>嵌套语句</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> x = <span class="hljs-number">10</span><br><span class="hljs-keyword">local</span> isAlive = <span class="hljs-literal">true</span><br><span class="hljs-keyword">if</span> x==<span class="hljs-number">10</span> <span class="hljs-keyword">then</span><br>  <span class="hljs-keyword">if</span> isAlive == <span class="hljs-literal">true</span> <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;dog&quot;</span>)<br>  <span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;cat&quot;</span>)<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p><strong>反转值</strong></p>
+<p>您还可以使用 <strong>not</strong> 关键字取反</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> x = <span class="hljs-number">10</span><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> x == <span class="hljs-number">10</span> <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;here&quot;</span>)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printTax</span><span class="hljs-params">(price)</span></span><br>  <span class="hljs-keyword">local</span> tax = price * <span class="hljs-number">0.21</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;tax:&quot;</span> .. tax)<br><span class="hljs-keyword">end</span><br><br>printTax(<span class="hljs-number">200</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--function that returns a value</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calculateTax</span><span class="hljs-params">(price)</span></span><br>  <span class="hljs-keyword">return</span> price * <span class="hljs-number">0.21</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">local</span> result = calculateTax(<span class="hljs-number">100</span>)<br><span class="hljs-built_in">print</span>(result)<br><br><span class="hljs-comment">--reusing the function but this time using variables</span><br><span class="hljs-keyword">local</span> bread = <span class="hljs-number">130</span><br><span class="hljs-keyword">local</span> milk = <span class="hljs-number">110</span><br><br><span class="hljs-keyword">local</span> breadTax = calculateTax(bread) <span class="hljs-comment">--27.3</span><br><span class="hljs-keyword">local</span> milkTax = calculateTax(milk) <span class="hljs-comment">--23.1</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Bread Tax = &quot;</span> .. breadTax) <br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Milk Tax = &quot;</span> .. milkTax) <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--multiple parameters</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayInfo</span><span class="hljs-params">(name, age, country)</span></span><br>  <span class="hljs-built_in">print</span>(name .. <span class="hljs-string">&quot; is &quot;</span> .. age .. <span class="hljs-string">&quot; years old and is from &quot;</span> .. country)<br><span class="hljs-keyword">end</span><br><br>displayInfo(<span class="hljs-string">&quot;Billy&quot;</span>, <span class="hljs-number">12</span>, <span class="hljs-string">&quot;Jupiter&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>变量有不同的作用域。一旦到达范围的末尾，该范围中的值将不再可访问</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span></span><br>  <span class="hljs-keyword">local</span> a = <span class="hljs-number">10</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-built_in">print</span>(a) <span class="hljs-comment">--nil</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> isAlive = <span class="hljs-literal">true</span><br><span class="hljs-keyword">if</span> isAlive <span class="hljs-keyword">then</span><br>  <span class="hljs-keyword">local</span> a = <span class="hljs-number">10</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-built_in">print</span>(a) <span class="hljs-comment">--nil</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>全局变量</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> <span class="hljs-built_in">_G</span>.myValue = <span class="hljs-number">69</span><br><span class="hljs-comment">--doing this can sometimes be bad practice</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>有几种不同的方法可以在 lua 中执行循环</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--while loop</span><br><span class="hljs-keyword">local</span> i = <span class="hljs-number">0</span><br><span class="hljs-keyword">local</span> count = <span class="hljs-number">0</span><br><br><span class="hljs-keyword">while</span> i &lt;= <span class="hljs-number">10</span> <span class="hljs-keyword">do</span><br>  count = count + <span class="hljs-number">1</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;count is &quot;</span> .. count) <span class="hljs-comment">--count is 7</span><br><br><br><span class="hljs-comment">--for loop</span><br>count = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>, <span class="hljs-number">5</span> <span class="hljs-keyword">do</span><br>  count = count + <span class="hljs-number">1</span><br><span class="hljs-keyword">end</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;count is &quot;</span> .. count)<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>无限循环（死循环）</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--infinite loop will never end</span><br><span class="hljs-keyword">local</span> i = <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">do</span><br> i = i + <span class="hljs-number">1</span><br> <span class="hljs-built_in">print</span>(i)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>嵌套循环</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> count = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> a=<span class="hljs-number">1</span>, <span class="hljs-number">10</span> <span class="hljs-keyword">do</span><br>  <span class="hljs-keyword">for</span> b=<span class="hljs-number">1</span>, <span class="hljs-number">10</span> <span class="hljs-keyword">do</span><br>    count = count + <span class="hljs-number">1</span><br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><span class="hljs-built_in">print</span>(count) <span class="hljs-comment">-- 100</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--basic table</span><br><span class="hljs-keyword">local</span> colors = &#123; <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;green&quot;</span>, <span class="hljs-string">&quot;blue&quot;</span> &#125;<br><br><span class="hljs-built_in">print</span>(colors[<span class="hljs-number">1</span>]) <span class="hljs-comment">--red</span><br><span class="hljs-built_in">print</span>(colors[<span class="hljs-number">2</span>]) <span class="hljs-comment">--green</span><br><span class="hljs-built_in">print</span>(colors[<span class="hljs-number">3</span>]) <span class="hljs-comment">--blue</span><br><br><span class="hljs-comment">--using a loop to iterate though your table</span><br><span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>, #colors <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">print</span>(colors[i])<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>表操作</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--insert</span><br><span class="hljs-keyword">local</span> colors = &#123; <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;green&quot;</span>, <span class="hljs-string">&quot;blue&quot;</span> &#125;<br><span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(colors, <span class="hljs-string">&quot;orange&quot;</span>)<br><span class="hljs-keyword">local</span> index = #colors <span class="hljs-comment">--4 (this is the last index in the table)</span><br><span class="hljs-built_in">print</span>(colors[index]) <span class="hljs-comment">--orange</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--insert at index</span><br><span class="hljs-keyword">local</span> colors = &#123; <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;green&quot;</span>, <span class="hljs-string">&quot;blue&quot;</span> &#125;<br><span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(colors, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;pink&quot;</span>)<br><span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>, #colors <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">print</span>(colors[i])<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">--red, pink, green, blue</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--remove </span><br><span class="hljs-keyword">local</span> colors = &#123; <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;green&quot;</span>, <span class="hljs-string">&quot;blue&quot;</span> &#125;<br><span class="hljs-built_in">table</span>.<span class="hljs-built_in">remove</span>(colors, <span class="hljs-number">1</span>)<br><span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>, #colors <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">print</span>(colors[i])<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">-- &quot;green&quot;, &quot;blue&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+<p><strong>2 尺寸表</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--tables within tables</span><br><span class="hljs-keyword">local</span> data = &#123;<br>  &#123; <span class="hljs-string">&quot;billy&quot;</span>, <span class="hljs-number">12</span> &#125;,<br>  &#123; <span class="hljs-string">&quot;john&quot;</span>, <span class="hljs-number">20</span> &#125;,<br>  &#123; <span class="hljs-string">&quot;andy&quot;</span>, <span class="hljs-number">65</span> &#125;<br>&#125;<br><br><span class="hljs-keyword">for</span> a=<span class="hljs-number">1</span>, #data <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">print</span>(data[a][<span class="hljs-number">1</span>] .. <span class="hljs-string">&quot; is &quot;</span> .. data[a][<span class="hljs-number">2</span>] .. <span class="hljs-string">&quot; years old&quot;</span>)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+
+<p><strong>键表</strong></p>
+<p>二维表不适合不同类型的数据，而是使用表的键</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> teams = &#123;<br>    [<span class="hljs-string">&quot;teamA&quot;</span>] = <span class="hljs-number">12</span>,<br>    [<span class="hljs-string">&quot;teamB&quot;</span>] = <span class="hljs-number">15</span><br>&#125;<br><br><span class="hljs-built_in">print</span>(teams[<span class="hljs-string">&quot;teamA&quot;</span>]) <span class="hljs-comment">-- 12</span><br><br><span class="hljs-keyword">for</span> key,value <span class="hljs-keyword">in</span> <span class="hljs-built_in">pairs</span>(teams) <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">print</span>(key .. <span class="hljs-string">&quot;:&quot;</span> .. value)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--insert into key table</span><br>teams[<span class="hljs-string">&quot;teamC&quot;</span>] = <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--remove key from table</span><br>teams[<span class="hljs-string">&quot;teamA&quot;</span>] = <span class="hljs-literal">nil</span><br></code></pre></td></tr></table></figure>
+
+
+<p><strong>从函数返回表</strong></p>
+<p>这可用于从函数返回多个值</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTeamScores</span><span class="hljs-params">()</span></span><br>  <span class="hljs-keyword">local</span> scores = &#123;<br>    [<span class="hljs-string">&quot;teamA&quot;</span>] = <span class="hljs-number">12</span>,<br>    [<span class="hljs-string">&quot;teamB&quot;</span>] = <span class="hljs-number">15</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> scores<br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">local</span> scores = getTeamScores()<br><span class="hljs-keyword">local</span> total = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> key, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">pairs</span>(scores) <span class="hljs-keyword">do</span><br>  total += val<br><span class="hljs-keyword">end</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Total score of all teams:&quot;</span> .. total)<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><p>数学类有许多处理数字的函数。您可能不需要它们，但这里有一些更有用的功能:</p>
+<p>更多: <a target="_blank" rel="noopener" href="http://lua-users.org/wiki/MathLibraryTutorial">Wiki</a></p>
+<ul>
+<li>abs (绝对值)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> x = <span class="hljs-number">-10</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">abs</span>(x)) <span class="hljs-comment">--result: 10</span><br><span class="hljs-keyword">local</span> a = <span class="hljs-number">10</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">abs</span>(a)) <span class="hljs-comment">--result: 10</span><br></code></pre></td></tr></table></figure></li>
+<li>ceil (四舍五入的十进制值)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> x = <span class="hljs-number">1.2</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">ceil</span>(x)) <span class="hljs-comment">--result: 2</span><br></code></pre></td></tr></table></figure></li>
+<li>deg (将值从弧度转换为度)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">deg</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">pi</span>)) <span class="hljs-comment">-- result: 180</span><br></code></pre></td></tr></table></figure></li>
+<li>floor (向下取整十进制值)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> x = <span class="hljs-number">1.2</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">floor</span>(x)) <span class="hljs-comment">--result: 1</span><br></code></pre></td></tr></table></figure></li>
+<li>pi (pi 的常数值)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">pi</span>) <span class="hljs-comment">--3.1415926535898</span><br><span class="hljs-number">3.1415926535898</span><br></code></pre></td></tr></table></figure></li>
+<li>rad (将值从度数转换为弧度)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">rad</span>(<span class="hljs-number">180</span>)) <span class="hljs-comment">--result: 3.1415926535898</span><br></code></pre></td></tr></table></figure></li>
+<li>random (随机数生成)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">--random value between 0 tand 1</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">random</span>()) <span class="hljs-comment">--result: 0.0012512588885159</span><br><br><span class="hljs-comment">--random integer value from 1 to 100 (both inclusive)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">random</span>(<span class="hljs-number">100</span>)) <span class="hljs-comment">--result: 20</span><br><br><span class="hljs-comment">--random integer value from 20 to 100 (both inclusive)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">random</span>(<span class="hljs-number">20</span>, <span class="hljs-number">100</span>)) <span class="hljs-comment">--result: 54</span><br></code></pre></td></tr></table></figure></li>
+<li>sqrt (数字的平方根)<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">100</span>)) <span class="hljs-comment">--result: 10</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>Include code other files</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;otherfile&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Mark Hoo<br>
+        <strong>本文链接：</strong><a href="https://markhoo.com/2022/08/10/LearnLua/" title="https:&#x2F;&#x2F;markhoo.com&#x2F;2022&#x2F;08&#x2F;10&#x2F;LearnLua&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;markhoo.com&#x2F;2022&#x2F;08&#x2F;10&#x2F;LearnLua&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Lua/">Lua</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Lua/" rel="tag">Lua</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://cdn.jsdelivr.net/npm/valine'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'm4swDl6Cqyi5Sa2Yy9iI55Ua-gzGzoHsz',
+        appKey: 'B87aHCj28LivcwqIQNvh5uCb'
+    })
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lua"><span class="toc-number">1.</span> <span class="toc-text">Lua</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8D%B0-%E8%BE%93%E5%87%BA"><span class="toc-number">1.1.</span> <span class="toc-text">打印&#x2F;输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.4.</span> <span class="toc-text">条件语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.6.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.7.</span> <span class="toc-text">循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8"><span class="toc-number">1.8.</span> <span class="toc-text">表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math"><span class="toc-number">1.9.</span> <span class="toc-text">Math</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-number">1.10.</span> <span class="toc-text">模块</span></a></li></ol></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1660290481722"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
