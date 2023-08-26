@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>Go代码概览 - 和光同尘|MarkHoo_不积跬步无以至千里，不积小流无以成江海</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="终日而思,不如须臾之所学也">
+    <meta name="keywords" content="和光同尘,MarkHoo,Python,Elixir,Phoenix,SpringBoot,Django,">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://media.markhoo.com/image/favicon24.ico" type="image/x-icon" />
+    <meta name="description" content="介绍这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。 Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。 你也可以查看位于youtube上的视频教学(请自备梯子)。 组织代码预览   Go开发者通常将所有的Go代码保存在一个工作区 workspace 中。   工作空间包含多种版本控制存储库（例如，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go代码概览">
+<meta property="og:url" content="https://blog.markhoo.com/posts/go_3/">
+<meta property="og:site_name" content="和光同尘|MarkHoo_不积跬步无以至千里，不积小流无以成江海">
+<meta property="og:description" content="介绍这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。 Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。 你也可以查看位于youtube上的视频教学(请自备梯子)。 组织代码预览   Go开发者通常将所有的Go代码保存在一个工作区 workspace 中。   工作空间包含多种版本控制存储库（例如，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-15T16:11:06.000Z">
+<meta property="article:modified_time" content="2022-04-18T09:11:41.285Z">
+<meta property="article:author" content="MarkHoo">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1693042953188">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1693042953188">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="MarkHoo" class="mdui-btn mdui-btn-icon"><img src="https://media.markhoo.com/avatar.jpg" alt="MarkHoo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="MarkHoo">
+            <img src="https://media.markhoo.com/avatar.jpg" alt="MarkHoo" alt="MarkHoo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>46</div>
+        <div><span>标签</span>37</div>
+        <div><span>分类</span>11</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/books" title="书架">
+            <i class="mdui-list-item-icon nexmoefont icon-battlenet"></i>
+            <div class="mdui-list-item-content">
+                书架
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/links" title="邻居">
+            <i class="mdui-list-item-icon nexmoefont icon-dribbble"></i>
+            <div class="mdui-list-item-content">
+                邻居
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:markhoo.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/182687081" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/markhoo/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/C-C/">C/C++</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Django/">Django</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Elixir/">Elixir</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Go/">Go</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/IDE/">IDE</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Linux/">Linux</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Lua/">Lua</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Nginx/">Nginx</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Python/">Python</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/默认分类/">默认分类</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/CentOS7/" style="font-size: 15.71px;">CentOS7</a> <a href="/tags/Django/" style="font-size: 18.57px;">Django</a> <a href="/tags/Elixir/" style="font-size: 11.43px;">Elixir</a> <a href="/tags/EndeavourOS/" style="font-size: 10px;">EndeavourOS</a> <a href="/tags/Erlang/" style="font-size: 10px;">Erlang</a> <a href="/tags/Gin/" style="font-size: 11.43px;">Gin</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/tags/Gunicorn/" style="font-size: 12.86px;">Gunicorn</a> <a href="/tags/Hugo/" style="font-size: 10px;">Hugo</a> <a href="/tags/IDE/" style="font-size: 11.43px;">IDE</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Lua/" style="font-size: 11.43px;">Lua</a> <a href="/tags/Manim/" style="font-size: 10px;">Manim</a> <a href="/tags/NeoVim/" style="font-size: 11.43px;">NeoVim</a> <a href="/tags/Nginx/" style="font-size: 14.29px;">Nginx</a> <a href="/tags/Phoenix/" style="font-size: 10px;">Phoenix</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Vim/" style="font-size: 12.86px;">Vim</a> <a href="/tags/hexo/" style="font-size: 11.43px;">hexo</a> <a href="/tags/pip/" style="font-size: 11.43px;">pip</a> <a href="/tags/pypi/" style="font-size: 10px;">pypi</a> <a href="/tags/xadmin/" style="font-size: 10px;">xadmin</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">网易云音乐</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 11.43px;">面试题</a> <a href="/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">音乐播放器</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 MarkHoo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn">苏ICP备17044309号</a><br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 38.88888888888889%;"> 
+              <img data-src="https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg" data-sizes="auto" alt="Go代码概览" class="lazyload">
+              <h1>Go代码概览</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月16日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 14 分钟</a>
+</div>
+
+      
+
+      <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>这篇文档介绍了如何进行简单的Go程序开发，如何获取和构建库，以及安装第三方库和命令行工具的标准方法。</p>
+<p>Go要求你以特定的方式组织代码。请仔细阅读本文档，它解释了使用Go安装启动和运行程序的最简便方法。</p>
+<p>你也可以查看<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=XCsL89YtqCs">位于youtube上的视频教学</a>(请自备梯子)。</p>
+<h2 id="组织代码"><a href="#组织代码" class="headerlink" title="组织代码"></a>组织代码</h2><h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><ul>
+<li>  Go开发者通常将所有的Go代码保存在一个工作区 workspace 中。</li>
+<li>  工作空间包含多种版本控制存储库（例如，由Git）。</li>
+<li>  每个存储库都包含一个或多个包 package。</li>
+<li>  每个包 package 由一个或多个Go源文件组成。</li>
+<li>  包的目录路径决定了它的导入路径。</li>
+</ul>
+<p>请注意，这与开发语言不同，在其他语言中，每个项目都有独立的工作空间，且工作空间与版本控制存储库紧密相关。</p>
+<h2 id="工作空间-Workspaces"><a href="#工作空间-Workspaces" class="headerlink" title="工作空间 Workspaces"></a>工作空间 Workspaces</h2><p>工作空间(本质是一个文件夹)是一个目录层次结构，其根目录有三个目录。</p>
+<ul>
+<li>  src 目录包含了 .go 源文件</li>
+<li>  pkg 目录包含了编译后生成的文件</li>
+<li>  bin 目录包含了生成的可执行文件</li>
+</ul>
+<p>src中的源码编译后会安装到pkg和bin目录下。</p>
+<p>src目录通常包含多个版本控制存储库（如Git或Mercurial），用于跟踪一个或多个源包的开发</p>
+<p>为了更直观的理解，这里有一个例子：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs sh">bin/<br>    hello                          <span class="hljs-comment"># command executable</span><br>    outyet                         <span class="hljs-comment"># command executable</span><br>pkg/<br>    linux_amd64/<br>        github.com/golang/example/<br>            stringutil.a           <span class="hljs-comment"># package object</span><br>src/<br>    github.com/golang/example/<br>        .git/                      <span class="hljs-comment"># Git repository metadata</span><br>	hello/<br>	    hello.go               <span class="hljs-comment"># command source</span><br>	outyet/<br>	    main.go                <span class="hljs-comment"># command source</span><br>	    main_test.go           <span class="hljs-comment"># test source</span><br>	stringutil/<br>	    reverse.go             <span class="hljs-comment"># package source</span><br>	    reverse_test.go        <span class="hljs-comment"># test source</span><br>    golang.org/x/image/<br>        .git/                      <span class="hljs-comment"># Git repository metadata</span><br>	bmp/<br>	    reader.go              <span class="hljs-comment"># package source</span><br>	    writer.go              <span class="hljs-comment"># package source</span><br>    ... (省略了更多的仓库和包) ...<br></code></pre></td></tr></table></figure>
+
+<p>这个树状结构展示了这个工作空间workspace有两个仓库(example 和 image)。example仓库包含hello包、outyet包，和一个stringutil库(你可以在pkg文件夹里看到也有stringutil)。 img仓库包含了bmp包和其他省略的文件。</p>
+<p><em>原文是：The tree above shows a workspace containing two repositories (example and image). The example repository contains two commands (hello and outyet) and one library (stringutil). The image repository contains the bmp package and several others.<br>对于command source和package source的区别，个人认为是outyet包内的main.go中main函数调用了hello.go，编译后生成二进制可执行文件，所以在bin中可以看到他们。 如有错误，还望指正。</em></p>
+<p>典型的工作空间包含许多包含许多包和命令的源代码库。大多数Go程序员将所有的Go源代码和依赖关系保存在一个工作空间中。</p>
+<p>Commands 和 libraries 是由不同的源代码包构建的。我们稍后会讨论这个区别。</p>
+<h2 id="GOPATH-环境变量"><a href="#GOPATH-环境变量" class="headerlink" title="GOPATH 环境变量"></a>GOPATH 环境变量</h2><p>GOPATH 环境变量指明了你的工作空间 workspace。它默认为一个名为go的主目录，所以各操作系统就会找下面的这些目录：Unix的<code>$HOME/go</code>，Plan 9的 <code>$home/go</code>和<code>%USERPROFILE%\go</code>，Windows的<code>C:\Users\YourName\go</code>。</p>
+<p>如果你想换一个目录，必须<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd/go#hdr-GOPATH_and_Modules">把GOPATH设置为对应的目录</a>(另一个常见设置是GOPATH=$HOME)。注意GOPATH<strong>绝对不能</strong>与Go安装文件夹是同一个路径</p>
+<p>在命令行输入 go env GOPATH 会显示出当前有效的GOPATH，如果环境变量未设置，它将打印默认位置。</p>
+<p>为方便起见，将工作空间的bin子目录添加到PATH中：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:$(go env GOPATH)/bin<br></code></pre></td></tr></table></figure>
+
+<p>为了简洁起见，本文剩余部分的脚本使用$ GOPATH而不是$（go env GOPATH）。如果你还没有设置GOPATH，为了使脚本正常运行，你可以用这些命令替换$ HOME / go，或者运行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-built_in">export</span> GOPATH=$(go env GOPATH)<br><br></code></pre></td></tr></table></figure>
+
+<p>想了解更多关于GOPATH环境变量参数，可以查阅<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd">go命令行文档</a></p>
+<p>想自行设置工作空间workspace的所在位置，<a target="_blank" rel="noopener" href="https://go.dev/doc/install">请查阅安装文档</a></p>
+<h3 id="包导入路径"><a href="#包导入路径" class="headerlink" title="包导入路径"></a>包导入路径</h3><p>包路径是一个字符串，是一个包的唯一标识。包的导入路径对应于其在工作空间 workspace 内或远程存储库中的位置。</p>
+<p>标准库中的包被赋予了很短的导入路径名称，如 fmt 和 net/http。对于自己的软件包，你必须选择一个基本路径， 这个路径不能在将来添加到标准库或其他外部库时发生冲突(即必须是唯一的)。</p>
+<p>如果将代码保存在某个源代码库中，则应该使用该代码源的根作为基本路径。例如，如果在github.com/user上有GitHub帐户，那应该是你的基本路径。</p>
+<p>请注意，在构建之前，不要将代码发布到远程存储库，在实践中，你可以选择任意路径名称，只要它是标准库和更大的Go生态系统所独有的。</p>
+<p>我们将使用github.com/user作为我们的基本路径。在工作区内创建一个目录，在其中保留源代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ mkdir -p <span class="hljs-variable">$GOPATH</span>/src/github.com/user<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="你的第一个程序"><a href="#你的第一个程序" class="headerlink" title="你的第一个程序"></a>你的第一个程序</h3><p>要编译和运行一个简单的程序，首先选择一个包路径（我们将使用github.com/user/hello）并在工作空间workspace内创建一个对应的包目录：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">$ mkdir <span class="hljs-variable">$GOPATH</span><span class="hljs-regexp">/src/gi</span>thub.com<span class="hljs-regexp">/user/</span>hello<br></code></pre></td></tr></table></figure>
+
+<p>接着在该文件夹下建立名为 hello.go 的文件，包含如下代码:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	fmt.Printf(<span class="hljs-string">&quot;Hello, world.\n&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现在你可以编译并安装它:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go install github.com/user/hello<br></code></pre></td></tr></table></figure>
+
+<p>你可以在系统的任何位置运行这行命令。go编译工具通过在GOPATH指定的工作空间内查找github.com/user/hello包来查找源代码。</p>
+<p>如果从软件包目录运行go install，也可以省略软件包路径：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-built_in">cd</span> <span class="hljs-variable">$GOPATH</span>/src/github.com/user/hello<br>$ go install<br></code></pre></td></tr></table></figure>
+
+<p>这条命令编译 hello 文件并产生一个可执行的二进制文件。然后，它将这个二进制文件安装到工作空间的bin目录（在Windows下，是hello.exe文件）。 在当前例子中，是$ GOPATH/bin/hello，即$ HOME/go/bin/hello。</p>
+<p>只有当错误发生时，编译工具才会打印输出，所以如果没有任何输出，说明已经成功执行了。</p>
+<p>你可以通过在命令行键入完整路径来运行该程序：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-variable">$GOPATH</span>/bin/hello<br>Hello, world.<br></code></pre></td></tr></table></figure>
+
+<p>如果你已经将$ GOPATH/bin添加到PATH中，只需输入二进制名称即可：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hello<br>Hello, world.<br></code></pre></td></tr></table></figure>
+
+<p>如果你正在使用Git，现在是初始化仓库，添加文件以及提交第一个更改的好时机。<br>注意这是可选的：你不一定非得使用版本控制来编写Go代码。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ <span class="hljs-built_in">cd</span> <span class="hljs-variable">$GOPATH</span>/src/github.com/user/hello<br>$ git init<br>Initialized empty Git repository <span class="hljs-keyword">in</span> /home/user/work/src/github.com/user/hello/.git/<br>$ git add hello.go<br>$ git commit -m <span class="hljs-string">&quot;initial commit&quot;</span><br>[master (root-commit) 0b4507d] initial commit<br> 1 file changed, 1 insertion(+)<br>  create mode 100644 hello.go<br></code></pre></td></tr></table></figure>
+
+<p>把代码推到远程仓库上就当作给你留下的小练习吧。</p>
+<h3 id="你的第一个依赖库"><a href="#你的第一个依赖库" class="headerlink" title="你的第一个依赖库"></a>你的第一个依赖库</h3><p>我们来编写一个库，并在hello程序中使用它。</p>
+<p>第一步是选择一个包路径（我们将使用github.com/user/stringutil）并创建包目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ mkdir <span class="hljs-variable">$GOPATH</span>/src/github.com/user/stringutil<br></code></pre></td></tr></table></figure>
+<p>接着在stringutil文件夹内创建名为 reverse.go 的文件，包含如下代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// Package stringutil contains utility functions for working with strings.</span><br><span class="hljs-keyword">package</span> stringutil<br><br><span class="hljs-comment">// Reverse returns its argument string reversed rune-wise left to right.</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Reverse</span><span class="hljs-params">(s <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">string</span></span> &#123;<br>	r := []<span class="hljs-keyword">rune</span>(s)<br>	<span class="hljs-keyword">for</span> i, j := <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(r)<span class="hljs-number">-1</span>; i &lt; <span class="hljs-built_in">len</span>(r)/<span class="hljs-number">2</span>; i, j = i+<span class="hljs-number">1</span>, j<span class="hljs-number">-1</span> &#123;<br>		r[i], r[j] = r[j], r[i]<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">string</span>(r)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现在使用go build命令来试着编译一下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go build github.com/user/stringutil<br></code></pre></td></tr></table></figure>
+
+<p>如果正在当前目录下，你也可以这样：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go build<br></code></pre></td></tr></table></figure>
+
+<p>这将不会产生输出文件(注意，因为代码中并没有main)。为此，你必须使用go install，它将package对象放置在工作区的pkg目录中。</p>
+<p>在确认了stringutil包的构建之后，修改原来的hello.go（在$ GOPATH/src/github.com/user/hello中）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br><br>	<span class="hljs-string">&quot;github.com/user/stringutil&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	fmt.Printf(stringutil.Reverse(<span class="hljs-string">&quot;!oG ,olleH&quot;</span>))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>每当使用go命令安装一个包或二进制文件，它也会安装其所具有的任何依赖关系。所以当你安装hello程序，stringutil包也会被自动安装。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go install github.com/user/hello<br></code></pre></td></tr></table></figure>
+
+<p>运行新版本的程序，你应该看到一个新的，反转过来的消息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hello<br>Hello, Go!<br></code></pre></td></tr></table></figure>
+
+<p>现在你的工作空间应该是这样的目录结构：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sh">bin/<br>    hello                 <span class="hljs-comment"># command executable</span><br>pkg/<br>    linux_amd64/          <span class="hljs-comment"># this will reflect your OS and architecture</span><br>        github.com/user/<br>            stringutil.a  <span class="hljs-comment"># package object</span><br>src/<br>    github.com/user/<br>        hello/<br>            hello.go      <span class="hljs-comment"># command source</span><br>        stringutil/<br>            reverse.go    <span class="hljs-comment"># package source</span><br></code></pre></td></tr></table></figure>
+
+<p>注意，go install将stringutil.a对象放置在映射其源目录的pkg/linux_amd64内的目录中。这样以后的go 命令可以找到包对象，避免了不必要的重新编译。linux_amd64部分是为了帮助交叉编译，并将反映你的系统的操作系统和体系结构。</p>
+<p>go命令操作可执行文件是静态链接的;运行go程序时包对象不是必须存在</p>
+<h3 id="包名称"><a href="#包名称" class="headerlink" title="包名称"></a>包名称</h3><p>Go源文件中的第一条语句必须是：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> name<br></code></pre></td></tr></table></figure>
+
+<p>其中name是导入包的默认名称。包中的所有文件必须使用相同的名称。</p>
+<p>Go的惯例是包名称是导入路径的最后一个元素：导入为“crypto/rot13”的包应该被命名为rot13。</p>
+<p>入口文件必须总是使用package main。</p>
+<p>没有必要要求包名称在链接到一个二进制文件的所有软件包中是唯一的，只要导入路径（它们的完整文件名）是唯一的。</p>
+<p>查看<a href="/2018/12/16/go_2/">Go进阶</a>以了解更多。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>Go有一个由go test命令和测试包组成的轻量级测试框架。</p>
+<p>可以通过创建名称以_test.go结尾的文件来编写一个测试，该文件包含名为TestXXX并带有签名func（t * testing.T）的函数。测试框架运行每个这样的函数;如果函数调用失败函数，如t.Error或t.Fail，则认为测试失败。</p>
+<p>通过创建包含以下Go代码的$ GOPATH/src/github.com/user/stringutil/reverse_test.go文件，将测试添加到stringutil包中。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> stringutil<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;testing&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestReverse</span><span class="hljs-params">(t *testing.T)</span></span> &#123;<br>	cases := []<span class="hljs-keyword">struct</span> &#123;<br>		in, want <span class="hljs-keyword">string</span><br>	&#125;&#123;<br>		&#123;<span class="hljs-string">&quot;Hello, world&quot;</span>, <span class="hljs-string">&quot;dlrow ,olleH&quot;</span>&#125;,<br>		&#123;<span class="hljs-string">&quot;Hello, 世界&quot;</span>, <span class="hljs-string">&quot;界世 ,olleH&quot;</span>&#125;,<br>		&#123;<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>&#125;,<br>	&#125;<br>	<span class="hljs-keyword">for</span> _, c := <span class="hljs-keyword">range</span> cases &#123;<br>		got := Reverse(c.in)<br>		<span class="hljs-keyword">if</span> got != c.want &#123;<br>			t.Errorf(<span class="hljs-string">&quot;Reverse(%q) == %q, want %q&quot;</span>, c.in, got, c.want)<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用命令执行测试：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go <span class="hljs-built_in">test</span> github.com/user/stringutil<br>ok  	github.com/user/stringutil 0.165s<br></code></pre></td></tr></table></figure>
+
+<p>与之前一样，如果你正在当前目录下执行此命令，则可以省略软件包路径：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go <span class="hljs-built_in">test</span><br>ok  	github.com/user/stringutil 0.165s<br></code></pre></td></tr></table></figure>
+
+<p>查看<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd/go@go1.18.1#hdr-Test_packages">测试帮助文档</a>以了解更多。</p>
+<h2 id="远程包"><a href="#远程包" class="headerlink" title="远程包"></a>远程包</h2><p>包的路径可以描述如何使用Git或Mercurial等版本控制系统获取源代码。go会读取包的路径自动从远程存储库获取软件包。例如，上面的示例也保存在GitHub github.com/golang/example托管的Git存储库中。你可以使用go get命令获取，构建并安装它：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ go get github.com/golang/example/hello<br>$ <span class="hljs-variable">$GOPATH</span>/bin/hello<br>Hello, Go examples!<br></code></pre></td></tr></table></figure>
+
+<p>如果指定的包不在工作空间内，go get将放置在由GOPATH指定的第一个工作区内。（如果包已经存在，则跳过远程抓取，并执行与go install相同的操作。）</p>
+<p>执行go get命令后，工作空间目录树现在应该如下所示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs sh">bin/<br>    hello                           <span class="hljs-comment"># command executable</span><br>pkg/<br>    linux_amd64/<br>        github.com/golang/example/<br>            stringutil.a            <span class="hljs-comment"># package object</span><br>        github.com/user/<br>            stringutil.a            <span class="hljs-comment"># package object</span><br>src/<br>    github.com/golang/example/<br>	.git/                       <span class="hljs-comment"># Git repository metadata</span><br>        hello/<br>            hello.go                <span class="hljs-comment"># command source</span><br>        stringutil/<br>            reverse.go              <span class="hljs-comment"># package source</span><br>            reverse_test.go         <span class="hljs-comment"># test source</span><br>    github.com/user/<br>        hello/<br>            hello.go                <span class="hljs-comment"># command source</span><br>        stringutil/<br>            reverse.go              <span class="hljs-comment"># package source</span><br>            reverse_test.go         <span class="hljs-comment"># test source</span><br></code></pre></td></tr></table></figure>
+
+<p>托管在GitHub上的hello文件依赖于同一个仓库中的stringutil包。 hello.go文件中的导入使用相同的导入路径约定，所以go get命令也能够定位和安装依赖包。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/golang/example/stringutil&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>这个约定是让你的Go软件包供其他人使用的最简单的方法。你可以通过<a target="_blank" rel="noopener" href="https://go.dev/wiki/Projects">Go Wiki</a> 和<a target="_blank" rel="noopener" href="https://pkg.go.dev/">godoc.org</a> 查看可以引用的Go项目列表。</p>
+<p>你可以查看<a target="_blank" rel="noopener" href="https://pkg.go.dev/cmd">go命令行文档</a>以了解更多</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>MarkHoo<br>
+        <strong>本文链接：</strong><a href="https://blog.markhoo.com/posts/go_3/" title="https:&#x2F;&#x2F;blog.markhoo.com&#x2F;posts&#x2F;go_3&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;blog.markhoo.com&#x2F;posts&#x2F;go_3&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Go/">Go</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Go/" rel="tag">Go</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://cdn.jsdelivr.net/npm/valine'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'm4swDl6Cqyi5Sa2Yy9iI55Ua-gzGzoHsz',
+        appKey: 'B87aHCj28LivcwqIQNvh5uCb'
+    })
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">组织代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E8%A7%88"><span class="toc-number">2.1.</span> <span class="toc-text">预览</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4-Workspaces"><span class="toc-number">3.</span> <span class="toc-text">工作空间 Workspaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GOPATH-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">GOPATH 环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E5%AF%BC%E5%85%A5%E8%B7%AF%E5%BE%84"><span class="toc-number">4.1.</span> <span class="toc-text">包导入路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.2.</span> <span class="toc-text">你的第一个程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="toc-number">4.3.</span> <span class="toc-text">你的第一个依赖库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E5%90%8D%E7%A7%B0"><span class="toc-number">4.4.</span> <span class="toc-text">包名称</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">5.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E5%8C%85"><span class="toc-number">6.</span> <span class="toc-text">远程包</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1693042953190"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>

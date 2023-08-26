@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>发布包到pypi - 和光同尘|MarkHoo_不积跬步无以至千里，不积小流无以成江海</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="终日而思,不如须臾之所学也">
+    <meta name="keywords" content="和光同尘,MarkHoo,Python,Elixir,Phoenix,SpringBoot,Django,">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://media.markhoo.com/image/favicon24.ico" type="image/x-icon" />
+    <meta name="description" content="很多人只用过别人写的包，那么有没有想过如何将自己的包发布出去让别人用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="发布包到pypi">
+<meta property="og:url" content="https://blog.markhoo.com/posts/pypi_pkg/">
+<meta property="og:site_name" content="和光同尘|MarkHoo_不积跬步无以至千里，不积小流无以成江海">
+<meta property="og:description" content="很多人只用过别人写的包，那么有没有想过如何将自己的包发布出去让别人用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-14T15:51:32.000Z">
+<meta property="article:modified_time" content="2023-05-30T08:14:03.521Z">
+<meta property="article:author" content="MarkHoo">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="pip">
+<meta property="article:tag" content="pypi">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1693042953073">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1693042953073">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="MarkHoo" class="mdui-btn mdui-btn-icon"><img src="https://media.markhoo.com/avatar.jpg" alt="MarkHoo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="MarkHoo">
+            <img src="https://media.markhoo.com/avatar.jpg" alt="MarkHoo" alt="MarkHoo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>46</div>
+        <div><span>标签</span>37</div>
+        <div><span>分类</span>11</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/books" title="书架">
+            <i class="mdui-list-item-icon nexmoefont icon-battlenet"></i>
+            <div class="mdui-list-item-content">
+                书架
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/links" title="邻居">
+            <i class="mdui-list-item-icon nexmoefont icon-dribbble"></i>
+            <div class="mdui-list-item-content">
+                邻居
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:markhoo.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/182687081" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/markhoo/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/C-C/">C/C++</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Django/">Django</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Elixir/">Elixir</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Go/">Go</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/IDE/">IDE</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Linux/">Linux</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Lua/">Lua</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Nginx/">Nginx</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Python/">Python</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/默认分类/">默认分类</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/CentOS7/" style="font-size: 15.71px;">CentOS7</a> <a href="/tags/Django/" style="font-size: 18.57px;">Django</a> <a href="/tags/Elixir/" style="font-size: 11.43px;">Elixir</a> <a href="/tags/EndeavourOS/" style="font-size: 10px;">EndeavourOS</a> <a href="/tags/Erlang/" style="font-size: 10px;">Erlang</a> <a href="/tags/Gin/" style="font-size: 11.43px;">Gin</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/tags/Gunicorn/" style="font-size: 12.86px;">Gunicorn</a> <a href="/tags/Hugo/" style="font-size: 10px;">Hugo</a> <a href="/tags/IDE/" style="font-size: 11.43px;">IDE</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Lua/" style="font-size: 11.43px;">Lua</a> <a href="/tags/Manim/" style="font-size: 10px;">Manim</a> <a href="/tags/NeoVim/" style="font-size: 11.43px;">NeoVim</a> <a href="/tags/Nginx/" style="font-size: 14.29px;">Nginx</a> <a href="/tags/Phoenix/" style="font-size: 10px;">Phoenix</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Vim/" style="font-size: 12.86px;">Vim</a> <a href="/tags/hexo/" style="font-size: 11.43px;">hexo</a> <a href="/tags/pip/" style="font-size: 11.43px;">pip</a> <a href="/tags/pypi/" style="font-size: 10px;">pypi</a> <a href="/tags/xadmin/" style="font-size: 10px;">xadmin</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">网易云音乐</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 11.43px;">面试题</a> <a href="/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">音乐播放器</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 MarkHoo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn">苏ICP备17044309号</a><br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 38.88888888888889%;"> 
+              <img data-src="https://s2.loli.net/2022/07/16/n29RuOFbBtdrcDs.jpg" data-sizes="auto" alt="发布包到pypi" class="lazyload">
+              <h1>发布包到pypi</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年11月14日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.7k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+</div>
+
+      
+
+      <p>很多人只用过别人写的包，那么有没有想过如何将自己的包发布出去让别人用</p>
+<span id="more"></span>
+
+<p>首先到pypi.org注册账户，然后生成一个Token，注意生成Token的页面不要关闭不要刷新，因为只显示一次，在Token下面会有一个说明，就是在你的用户目录下创建一个文件，然后把那些内容复制粘贴进去保存就行了。这样做是为了在上传的时候不用输入用户名和密码，防止403报错等等。<br>提示：Windows的用户目录就是<code>C:\Users\zhangsan</code> 这个路径，打开步骤就是<code>C盘-&gt;用户-&gt;用户名</code></p>
+<p>项目目录结构：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs stylus">porject_example/<br>├── LICENSE<br>├── pyproject<span class="hljs-selector-class">.toml</span><br>├── README<span class="hljs-selector-class">.md</span><br>├── <span class="hljs-attribute">src</span>/<br>│   └── pkg_name/<br>│       ├── __init__<span class="hljs-selector-class">.py</span><br>│       └── example<span class="hljs-selector-class">.py</span><br>└── tests/<br></code></pre></td></tr></table></figure>
+
+<h4 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h4><p>这里列出4个常见的构建工具，示例里面使用安装时常看到的setuptools，当然也根据个人喜好进行选择。<br>选择一个构建工具添加到pyproject.toml</p>
+<p>setuptools</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-system]</span><br><span class="hljs-attr">requires</span> = [<span class="hljs-string">&quot;setuptools&gt;=61.0&quot;</span>]<br><span class="hljs-attr">build-backend</span> = <span class="hljs-string">&quot;setuptools.build_meta&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>Hatchling</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-system]</span><br><span class="hljs-attr">requires</span> = [<span class="hljs-string">&quot;hatchling&quot;</span>]<br><span class="hljs-attr">build-backend</span> = <span class="hljs-string">&quot;hatchling.build&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>Flit</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-system]</span><br><span class="hljs-attr">requires</span> = [<span class="hljs-string">&quot;flit_core&gt;=3.2&quot;</span>]<br><span class="hljs-attr">build-backend</span> = <span class="hljs-string">&quot;flit_core.buildapi&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>PDM</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-system]</span><br><span class="hljs-attr">requires</span> = [<span class="hljs-string">&quot;pdm-pep517&quot;</span>]<br><span class="hljs-attr">build-backend</span> = <span class="hljs-string">&quot;pdm.pep517.api&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>requires是构建包所需的包列表。您不需要安装它们；像pip这样的构建前端会自动将它们安装在一个临时的、隔离的虚拟环境中，以便在构建过程中使用。<br>build-backend是前端将用于执行构建的 Python 对象的名称。</p>
+<h4 id="配置元数据"><a href="#配置元数据" class="headerlink" title="配置元数据"></a>配置元数据</h4><p>打开pyproject.toml并输入以下内容。更改name 以包含您的用户名；这确保您有一个唯一的包名称，不会与其他人按照本教程上传的包发生冲突。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[project]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;pkg_name&quot;</span><br><span class="hljs-attr">version</span> = <span class="hljs-string">&quot;0.0.1&quot;</span><br><span class="hljs-attr">authors</span> = [<br>  &#123; name=<span class="hljs-string">&quot;Zhang San&quot;</span>, email=<span class="hljs-string">&quot;admin@gmail.com&quot;</span> &#125;,<br>]<br><span class="hljs-attr">description</span> = <span class="hljs-string">&quot;A small example package&quot;</span><br><span class="hljs-attr">readme</span> = <span class="hljs-string">&quot;README.md&quot;</span><br><span class="hljs-attr">requires-python</span> = <span class="hljs-string">&quot;&gt;=3.7&quot;</span><br><span class="hljs-attr">classifiers</span> = [<br>    <span class="hljs-string">&quot;Programming Language :: Python :: 3&quot;</span>,<br>    <span class="hljs-string">&quot;License :: OSI Approved :: MIT License&quot;</span>,<br>    <span class="hljs-string">&quot;Operating System :: OS Independent&quot;</span>,<br>]<br><br><span class="hljs-section">[project.urls]</span><br><span class="hljs-attr">&quot;Homepage&quot;</span> = <span class="hljs-string">&quot;https://github.com/zhangsan/porject_example&quot;</span><br><span class="hljs-attr">&quot;Bug Tracker&quot;</span> = <span class="hljs-string">&quot;https://github.com/zhangsan/porject_example/issues&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>name是您的包的分发名称。这可以是任何名称，只要它只包含字母、数字、.、_和-。它也不能已经在 PyPI 上使用。请务必使用您在本教程中的用户名更新此名称，因为这可确保您不会尝试上传与已存在名称相同的包。</p>
+<p>version是包版本。有关版本的更多详细信息，请参阅版本说明符规范 。一些构建后端允许以其他方式指定它，例如从文件或 git 标签。</p>
+<p>authors用于识别包的作者；您为每位作者指定姓名和电子邮件。您也可以maintainers以相同的格式列出。</p>
+<p>description是包的简短单句摘要。</p>
+<p>readme是包含包详细描述的文件的路径。这显示在 PyPI 的包详细信息页面上。README.md在这种情况下，描述是从（这是一种常见模式）加载的。项目元数据规范中还描述了一种更高级的表格形式 。</p>
+<p>requires-python给出项目支持的 Python 版本。像pip这样的安装程序会回顾旧版本的包，直到找到一个具有匹配 Python 版本的包。</p>
+<p>classifiers为 index 和pip提供一些关于您的包的额外元数据。在这种情况下，该包仅与 Python 3 兼容，根据 MIT 许可获得许可，并且独立于操作系统。您应该始终至少包括您的包适用于哪些 Python 版本、您的包在哪个许可下可用以及您的包将在哪些操作系统上运行。有关分类器的完整列表，请参阅 <a target="_blank" rel="noopener" href="https://pypi.org/classifiers/%E3%80%82">https://pypi.org/classifiers/。</a></p>
+<p>urls允许您列出任意数量的额外链接以显示在 PyPI 上。通常这可能是源代码、文档、问题跟踪器等。</p>
+<p>有关可以在 表中定义的这些字段和其他字段的详细信息，请参阅项目元数据规范。[project]其他常见字段keywords用于提高可发现性以及 dependencies安装包所需的字段。<br><a target="_blank" rel="noopener" href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata</a></p>
+<p>重点：已经发布过得版本号不能再次使用！否则会400报错。创建并上传成功的包名，即使你在pypi管理页面删除了，也不能再次使用！所以不要随意删除你已占用到的名称的项目，不然就只能更换包名了！</p>
+<p>pyproject.toml 文件最终配置完成的示例：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-system]</span><br><span class="hljs-attr">requires</span> = [<span class="hljs-string">&quot;setuptools&gt;=61.0&quot;</span>]<br><span class="hljs-attr">build-backend</span> = <span class="hljs-string">&quot;setuptools.build_meta&quot;</span><br><br><br><span class="hljs-section">[project]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;pkg_name&quot;</span><br><span class="hljs-attr">version</span> = <span class="hljs-string">&quot;0.0.1&quot;</span><br><span class="hljs-attr">authors</span> = [<br>  &#123; name=<span class="hljs-string">&quot;Zhang San&quot;</span>, email=<span class="hljs-string">&quot;admin@gmail.com&quot;</span> &#125;,<br>]<br><span class="hljs-attr">description</span> = <span class="hljs-string">&quot;A small example package&quot;</span><br><span class="hljs-attr">readme</span> = <span class="hljs-string">&quot;README.md&quot;</span><br><span class="hljs-attr">requires-python</span> = <span class="hljs-string">&quot;&gt;=3.7&quot;</span><br><span class="hljs-attr">classifiers</span> = [<br>    <span class="hljs-string">&quot;Programming Language :: Python :: 3&quot;</span>,<br>    <span class="hljs-string">&quot;License :: OSI Approved :: MIT License&quot;</span>,<br>    <span class="hljs-string">&quot;Operating System :: OS Independent&quot;</span>,<br>]<br><br><span class="hljs-section">[project.urls]</span><br><span class="hljs-attr">&quot;Homepage&quot;</span> = <span class="hljs-string">&quot;https://github.com/zhangsan/porject_example&quot;</span><br><span class="hljs-attr">&quot;Bug Tracker&quot;</span> = <span class="hljs-string">&quot;https://github.com/zhangsan/porject_example/issues&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="创建-README-md"><a href="#创建-README-md" class="headerlink" title="创建 README.md"></a>创建 README.md</h4><p>这个文件是包的说明文档，使用Markdown语法(不会的话花几分钟看看)，内容包括项目介绍，安装，使用范例，开发人员，下载量，开源协议等等，不知道怎么写可以看看GitHub上其他项目是怎么写的，参考着写就行了。</p>
+<h4 id="创建许可证"><a href="#创建许可证" class="headerlink" title="创建许可证"></a>创建许可证</h4><p>上传到pypi的每个包都包含一个许可证，这是告诉使用这个软件包的用户需要遵守那些条款。<br>但是既然发布一个包总想着长期维护吧，所以在GitHub上创建仓库的时候会有一个选择许可证的下拉框，一般常用的是MIT和Apache2.0，区别是使用的时候一个是不署名，一个要署名。</p>
+<h4 id="生成分发档案"><a href="#生成分发档案" class="headerlink" title="生成分发档案"></a>生成分发档案</h4><p>先升级PyPA到最新版本</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">py -m pip install <span class="hljs-comment">--upgrade build</span><br></code></pre></td></tr></table></figure>
+
+
+<p>在项目根目录运行以下步骤的命令，也就是能看到pyproject.toml文件的位置</p>
+<p>将项目进行打包</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>py -m build<br></code></pre></td></tr></table></figure>
+
+<h4 id="上传分发档案"><a href="#上传分发档案" class="headerlink" title="上传分发档案"></a>上传分发档案</h4><p>将自己的项目上传到pypi</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>py -m twine upload dist/*<br></code></pre></td></tr></table></figure>
+
+<h4 id="安装你新上传的包"><a href="#安装你新上传的包" class="headerlink" title="安装你新上传的包"></a>安装你新上传的包</h4><p>这个步骤和你安装其他包是一样的，打开pypi项目主页也会显示命令，复制粘贴安装就行了。<br>怎么导入包，使用包，这些都是基础知识，不多赘述了。</p>
+<h4 id="重要提示"><a href="#重要提示" class="headerlink" title="重要提示"></a>重要提示</h4><p>以上是首次发布的步骤，但是你要更新版本号的话需要注意：</p>
+<ol>
+<li>要在<code>pyproject.toml</code>里面修改版本号，必须是该项目在pypi上没有用过的版本号</li>
+<li>重新构建前必须删除之前构建生成的所有文件，比如：<code>dist</code>文件夹，<code>src</code>文件夹下的<code>*.egg-info</code>文件夹</li>
+</ol>
+<p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">https://packaging.python.org/en/latest/tutorials/packaging-projects/</a></li>
+<li><a target="_blank" rel="noopener" href="https://python-poetry.org/">https://python-poetry.org/</a></li>
+</ul>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>MarkHoo<br>
+        <strong>本文链接：</strong><a href="https://blog.markhoo.com/posts/pypi_pkg/" title="https:&#x2F;&#x2F;blog.markhoo.com&#x2F;posts&#x2F;pypi_pkg&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;blog.markhoo.com&#x2F;posts&#x2F;pypi_pkg&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Python/">Python</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Python/" rel="tag">Python</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/pip/" rel="tag">pip</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/pypi/" rel="tag">pypi</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://cdn.jsdelivr.net/npm/valine'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'm4swDl6Cqyi5Sa2Yy9iI55Ua-gzGzoHsz',
+        appKey: 'B87aHCj28LivcwqIQNvh5uCb'
+    })
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">构建工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">2.</span> <span class="toc-text">配置元数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-README-md"><span class="toc-number">3.</span> <span class="toc-text">创建 README.md</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">创建许可证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%88%86%E5%8F%91%E6%A1%A3%E6%A1%88"><span class="toc-number">5.</span> <span class="toc-text">生成分发档案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%88%86%E5%8F%91%E6%A1%A3%E6%A1%88"><span class="toc-number">6.</span> <span class="toc-text">上传分发档案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BD%A0%E6%96%B0%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%8C%85"><span class="toc-number">7.</span> <span class="toc-text">安装你新上传的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%8F%90%E7%A4%BA"><span class="toc-number">8.</span> <span class="toc-text">重要提示</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1693042953084"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
