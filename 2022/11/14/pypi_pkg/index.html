@@ -21,17 +21,17 @@
 <meta property="og:description" content="很多人只用过别人写的包，那么有没有想过如何将自己的包发布出去让别人用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-14T15:51:32.000Z">
-<meta property="article:modified_time" content="2022-11-20T05:40:38.057Z">
+<meta property="article:modified_time" content="2023-05-30T08:14:03.521Z">
 <meta property="article:author" content="Mark Hoo">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="pip">
 <meta property="article:tag" content="pypi">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1669644699509">
+    <link rel="stylesheet" href="/css/style.css?v=1693037801630">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1669644699509">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1693037801630">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -230,7 +230,7 @@
     
 </aside>
     <div class="nexmoe-copyright">
-        &copy; 2022 Mark Hoo
+        &copy; 2023 Mark Hoo
         Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
         & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
         <br><a target="_blank" href="https://beian.miit.gov.cn">苏ICP备17044309号</a><br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -261,6 +261,7 @@
 <span id="more"></span>
 
 <p>首先到pypi.org注册账户，然后生成一个Token，注意生成Token的页面不要关闭不要刷新，因为只显示一次，在Token下面会有一个说明，就是在你的用户目录下创建一个文件，然后把那些内容复制粘贴进去保存就行了。这样做是为了在上传的时候不用输入用户名和密码，防止403报错等等。<br>提示：Windows的用户目录就是<code>C:\Users\zhangsan</code> 这个路径，打开步骤就是<code>C盘-&gt;用户-&gt;用户名</code></p>
+<p>项目目录结构：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs stylus">porject_example/<br>├── LICENSE<br>├── pyproject<span class="hljs-selector-class">.toml</span><br>├── README<span class="hljs-selector-class">.md</span><br>├── <span class="hljs-attribute">src</span>/<br>│   └── pkg_name/<br>│       ├── __init__<span class="hljs-selector-class">.py</span><br>│       └── example<span class="hljs-selector-class">.py</span><br>└── tests/<br></code></pre></td></tr></table></figure>
 
 <h4 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h4><p>这里列出4个常见的构建工具，示例里面使用安装时常看到的setuptools，当然也根据个人喜好进行选择。<br>选择一个构建工具添加到pyproject.toml</p>
@@ -312,7 +313,11 @@
 <li>要在<code>pyproject.toml</code>里面修改版本号，必须是该项目在pypi上没有用过的版本号</li>
 <li>重新构建前必须删除之前构建生成的所有文件，比如：<code>dist</code>文件夹，<code>src</code>文件夹下的<code>*.egg-info</code>文件夹</li>
 </ol>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">https://packaging.python.org/en/latest/tutorials/packaging-projects/</a></p>
+<p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">https://packaging.python.org/en/latest/tutorials/packaging-projects/</a></li>
+<li><a target="_blank" rel="noopener" href="https://python-poetry.org/">https://python-poetry.org/</a></li>
+</ul>
 
   </article>
 
@@ -398,7 +403,7 @@
 
  
 
-<script async src="/js/app.js?v=1669644699516"></script>
+<script async src="/js/app.js?v=1693037801637"></script>
 
 
 
