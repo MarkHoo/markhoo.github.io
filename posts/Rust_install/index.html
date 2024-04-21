@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>Windows安装Rust（详细版） - 和光同尘|MarkHoo_不积跬步无以至千里，不积小流无以成江海</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="终日而思,不如须臾之所学也">
+    <meta name="keywords" content="和光同尘,MarkHoo,Python,Elixir,Phoenix,SpringBoot,Django,">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://media.markhoo.com/image/favicon24.ico" type="image/x-icon" />
+    <meta name="description" content="Rust 速度惊人且内存利用率极高。由于没有运行时和垃圾回收，它能够胜任对性能要求特别高的服务，可以在嵌入式设备上运行，还能轻松和其他语言集成。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows安装Rust（详细版）">
+<meta property="og:url" content="https://blog.markhoo.com/posts/Rust_install/">
+<meta property="og:site_name" content="和光同尘|MarkHoo_不积跬步无以至千里，不积小流无以成江海">
+<meta property="og:description" content="Rust 速度惊人且内存利用率极高。由于没有运行时和垃圾回收，它能够胜任对性能要求特别高的服务，可以在嵌入式设备上运行，还能轻松和其他语言集成。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-20T05:54:27.000Z">
+<meta property="article:modified_time" content="2024-04-21T13:49:34.555Z">
+<meta property="article:author" content="MarkHoo">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1713707402718">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1713707402718">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://s2.loli.net/2023/08/30/SfpNaZsg3IW5MDz.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="MarkHoo" class="mdui-btn mdui-btn-icon"><img src="https://media.markhoo.com/avatar.jpg" alt="MarkHoo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="MarkHoo">
+            <img src="https://media.markhoo.com/avatar.jpg" alt="MarkHoo" alt="MarkHoo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>44</div>
+        <div><span>标签</span>36</div>
+        <div><span>分类</span>12</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/books" title="书架">
+            <i class="mdui-list-item-icon nexmoefont icon-battlenet"></i>
+            <div class="mdui-list-item-content">
+                书架
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/links" title="邻居">
+            <i class="mdui-list-item-icon nexmoefont icon-dribbble"></i>
+            <div class="mdui-list-item-content">
+                邻居
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:markhoo.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/182687081" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/markhoo/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/CentOS7/" style="font-size: 15.71px;">CentOS7</a> <a href="/tags/Django/" style="font-size: 18.57px;">Django</a> <a href="/tags/Elixir/" style="font-size: 11.43px;">Elixir</a> <a href="/tags/EndeavourOS/" style="font-size: 10px;">EndeavourOS</a> <a href="/tags/Erlang/" style="font-size: 10px;">Erlang</a> <a href="/tags/Gin/" style="font-size: 10px;">Gin</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/tags/Gunicorn/" style="font-size: 12.86px;">Gunicorn</a> <a href="/tags/Hugo/" style="font-size: 10px;">Hugo</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Lua/" style="font-size: 11.43px;">Lua</a> <a href="/tags/NeoVim/" style="font-size: 11.43px;">NeoVim</a> <a href="/tags/Nginx/" style="font-size: 14.29px;">Nginx</a> <a href="/tags/Phoenix/" style="font-size: 10px;">Phoenix</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Rust/" style="font-size: 11.43px;">Rust</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Vim/" style="font-size: 12.86px;">Vim</a> <a href="/tags/hexo/" style="font-size: 11.43px;">hexo</a> <a href="/tags/pip/" style="font-size: 11.43px;">pip</a> <a href="/tags/pypi/" style="font-size: 10px;">pypi</a> <a href="/tags/xadmin/" style="font-size: 10px;">xadmin</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">网易云音乐</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 11.43px;">面试题</a> <a href="/tags/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 10px;">音乐播放器</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 MarkHoo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn">苏ICP备17044309号</a><br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 45.83333333333333%;"> 
+              <img data-src="https://s2.loli.net/2023/08/30/SfpNaZsg3IW5MDz.jpg" data-sizes="auto" alt="Windows安装Rust（详细版）" class="lazyload">
+              <h1>Windows安装Rust（详细版）</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2024年04月20日</a>
+    <a><i class="nexmoefont icon-areachart"></i>2.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 13 分钟</a>
+</div>
+
+      
+
+      <blockquote>
+<p>Rust 速度惊人且内存利用率极高。由于没有运行时和垃圾回收，它能够胜任对性能要求特别高的服务，可以在嵌入式设备上运行，还能轻松和其他语言集成。</p>
+</blockquote>
+<span id="more"></span>
+
+<ol>
+<li>前置条件：安装C++环境</li>
+</ol>
+<p>rust底层是依赖C环境的连接器，所以需要先安装C/C++编译环境, 有两种选择:安装微软的msvc或者安装mingw/cygwin。<br>如果使用msvc的Visual Studio，只需要安装好C/C++编译环境,然后一路默认就行了，缺点是体积比较大，下载安装都要好几个G，</p>
+<p><a target="_blank" rel="noopener" href="https://www.mingw-w64.org/downloads/">MinGW-w64</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/niXman/mingw-builds-binaries/releases">MingW-W64-builds</a></p>
+<p>64位下载地址<br><a target="_blank" rel="noopener" href="https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev0/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev0.7z">mingw-builds-binaries</a></p>
+<p>如果你是64位的系统，那就选择x86_64开头的，反之32位的选择i686开头的。</p>
+<p>线程模型有posix和win32，如果你想在vscode里面搞断点调试，我推荐用posix。</p>
+<p>然后是异常处理机制，我目前用的seh</p>
+<p>● seh 零开销exception，64位系统可用<br>● sjlj 不是零成本，有较小的性能损失<br>● dwarf 只支持32位</p>
+<p>MinGW-w64、UCRT 和 MSVCRT 是 Windows 平台上常用的 C/C++ 运行库，它们有以下不同点：</p>
+<ul>
+<li>MinGW-w64：是一个基于 GCC 的编译器套件，可以用于编译 Windows 平台上的 C/C++ 程序。MinGW-w64 使用的是 POSIX 标准的运行库，因此可以很好地兼容 Unix/Linux 程序。MinGW-w64 的默认运行库是 MSVCRT（Microsoft Visual C++ Runtime），但也可以使用其他运行库。</li>
+<li>UCRT（Universal CRT）：是微软提供的一个通用 C 运行库，可以用于编译 Windows 平台上的 C/C++ 程序。UCRT 提供了许多与标准 C 库兼容的函数，并支持新的 C11 和 C++11 标准。UCRT 适用于 Windows 10 或更高版本的操作系统。</li>
+<li>MSVCRT（Microsoft Visual C++ Runtime）：是微软提供的一个 C++ 运行库，可以用于编译 Windows 平台上的 C/C++ 程序。MSVCRT 提供了许多与标准 C 库兼容的函数，但不支持新的 C11 和 C++11 标准。MSVCRT 在 Windows 操作系统中已经内置，并且随着 Visual Studio 版本的升级而不断更新。</li>
+</ul>
+<p>我选择的是：x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev0.7z，下载到本地解压后，把bin文件夹路径配置到Path系统环境变量即可。</p>
+<p>验证版本</p>
+<p>gcc 和 g++ 都是 GNU 工具链中的编译器，它们的主要区别在于它们所编译的代码的语言不同。</p>
+<p>gcc 是 GNU C 编译器，它主要用于编译 C 语言程序，可以将 C 语言源代码编译成可执行文件或动态链接库。</p>
+<p>g++ 则是 GNU C++ 编译器，它主要用于编译 C++ 语言程序，可以将 C++ 语言源代码编译成可执行文件或动态链接库。</p>
+<p>虽然 gcc 和 g++ 是两个不同的编译器，但它们都基于同一套 GNU 工具链，并共享许多相同的功能和选项。因此，除了语言不同外，它们的使用方式和命令选项也非常相似。</p>
+<p>需要注意的是，C++ 语言相对于 C 语言来说增加了一些特性，例如类、继承、多态等。如果您想编译 C++ 代码，建议使用 g++ 编译器，因为它可以更好地支持这些特性。而如果您只是编译 C 代码，gcc 编译器就足够了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">gcc -v<br>gdb -v<br>mingw32-make -v<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装Rust</li>
+</ol>
+<p>安装之前，先想想要安装到什么地方，我不喜欢安装到C盘，可以设置一些系统环境变量，改变默认安装的位置</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">RUSTUP_HOME D:\rust\.rustup  <span class="hljs-regexp">//</span> 默认路径 ~<span class="hljs-regexp">/.rustup 或 %USERPROFILE%/</span>.rustup<br>CARGO_HOME  D:\rust\.cargo <span class="hljs-regexp">//</span> 默认路径 ~<span class="hljs-regexp">/.cargo 或 %USERPROFILE%/</span>.cargo<br></code></pre></td></tr></table></figure>
+
+<p>如果直接从官方网站下载，国内的环境复杂，下载会很慢，而且容易失败。推荐使用镜像加速安装，设置以下环境变量：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">RUSTUP_DIST_SERVER  https:<span class="hljs-regexp">//</span>rsproxy.cn<br>RUSTUP_UPDATE_ROOT  https:<span class="hljs-regexp">//</span>rsproxy.cn/rustup<br></code></pre></td></tr></table></figure>
+
+<p>这一切准备工作做好之后，就可以用rustup-init来安装了<br>如果使用msvc环境的话，一切默认就行了<br>而mingw就需要手动选择gnu toolchain</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">msvc</span>的toolchain：  stable-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-msvc<br><span class="hljs-attribute">mingw</span>/cygwin:     stable-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu<br></code></pre></td></tr></table></figure>
+
+<p>运行rustup-init后出现如下提示：</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs erlang">Rust Visual C++ prerequisites<br><br>Rust requires a linker <span class="hljs-keyword">and</span> Windows API libraries but they don&#x27;t seem to be<br>available.<br><br>These components can be acquired through a Visual Studio installer.<br><br><span class="hljs-number">1</span>) Quick install via the Visual Studio Community installer<br>   (free for individuals, academic uses, <span class="hljs-keyword">and</span> open source).<br><br><span class="hljs-number">2</span>) Manually install the prerequisites<br>   (for enterprise <span class="hljs-keyword">and</span> advanced users).<br><br><span class="hljs-number">3</span>) Don&#x27;t install the prerequisites<br>   (<span class="hljs-keyword">if</span> you&#x27;re targeting the GNU ABI).<br><br>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>它说rust需要windows API库和链接器，你可以选择下面3项的一项。</p>
+<p>1、安装Visual Studio。<br>2、手动安装的预设条件。<br>3、无需预设条件。</p>
+<p>我们这里选择3，mingw-w64也是C/C++编译器，就是 GCC 的 Windows 版本 。回车：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">&gt;<span class="hljs-number">3</span><br><br>Welcome <span class="hljs-keyword">to</span> Rust!<br><br>This will download <span class="hljs-keyword">and</span> install the official compiler <span class="hljs-keyword">for</span> the Rust<br>programming language, <span class="hljs-keyword">and</span> its <span class="hljs-keyword">package</span> manager, Cargo.<br><br>Rustup metadata <span class="hljs-keyword">and</span> toolchains will be installed into the Rustup<br>home directory, located at:<br><br>  C:\Users\markh\.rustup<br><br>This can be modified <span class="hljs-keyword">with</span> the RUSTUP_HOME environment <span class="hljs-keyword">variable</span>.<br><br>The Cargo home directory <span class="hljs-keyword">is</span> located at:<br><br>  C:\Users\markh\.cargo<br><br>This can be modified <span class="hljs-keyword">with</span> the CARGO_HOME environment <span class="hljs-keyword">variable</span>.<br><br>The cargo, rustc, rustup <span class="hljs-keyword">and</span> other commands will be added <span class="hljs-keyword">to</span><br>Cargo<span class="hljs-symbol">&#x27;s</span> bin directory, located at:<br><br>  C:\Users\markh\.cargo\bin<br><br>This path will <span class="hljs-keyword">then</span> be added <span class="hljs-keyword">to</span> your PATH environment <span class="hljs-keyword">variable</span> by<br>modifying the HKEY_CURRENT_USER/Environment/PATH registry key.<br><br>You can uninstall at any <span class="hljs-built_in">time</span> <span class="hljs-keyword">with</span> rustup self uninstall <span class="hljs-keyword">and</span><br>these changes will be reverted.<br><br>Current installation options:<br><br><br>   <span class="hljs-keyword">default</span> host triple: x86_64-pc-windows-msvc<br>     <span class="hljs-keyword">default</span> toolchain: stable (<span class="hljs-keyword">default</span>)<br>               profile: <span class="hljs-keyword">default</span><br>  modify PATH <span class="hljs-keyword">variable</span>: yes<br><br><span class="hljs-number">1</span>) Proceed <span class="hljs-keyword">with</span> standard installation (<span class="hljs-keyword">default</span> - just press enter)<br><span class="hljs-number">2</span>) Customize installation<br><span class="hljs-number">3</span>) Cancel installation<br>&gt;<br></code></pre></td></tr></table></figure>
+
+
+<p>然后输入2，就是自定义安装，出现提示：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vbnet">&gt;<span class="hljs-number">2</span><br><br>I<span class="hljs-comment">&#x27;m going to ask you the value of each of these installation options.</span><br>You may simply press the Enter <span class="hljs-keyword">key</span> <span class="hljs-keyword">to</span> leave unchanged.<br><br><span class="hljs-keyword">Default</span> host triple? [x86_64-pc-windows-msvc]<br><br></code></pre></td></tr></table></figure>
+
+<p>输入x86_64-pc-windows-gnu，（小提示，你先复制x86_64-pc-windows-gnu，在rustup右键可以直接粘贴文字，可以不用手写输入。出现提示：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">Default</span> toolchain? (<span class="hljs-keyword">stable</span>/beta/nightly/<span class="hljs-keyword">none</span>) [<span class="hljs-keyword">stable</span>]<br></code></pre></td></tr></table></figure>
+
+<p>直接回车，默认选择是稳定版。出现提示：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">Profile (which tools <span class="hljs-literal">and</span> data <span class="hljs-keyword">to</span> install)? (minimal/<span class="hljs-literal">default</span>/complete) [<span class="hljs-literal">default</span>]<br></code></pre></td></tr></table></figure>
+
+<p>直接回车，默认选择默认。出现提示：</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">Modify PATH <span class="hljs-keyword">variable</span>? (Y/n)<br></code></pre></td></tr></table></figure>
+<p>输入Y回车（不分大小写），表示修改环境变量，然后回到了第一步，提示：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">Current installation options:<br><br><br>   <span class="hljs-keyword">default</span> host triple: x86_64-pc-windows-gnu<br>     <span class="hljs-keyword">default</span> toolchain: stable<br>               profile: <span class="hljs-keyword">default</span><br>  modify PATH variable: <span class="hljs-literal">yes</span><br><br><span class="hljs-number">1</span>) Proceed <span class="hljs-keyword">with</span> selected options (<span class="hljs-keyword">default</span> - just press enter)<br><span class="hljs-number">2</span>) Customize installation<br><span class="hljs-number">3</span>) Cancel installation<br>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>输入1，然后出现：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">info</span>: profile set to &#x27;default&#x27;<br><span class="hljs-attribute">info</span>: setting default host triple to x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu<br><span class="hljs-attribute">info</span>: syncing channel updates for &#x27;stable-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu&#x27;<br><span class="hljs-attribute">info</span>: latest update <span class="hljs-literal">on</span> <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">15</span>, rust version <span class="hljs-number">1</span>.<span class="hljs-number">66</span>.<span class="hljs-number">0</span> (<span class="hljs-number">69</span>f<span class="hljs-number">9</span>c<span class="hljs-number">33</span>d<span class="hljs-number">7</span> <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">12</span>)<br><span class="hljs-attribute">info</span>: downloading component &#x27;cargo&#x27;<br>  <span class="hljs-attribute">7</span>.<span class="hljs-number">3</span> MiB /   <span class="hljs-number">7</span>.<span class="hljs-number">3</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">1</span>.<span class="hljs-number">9</span> MiB/s in  <span class="hljs-number">5</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: downloading component &#x27;clippy&#x27;<br>  <span class="hljs-attribute">3</span>.<span class="hljs-number">6</span> MiB /   <span class="hljs-number">3</span>.<span class="hljs-number">6</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">1</span>.<span class="hljs-number">7</span> MiB/s in  <span class="hljs-number">2</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: downloading component &#x27;rust-docs&#x27;<br> <span class="hljs-attribute">19</span>.<span class="hljs-number">0</span> MiB /  <span class="hljs-number">19</span>.<span class="hljs-number">0</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">2</span>.<span class="hljs-number">1</span> MiB/s in <span class="hljs-number">10</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: downloading component &#x27;rust-mingw&#x27;<br>  <span class="hljs-attribute">4</span>.<span class="hljs-number">2</span> MiB /   <span class="hljs-number">4</span>.<span class="hljs-number">2</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">2</span>.<span class="hljs-number">6</span> MiB/s in  <span class="hljs-number">1</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: downloading component &#x27;rust-std&#x27;<br> <span class="hljs-attribute">27</span>.<span class="hljs-number">8</span> MiB /  <span class="hljs-number">27</span>.<span class="hljs-number">8</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">1</span>.<span class="hljs-number">8</span> MiB/s in <span class="hljs-number">14</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: downloading component &#x27;rustc&#x27;<br> <span class="hljs-attribute">74</span>.<span class="hljs-number">3</span> MiB /  <span class="hljs-number">74</span>.<span class="hljs-number">3</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">1</span>.<span class="hljs-number">5</span> MiB/s in <span class="hljs-number">49</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: downloading component &#x27;rustfmt&#x27;<br>  <span class="hljs-attribute">6</span>.<span class="hljs-number">6</span> MiB /   <span class="hljs-number">6</span>.<span class="hljs-number">6</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">2</span>.<span class="hljs-number">2</span> MiB/s in  <span class="hljs-number">3</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: installing component &#x27;cargo&#x27;<br><span class="hljs-attribute">info</span>: installing component &#x27;clippy&#x27;<br><span class="hljs-attribute">info</span>: installing component &#x27;rust-docs&#x27;<br> <span class="hljs-attribute">19</span>.<span class="hljs-number">0</span> MiB /  <span class="hljs-number">19</span>.<span class="hljs-number">0</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">3</span>.<span class="hljs-number">0</span> MiB/s in  <span class="hljs-number">5</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: installing component &#x27;rust-mingw&#x27;<br><span class="hljs-attribute">info</span>: installing component &#x27;rust-std&#x27;<br> <span class="hljs-attribute">27</span>.<span class="hljs-number">8</span> MiB /  <span class="hljs-number">27</span>.<span class="hljs-number">8</span> MiB (<span class="hljs-number">100</span> %)   <span class="hljs-number">9</span>.<span class="hljs-number">0</span> MiB/s in  <span class="hljs-number">3</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: installing component &#x27;rustc&#x27;<br> <span class="hljs-attribute">74</span>.<span class="hljs-number">3</span> MiB /  <span class="hljs-number">74</span>.<span class="hljs-number">3</span> MiB (<span class="hljs-number">100</span> %)  <span class="hljs-number">10</span>.<span class="hljs-number">3</span> MiB/s in  <span class="hljs-number">7</span>s ETA:  <span class="hljs-number">0</span>s<br><span class="hljs-attribute">info</span>: installing component &#x27;rustfmt&#x27;<br><span class="hljs-attribute">info</span>: default toolchain set to &#x27;stable-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu&#x27;<br><br>  <span class="hljs-attribute">stable</span>-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu installed - rustc <span class="hljs-number">1</span>.<span class="hljs-number">66</span>.<span class="hljs-number">0</span> (<span class="hljs-number">69</span>f<span class="hljs-number">9</span>c<span class="hljs-number">33</span>d<span class="hljs-number">7</span> <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">12</span>)<br><br><span class="hljs-attribute">Rust</span> is installed now. Great!<br><br><span class="hljs-attribute">To</span> get started you may need to restart your current shell.<br><span class="hljs-attribute">This</span> would reload its PATH environment variable to include<br><span class="hljs-attribute">Cargo</span>&#x27;s bin directory (D:\Programs\rust\cargo_home\bin).<br><br><span class="hljs-attribute">Press</span> the Enter key to continue.<br></code></pre></td></tr></table></figure>
+
+<p>等待它下载文件完毕，这里需要等待的时间有点长，但耐心就好，假如下载出现错误，就重设上面的设定，再来一次流程。</p>
+<p>当出现最后一行，敲回车，然后窗口关闭。</p>
+<p>打开命令提示符，也就是cmd。</p>
+<p>分别输入每一行命令后回车，出现相关信息后，标明安装rust成功了。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart">rustc -V<br>rustup -V<br>cargo -V<br>rustup <span class="hljs-keyword">show</span> <br></code></pre></td></tr></table></figure>
+
+
+<p>其他相关命令</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">#安装其他类型的toolchain开发环境</span><br>rustup toolchain install &lt;toolchain&gt;<br><br><span class="hljs-meta">#例如</span><br>rustup toolchain install  stable-x86_64-pc-windows-gnu<br><br><span class="hljs-meta">#切换默认的toolchain</span><br>rustup <span class="hljs-keyword">default</span> [toolchain]<br><br><span class="hljs-meta">#例如</span><br>rustup <span class="hljs-keyword">default</span> stable-x86_64-pc-windows-gnu<br><br><span class="hljs-meta">#更新：</span><br>rustup update stable<br>rustup <span class="hljs-keyword">default</span> stable<br></code></pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">Rust Visual C++ prerequisites<br><br>Rust requires a linker <span class="hljs-keyword">and</span> Windows API libraries but they don<span class="hljs-symbol">&#x27;t</span> seem <span class="hljs-keyword">to</span> be<br>available.<br><br>These components can be acquired through a Visual Studio installer.<br><br><span class="hljs-number">1</span>) Quick install via the Visual Studio Community installer<br>   (free <span class="hljs-keyword">for</span> individuals, academic uses, <span class="hljs-keyword">and</span> <span class="hljs-keyword">open</span> source).<br><br><span class="hljs-number">2</span>) Manually install the prerequisites<br>   (<span class="hljs-keyword">for</span> enterprise <span class="hljs-keyword">and</span> advanced users).<br><br><span class="hljs-number">3</span>) Don<span class="hljs-symbol">&#x27;t</span> install the prerequisites<br>   (<span class="hljs-keyword">if</span> you<span class="hljs-symbol">&#x27;re</span> targeting the GNU ABI).<br><br>&gt;<span class="hljs-number">3</span><br><br><br>Welcome <span class="hljs-keyword">to</span> Rust!<br><br>This will download <span class="hljs-keyword">and</span> install the official compiler <span class="hljs-keyword">for</span> the Rust<br>programming language, <span class="hljs-keyword">and</span> its <span class="hljs-keyword">package</span> manager, Cargo.<br><br>Rustup metadata <span class="hljs-keyword">and</span> toolchains will be installed into the Rustup<br>home directory, located at:<br><br>  C:\Users\markh\.rustup<br><br>This can be modified <span class="hljs-keyword">with</span> the RUSTUP_HOME environment <span class="hljs-keyword">variable</span>.<br><br>The Cargo home directory <span class="hljs-keyword">is</span> located at:<br><br>  C:\Users\markh\.cargo<br><br>This can be modified <span class="hljs-keyword">with</span> the CARGO_HOME environment <span class="hljs-keyword">variable</span>.<br><br>The cargo, rustc, rustup <span class="hljs-keyword">and</span> other commands will be added <span class="hljs-keyword">to</span><br>Cargo<span class="hljs-symbol">&#x27;s</span> bin directory, located at:<br><br>  C:\Users\markh\.cargo\bin<br><br>This path will <span class="hljs-keyword">then</span> be added <span class="hljs-keyword">to</span> your PATH environment <span class="hljs-keyword">variable</span> by<br>modifying the HKEY_CURRENT_USER/Environment/PATH registry key.<br><br>You can uninstall at any <span class="hljs-built_in">time</span> <span class="hljs-keyword">with</span> rustup self uninstall <span class="hljs-keyword">and</span><br>these changes will be reverted.<br><br>Current installation options:<br><br><br>   <span class="hljs-keyword">default</span> host triple: x86_64-pc-windows-msvc<br>     <span class="hljs-keyword">default</span> toolchain: stable (<span class="hljs-keyword">default</span>)<br>               profile: <span class="hljs-keyword">default</span><br>  modify PATH <span class="hljs-keyword">variable</span>: yes<br><br><span class="hljs-number">1</span>) Proceed <span class="hljs-keyword">with</span> standard installation (<span class="hljs-keyword">default</span> - just press enter)<br><span class="hljs-number">2</span>) Customize installation<br><span class="hljs-number">3</span>) Cancel installation<br>&gt;<span class="hljs-number">2</span><br><br>I<span class="hljs-symbol">&#x27;m</span> going <span class="hljs-keyword">to</span> ask you the value <span class="hljs-keyword">of</span> each <span class="hljs-keyword">of</span> these installation options.<br>You may simply press the Enter key <span class="hljs-keyword">to</span> leave unchanged.<br><br><span class="hljs-keyword">Default</span> host triple? [x86_64-pc-windows-msvc]<br>x86_64-pc-windows-gnu<br><br><span class="hljs-keyword">Default</span> toolchain? (stable/beta/nightly/none) [stable]<br><br><br>Profile (which tools <span class="hljs-keyword">and</span> data <span class="hljs-keyword">to</span> install)? (minimal/<span class="hljs-keyword">default</span>/complete) [<span class="hljs-keyword">default</span>]<br><br><br>Modify PATH <span class="hljs-keyword">variable</span>? (Y/n)<br>y<br><br><br>Current installation options:<br><br><br>   <span class="hljs-keyword">default</span> host triple: x86_64-pc-windows-gnu<br>     <span class="hljs-keyword">default</span> toolchain: stable<br>               profile: <span class="hljs-keyword">default</span><br>  modify PATH <span class="hljs-keyword">variable</span>: yes<br><br><span class="hljs-number">1</span>) Proceed <span class="hljs-keyword">with</span> selected options (<span class="hljs-keyword">default</span> - just press enter)<br><span class="hljs-number">2</span>) Customize installation<br><span class="hljs-number">3</span>) Cancel installation<br>&gt;<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_Roki/article/details/136213972">https://blog.csdn.net/Mr_Roki/article/details/136213972</a></li>
+</ul>
+<p>报错信息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sh">error: linker `link.exe` not found<br>  |<br>  = note: program not found<br><br>note: the msvc targets depend on the msvc linker but `link.exe` was not found<br><br>note: please ensure that Visual Studio 2017 or later, or Build Tools <span class="hljs-keyword">for</span> Visual Studio were installed with the Visual C++ option.<br><br>note: VS Code is a different product, and is not sufficient.<br><br>error: aborting due to 1 previous error<br></code></pre></td></tr></table></figure>
+
+
+<p>解决方案：</p>
+<ol>
+<li></li>
+</ol>
+<p>如果cmd运行 rustc -version 显示rust版本，则运行</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">rustup</span> default stable-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu<br></code></pre></td></tr></table></figure>
+
+<p>如果没有则运行：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">rustup</span> toolchain install stable-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu<br><br><span class="hljs-attribute">rustup</span> default stable-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-pc-windows-gnu<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>下载安装依赖</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://download.microsoft.com/download/5/f/7/5f7acaeb-8363-451f-9425-68a90f98b238/visualcppbuildtools_full.exe">visualcppbuildtools_full.exe</a></p>
+<p><a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/">Microsoft C++ 生成工具</a></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>MarkHoo<br>
+        <strong>本文链接：</strong><a href="https://blog.markhoo.com/posts/Rust_install/" title="https:&#x2F;&#x2F;blog.markhoo.com&#x2F;posts&#x2F;Rust_install&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;blog.markhoo.com&#x2F;posts&#x2F;Rust_install&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a> 进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Rust/">Rust</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Rust/" rel="tag">Rust</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://cdn.jsdelivr.net/npm/valine'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'LnljA9jtf29oZKiQMJ6OAWJU-gzGzoHsz',
+        appKey: 'wb1Mrzef0b2x540dSrcCcg5y'
+    })
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1713707402741"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
