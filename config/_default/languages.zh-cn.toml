@@ -1,0 +1,69 @@
+languageCode = "zh-cn"
+languageName = "zh-cn"
+weight = 1
+title = "和光同尘"
+
+[params]
+  displayName = "简体中文"
+  isoCode = "zh-cn"
+  rtl = false
+  dateFormat = "January 2, 2006"
+  # logo = "img/android-chrome-192x192.png"
+  # secondaryLogo = "img/android-chrome-192x192.png"
+  description = "不积跬步无以至千里，不积小流无以成江海"
+  copyright = '©2024 Copyright :thinking_face: <a target="_blank" href="https://beian.miit.gov.cn">苏ICP备17044309号</a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>'
+
+[author]
+  name = "和光同尘"
+  image = "img/android-chrome-192x192.png"
+  headline = "终日而思，不如须臾之所学也"
+  bio = "宠辱不惊，博雅达观，道法自然"
+  links = [
+    { email = "mailto:markhoo@foxmail.com" },
+    { link = "https://markhoo.com/" },
+#     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
+#     { apple = "https://www.apple.com" },
+#     { blogger = "https://username.blogspot.com/" },
+#     { bluesky = "https://bsky.app/profile/username" },
+#     { codepen = "https://codepen.io/username" },
+#     { dev = "https://dev.to/username" },
+#     { discord = "https://discord.gg/invitecode" },
+#     { dribbble = "https://dribbble.com/username" },
+#     { facebook = "https://facebook.com/username" },
+#     { flickr = "https://www.flickr.com/photos/username/" },
+#     { foursquare = "https://foursquare.com/username" },
+    { github = "https://github.com/markhoo" },
+    { gitlab = "https://gitlab.com/markhoo" },
+#     { google = "https://www.google.com/" },
+#     { hashnode = "https://username.hashnode.dev" },
+#     { instagram = "https://instagram.com/username" },
+#     { itch-io = "https://username.itch.io" },
+#     { keybase = "https://keybase.io/username" },
+#     { kickstarter = "https://www.kickstarter.com/profile/username" },
+#     { lastfm = "https://lastfm.com/user/username" },
+#     { linkedin = "https://linkedin.com/in/username" },
+#     { mastodon = "https://mastodon.instance/@username" },
+#     { medium = "https://medium.com/username" },
+#     { microsoft = "https://www.microsoft.com/" },
+#     { orcid = "https://orcid.org/userid" },
+#     { patreon = "https://www.patreon.com/username" },
+#     { pinterest = "https://pinterest.com/username" },
+#     { reddit = "https://reddit.com/user/username" },
+#     { researchgate = "https://www.researchgate.net/profile/username" },
+#     { slack = "https://workspace.url/team/userid" },
+#     { snapchat = "https://snapchat.com/add/username" },
+#     { soundcloud = "https://soundcloud.com/username" },
+#     { stack-overflow = "https://stackoverflow.com/users/userid/username" },
+#     { steam = "https://steamcommunity.com/profiles/userid" },
+#     { telegram = "https://t.me/username" },
+#     { threads = "https://www.threads.net/@username" },
+#     { tiktok = "https://tiktok.com/@username" },
+#     { tumblr = "https://username.tumblr.com" },
+#     { twitch = "https://twitch.tv/username" },
+#     { twitter = "https://twitter.com/username" },
+#     { x-twitter = "https://twitter.com/username" },
+#     { whatsapp = "https://wa.me/phone-number" },
+   { youtube = "https://space.bilibili.com/182687081" },
+#     { ko-fi = "https://ko-fi.com/username" },
+#     { Bilibili = "https://space.bilibili.com/182687081" },
+  ]
