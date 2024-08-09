@@ -15,10 +15,13 @@ tags:
 
 ## 检查旧版本
 
-```
+```sh
 $ uname -a
 Linux ws-ersyia-0 5.4.241-1-tlinux4-0017.10 #1 SMP Wed May 8 17:01:03 CST 2024 x86_64 x86_64 x86_64 GNU/Linux
-➜  /workspace elixir --version
+```
+
+```sh
+$ elixir --version
 Erlang/OTP 24 [erts-12.3.2.17] [source] [64-bit] [smp:8:2] [ds:8:2:10] [async-threads:1] [jit]
 
 Elixir 1.13.3 (compiled with Erlang/OTP 22)
@@ -26,22 +29,24 @@ Elixir 1.13.3 (compiled with Erlang/OTP 22)
 
 ## 卸载旧版本
 
-```
+```sh
 $ where elixir
+/opt/elixir
 $ where erl
+/opt/erlang
 $ rm -rf /opt/elixir /opt/erlang 
 ```
 
 ## 下载安装包
 
-```
+```sh
 $ wget https://github.com/erlang/otp/releases/download/OTP-27.0.1/otp_src_27.0.1.tar.gz
 $ wget https://github.com/elixir-lang/elixir/archive/refs/tags/v1.17.2.zip
 ```
 
 ## 安装 erlang
 
-```
+```sh
 $ tar zxvf otp_src_27.0.1.tar.gz
 $ cd otp_src_27.0.1 
 $ ./configure && make && make install
@@ -51,7 +56,7 @@ Erlang/OTP 27 [erts-15.0.1] [source] [64-bit] [smp:8:2] [ds:8:2:10] [async-threa
 
 ## 安装 elixir
 
-```
+```sh
 $ unzip v1.17.2.zip 
 $ cd elixir-1.17.2 
 $ make clean compile
@@ -63,25 +68,25 @@ Elixir 1.17.2 (compiled with Erlang/OTP 27)
 
 ## 配置 PATH
 
-```
+```sh
 $ vim ~/.zshrc
 ```
 
 添加路径到PATH
 
-```
+```sh
 export PATH=$PATH:/workspace/elixir-1.17.2/bin
 ```
 
 如果要配置文件立即生效，还需要source一下配置文件
 
-```
+```sh
 $ source ~/.zshrc
 ```
 
 查看版本：
 
-```
+```sh
 $ elixir --version
 Erlang/OTP 27 [erts-15.0.1] [source] [64-bit] [smp:8:2] [ds:8:2:10] [async-threads:1] [jit:ns]
 
@@ -92,7 +97,7 @@ Elixir 1.17.2 (compiled with Erlang/OTP 27)
 
 配置mix hex和rebar3
 
-```
+```sh
 $ mix local.hex -y
 $ wget https://s3.amazonaws.com/rebar3/rebar3
 $ chmod +x ./rebar3 
@@ -107,6 +112,6 @@ rebar 3.23.0 on Erlang/OTP 27 Erts 15.0.1
 
 如果要配置文件立即生效，还需要source一下配置文件
 
-```
+```sh
 $ source ~/.zshrc
 ```
