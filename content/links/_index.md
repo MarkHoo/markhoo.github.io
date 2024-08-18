@@ -11,9 +11,9 @@ permalink: links.html
 
 博客名称：和光同尘
 
-博客网址：https://blog.markhoo.com
+博客网址：https://blog.markhoo.cn
 
-博客头像：https://media.markhoo.com/avatar.jpg
+博客头像：https://media.markhoo.cn/avatar.jpg
 
 邮箱：
 - markhoo911#gmail.com
@@ -88,4 +88,4 @@ permalink: links.html
 
 阿里云产品优惠券：[点击领取](https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=od77opdu&utm_source=od77opdu)
 
-[![阿里云](https://media.markhoo.com/970-240.jpg '')](https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=od77opdu&utm_source=od77opdu)
+[![阿里云](https://media.markhoo.cn/970-240.jpg '')](https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=od77opdu&utm_source=od77opdu)
