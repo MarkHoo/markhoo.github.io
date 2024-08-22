@@ -16,6 +16,6 @@ permalink: about.html
 
 技术栈：
 - Elixir开发者，Rust尝鲜者
-- Vim、VSCode、JetBrainsIDE、Sublime
-- MySQL、MongoDB、Redis、PostgreSQL等数据库
-- Elasticsearch
+- Vim、VSCode、IDEA、PyCharm、Sublime
+- MySQL、MongoDB、Redis、PostgreSQL、Elasticsearch等数据库
+

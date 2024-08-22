@@ -43,13 +43,13 @@ blog虽然已经上线测试有一段时间了(2018.8.7上线)，但是项目部
 
 购买域名后就是解析域名，打开域名解析面板，添加解析记录
 - 记录类型：`A`
-- 主机记录：`test.markhoo.com`，这个`markhoo.com`是你的一级域名，二级域名你可以设置为`www.markhoo.com`
+- 主机记录：`test.markhoo.cn`，这个`markhoo.cn`是你的一级域名，二级域名你可以设置为`www.markhoo.cn`
 - 解析线路：可以默认也可以选别的
 - 记录值：填写你的服务器IP地址
 - TTL：域名生效时间，也就是多久生效
 设置好以上内容，点击确定。解析完成
 
-主机记录中这个markhoo.com是你的一级域名，二级域名你也可以设置为 `www.markhoo.com` 或者别的 `xxx.markhoo.com` 也可以。
+主机记录中这个markhoo.cn是你的一级域名，二级域名你也可以设置为 `www.markhoo.cn` 或者别的 `xxx.markhoo.cn` 也可以。
 注意：域名是否在国内购买不重要，只要服务器不在大陆购买，即使未备案照样可以使用。要是要解析的服务器是大陆服务商则必须要备案。备案后一个域名可以同时接入多个服务商。
 
 域名解析记录类型说明：
@@ -215,10 +215,10 @@ STATIC_ROOT 指明了静态文件的收集目录，即项目根目录（BASE_DIR
 myblog/settings.py
 
 DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.markhoo.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.markhoo.cn']
 ```
 
-ALLOWED_HOSTS 是允许访问的域名列表，127.0.0.1 和 localhost 是本地访问的域名，.markhoo.com 是访问服务器的域名（换成你自己的域名）。域名前加一个点表示允许访问该域名下的子域名，比如 www.markhoo.com  test.markhoo.com 等二级域名同样允许访问。如果不加前面的点则只允许访问 markhoo.com。
+ALLOWED_HOSTS 是允许访问的域名列表，127.0.0.1 和 localhost 是本地访问的域名，.markhoo.cn 是访问服务器的域名（换成你自己的域名）。域名前加一个点表示允许访问该域名下的子域名，比如 www.markhoo.cn  test.markhoo.cn 等二级域名同样允许访问。如果不加前面的点则只允许访问 markhoo.cn。
 
 项目还会依赖一些第三方 Python 库，为了方便在服务器上一次性安装，我们将全部依赖写入一个叫 requirements.txt 的文本文件中。激活本地的虚拟环境（如果你使用了虚拟环境的话），并进入项目的根目录，运行 pip freeze > requirements.txt 命令：
 
@@ -300,22 +300,22 @@ $ git push -u origin master   （注：此操作目的是把本地仓库push到g
 ```
 /home/markhoo/
     sites/
-        markhoo.com/
+        markhoo.cn/
             myblog_env/
             myblog/
 
 ```
 
-一台服务器可能部署多个网站，所有网站代码都放在 `sites/` 目录下。`markhoo.com/` 这个文件夹以网站的域名命名，便于区分。`myblog_env` 是 python 虚拟环境目录。`myblog` 是 Django 博客项目目录。
-创建这个目录结构，注意目录名替换为你自己的域名，以后涉及到 `markhoo.com` 的地方通常都要替换你自己的域名，后面就不再一一指出了。
+一台服务器可能部署多个网站，所有网站代码都放在 `sites/` 目录下。`markhoo.cn/` 这个文件夹以网站的域名命名，便于区分。`myblog_env` 是 python 虚拟环境目录。`myblog` 是 Django 博客项目目录。
+创建这个目录结构，注意目录名替换为你自己的域名，以后涉及到 `markhoo.cn` 的地方通常都要替换你自己的域名，后面就不再一一指出了。
 
 > 备注：上面的我的目录结构.可能会有新手看不懂，解释一下,就像下面这样一直创建下去
 
 ```
-/home/markhoo/sites/markhoo.com/
+/home/markhoo/sites/markhoo.cn/
 ```
 
-最后的 `myblog_env` 和 `myblog` 是同级目录位于`markhoo.com`下，这里自己先不要创建。
+最后的 `myblog_env` 和 `myblog` 是同级目录位于`markhoo.cn`下，这里自己先不要创建。
 
 > 创建目录的命令为： `mkdir (文件夹名称)`
 > 删除目录的命令为： `rmdir (文件夹名称)`
@@ -329,11 +329,11 @@ $ git push -u origin master   （注：此操作目的是把本地仓库push到g
 $ pip3 install virtualenv
 ```
 
-接下来创建虚拟环境，先进入到 markhoo.com 目录下，然后运行 ```virtualenv``` 命令创建虚拟环境：
+接下来创建虚拟环境，先进入到 markhoo.cn 目录下，然后运行 ```virtualenv``` 命令创建虚拟环境：
 
 ```sh
-$ [root@instance-pkb22o0h]# cd /home/markhoo/sites/markhoo.com
-$ [root@instance-pkb22o0h markhoo.com]# virtualenv -p /usr/bin/python3 –-no-site-packages myblog_env
+$ [root@instance-pkb22o0h]# cd /home/markhoo/sites/markhoo.cn
+$ [root@instance-pkb22o0h markhoo.cn]# virtualenv -p /usr/bin/python3 –-no-site-packages myblog_env
 ```
 
 命令说明：
@@ -352,24 +352,24 @@ virtualenv的命令使用方法：
 检查一下虚拟环境是否创建成功，运行 ls 命令列出当前目录下的文件和文件夹，看到 myblog_env 这个文件夹说明虚拟环境创建成功。
 
 ```sh
-$ [root@instance-pkb22o0h markhoo.com]# ls
+$ [root@instance-pkb22o0h markhoo.cn]# ls
 $ myblog_env
 ```
 
 ## venv的使用
 
 由于我只是测试项目，所以使用了Python自带的venv。
-先进入到 markhoo.com 目录下，然后运行 ```python3 -m venv myblog_env``` 创建虚拟环境：
+先进入到 markhoo.cn 目录下，然后运行 ```python3 -m venv myblog_env``` 创建虚拟环境：
 
 ```sh
-$ [root@instance-pkb22o0h]# cd /home/markhoo/sites/markhoo.com
-$ [root@instance-pkb22o0h markhoo.com]# python3 -m venv myblog_env
+$ [root@instance-pkb22o0h]# cd /home/markhoo/sites/markhoo.cn
+$ [root@instance-pkb22o0h markhoo.cn]# python3 -m venv myblog_env
 ```
 
 检查一下虚拟环境是否创建成功，运行 ls 命令列出当前目录下的文件和文件夹，看到 myblog_env 这个文件夹说明虚拟环境创建成功。
 
 ```sh
-$ [root@instance-pkb22o0h markhoo.com]# ls
+$ [root@instance-pkb22o0h markhoo.cn]# ls
 $ myblog_env
 ```
 
@@ -378,13 +378,13 @@ $ myblog_env
 接着再从代码仓库把项目代码拉取过来，把 ```git clone``` 后的地址换成你自己的 GitHub 仓库地址！
 
 ```sh
-$ [root@instance-pkb22o0h markhoo.com]# git clone https://github.com/MarkHoo/myblog.git
+$ [root@instance-pkb22o0h markhoo.cn]# git clone https://github.com/MarkHoo/myblog.git
 ```
 
 运行 ls 命令检查一下是否拉取成功：
 
 ```sh
-$ [root@instance-pkb22o0h markhoo.com]# ls
+$ [root@instance-pkb22o0h markhoo.cn]# ls
 $ myblog  myblog_env
 ```
 
@@ -393,14 +393,14 @@ $ myblog  myblog_env
 接下来执行命令，启动虚拟环境
 
 ```sh
-$ [root@instance-pkb22o0h markhoo.com]# source myblog_env/bin/activate
-$ (myblog_env) [root@instance-pkb22o0h markhoo.com]# 
+$ [root@instance-pkb22o0h markhoo.cn]# source myblog_env/bin/activate
+$ (myblog_env) [root@instance-pkb22o0h markhoo.cn]# 
 ```
 
 安装项目环境依赖
 
 ```sh
-$ (myblog_env) [root@instance-pkb22o0h markhoo.com]# cd myblog
+$ (myblog_env) [root@instance-pkb22o0h markhoo.cn]# cd myblog
 $ (myblog_env) [root@instance-pkb22o0h myblog]# pip3 install -r requirements.txt
 ```
 
@@ -428,7 +428,7 @@ $ (myblog_env) [root@instance-pkb22o0h myblog]# python manage.py createsuperuser
 
 ```sh
 $ Username (leave blank to use 'root'): admin
-$ Email address: admin@markhoo.com
+$ Email address: admin@markhoo.cn
 $ Password: 
 $ Password (again): 
 $ Superuser created successfully.
@@ -513,7 +513,7 @@ DATABASES = {
 创建 Django 数据库
 
 ```sh
-$ (myblog_env) [root@instance-pkb22o0h myblog]# cd /home/markhoo/sites/markhoo.com/myblog
+$ (myblog_env) [root@instance-pkb22o0h myblog]# cd /home/markhoo/sites/markhoo.cn/myblog
 $ (myblog_env) [root@instance-pkb22o0h myblog]# python manage.py migrate
 ```
 
@@ -527,7 +527,7 @@ $ (myblog_env) [root@instance-pkb22o0h myblog]# python manage.py createsuperuser
 
 ```sh
 $ Username (leave blank to use 'root'): admin
-$ Email address: admin@markhoo.com
+$ Email address: admin@markhoo.cn
 $ Password: 
 $ Password (again): 
 $ Superuser created successfully.
@@ -562,7 +562,7 @@ $ (myblog_env) [root@instance-pkb22o0h myblog]# pip3 install gunicorn
 $ (myblog_env) [root@instance-pkb22o0h myblog]# gunicorn --bind 0.0.0.0:8000 myblog.wsgi:application
 ```
 
-注意：myblog.wsgi:application这里的myblog对应的是 /home/markhoo/sites/markhoo.com/myblog/myblog, 根据自己的修改。浏览器输入域名，可以看到访问成功了！
+注意：myblog.wsgi:application这里的myblog对应的是 /home/markhoo/sites/markhoo.cn/myblog/myblog, 根据自己的修改。浏览器输入域名，可以看到访问成功了！
 
 访问ip地址看浏览器是否能正常查看内容（此时没有退出虚拟环境） 
 完成测试后，按 ```CTRL-C``` 停止 Gunicorn 运行
@@ -589,8 +589,8 @@ After=network.target
 [Service]
 User=root
 Group=nginx
-WorkingDirectory=/home/markhoo/sites/markhoo.com/myblog
-ExecStart=/home/markhoo/sites/markhoo.com/myblog_env/bin/gunicorn --workers 3 --bind unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock myblog.wsgi:application
+WorkingDirectory=/home/markhoo/sites/markhoo.cn/myblog
+ExecStart=/home/markhoo/sites/markhoo.cn/myblog_env/bin/gunicorn --workers 3 --bind unix:/home/markhoo/sites/markhoo.cn/myblog/myblog.sock myblog.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -728,11 +728,11 @@ http {
 ```
 server {
     listen 80;
-    server_name  markhoo.com 0.0.0.0;
+    server_name  markhoo.cn 0.0.0.0;
 
         location = /favicon.ico { access_log off; log_not_found off; }
         location /static/ {
-        root /home/markhoo/sites/markhoo.com/myblog;
+        root /home/markhoo/sites/markhoo.cn/myblog;
         }
 
         location / {
@@ -740,7 +740,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_pass http://unix:/home/markhoo/sites/markhoo.com/myblog/myblog.sock;
+        proxy_pass http://unix:/home/markhoo/sites/markhoo.cn/myblog/myblog.sock;
         }
 
     }
@@ -751,7 +751,7 @@ server {
 注意修改自己的IP地址或域名，还有文件路径 
 server_domain_or_IP 代表你的IP地址或域名
 
-- 这里的域名为 markhoo.com，其次一定要添加 0.0.0.0 否则无法访问，两个之间用空格隔开。
+- 这里的域名为 markhoo.cn，其次一定要添加 0.0.0.0 否则无法访问，两个之间用空格隔开。
 - 所有URL 带有 /static 的请求均由 Nginx 处理，alias 指明了静态文件的存放目录。
 - 其它请求转发给 Django 处理。proxy_pass 后面使用了 unix 套接字，其作用是防止端口冲突，这里就不再详述。
 

@@ -1,12 +1,10 @@
 ---
-title: Books
+title:
 date: 
 layout: books
 permalink: books.html
 ---
 
-
-{% gallery %}
 [![1](https://wfqqreader-1252317822.image.myqcloud.com/cover/426/823426/t6_823426.jpg)](https://weread.qq.com/ "影响力")
 [![1](https://wfqqreader-1252317822.image.myqcloud.com/cover/568/921568/t6_921568.jpg)](https://weread.qq.com/ "原则")
 [![1](https://wfqqreader-1252317822.image.myqcloud.com/cover/368/933368/t6_933368.jpg)](https://weread.qq.com/ "穿越平行宇宙")
@@ -89,7 +87,7 @@ permalink: books.html
 [![1](https://wfqqreader-1252317822.image.myqcloud.com/cover/0/622000/t6_622000.jpg)](https://weread.qq.com/ "Redis设计与实现")
 [![1](https://wfqqreader-1252317822.image.myqcloud.com/cover/972/536972/t6_536972.jpg)](https://weread.qq.com/ "失控")
 [![1](https://wfqqreader-1252317822.image.myqcloud.com/cover/995/840995/t6_840995.jpg)](https://weread.qq.com/ "万历十五年（精装版）")
-{% endgallery %}
+
 
 
 
