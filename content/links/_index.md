@@ -13,8 +13,6 @@ permalink: links.html
 
 博客网址：https://blog.markhoo.cn
 
-博客头像：https://media.markhoo.cn/avatar.jpg
-
 博客头像：https://blog.markhoo.cn/img/avatar.png
 
 邮箱：
