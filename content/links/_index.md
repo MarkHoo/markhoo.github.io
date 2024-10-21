@@ -35,16 +35,6 @@ permalink: links.html
 --------------------------------------------------
 名称|介绍
 -|-
-[刘江博客](http://www.liujiangblog.com/blog)|刘江博客
-[廖雪峰博客](https://www.liaoxuefeng.com)|廖雪峰博客
-[追梦人物](https://www.zmrenwu.com)|追梦人物
-[酷壳](https://coolshell.cn)|酷壳
-[并发编程网](http://ifeve.com)|支付宝技术专家，《Java并发编程的艺术》作者
-[Ruby's Louvre](https://www.cnblogs.com/rubylouvre/)|每天学习一点点算法
-[Vitor Freitas](https://simpleisbetterthancomplex.com)|simpleisbetterthancomplex
---------------------------------------------------
-名称|介绍
--|-
 [Bgods](http://bgods.cn)|Bgods
 [凉风有信](https://blog.cnguu.cn)|责难无以成事
 [米米的博客](https://zhangshuqiao.org)|米米的博客!!
@@ -59,6 +49,7 @@ permalink: links.html
 [华安自媒体博客](http://pancun.com.cn)|华安自媒体博客
 [Deepzz](https://deepzz.com)|唯爱与美食不可辜负也 :-D
 [是可可呀~](https://1760317896.github.io)|简单不先于复杂，而在于复杂之后。
+[追梦人物](https://www.zmrenwu.com)|追梦人物
 
 
 --------------------------------------------------
