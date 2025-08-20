@@ -11,9 +11,9 @@ permalink: links.html
 
 博客名称：和光同尘
 
-博客网址：https://blog.markhoo.cn
+博客网址：[https://b.foresai.com](https://b.foresai.com)
 
-博客头像：https://blog.markhoo.cn/img/android-chrome-192x192_hu2cd8897914ec65893453b87131cde6d5_42520_288x288_fill_box_center_3.png
+博客头像：[https://b.foresai.com/img/android-chrome-192x192_hu2cd8897914ec65893453b87131cde6d5_42520_288x288_fill_box_center_3.png](https://b.foresai.com/img/android-chrome-192x192_hu2cd8897914ec65893453b87131cde6d5_42520_288x288_fill_box_center_3.png)
 
 邮箱：
 - markhoo911#gmail.com
