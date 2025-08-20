@@ -9,7 +9,7 @@ permalink: links.html
 
 ### 博客信息
 
-博客名称：和光同尘
+博客名称：希言の博客
 
 博客网址：[https://b.foresai.com](https://b.foresai.com)
 
